@@ -1,7 +1,7 @@
 /**
  * Steffani — Comportamentos, Navegação & Micro-interações
  * Animações orquestradas com Framer Motion (Motion Vanilla Engine)
- * Física de Spring: stiffness, damping, mass e stagger reais
+ * Física de Spring: stiffness, damping, mass e stagger reais em propriedades numéricas
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,21 +21,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
   }
 
-  // 2. Animações Framer Motion para Navbar Desktop (Hover & Touch)
+  // 2. Micro-interações táteis para Navbar Desktop com Framer Motion Spring
   if (window.Motion && !isReducedMotion) {
     const { animate } = window.Motion;
 
-    // Links de navegação: micro-interação tátil com spring natural
+    // Links de navegação: elevação no eixo Y com mola suave
     document.querySelectorAll(".nav-link").forEach(link => {
       link.addEventListener("mouseenter", () => {
-        animate(link, { y: -1.5, color: "#5B4032" }, { type: "spring", stiffness: 450, damping: 20 });
+        animate(link, { y: -2 }, { type: "spring", stiffness: 450, damping: 22 });
       });
       link.addEventListener("mouseleave", () => {
-        animate(link, { y: 0, color: "#111111" }, { type: "spring", stiffness: 450, damping: 25 });
+        animate(link, { y: 0 }, { type: "spring", stiffness: 450, damping: 25 });
       });
     });
 
-    // Botão de agendamento (WhatsApp): física elástica de toque/hover
+    // Botão de agendamento (WhatsApp): física elástica de clique e hover
     const navCta = document.querySelector(".btn-nav-cta");
     if (navCta) {
       navCta.addEventListener("mouseenter", () => {
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 3. Menu Móvel / Gaveta com Framer Motion (Física de Mola & Stagger)
+  // 3. Menu Mobile / Gaveta com Framer Motion (Física de Mola Real & Stagger)
   const menuToggleBtn = document.getElementById("menuToggleBtn");
   const drawerCloseBtn = document.getElementById("drawerCloseBtn");
   const mobileDrawer = document.getElementById("mobileDrawer");
@@ -61,6 +61,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const line1 = document.querySelector(".hamburger-line.line-1");
   const line2 = document.querySelector(".hamburger-line.line-2");
   let isDrawerOpen = false;
+
+  // Micro-interação no botão de fechar da gaveta
+  if (drawerCloseBtn && window.Motion && !isReducedMotion) {
+    const { animate } = window.Motion;
+    drawerCloseBtn.addEventListener("mouseenter", () => {
+      animate(drawerCloseBtn, { rotate: 90, scale: 1.06 }, { type: "spring", stiffness: 420, damping: 20 });
+    });
+    drawerCloseBtn.addEventListener("mouseleave", () => {
+      animate(drawerCloseBtn, { rotate: 0, scale: 1 }, { type: "spring", stiffness: 420, damping: 24 });
+    });
+  }
 
   const openDrawer = () => {
     if (!mobileDrawer || isDrawerOpen) return;
@@ -76,24 +87,26 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.Motion && !isReducedMotion) {
       const { animate, stagger } = window.Motion;
 
-      // Animação das linhas do hambúrguer para 'X' com mola
+      // 1. Linhas do hambúrguer transformam-se em 'X' via mola coordenada (y + rotate)
       if (line1 && line2) {
-        animate(line1, { transform: "translateY(4.25px) rotate(45deg)" }, { type: "spring", stiffness: 420, damping: 24 });
-        animate(line2, { transform: "translateY(-4.25px) rotate(-45deg)" }, { type: "spring", stiffness: 420, damping: 24 });
+        animate(line1, { y: 4.5, rotate: 45 }, { type: "spring", stiffness: 440, damping: 22 });
+        animate(line2, { y: -4.5, rotate: -45 }, { type: "spring", stiffness: 440, damping: 22 });
       }
 
-      // Deslize da gaveta com inércia natural do Framer Motion
+      // 2. Deslizamento da gaveta com inércia e amortecimento elástico
       animate(mobileDrawer, 
-        { transform: ["translateX(100%)", "translateX(0%)"] }, 
-        { type: "spring", stiffness: 320, damping: 30, mass: 0.85 }
+        { x: ["100%", "0%"] }, 
+        { type: "spring", stiffness: 280, damping: 28, mass: 0.85 }
       );
 
-      // Fade do overlay de fundo
-      animate(drawerOverlay, { opacity: [0, 1] }, { duration: 0.35 });
+      // 3. Fade in do overlay escuro com desfoque de fundo
+      if (drawerOverlay) {
+        animate(drawerOverlay, { opacity: [0, 1] }, { duration: 0.3 });
+      }
 
-      // Entrada em cascata (stagger) dos links de navegação
+      // 4. Entrada dos links em cascata (stagger) com física de mola
       animate(".mobile-nav-links a", 
-        { opacity: [0, 1], transform: ["translateX(26px)", "translateX(0px)"] }, 
+        { opacity: [0, 1], x: [28, 0] }, 
         { 
           type: "spring", 
           stiffness: 340, 
@@ -119,21 +132,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (window.Motion && !isReducedMotion) {
       const { animate } = window.Motion;
 
-      // Restauração das linhas do hambúrguer
+      // 1. Restauração elástica das linhas do hambúrguer para o estado paralelo
       if (line1 && line2) {
-        animate(line1, { transform: "translateY(0px) rotate(0deg)" }, { type: "spring", stiffness: 400, damping: 25 });
-        animate(line2, { transform: "translateY(0px) rotate(0deg)" }, { type: "spring", stiffness: 400, damping: 25 });
+        animate(line1, { y: 0, rotate: 0 }, { type: "spring", stiffness: 420, damping: 26 });
+        animate(line2, { y: 0, rotate: 0 }, { type: "spring", stiffness: 420, damping: 26 });
       }
 
-      // Fechamento suave da gaveta
+      // 2. Saída da gaveta com mola de recuo ágil
       const closeAnim = animate(mobileDrawer, 
-        { transform: "translateX(100%)" }, 
-        { duration: 0.28, easing: [0.32, 0, 0.67, 0] }
+        { x: "100%" }, 
+        { type: "spring", stiffness: 340, damping: 32 }
       );
 
-      animate(drawerOverlay, { opacity: 0 }, { duration: 0.24 });
+      // 3. Fade out do overlay
+      if (drawerOverlay) {
+        animate(drawerOverlay, { opacity: 0 }, { duration: 0.25 });
+      }
 
-      closeAnim.finished.then(() => {
+      closeAnim.then(() => {
         mobileDrawer.classList.remove("is-active");
         drawerOverlay?.classList.remove("is-active");
       });
