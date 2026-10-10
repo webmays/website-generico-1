@@ -1,10 +1,10 @@
 /**
- * Steffani — Comportamentos e Micro-interações
- * Foco: Discrição, leveza, sem interferir na navegação do usuário.
+ * Steffani — Comportamentos, Navegação & Micro-interações
+ * Clean Code: Leveza, acessibilidade móvel e performance.
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Efeito sutil no header ao rolar a página
+  // 1. Efeito sutil no header ao rolar a página
   const header = document.querySelector(".site-header");
   if (header) {
     window.addEventListener("scroll", () => {
@@ -18,7 +18,48 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
   }
 
-  // Rolagem suave para links âncora
+  // 2. Menu Móvel / Mobile Drawer Acessível
+  const menuToggleBtn = document.getElementById("menuToggleBtn");
+  const drawerCloseBtn = document.getElementById("drawerCloseBtn");
+  const mobileDrawer = document.getElementById("mobileDrawer");
+  const drawerOverlay = document.getElementById("drawerOverlay");
+
+  const openDrawer = () => {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.add("is-active");
+    drawerOverlay?.classList.add("is-active");
+    mobileDrawer.setAttribute("aria-hidden", "false");
+    menuToggleBtn?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  };
+
+  const closeDrawer = () => {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.remove("is-active");
+    drawerOverlay?.classList.remove("is-active");
+    mobileDrawer.setAttribute("aria-hidden", "true");
+    menuToggleBtn?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  };
+
+  menuToggleBtn?.addEventListener("click", openDrawer);
+  drawerCloseBtn?.addEventListener("click", closeDrawer);
+  drawerOverlay?.addEventListener("click", closeDrawer);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mobileDrawer?.classList.contains("is-active")) {
+      closeDrawer();
+    }
+  });
+
+  // Fechar drawer ao clicar em um link interno
+  document.querySelectorAll(".mobile-nav-link").forEach(link => {
+    link.addEventListener("click", () => {
+      closeDrawer();
+    });
+  });
+
+  // 3. Rolagem suave para todos os links âncora
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
@@ -34,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Accordion (FAQ): Fechar os outros ao abrir um item para manter a tela limpa
+  // 4. Accordion (FAQ): Fechar outros itens ao abrir um para foco visual
   const faqItems = document.querySelectorAll('.faq-item');
   faqItems.forEach(item => {
     item.addEventListener('toggle', () => {

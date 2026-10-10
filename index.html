@@ -17,7 +17,8 @@
         <span>Estética & Ensino</span>
       </a>
 
-      <nav aria-label="Navegação do site">
+      <!-- Menu Desktop -->
+      <nav aria-label="Navegação desktop">
         <ul class="nav-menu">
           <li><a href="#procedimentos" class="nav-link">Procedimentos</a></li>
           <li><a href="#cursos" class="nav-link">Cursos & Formações</a></li>
@@ -28,10 +29,36 @@
       </nav>
 
       <div class="nav-actions">
-        <a href="#contato" class="btn btn-primary" style="padding: 0.75rem 1.4rem; font-size: 0.8rem;">Quero Agendar</a>
+        <a href="#contato" class="btn btn-primary" style="min-height: 40px; padding: 0.6rem 1.4rem; font-size: 0.8rem;">Quero Agendar</a>
+        <button type="button" class="mobile-nav-toggle" id="menuToggleBtn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileDrawer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Drawer & Overlay -->
+  <div class="mobile-drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Menu móvel" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <span class="brand-logo" style="font-size: 1.5rem;">Steffani</span>
+      <button type="button" class="mobile-drawer-close" id="drawerCloseBtn" aria-label="Fechar menu">✕</button>
+    </div>
+    <nav>
+      <ul class="mobile-nav-links">
+        <li><a href="#procedimentos" class="mobile-nav-link">Procedimentos</a></li>
+        <li><a href="#cursos" class="mobile-nav-link">Cursos & Formações</a></li>
+        <li><a href="#metodo" class="mobile-nav-link">O Método</a></li>
+        <li><a href="#sobre" class="mobile-nav-link">Sobre Steffani</a></li>
+        <li><a href="#faq" class="mobile-nav-link">Dúvidas Frequentes</a></li>
+        <li><a href="#contato" class="mobile-nav-link" style="color: var(--color-brown);">Agendamento & Contato</a></li>
+      </ul>
+    </nav>
+  </aside>
 
   <main>
     <!-- Hero Section -->
@@ -164,7 +191,7 @@
     <section id="metodo" class="authority-section section-spacing">
       <div class="container authority-grid">
         <div class="photo-frame authority-photo" aria-label="Placeholder para Steffani em ambiente clínico">
-          <span class="photo-meta" style="color: var(--color-warm-white); background: rgba(17,17,17,0.8);">[Fotografia Steffani — Ambiente Clínico 3:4]</span>
+          <span class="photo-meta" style="color: var(--color-warm-white); background: rgba(17,17,17,0.85);">[Fotografia Steffani — Ambiente Clínico 4:5]</span>
         </div>
 
         <div class="authority-info">
@@ -238,7 +265,7 @@
     <!-- Experiência em Vídeo — Demonstração Clínica -->
     <section class="section-spacing-sm" style="background-color: var(--color-warm-white);">
       <div class="container">
-        <div style="max-width: 680px; margin: 0 auto; text-align: center; margin-bottom: 2.5rem;">
+        <div style="max-width: 680px; margin: 0 auto; text-align: center; margin-bottom: 2rem;">
           <span class="meta-label">Transparência Técnica</span>
           <h2>Veja Como Funciona na Prática</h2>
           <p style="margin: 0.5rem auto 0;">Entenda o passo a passo de um atendimento, desde o acolhimento até o plano de manutenção pós-procedimento.</p>
@@ -267,15 +294,15 @@
           <span style="font-size: 0.8rem; color: var(--color-brown);">Registros em ambiente controlado</span>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-          <div class="photo-frame" style="aspect-ratio: 1/1;">
-            <span class="photo-meta">[Registro Clínico 01 — Resultado de Procedimento]</span>
+        <div class="cases-grid">
+          <div class="photo-frame case-photo">
+            <span class="photo-meta">[Registro Clínico 01 — 1:1]</span>
           </div>
-          <div class="photo-frame" style="aspect-ratio: 1/1;">
-            <span class="photo-meta">[Registro Clínico 02 — Resultado de Procedimento]</span>
+          <div class="photo-frame case-photo">
+            <span class="photo-meta">[Registro Clínico 02 — 1:1]</span>
           </div>
-          <div class="photo-frame" style="aspect-ratio: 1/1;">
-            <span class="photo-meta">[Registro Clínico 03 — Resultado de Procedimento]</span>
+          <div class="photo-frame case-photo">
+            <span class="photo-meta">[Registro Clínico 03 — 1:1]</span>
           </div>
         </div>
         <p style="margin-top: 1.5rem; font-size: 0.75rem; color: rgba(17,17,17,0.5);">* Fotografias e registros clínicos autênticos serão apresentados mediante consulta ética. Resultados podem variar de acordo com características biológicas individuais.</p>
@@ -284,14 +311,14 @@
 
     <!-- Sobre Steffani -->
     <section id="sobre" class="section-spacing" style="border-top: 1px solid var(--color-border);">
-      <div class="container" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 5vw, 5rem); align-items: center;">
-        <div class="photo-frame" style="aspect-ratio: 1 / 1; min-height: 400px;">
-          <span class="photo-meta">[Retrato Editorial Steffani — Perfil Profissional 1:1]</span>
+      <div class="container about-grid">
+        <div class="photo-frame about-photo">
+          <span class="photo-meta">[Retrato Editorial Steffani — Perfil 1:1]</span>
         </div>
 
         <div>
           <span class="meta-label">Trajetória & Compromisso</span>
-          <h2 style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); margin-bottom: 1.5rem;">Sobre Steffani</h2>
+          <h2 style="font-size: clamp(2.1rem, 3.5vw, 3.2rem); margin-bottom: 1.5rem;">Sobre Steffani</h2>
           <p style="margin-bottom: 1.25rem;">
             Dedicada à estética de alto padrão, Steffani construiu sua carreira unindo o rigor científico à sensibilidade artística. Sua atuação é pautada na personalização absoluta, garantindo que cada paciente receba exatamente o que harmoniza com sua essência.
           </p>
@@ -344,7 +371,7 @@
     <!-- FAQ Accordion -->
     <section id="faq" class="section-spacing">
       <div class="container">
-        <div style="text-align: center; margin-bottom: 3.5rem;">
+        <div style="text-align: center; margin-bottom: 3rem;">
           <span class="meta-label">Esclarecimentos</span>
           <h2>Dúvidas Frequentes</h2>
         </div>
