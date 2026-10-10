@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --black: #111111;
+    --white: #FFFFFF;
+    --off-white: #F6F3EE;
+    --warm-white: #EEE8DF;
+
+    --brown: #5B4032;
+    --dark-brown: #2F231E;
+    --taupe: #B6A89C;
+
+    --muted-gold: #B18A57;
+  }
+
+  body {
+    @apply bg-[var(--off-white)] text-[var(--black)] font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-medium;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

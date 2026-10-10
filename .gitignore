@@ -1,0 +1,12 @@
+node_modules/
+.next/
+out/
+build/
+.env
+.env.local
+.env.*
+*.pem
+*.key
+credentials*
+secrets*
+.DS_Store
