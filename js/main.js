@@ -2,10 +2,6 @@
  * Steffani — Comportamentos, Navegação & Micro-interações
  * Animações orquestradas com Framer Motion (Motion Vanilla Engine)
  * Física de Spring: stiffness, damping, mass e stagger reais em propriedades numéricas
- *
- * Acessibilidade: respeita `prefers-reduced-motion` (no Windows: Configurações >
- * Acessibilidade > Efeitos visuais > "Efeitos de animação"). Para pré-visualizar
- * as animações mesmo com essa opção desligada, abra a página com `?motion=on`.
  */
 
 const HAMBURGER_OFFSET_PX = 4.25;
@@ -16,10 +12,7 @@ const SPRING_DRAWER_CLOSE = { type: "spring", stiffness: 340, damping: 32 };
 const SPRING_LINKS = { type: "spring", stiffness: 340, damping: 26 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const forceMotion = new URLSearchParams(window.location.search).get("motion") === "on";
-  const allowMotion = !prefersReducedMotion || forceMotion;
-  const motionEnabled = allowMotion && Boolean(window.Motion);
+  const motionEnabled = Boolean(window.Motion);
 
   // 1. Elevação sutil do header na rolagem
   const header = document.querySelector(".site-header");
@@ -206,9 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          targetElement.scrollIntoView({
-            behavior: allowMotion ? "smooth" : "auto"
-          });
+          targetElement.scrollIntoView({ behavior: "smooth" });
         }
       }
     });
