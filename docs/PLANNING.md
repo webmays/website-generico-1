@@ -33,9 +33,9 @@ Mulheres adultas em busca de estética e procedimentos premium, além de profiss
 - Footer
 
 ## Arquitetura e Stack
-- **Framework:** Next.js (App Router)
-- **Estilização:** Tailwind CSS (Customizado com design tokens)
-- **Animações:** Motion discreto (Framer Motion ou CSS Transitions respeitando prefers-reduced-motion)
+- **Base:** HTML5, CSS3, JavaScript (Vanilla)
+- **Estilização:** CSS puro (Design tokens via CSS Variables)
+- **Animações:** Motion discreto (GSAP + ScrollTrigger ocasional, CSS Transitions)
 
 ## Design System
 - **Cores:**
@@ -53,7 +53,7 @@ Mulheres adultas em busca de estética e procedimentos premium, além de profiss
 
 ## Etapas de Implementação
 1. Configuração de repositório, dependências e estrutura de pastas.
-2. Definição do Design System em CSS/Tailwind (Cores, Tipografia, Espaçamento).
+2. Definição do Design System em CSS puro (Cores, Tipografia, Espaçamento).
 3. Criação de componentes base (Layout, Navbar, Footer, Botões).
 4. Implementação da Home.
 5. Integração de páginas internas e navegação.
