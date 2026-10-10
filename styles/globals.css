@@ -2,7 +2,7 @@
    STEFFANI — DESIGN SYSTEM & ESTÉTICA EDITORIAL
    Tipografia: Cormorant Garamond (Serif) + Manrope (Sans)
    Paleta: #111111, #FFFFFF, #F6F3EE, #EEE8DF, #5B4032, #2F231E, #B6A89C, #B18A57
-   Clean Code & Mobile-First Touch Optimization
+   Motion: Sutil, Editorial, Sem Exageros (Quiet Luxury)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap');
@@ -24,7 +24,7 @@
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --transition-smooth: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-smooth: 0.25s ease;
   --container-max: 1360px;
 }
 
@@ -132,7 +132,7 @@ img {
   padding: 0.85rem 2rem;
   border-radius: 0;
   cursor: pointer;
-  transition: all var(--transition-smooth);
+  transition: background-color var(--transition-smooth), border-color var(--transition-smooth), color var(--transition-smooth);
   border: 1px solid transparent;
   text-align: center;
 }
@@ -157,7 +157,7 @@ img {
 
 .btn-secondary:hover {
   border-color: var(--color-black);
-  background-color: rgba(17, 17, 17, 0.03);
+  background-color: rgba(17, 17, 17, 0.04);
 }
 
 .btn-dark-outline {
@@ -178,16 +178,11 @@ img {
   letter-spacing: 0.03em;
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.6rem;
 }
 
 .btn-nav-cta svg {
   flex-shrink: 0;
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.btn-nav-cta:hover svg {
-  transform: scale(1.15);
 }
 
 .link-editorial {
@@ -202,6 +197,7 @@ img {
   padding-bottom: 0.2rem;
   min-height: 44px;
   width: fit-content;
+  transition: color var(--transition-smooth), border-color var(--transition-smooth);
 }
 
 .link-editorial:hover {
@@ -246,17 +242,17 @@ img {
 }
 
 /* ==========================================================================
-   NAVBAR & CABEÇALHO
+   NAVBAR & CABEÇALHO (Quiet Luxury & Natural Motion)
    ========================================================================== */
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(246, 243, 238, 0.96);
-  backdrop-filter: blur(10px);
+  background: rgba(246, 243, 238, 0.97);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border-subtle);
-  transition: all var(--transition-smooth);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .nav-container {
@@ -284,7 +280,7 @@ img {
   margin-top: -0.3rem;
 }
 
-/* Menu Desktop com Espaçamento e Tipografia Aprimorados */
+/* Menu Desktop com Espaçamento Amplo e Tipografia Refinada */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -292,29 +288,28 @@ img {
   list-style: none;
 }
 
+/* Hover Suave e Natural (Sem acrobacias ou saltos mecânicos) */
 .nav-link {
   font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.03em;
   color: var(--color-black);
   position: relative;
-  padding: 0.65rem 0;
+  padding: 0.5rem 0;
   display: inline-block;
-  transition: color 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: color 0.25s ease;
 }
 
-/* Animação Suave, Natural e Moderna de Hover */
 .nav-link::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 1.5px;
+  height: 1px;
   background-color: var(--color-brown);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
 
 .nav-link:hover {
@@ -322,8 +317,7 @@ img {
 }
 
 .nav-link:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
+  opacity: 1;
 }
 
 .nav-actions {
@@ -332,7 +326,7 @@ img {
   gap: 1.25rem;
 }
 
-/* Botão Mobile com Animação Fluida Hambúrguer para 'X' */
+/* Botão Mobile Hamburger: 2 Linhas Minimalistas que se cruzam harmoniosamente */
 .mobile-nav-toggle {
   display: none;
   background: transparent;
@@ -344,7 +338,7 @@ img {
   min-height: 44px;
   align-items: center;
   justify-content: center;
-  transition: border-color var(--transition-smooth), background-color var(--transition-smooth);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .mobile-nav-toggle:hover {
@@ -353,8 +347,8 @@ img {
 }
 
 .hamburger-box {
-  width: 20px;
-  height: 14px;
+  width: 22px;
+  height: 10px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -366,45 +360,40 @@ img {
   width: 100%;
   height: 1.5px;
   background-color: var(--color-black);
-  border-radius: 1px;
-  transition: transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.28s ease;
+  transition: transform 0.28s ease, background-color 0.25s ease;
   transform-origin: center;
 }
 
-/* Estado Ativo: Transição Harmônica para 'X' */
+/* Estado Ativo: Forma um 'X' perfeitamente simétrico e limpo */
 .mobile-nav-toggle.is-active .line-1 {
-  transform: translateY(6.25px) rotate(45deg);
+  transform: translateY(4.25px) rotate(45deg);
 }
 
 .mobile-nav-toggle.is-active .line-2 {
-  opacity: 0;
-  transform: scaleX(0);
+  transform: translateY(-4.25px) rotate(-45deg);
 }
 
-.mobile-nav-toggle.is-active .line-3 {
-  transform: translateY(-6.25px) rotate(-45deg);
-}
-
-/* Mobile Drawer (Suave e fluido) */
+/* Mobile Drawer (Deslizamento fluido via CSS nativo acelerado por hardware) */
 .mobile-drawer {
   position: fixed;
   top: 0;
   right: 0;
-  transform: translateX(100%);
+  transform: translate3d(100%, 0, 0);
   width: 85%;
-  max-width: 340px;
+  max-width: 320px;
   height: 100vh;
   background-color: var(--color-off-white);
-  box-shadow: -15px 0 40px rgba(17, 17, 17, 0.1);
+  box-shadow: -10px 0 35px rgba(17, 17, 17, 0.08);
   z-index: 200;
-  padding: 2.5rem 1.75rem;
+  padding: 2.25rem 1.75rem;
   display: flex;
   flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }
 
 .mobile-drawer.is-active {
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 .mobile-drawer-header {
@@ -419,7 +408,7 @@ img {
 .mobile-drawer-close {
   background: none;
   border: 1px solid var(--color-border-subtle);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   cursor: pointer;
   color: var(--color-black);
   min-width: 44px;
@@ -427,7 +416,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color var(--transition-smooth);
+  transition: border-color 0.2s ease;
 }
 
 .mobile-drawer-close:hover {
@@ -438,7 +427,7 @@ img {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.6rem;
 }
 
 .mobile-nav-links a {
@@ -446,8 +435,8 @@ img {
   font-size: 1.6rem;
   color: var(--color-black);
   display: block;
-  padding: 0.35rem 0;
-  transition: color var(--transition-smooth);
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
 }
 
 .mobile-nav-links a:hover {
@@ -457,12 +446,12 @@ img {
 .mobile-drawer-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(17, 17, 17, 0.45);
+  background-color: rgba(17, 17, 17, 0.4);
   backdrop-filter: blur(4px);
   z-index: 199;
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--transition-smooth);
+  transition: opacity 0.3s ease;
 }
 
 .mobile-drawer-overlay.is-active {
@@ -707,7 +696,7 @@ img {
   color: rgba(246, 243, 238, 0.8);
 }
 
-/* Cursos — Jornada Editorial */
+/* O Curso — Jornada Editorial */
 .journey-timeline {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -768,11 +757,11 @@ img {
   background: var(--color-off-white);
   color: var(--color-brown);
   margin-bottom: 1rem;
-  transition: transform var(--transition-smooth);
+  transition: opacity var(--transition-smooth);
 }
 
 .video-play-btn:hover {
-  transform: scale(1.05);
+  opacity: 0.85;
 }
 
 /* Grid de Casos Clínicos */
@@ -833,7 +822,7 @@ img {
   font-size: 1.25rem;
   font-weight: 300;
   color: var(--color-brown);
-  transition: transform var(--transition-smooth);
+  transition: transform 0.2s ease;
 }
 
 .faq-item[open] .faq-summary::after {
@@ -1140,7 +1129,7 @@ img {
   }
 }
 
-/* Ajustes finos para telas muito pequenas (< 380px) */
+/* Telas muito pequenas (< 380px) */
 @media (max-width: 380px) {
   .hero-title {
     font-size: 2.15rem;
