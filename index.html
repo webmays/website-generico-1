@@ -1,33 +1,452 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steffani | Estética e Cursos Premium</title>
-    <link rel="stylesheet" href="./styles/globals.css">
-    
-    <!-- GSAP (Opcional, carregado apenas se necessário) -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steffani — Estética Avançada & Formações</title>
+  <meta name="description" content="Procedimentos estéticos com olhar clínico, sofisticação e naturalidade. Formações técnicas e mentorias com Steffani.">
+  <link rel="stylesheet" href="./styles/globals.css">
 </head>
 <body>
-    <header>
-        <nav aria-label="Navegação principal">
-            <!-- Navbar inicial -->
-        </nav>
-    </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Steffani</h1>
-        </section>
-    </main>
+  <!-- Navegação Principal -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo" aria-label="Steffani Início">
+        Steffani
+        <span>Estética & Ensino</span>
+      </a>
 
-    <footer>
-        <!-- Footer inicial -->
-    </footer>
+      <nav aria-label="Navegação do site">
+        <ul class="nav-menu">
+          <li><a href="#procedimentos" class="nav-link">Procedimentos</a></li>
+          <li><a href="#cursos" class="nav-link">Cursos & Formações</a></li>
+          <li><a href="#metodo" class="nav-link">Método</a></li>
+          <li><a href="#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="#faq" class="nav-link">Dúvidas</a></li>
+        </ul>
+      </nav>
 
-    <script src="./js/main.js"></script>
+      <div class="nav-actions">
+        <a href="#contato" class="btn btn-primary" style="padding: 0.75rem 1.4rem; font-size: 0.8rem;">Quero Agendar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="meta-label">Estética Clínica & Mentoria Profissional</span>
+          <h1 class="hero-title">A precisão da técnica aliada à <em>naturalidade</em> da estética.</h1>
+          <p class="hero-description">
+            Protocolos individualizados com rigor anatômico e formações profissionais que elevam o padrão de atendimento na estética moderna.
+          </p>
+          <div class="hero-cta-group">
+            <a href="#procedimentos" class="btn btn-primary">Conhecer Procedimentos</a>
+            <a href="#cursos" class="btn btn-secondary">Ver Formações</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="photo-frame hero-photo-main" aria-label="Placeholder para retrato de Steffani">
+            <span class="photo-meta">[Fotografia Principal — Steffani Retrato 4:5]</span>
+          </div>
+          <div class="hero-badge">
+            <h2 class="hero-badge-title">Olhar Anatômico</h2>
+            <p class="hero-badge-text">Preservação de traços e harmonia sem excessos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navegação Rápida / Cartela Editorial -->
+    <section class="quick-nav-section" aria-label="Acesso Rápido às Áreas">
+      <div class="container">
+        <div class="quick-nav-grid">
+          <a href="#procedimentos" class="quick-nav-item">
+            <span class="quick-nav-num">01</span>
+            <div>
+              <h3 class="quick-nav-title">Procedimentos</h3>
+              <p class="quick-nav-desc">Protocolos faciais e corporais personalizados.</p>
+            </div>
+          </a>
+          <a href="#cursos" class="quick-nav-item">
+            <span class="quick-nav-num">02</span>
+            <div>
+              <h3 class="quick-nav-title">Cursos</h3>
+              <p class="quick-nav-desc">Capacitação técnica e jornada profissional.</p>
+            </div>
+          </a>
+          <a href="#metodo" class="quick-nav-item">
+            <span class="quick-nav-num">03</span>
+            <div>
+              <h3 class="quick-nav-title">O Método</h3>
+              <p class="quick-nav-desc">Transparência clínica e acompanhamento.</p>
+            </div>
+          </a>
+          <a href="#sobre" class="quick-nav-item">
+            <span class="quick-nav-num">04</span>
+            <div>
+              <h3 class="quick-nav-title">Steffani</h3>
+              <p class="quick-nav-desc">Filosofia de atendimento e trajetória.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Procedimentos em Destaque -->
+    <section id="procedimentos" class="section-spacing">
+      <div class="container">
+        <div class="section-header-editorial">
+          <div>
+            <span class="meta-label">Tratamentos Clínicos</span>
+            <h2>Procedimentos em Destaque</h2>
+          </div>
+          <a href="#contato" class="link-editorial">Consultar Disponibilidade de Horários</a>
+        </div>
+
+        <div class="services-editorial-list">
+          <article class="service-row">
+            <span class="service-num">01</span>
+            <div>
+              <h3 class="service-title">Harmonização Facial Natural</h3>
+              <p class="service-meta">Planejamento individualizado focado em equilíbrio muscular e contornos suaves.</p>
+            </div>
+            <span class="service-meta">Avaliação prévia indispensável</span>
+            <div class="service-action">
+              <a href="#contato" class="link-editorial">Conhecer procedimento</a>
+            </div>
+          </article>
+
+          <article class="service-row">
+            <span class="service-num">02</span>
+            <div>
+              <h3 class="service-title">Estímulo & Sustentação Dérmica</h3>
+              <p class="service-meta">Tratamentos avançados para regeneração tecidual e densidade de colágeno.</p>
+            </div>
+            <span class="service-meta">Protocolos sob medida</span>
+            <div class="service-action">
+              <a href="#contato" class="link-editorial">Conhecer procedimento</a>
+            </div>
+          </article>
+
+          <article class="service-row">
+            <span class="service-num">03</span>
+            <div>
+              <h3 class="service-title">Revitalização & Textura Cutânea</h3>
+              <p class="service-meta">Uniformização, hidratação profunda e renovação do viço biológico.</p>
+            </div>
+            <span class="service-meta">Cuidados integrados</span>
+            <div class="service-action">
+              <a href="#contato" class="link-editorial">Conhecer procedimento</a>
+            </div>
+          </article>
+
+          <article class="service-row">
+            <span class="service-num">04</span>
+            <div>
+              <h3 class="service-title">Contorno Corporal Estratégico</h3>
+              <p class="service-meta">Associação de tecnologias para melhora da firmeza e definição tecidual.</p>
+            </div>
+            <span class="service-meta">Acompanhamento contínuo</span>
+            <div class="service-action">
+              <a href="#contato" class="link-editorial">Conhecer procedimento</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Seção de Autoridade & Filosofia -->
+    <section id="metodo" class="authority-section section-spacing">
+      <div class="container authority-grid">
+        <div class="photo-frame authority-photo" aria-label="Placeholder para Steffani em ambiente clínico">
+          <span class="photo-meta" style="color: var(--color-warm-white); background: rgba(17,17,17,0.8);">[Fotografia Steffani — Ambiente Clínico 3:4]</span>
+        </div>
+
+        <div class="authority-info">
+          <span class="meta-label" style="color: var(--color-taupe);">Filosofia de Atendimento</span>
+          <blockquote class="authority-quote">
+            "A verdadeira sofisticação reside na sutileza. Nenhum procedimento deve se sobrepor à identidade de quem o recebe."
+          </blockquote>
+          <p class="authority-text">
+            Cada face e corpo carregam uma história anatômica única. Minha atuação parte do diagnóstico minucioso e do respeito aos tecidos, entregando transformações elegantes e sustentáveis a longo prazo.
+          </p>
+
+          <div class="authority-points">
+            <div>
+              <div class="point-number">100%</div>
+              <div class="point-label">Diagnósticos individualizados e sem protocolos genéricos.</div>
+            </div>
+            <div>
+              <div class="point-number">Rigor</div>
+              <div class="point-label">Técnicas atualizadas com respaldo em anatomia avançada.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cursos & Formações (Jornada Editorial) -->
+    <section id="cursos" class="section-spacing">
+      <div class="container">
+        <div class="section-header-editorial">
+          <div>
+            <span class="meta-label">Capacitação Profissional</span>
+            <h2>Formações & Mentorias</h2>
+          </div>
+          <p style="max-width: 44ch;">Uma jornada desenhada para profissionais que desejam dominar a técnica com segurança e construir autoridade de mercado.</p>
+        </div>
+
+        <div class="journey-timeline">
+          <div class="journey-step">
+            <span class="step-number">01</span>
+            <h3 class="step-title">Fundamentos</h3>
+            <p class="step-desc">Mapeamento anatômico profundo e avaliação criteriosa de indicação.</p>
+          </div>
+          <div class="journey-step">
+            <span class="step-number">02</span>
+            <h3 class="step-title">Técnica</h3>
+            <p class="step-desc">Refinamento prático de aplicação e controle biomecânico dos tecidos.</p>
+          </div>
+          <div class="journey-step">
+            <span class="step-number">03</span>
+            <h3 class="step-title">Prática</h3>
+            <p class="step-desc">Supervisão clínica presencial com resolução de casos complexos.</p>
+          </div>
+          <div class="journey-step">
+            <span class="step-number">04</span>
+            <h3 class="step-title">Conduta</h3>
+            <p class="step-desc">Protocolos de segurança, gestão de intercorrências e prontidão ética.</p>
+          </div>
+          <div class="journey-step">
+            <span class="step-number">05</span>
+            <h3 class="step-title">Certificação</h3>
+            <p class="step-desc">Conclusão, suporte continuado e validação de competência.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 3.5rem; text-align: center;">
+          <a href="#contato" class="btn btn-primary">Entender o Método da Formação</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experiência em Vídeo — Demonstração Clínica -->
+    <section class="section-spacing-sm" style="background-color: var(--color-warm-white);">
+      <div class="container">
+        <div style="max-width: 680px; margin: 0 auto; text-align: center; margin-bottom: 2.5rem;">
+          <span class="meta-label">Transparência Técnica</span>
+          <h2>Veja Como Funciona na Prática</h2>
+          <p style="margin: 0.5rem auto 0;">Entenda o passo a passo de um atendimento, desde o acolhimento até o plano de manutenção pós-procedimento.</p>
+        </div>
+
+        <div class="video-preview-block" aria-label="Espaço reservado para vídeo institucional">
+          <div class="video-play-btn" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <span class="photo-meta">[Vídeo Demonstrativo — Procedimento e Explicação Técnica 16:9]</span>
+          <p style="margin-top: 1rem; font-size: 0.85rem; color: rgba(17,17,17,0.6);">Áudio explicativo e demonstração de segurança do protocolo.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resultados e Documentação Clínica -->
+    <section class="section-spacing">
+      <div class="container">
+        <div class="section-header-editorial">
+          <div>
+            <span class="meta-label">Casos Documentados</span>
+            <h2>Resultados & Harmonia</h2>
+          </div>
+          <span style="font-size: 0.8rem; color: var(--color-brown);">Registros em ambiente controlado</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+          <div class="photo-frame" style="aspect-ratio: 1/1;">
+            <span class="photo-meta">[Registro Clínico 01 — Resultado de Procedimento]</span>
+          </div>
+          <div class="photo-frame" style="aspect-ratio: 1/1;">
+            <span class="photo-meta">[Registro Clínico 02 — Resultado de Procedimento]</span>
+          </div>
+          <div class="photo-frame" style="aspect-ratio: 1/1;">
+            <span class="photo-meta">[Registro Clínico 03 — Resultado de Procedimento]</span>
+          </div>
+        </div>
+        <p style="margin-top: 1.5rem; font-size: 0.75rem; color: rgba(17,17,17,0.5);">* Fotografias e registros clínicos autênticos serão apresentados mediante consulta ética. Resultados podem variar de acordo com características biológicas individuais.</p>
+      </div>
+    </section>
+
+    <!-- Sobre Steffani -->
+    <section id="sobre" class="section-spacing" style="border-top: 1px solid var(--color-border);">
+      <div class="container" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(2rem, 5vw, 5rem); align-items: center;">
+        <div class="photo-frame" style="aspect-ratio: 1 / 1; min-height: 400px;">
+          <span class="photo-meta">[Retrato Editorial Steffani — Perfil Profissional 1:1]</span>
+        </div>
+
+        <div>
+          <span class="meta-label">Trajetória & Compromisso</span>
+          <h2 style="font-size: clamp(2.2rem, 3.5vw, 3.2rem); margin-bottom: 1.5rem;">Sobre Steffani</h2>
+          <p style="margin-bottom: 1.25rem;">
+            Dedicada à estética de alto padrão, Steffani construiu sua carreira unindo o rigor científico à sensibilidade artística. Sua atuação é pautada na personalização absoluta, garantindo que cada paciente receba exatamente o que harmoniza com sua essência.
+          </p>
+          <p style="margin-bottom: 2rem;">
+            Como mentora, desenvolve cursos focados em capacitar outros profissionais com segurança teórica, postura ética e domínio prático da rotina clínica.
+          </p>
+          <a href="#contato" class="btn btn-secondary">Falar com a Steffani</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cross-Sell Editorial -->
+    <section class="cross-sell-section section-spacing-sm">
+      <div class="container">
+        <span class="meta-label">Continue Explorando</span>
+        <h2 style="margin-bottom: 0.5rem;">Outros Cuidados que Combinam com Você</h2>
+        <p>A harmonização completa é resultado de hábitos consistentes e protocolos complementares.</p>
+
+        <div class="cross-sell-grid">
+          <div class="cross-sell-card">
+            <div>
+              <span class="meta-label" style="font-size: 0.7rem;">Cuidado Cutâneo</span>
+              <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Manutenção Domiciliar</h3>
+              <p style="font-size: 0.85rem;">Prescrição e direcionamento cosmético personalizado para o dia a dia.</p>
+            </div>
+            <a href="#contato" class="link-editorial">Ver orientações</a>
+          </div>
+
+          <div class="cross-sell-card">
+            <div>
+              <span class="meta-label" style="font-size: 0.7rem;">Educação</span>
+              <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Mentorias Individuais</h3>
+              <p style="font-size: 0.85rem;">Acompanhamento exclusivo para profissionais em transição de carreira ou aprofundamento.</p>
+            </div>
+            <a href="#cursos" class="link-editorial">Ver detalhes</a>
+          </div>
+
+          <div class="cross-sell-card">
+            <div>
+              <span class="meta-label" style="font-size: 0.7rem;">Diagnóstico</span>
+              <h3 style="font-size: 1.35rem; margin-bottom: 0.5rem;">Avaliação Completa</h3>
+              <p style="font-size: 0.85rem;">Mapeamento visual e postural para estruturar seu cronograma estético anual.</p>
+            </div>
+            <a href="#contato" class="link-editorial">Quero saber mais</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section id="faq" class="section-spacing">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: 3.5rem;">
+          <span class="meta-label">Esclarecimentos</span>
+          <h2>Dúvidas Frequentes</h2>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary class="faq-summary">Como funciona a primeira avaliação?</summary>
+            <div class="faq-content">
+              A avaliação consiste em uma análise facial ou corporal detalhada, onde conversamos sobre seus objetivos, histórico de saúde e traçamos um plano seguro e individualizado.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">Os procedimentos exigem tempo de recuperação?</summary>
+            <div class="faq-content">
+              A maioria dos nossos protocolos permite o retorno imediato ou em poucos dias às atividades habituais, com orientações precisas de cuidados domiciliares fornecidas na consulta.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">Como funcionam as formações e cursos?</summary>
+            <div class="faq-content">
+              As formações mesclam embasamento teórico atualizado e prática supervisionada, com turmas reduzidas para assegurar atenção individual e domínio integral da técnica.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary class="faq-summary">O curso emite certificado de conclusão?</summary>
+            <div class="faq-content">
+              Sim. Todos os alunos recebem certificação de conclusão ao finalizarem as etapas teóricas e práticas da grade curricular.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section id="contato" class="final-cta-section section-spacing">
+      <div class="container">
+        <div class="final-cta-content">
+          <span class="meta-label" style="color: var(--color-taupe);">Inicie Sua Jornada</span>
+          <h2 class="final-cta-title">Agende sua avaliação ou avance em sua carreira estética.</h2>
+          <p class="final-cta-subtitle">
+            Atendimento presencial com reserva antecipada e vagas de mentorias com processo seletivo.
+          </p>
+
+          <div class="final-cta-actions">
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="background-color: var(--color-off-white); color: var(--color-black); border-color: var(--color-off-white);">
+              Quero Realizar um Procedimento
+            </a>
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="btn btn-dark-outline">
+              Quero Conhecer os Cursos
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Steffani</h3>
+        <p style="color: rgba(246,243,238,0.5); font-size: 0.85rem;">Estética avançada, visão anatômica e cursos profissionais de alto padrão.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul class="footer-links">
+          <li><a href="#procedimentos">Procedimentos</a></li>
+          <li><a href="#cursos">Formações</a></li>
+          <li><a href="#metodo">Método</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Atendimento</h4>
+        <ul class="footer-links">
+          <li>Segunda a Sexta — 09h às 19h</li>
+          <li>Sábados — 09h às 14h</li>
+          <li>Atendimento com hora marcada</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contato Direto</h4>
+        <ul class="footer-links">
+          <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://wa.me" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+          <li><a href="mailto:contato@steffani.com.br">contato@steffani.com.br</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>&copy; Steffani. Todos os direitos reservados.</span>
+      <span>Design & Estratégia Editorial</span>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
 </body>
 </html>
