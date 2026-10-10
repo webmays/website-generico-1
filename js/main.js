@@ -1,6 +1,6 @@
 /**
  * Steffani — Comportamentos, Navegação & Micro-interações
- * Clean Code: Leveza, acessibilidade móvel e performance.
+ * Animações com curvas de aceleração naturais (inspiradas em Framer Motion)
  */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -18,36 +18,87 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
   }
 
-  // 2. Menu Móvel / Mobile Drawer Acessível
+  // 2. Menu Móvel / Mobile Drawer com Animação Fluida (Framer Motion feel)
   const menuToggleBtn = document.getElementById("menuToggleBtn");
   const drawerCloseBtn = document.getElementById("drawerCloseBtn");
   const mobileDrawer = document.getElementById("mobileDrawer");
   const drawerOverlay = document.getElementById("drawerOverlay");
+  let isDrawerOpen = false;
 
   const openDrawer = () => {
-    if (!mobileDrawer) return;
+    if (!mobileDrawer || isDrawerOpen) return;
+    isDrawerOpen = true;
+
     mobileDrawer.classList.add("is-active");
     drawerOverlay?.classList.add("is-active");
+    menuToggleBtn?.classList.add("is-active");
     mobileDrawer.setAttribute("aria-hidden", "false");
     menuToggleBtn?.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
+
+    // Animação GSAP com física natural e entrada staggered dos itens
+    if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.fromTo(mobileDrawer, 
+        { x: "100%" }, 
+        { x: "0%", duration: 0.5, ease: "power3.out" }
+      );
+      gsap.fromTo(drawerOverlay, 
+        { opacity: 0 }, 
+        { opacity: 1, duration: 0.4, ease: "power2.out" }
+      );
+      gsap.fromTo(".mobile-nav-link", 
+        { opacity: 0, x: 22 }, 
+        { opacity: 1, x: 0, duration: 0.45, stagger: 0.05, ease: "power2.out", delay: 0.12 }
+      );
+    }
   };
 
   const closeDrawer = () => {
-    if (!mobileDrawer) return;
-    mobileDrawer.classList.remove("is-active");
-    drawerOverlay?.classList.remove("is-active");
+    if (!mobileDrawer || !isDrawerOpen) return;
+    isDrawerOpen = false;
+
+    menuToggleBtn?.classList.remove("is-active");
     mobileDrawer.setAttribute("aria-hidden", "true");
     menuToggleBtn?.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
+
+    if (window.gsap && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      gsap.to(mobileDrawer, {
+        x: "100%",
+        duration: 0.38,
+        ease: "power3.in",
+        onComplete: () => {
+          mobileDrawer.classList.remove("is-active");
+          document.body.style.overflow = "";
+        }
+      });
+      gsap.to(drawerOverlay, {
+        opacity: 0,
+        duration: 0.32,
+        ease: "power2.in",
+        onComplete: () => {
+          drawerOverlay?.classList.remove("is-active");
+        }
+      });
+    } else {
+      mobileDrawer.classList.remove("is-active");
+      drawerOverlay?.classList.remove("is-active");
+      document.body.style.overflow = "";
+    }
   };
 
-  menuToggleBtn?.addEventListener("click", openDrawer);
+  menuToggleBtn?.addEventListener("click", () => {
+    if (isDrawerOpen) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
+  });
+
   drawerCloseBtn?.addEventListener("click", closeDrawer);
   drawerOverlay?.addEventListener("click", closeDrawer);
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && mobileDrawer?.classList.contains("is-active")) {
+    if (e.key === "Escape" && isDrawerOpen) {
       closeDrawer();
     }
   });
@@ -59,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // 3. Rolagem suave para todos os links âncora
+  // 3. Rolagem suave para links âncora
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');

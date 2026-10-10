@@ -171,6 +171,25 @@ img {
   color: var(--color-black);
 }
 
+.btn-nav-cta {
+  min-height: 44px;
+  padding: 0.65rem 1.45rem;
+  font-size: 0.825rem;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.btn-nav-cta svg {
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.btn-nav-cta:hover svg {
+  transform: scale(1.15);
+}
+
 .link-editorial {
   display: inline-flex;
   align-items: center;
@@ -227,16 +246,15 @@ img {
 }
 
 /* ==========================================================================
-   SEÇÕES DO SITE
+   NAVBAR & CABEÇALHO
    ========================================================================== */
 
-/* Navbar */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
   background: rgba(246, 243, 238, 0.96);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border-subtle);
   transition: all var(--transition-smooth);
 }
@@ -245,12 +263,12 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 76px;
+  height: 84px;
 }
 
 .brand-logo {
   font-family: var(--font-serif);
-  font-size: 1.85rem;
+  font-size: 1.95rem;
   letter-spacing: 0.02em;
   font-weight: 500;
   color: var(--color-black);
@@ -266,82 +284,127 @@ img {
   margin-top: -0.3rem;
 }
 
+/* Menu Desktop com Espaçamento e Tipografia Aprimorados */
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 2.25rem;
+  gap: clamp(2.5rem, 3.8vw, 3.75rem);
   list-style: none;
 }
 
 .nav-link {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   color: var(--color-black);
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.65rem 0;
+  display: inline-block;
+  transition: color 0.35s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+/* Animação Suave, Natural e Moderna de Hover */
 .nav-link::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 0;
-  height: 1px;
+  width: 100%;
+  height: 1.5px;
   background-color: var(--color-brown);
-  transition: width var(--transition-smooth);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.nav-link:hover {
+  color: var(--color-brown);
 }
 
 .nav-link:hover::after {
-  width: 100%;
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
-/* Botão Mobile Hamburger */
+/* Botão Mobile com Animação Fluida Hambúrguer para 'X' */
 .mobile-nav-toggle {
   display: none;
-  background: none;
+  background: transparent;
   border: 1px solid var(--color-border);
-  padding: 0.6rem;
+  padding: 0.75rem;
   cursor: pointer;
   color: var(--color-black);
   min-width: 44px;
   min-height: 44px;
   align-items: center;
   justify-content: center;
+  transition: border-color var(--transition-smooth), background-color var(--transition-smooth);
 }
 
-.mobile-nav-toggle svg {
-  width: 22px;
-  height: 22px;
+.mobile-nav-toggle:hover {
+  border-color: var(--color-black);
+  background-color: rgba(17, 17, 17, 0.03);
+}
+
+.hamburger-box {
+  width: 20px;
+  height: 14px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-line {
   display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--color-black);
+  border-radius: 1px;
+  transition: transform 0.38s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.28s ease;
+  transform-origin: center;
 }
 
-/* Mobile Drawer */
+/* Estado Ativo: Transição Harmônica para 'X' */
+.mobile-nav-toggle.is-active .line-1 {
+  transform: translateY(6.25px) rotate(45deg);
+}
+
+.mobile-nav-toggle.is-active .line-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-nav-toggle.is-active .line-3 {
+  transform: translateY(-6.25px) rotate(-45deg);
+}
+
+/* Mobile Drawer (Suave e fluido) */
 .mobile-drawer {
   position: fixed;
   top: 0;
-  right: -100%;
-  width: 82%;
+  right: 0;
+  transform: translateX(100%);
+  width: 85%;
   max-width: 340px;
   height: 100vh;
   background-color: var(--color-off-white);
-  box-shadow: -10px 0 30px rgba(0,0,0,0.08);
+  box-shadow: -15px 0 40px rgba(17, 17, 17, 0.1);
   z-index: 200;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.75rem;
   display: flex;
   flex-direction: column;
-  transition: right var(--transition-smooth);
+  will-change: transform;
 }
 
 .mobile-drawer.is-active {
-  right: 0;
+  transform: translateX(0);
 }
 
 .mobile-drawer-header {
@@ -350,13 +413,13 @@ img {
   align-items: center;
   margin-bottom: 2.5rem;
   border-bottom: 1px solid var(--color-border);
-  padding-bottom: 1rem;
+  padding-bottom: 1.25rem;
 }
 
 .mobile-drawer-close {
   background: none;
-  border: none;
-  font-size: 1.5rem;
+  border: 1px solid var(--color-border-subtle);
+  font-size: 1.25rem;
   cursor: pointer;
   color: var(--color-black);
   min-width: 44px;
@@ -364,27 +427,38 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: border-color var(--transition-smooth);
+}
+
+.mobile-drawer-close:hover {
+  border-color: var(--color-black);
 }
 
 .mobile-nav-links {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .mobile-nav-links a {
   font-family: var(--font-serif);
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--color-black);
   display: block;
-  padding: 0.25rem 0;
+  padding: 0.35rem 0;
+  transition: color var(--transition-smooth);
+}
+
+.mobile-nav-links a:hover {
+  color: var(--color-brown);
 }
 
 .mobile-drawer-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(17, 17, 17, 0.4);
+  background-color: rgba(17, 17, 17, 0.45);
+  backdrop-filter: blur(4px);
   z-index: 199;
   opacity: 0;
   pointer-events: none;
@@ -395,6 +469,10 @@ img {
   opacity: 1;
   pointer-events: auto;
 }
+
+/* ==========================================================================
+   CONTEÚDO PRINCIPAL
+   ========================================================================== */
 
 /* Hero Section */
 .hero-section {
@@ -877,7 +955,7 @@ img {
 }
 
 /* ==========================================================================
-   ROTA RESPONSIVA MOBILE ROBUSTA (Sem overflow, sem imagens quebradas)
+   ROTA RESPONSIVA MOBILE ROBUSTA
    ========================================================================== */
 
 @media (max-width: 1024px) {
@@ -930,7 +1008,7 @@ img {
     display: flex;
   }
   .nav-actions .btn {
-    display: none; /* Deixar foco no menu móvel e evitar aperto na barra */
+    display: none;
   }
 
   /* Hero & Imagens Corrigidas */
@@ -940,7 +1018,6 @@ img {
     max-height: 440px;
   }
 
-  /* Correção do Badge fora de posição que causava scroll horizontal */
   .hero-badge {
     position: relative;
     bottom: auto;
