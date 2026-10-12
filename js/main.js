@@ -1,7 +1,8 @@
 /**
  * Steffani — Comportamentos, Navegação & Micro-interações
- * Animações orquestradas com Framer Motion (Motion Vanilla Engine)
- * Física de Spring: stiffness, damping, mass e stagger reais em propriedades numéricas
+ * Animações orquestradas com GSAP 3 + ScrollTrigger + Lenis Smooth Scroll & Framer Motion
+ * Física de Spring: stiffness, damping, mass e stagger reais em micro-interações
+ * Rolagem de luxo amortecida (inertia smooth scroll) a 60/120fps
  */
 
 const HAMBURGER_OFFSET_PX = 4.25;
@@ -13,19 +14,252 @@ const SPRING_LINKS = { type: "spring", stiffness: 340, damping: 26 };
 
 document.addEventListener("DOMContentLoaded", () => {
   const motionEnabled = Boolean(window.Motion);
+  const hasGsap = Boolean(window.gsap);
+  const hasScrollTrigger = Boolean(window.ScrollTrigger);
+  const hasLenis = Boolean(window.Lenis);
 
-  // 1. Elevação sutil do header na rolagem
+  // 0. Lenis Smooth Scroll Engine + GSAP ScrollTrigger
+  let lenis = null;
+
+  if (hasGsap && hasScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  if (hasLenis) {
+    lenis = new Lenis({
+      duration: 1.25,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.2,
+      infinite: false
+    });
+
+    if (hasGsap && hasScrollTrigger) {
+      lenis.on("scroll", ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      const raf = (time) => {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      };
+      requestAnimationFrame(raf);
+    }
+  }
+
+  // Função auxiliar de rolagem suave com fallback gracioso
+  const scrollToTarget = (targetEl, offset = -30) => {
+    if (!targetEl) return;
+    if (lenis) {
+      lenis.scrollTo(targetEl, { offset, duration: 1.3 });
+    } else {
+      targetEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  // 1. Navbar transparente na Hero e transição glassmorphism com centralização suave ao scrollar
   const header = document.querySelector(".site-header");
+  const navContainer = document.querySelector(".nav-container");
+  const brandLogo = document.querySelector(".brand-logo");
+  const desktopNav = document.querySelector(".site-header nav");
+
+  const updateNavHeroShift = () => {
+    if (window.innerWidth < 992 || !navContainer || !brandLogo || !desktopNav) {
+      document.documentElement.style.removeProperty("--nav-hero-shift");
+      return;
+    }
+    const containerWidth = navContainer.clientWidth;
+    const heroNavWidth = Math.max(425, Math.min(520, window.innerWidth * 0.315));
+    const centeredLeft = (containerWidth - heroNavWidth) / 2;
+
+    const logoRect = brandLogo.getBoundingClientRect();
+    const containerRect = navContainer.getBoundingClientRect();
+    const logoRightRel = logoRect.right - containerRect.left;
+    const targetHeroMargin = Math.max(24, Math.min(48, window.innerWidth * 0.025));
+    const targetHeroLeft = logoRightRel + targetHeroMargin;
+
+    const shift = targetHeroLeft - centeredLeft;
+    if (shift < 0) {
+      document.documentElement.style.setProperty("--nav-hero-shift", `${Math.round(shift)}px`);
+    }
+  };
+
+  const updateHeaderScrollState = () => {
+    if (!header) return;
+    if (window.scrollY > 40) {
+      header.classList.add("is-scrolled");
+    } else {
+      header.classList.remove("is-scrolled");
+    }
+  };
+
   if (header) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 20) {
-        header.style.borderBottomColor = "rgba(17, 17, 17, 0.1)";
-        header.style.boxShadow = "0 4px 16px rgba(0, 0, 0, 0.02)";
-      } else {
-        header.style.borderBottomColor = "rgba(17, 17, 17, 0.06)";
-        header.style.boxShadow = "none";
+    window.addEventListener("scroll", updateHeaderScrollState, { passive: true });
+    window.addEventListener("resize", updateNavHeroShift, { passive: true });
+    updateNavHeroShift();
+    updateHeaderScrollState();
+  }
+
+  // 1.0. Sincronização responsiva do viewBox da Hero SVG (Arco no mobile vs Carrossel lateral no desktop)
+  const heroFanSvg = document.querySelector(".hero-fan-svg");
+  const updateHeroSvgViewBox = () => {
+    if (!heroFanSvg) return;
+    if (window.innerWidth < 992) {
+      if (heroFanSvg.getAttribute("viewBox") !== "680 -460 1680 840") {
+        heroFanSvg.setAttribute("viewBox", "680 -460 1680 840");
       }
-    }, { passive: true });
+    } else {
+      if (heroFanSvg.getAttribute("viewBox") !== "0 0 1440 760") {
+        heroFanSvg.setAttribute("viewBox", "0 0 1440 760");
+      }
+    }
+  };
+  window.addEventListener("resize", updateHeroSvgViewBox, { passive: true });
+  updateHeroSvgViewBox();
+
+  // 1.1. Widget Flutuante de Indicador de Seções (Scrollspy Dinâmico de 3 Níveis)
+  const scrollWidget = document.getElementById("scrollSectionWidget");
+  let updateScrollWidget = null;
+
+  if (scrollWidget) {
+    const SECTIONS_CONFIG = [
+      { id: "hero", num: "01", name: "Início" },
+      { id: "procedimentos", num: "02", name: "Procedimentos" },
+      { id: "metodo", num: "03", name: "Método" },
+      { id: "cursos", num: "04", name: "Curso" },
+      { id: "sobre", num: "05", name: "Sobre" },
+      { id: "faq", num: "06", name: "Dúvidas" },
+      { id: "contato", num: "07", name: "Contato" }
+    ];
+
+    const slotPrev = scrollWidget.querySelector(".slot-prev");
+    const slotCurrent = scrollWidget.querySelector(".slot-current");
+    const slotNext = scrollWidget.querySelector(".slot-next");
+
+    let activeSectionIndex = -1;
+
+    const renderSlot = (slotEl, item) => {
+      if (!slotEl) return;
+      if (!item) {
+        slotEl.classList.add("is-hidden");
+        slotEl.removeAttribute("data-target-id");
+      } else {
+        slotEl.classList.remove("is-hidden");
+        slotEl.setAttribute("data-target-id", item.id);
+        const numEl = slotEl.querySelector(".step-num");
+        const nameEl = slotEl.querySelector(".step-name");
+        if (numEl) numEl.textContent = item.num;
+        if (nameEl) nameEl.textContent = item.name;
+      }
+    };
+
+    updateScrollWidget = () => {
+      const scrollPos = window.scrollY;
+      const viewportHeight = window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      let matchedIndex = 0;
+
+      if (scrollPos + viewportHeight >= docHeight - 80) {
+        matchedIndex = SECTIONS_CONFIG.length - 1;
+      } else {
+        const checkLine = scrollPos + viewportHeight * 0.42;
+        for (let i = 0; i < SECTIONS_CONFIG.length; i++) {
+          const el = document.getElementById(SECTIONS_CONFIG[i].id);
+          if (el) {
+            const elTop = el.getBoundingClientRect().top + scrollPos;
+            const elBottom = elTop + el.offsetHeight;
+            if (checkLine >= elTop && checkLine < elBottom) {
+              matchedIndex = i;
+              break;
+            }
+          }
+        }
+      }
+
+      // Atualiza posição do marcador dinâmico da borda direita em tempo real
+      const edgeThumb = document.getElementById("scrollEdgeThumb");
+      const edgeRail = document.getElementById("scrollEdgeRail");
+      if (edgeThumb) {
+        const maxScroll = docHeight - viewportHeight;
+        const scrollPercent = maxScroll > 0 ? Math.min(1, Math.max(0, scrollPos / maxScroll)) : 0;
+        const thumbHeight = edgeThumb.offsetHeight || 52;
+        const availableHeight = viewportHeight - thumbHeight;
+        edgeThumb.style.transform = `translateY(${Math.round(scrollPercent * availableHeight)}px)`;
+      }
+
+      if (matchedIndex !== activeSectionIndex) {
+        activeSectionIndex = matchedIndex;
+
+        const prevItem = activeSectionIndex > 0 ? SECTIONS_CONFIG[activeSectionIndex - 1] : null;
+        const currentItem = SECTIONS_CONFIG[activeSectionIndex];
+        const nextItem = activeSectionIndex < SECTIONS_CONFIG.length - 1 ? SECTIONS_CONFIG[activeSectionIndex + 1] : null;
+
+        renderSlot(slotPrev, prevItem);
+        renderSlot(slotCurrent, currentItem);
+        renderSlot(slotNext, nextItem);
+
+        // Atualiza estado ativo dos ticks da borda
+        const edgeTicks = document.querySelectorAll(".edge-tick");
+        edgeTicks.forEach((tick, idx) => {
+          if (idx === activeSectionIndex) {
+            tick.classList.add("is-active");
+          } else {
+            tick.classList.remove("is-active");
+          }
+        });
+
+        // Alternância de tema escuro nos indicadores quando sobre seções escuras
+        const isDarkSection = Boolean(currentItem && (currentItem.id === "contato" || currentItem.id === "metodo"));
+        if (isDarkSection) {
+          scrollWidget.classList.add("is-dark-theme");
+          edgeRail?.classList.add("is-dark-theme");
+        } else {
+          scrollWidget.classList.remove("is-dark-theme");
+          edgeRail?.classList.remove("is-dark-theme");
+        }
+      }
+    };
+
+    [slotPrev, slotCurrent, slotNext].forEach(slot => {
+      if (slot) {
+        slot.addEventListener("click", () => {
+          const targetId = slot.getAttribute("data-target-id");
+          if (targetId) {
+            const targetEl = document.getElementById(targetId);
+            scrollToTarget(targetEl);
+          }
+        });
+      }
+    });
+
+    document.querySelectorAll(".edge-tick").forEach(tick => {
+      tick.addEventListener("click", () => {
+        const targetId = tick.getAttribute("data-target");
+        if (targetId) {
+          const targetEl = document.getElementById(targetId);
+          scrollToTarget(targetEl);
+        }
+      });
+    });
+
+    window.addEventListener("scroll", updateScrollWidget, { passive: true });
+    updateScrollWidget();
+  }
+
+  // Notificar listeners de scroll durante a rolagem suave do Lenis
+  if (lenis) {
+    lenis.on("scroll", () => {
+      updateHeaderScrollState();
+      if (typeof updateScrollWidget === "function") {
+        updateScrollWidget();
+      }
+    });
   }
 
   // 2. Micro-interações táteis para Navbar Desktop com Framer Motion Spring
@@ -91,12 +325,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!mobileDrawer || isDrawerOpen) return;
     isDrawerOpen = true;
 
+    if (lenis) lenis.stop();
+
     mobileDrawer.classList.add("is-active");
     drawerOverlay?.classList.add("is-active");
     menuToggleBtn?.classList.add("is-active");
     mobileDrawer.setAttribute("aria-hidden", "false");
     menuToggleBtn?.setAttribute("aria-expanded", "true");
     document.body.style.overflow = "hidden";
+    document.body.classList.add("drawer-open");
 
     if (!motionEnabled) {
       mobileDrawer.style.transform = "translateX(0)";
@@ -133,10 +370,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!mobileDrawer || !isDrawerOpen) return;
     isDrawerOpen = false;
 
+    if (lenis) lenis.start();
+
     menuToggleBtn?.classList.remove("is-active");
     mobileDrawer.setAttribute("aria-hidden", "true");
     menuToggleBtn?.setAttribute("aria-expanded", "false");
     document.body.style.overflow = "";
+    document.body.classList.remove("drawer-open");
 
     const hideDrawer = () => {
       if (isDrawerOpen) return;
@@ -191,7 +431,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", closeDrawer);
   });
 
-  // 4. Rolagem suave para links âncora
+  // 4. Rolagem suave para links âncora via Lenis com easing exponencial
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener("click", function (e) {
       const targetId = this.getAttribute("href");
@@ -199,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
           e.preventDefault();
-          targetElement.scrollIntoView({ behavior: "smooth" });
+          scrollToTarget(targetElement, -40);
         }
       }
     });
@@ -215,7 +455,145 @@ document.addEventListener("DOMContentLoaded", () => {
             otherItem.open = false;
           }
         });
+        if (lenis) {
+          setTimeout(() => lenis.resize(), 150);
+        }
       }
     });
   });
+
+  // 6. Animações Editoriais de Revelação por ScrollTrigger (GSAP)
+  if (hasGsap && hasScrollTrigger) {
+    // Cabeçalho e cards de procedimentos
+    const procedHeader = document.querySelector(".procedures-header-centered");
+    if (procedHeader) {
+      gsap.from(procedHeader, {
+        scrollTrigger: {
+          trigger: procedHeader,
+          start: "top 88%",
+          toggleActions: "play none none none"
+        },
+        y: 32,
+        opacity: 0,
+        duration: 0.85,
+        ease: "power2.out"
+      });
+    }
+
+    const procedureCards = document.querySelectorAll(".procedure-card");
+    if (procedureCards.length) {
+      gsap.from(procedureCards, {
+        scrollTrigger: {
+          trigger: ".procedures-cards-grid",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        y: 35,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.85,
+        ease: "power2.out"
+      });
+    }
+
+    // O Método (Filosofia): Citação Editorial e Métricas
+    const quoteBlock = document.querySelector(".editorial-quote");
+    if (quoteBlock) {
+      gsap.from(quoteBlock, {
+        scrollTrigger: {
+          trigger: quoteBlock,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power2.out"
+      });
+    }
+
+    const authorityPoints = document.querySelectorAll(".authority-point");
+    if (authorityPoints.length) {
+      gsap.from(authorityPoints, {
+        scrollTrigger: {
+          trigger: ".authority-points",
+          start: "top 88%",
+          toggleActions: "play none none none"
+        },
+        y: 22,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.75,
+        ease: "power2.out"
+      });
+    }
+
+    // O Curso: Etapas da Linha do Tempo
+    const timelineSteps = document.querySelectorAll(".timeline-step");
+    if (timelineSteps.length) {
+      gsap.from(timelineSteps, {
+        scrollTrigger: {
+          trigger: ".journey-timeline",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        y: 25,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.75,
+        ease: "power2.out"
+      });
+    }
+
+    // Resultados & Harmonia (Cards de Casos)
+    const caseCards = document.querySelectorAll(".case-card");
+    if (caseCards.length) {
+      gsap.from(caseCards, {
+        scrollTrigger: {
+          trigger: ".cases-grid",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        y: 30,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.85,
+        ease: "power2.out"
+      });
+    }
+
+    // Sobre Steffani: Foto e Perfil
+    const aboutPhoto = document.querySelector(".about-photo");
+    const aboutContent = document.querySelector(".about-content");
+    if (aboutPhoto && aboutContent) {
+      gsap.from([aboutPhoto, aboutContent], {
+        scrollTrigger: {
+          trigger: ".about-grid",
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        y: 32,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.85,
+        ease: "power2.out"
+      });
+    }
+
+    // CTA Final
+    const finalCta = document.querySelector(".final-cta-content");
+    if (finalCta) {
+      gsap.from(finalCta, {
+        scrollTrigger: {
+          trigger: finalCta,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        y: 35,
+        opacity: 0,
+        duration: 0.9,
+        ease: "power2.out"
+      });
+    }
+  }
 });
