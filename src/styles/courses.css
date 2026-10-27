@@ -1,0 +1,732 @@
+/* ============================================================================
+   WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)
+   ============================================================================
+   [AI-STYLESHEET]: src/styles/courses.css
+   [AI-PURPOSE]: Seção de Cursos & Mentorias — Design System Editorial Clássico com cards 1:1, pilares e integração WhatsApp.
+   ============================================================================ */
+
+#cursos {
+  background-color: var(--color-white-porcelain);
+  position: relative;
+  overflow: hidden;
+  scroll-margin-top: 100px;
+}
+
+@media (max-width: 992px) {
+  #cursos {
+    scroll-margin-top: 80px;
+  }
+}
+
+.courses-section {
+  padding-top: clamp(3.2rem, 5vw, 5rem);
+  padding-bottom: clamp(3.2rem, 5vw, 5rem);
+}
+
+.courses-section .container {
+  max-width: min(1440px, 92vw);
+  width: 100%;
+}
+
+/* ==========================================================================
+   1. CABEÇALHO RIGOROSAMENTE PADRÃO (IGUAL À SEÇÃO DE PROCEDIMENTOS — GRANDIOSO)
+   ========================================================================== */
+.courses-header-centered {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto clamp(2.8rem, 4.5vw, 4.2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.courses-header-centered .meta-label-ornament {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+  margin-bottom: 1.25rem;
+}
+
+.courses-header-centered .meta-label-ornament .ornament-line {
+  display: inline-block;
+  width: clamp(42px, 5vw, 68px);
+  height: 1.5px;
+  background-color: rgba(91, 64, 50, 0.35);
+}
+
+.courses-header-centered .meta-label-ornament .meta-label {
+  margin-bottom: 0;
+  letter-spacing: clamp(0.2em, 0.28vw, 0.28em);
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  font-weight: 700;
+  color: var(--color-brown);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.courses-title-main {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--color-black);
+  margin-bottom: 0.95rem;
+  text-align: center;
+}
+
+.courses-subtitle {
+  font-family: var(--font-sans);
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  color: rgba(17, 17, 17, 0.82);
+  line-height: 1.62;
+  max-width: 680px;
+  margin: 0 auto clamp(0.75rem, 1.2vw, 1rem);
+  text-align: center;
+}
+
+.courses-header-note {
+  font-family: var(--font-sans);
+  font-size: clamp(0.92rem, 1.05vw, 1.02rem);
+  color: rgba(91, 64, 50, 0.88);
+  font-weight: 500;
+  text-align: center;
+  margin: 0 auto clamp(1.2rem, 1.8vw, 1.6rem);
+  max-width: 680px;
+  line-height: 1.5;
+}
+
+.courses-header-action {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn-courses-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--color-brown);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 0.85rem 2.2rem;
+  min-height: 48px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-brown);
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(91, 64, 50, 0.2);
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-courses-pill:hover {
+  background-color: #4A3328;
+  border-color: #4A3328;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(91, 64, 50, 0.28);
+  color: #FFFFFF;
+}
+
+.btn-courses-pill svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   2. FAIXAS EDITORIAIS DE CURSOS (PROPORÇÕES HARMONIOSAS & PILARES QUE VENDEM)
+   ========================================================================== */
+.courses-bands-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.course-band-item {
+  width: 100%;
+  padding: clamp(2.2rem, 3.4vw, 3.6rem) 0;
+  position: relative;
+  transition: background-color 0.35s ease;
+}
+
+/* Grade de Desktop distinta: Coluna de mídia em formato de GRANDE QUADRADO (600px - 620px) */
+.course-band-inner {
+  display: grid;
+  grid-template-columns: minmax(560px, 620px) 1fr;
+  gap: clamp(2.5rem, 3.8vw, 4.5rem);
+  align-items: center;
+  max-width: min(1560px, 95vw);
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Alternância elegante de colunas (Zig-Zag no Desktop) */
+.course-band-item.is-reversed .course-band-inner {
+  grid-template-columns: 1fr minmax(560px, 620px);
+}
+
+.course-band-item.is-reversed .course-band-media {
+  order: 2;
+  margin-left: auto;
+}
+
+.course-band-item.is-reversed .course-band-body {
+  order: 1;
+}
+
+/* 2.1 Mídia Fotográfica no Desktop: GRANDE QUADRADO 1:1 imponente (até 620px x 620px) */
+.course-band-media {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #F0EAE3;
+  margin: 0;
+  display: block;
+  flex-shrink: 0;
+  transition: transform 0.4s ease;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.14);
+}
+
+.course-band-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.course-band-item:hover .course-band-img {
+  transform: scale(1.03);
+}
+
+.course-media-overlay-subtle {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 75%, rgba(0, 0, 0, 0.12) 100%);
+}
+
+/* 2.2 Conteúdo da Faixa (Posicionado e estruturado, com altura natural) */
+.course-band-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 720px;
+  width: 100%;
+  height: auto;
+  justify-self: start;
+}
+
+.course-band-header {
+  margin-bottom: 0.85rem;
+}
+
+/* Kicker Editorial Elegante (Sem Badges / Pills de IA) */
+.course-kicker-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.course-kicker-num {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.course-kicker-line {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  border-radius: 1px;
+}
+
+.course-kicker-cat {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.course-band-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.35rem, 3.1vw, 3.3rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.018em;
+  margin: 0 0 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.course-band-headline {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.02rem, 1.14vw, 1.18rem);
+  line-height: 1.35;
+  margin: 0 0 0.75rem 0;
+}
+
+.course-band-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.96rem, 1.05vw, 1.06rem);
+  line-height: 1.64;
+  margin-bottom: 1.35rem;
+  max-width: 62ch;
+}
+
+/* 2.3 Pilares Comerciais Expressivos (Integrados e Proporcionais) */
+.course-value-pillars {
+  margin-bottom: 1.45rem;
+  width: 100%;
+}
+
+.course-pillars-heading-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.course-pillars-heading {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.course-pillars-line {
+  flex: 1;
+  height: 1px;
+  max-width: 90px;
+}
+
+.course-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem 1.4rem;
+}
+
+.course-pillar-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.pillar-check-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.pillar-text-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar-title {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 0.15rem 0;
+}
+
+.pillar-desc {
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* 2.4 Ações Comerciais da Faixa */
+.course-band-action-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  margin-top: 0.4rem;
+}
+
+.btn-course-band-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding: 0.9rem 2.4rem;
+  min-height: 50px;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-course-band-cta svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Tag de Urgência Evidente e Nobre (Sem Pontinho Verde) */
+.course-cta-urgency {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.65rem 1.35rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   2.5 ESTILOS ESPECÍFICOS DE TEMA (FAIXA BRANCA VS. FAIXA MARROM)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   A. TEMA CLARO (FAIXA BRANCA / PORCELANA)
+   -------------------------------------------------------------------------- */
+.course-band-item.is-light-theme {
+  background-color: #FFFFFF;
+  border-top: 1px solid rgba(91, 64, 50, 0.12);
+}
+
+.course-band-item.is-light-theme .course-kicker-num {
+  color: var(--color-brown, #5B4032);
+}
+
+.course-band-item.is-light-theme .course-kicker-line {
+  background-color: var(--color-gold, #C5A059);
+}
+
+.course-band-item.is-light-theme .course-kicker-cat {
+  color: #7A5B49;
+}
+
+.course-band-item.is-light-theme .course-band-title {
+  color: #111111;
+}
+
+.course-band-item.is-light-theme:hover .course-band-title {
+  color: var(--color-brown, #5B4032);
+}
+
+.course-band-item.is-light-theme .course-band-headline {
+  color: #7A5B49;
+}
+
+.course-band-item.is-light-theme .course-band-desc {
+  color: rgba(26, 26, 26, 0.82);
+}
+
+.course-band-item.is-light-theme .course-pillars-heading {
+  color: #8C654B;
+}
+
+.course-band-item.is-light-theme .course-pillars-line {
+  background-color: rgba(91, 64, 50, 0.18);
+}
+
+.course-band-item.is-light-theme .pillar-check-icon {
+  background-color: rgba(91, 64, 50, 0.08);
+  color: var(--color-brown, #5B4032);
+  border: 1px solid rgba(91, 64, 50, 0.14);
+}
+
+.course-band-item.is-light-theme .pillar-title {
+  color: #1A110B;
+}
+
+.course-band-item.is-light-theme .pillar-desc {
+  color: rgba(26, 26, 26, 0.72);
+}
+
+.course-band-item.is-light-theme .btn-course-band-cta {
+  background-color: var(--color-brown, #5B4032);
+  color: #FFFFFF;
+  border: 1px solid var(--color-brown, #5B4032);
+  box-shadow: 0 6px 18px rgba(91, 64, 50, 0.18);
+}
+
+.course-band-item.is-light-theme .btn-course-band-cta:hover {
+  background-color: #4A3328;
+  border-color: #4A3328;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(91, 64, 50, 0.26);
+}
+
+.course-band-item.is-light-theme .course-cta-urgency {
+  background-color: rgba(91, 64, 50, 0.08);
+  color: var(--color-brown, #5B4032);
+  border: 1.5px solid rgba(91, 64, 50, 0.24);
+  box-shadow: 0 2px 8px rgba(91, 64, 50, 0.06);
+}
+
+.course-band-item.is-light-theme .course-band-media {
+  box-shadow: 0 16px 44px rgba(91, 64, 50, 0.12);
+  border: 1px solid rgba(91, 64, 50, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   B. TEMA ESCURO (FAIXA MARROM LUXO)
+   -------------------------------------------------------------------------- */
+.course-band-item.is-dark-theme {
+  background-color: #2D1A12;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.course-band-item.is-dark-theme .course-kicker-num {
+  color: #C5A059;
+}
+
+.course-band-item.is-dark-theme .course-kicker-line {
+  background-color: #C5A059;
+}
+
+.course-band-item.is-dark-theme .course-kicker-cat {
+  color: #E8D5B5;
+}
+
+.course-band-item.is-dark-theme .course-band-title {
+  color: #FAF8F5;
+}
+
+.course-band-item.is-dark-theme:hover .course-band-title {
+  color: #C5A059;
+}
+
+.course-band-item.is-dark-theme .course-band-headline {
+  color: #C5A059;
+}
+
+.course-band-item.is-dark-theme .course-band-desc {
+  color: rgba(250, 248, 245, 0.84);
+}
+
+.course-band-item.is-dark-theme .course-pillars-heading {
+  color: #C5A059;
+}
+
+.course-band-item.is-dark-theme .course-pillars-line {
+  background-color: rgba(197, 160, 89, 0.3);
+}
+
+.course-band-item.is-dark-theme .pillar-check-icon {
+  background-color: rgba(197, 160, 89, 0.14);
+  color: #E8D5B5;
+  border: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+.course-band-item.is-dark-theme .pillar-title {
+  color: #FAF8F5;
+}
+
+.course-band-item.is-dark-theme .pillar-desc {
+  color: rgba(250, 248, 245, 0.74);
+}
+
+.course-band-item.is-dark-theme .btn-course-band-cta {
+  background-color: #FAF8F5;
+  color: #2D1A12;
+  border: 1px solid #FAF8F5;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.course-band-item.is-dark-theme .btn-course-band-cta:hover {
+  background-color: #C5A059;
+  border-color: #C5A059;
+  color: #1A110B;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.42);
+}
+
+.course-band-item.is-dark-theme .course-cta-urgency {
+  background-color: rgba(197, 160, 89, 0.16);
+  color: #FAF8F5;
+  border: 1.5px solid rgba(197, 160, 89, 0.42);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.course-band-item.is-dark-theme .course-band-media {
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.42);
+  border: 1px solid rgba(138, 98, 77, 0.35);
+}
+
+/* 2.6 Rodapé com Informação Complementar */
+.courses-footer-note-wrap {
+  margin-top: clamp(2.5rem, 4vw, 3.8rem);
+  text-align: center;
+}
+
+.courses-footer-note {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  color: rgba(91, 64, 50, 0.75);
+}
+
+/* ==========================================================================
+   TRANSIÇÃO RESPONSIVA E GRADE DISTINTA DE CELULAR
+   ========================================================================== */
+@media (min-width: 993px) and (max-width: 1220px) {
+  .course-band-inner {
+    grid-template-columns: 500px 1fr;
+    gap: 2rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .course-band-item.is-reversed .course-band-inner {
+    grid-template-columns: 1fr 500px;
+  }
+
+  .course-band-media {
+    width: 500px;
+    max-width: 500px;
+    height: 500px;
+    max-height: 500px;
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   GRADE DE CELULAR / TABLET (100% DISTINTA DO DESKTOP)
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .courses-section .container {
+    padding-left: clamp(1rem, 4vw, 1.75rem);
+    padding-right: clamp(1rem, 4vw, 1.75rem);
+  }
+
+  .course-band-inner,
+  .course-band-item.is-reversed .course-band-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding-left: clamp(1rem, 4vw, 1.75rem);
+    padding-right: clamp(1rem, 4vw, 1.75rem);
+  }
+
+  .course-band-item {
+    padding: clamp(2rem, 5vw, 3rem) 0;
+  }
+
+  /* No mobile a imagem fica sempre no topo (order: 1) e com proporção panorâmica nítida */
+  .course-band-media,
+  .course-band-item.is-reversed .course-band-media {
+    order: 1 !important;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 11;
+    min-height: 270px;
+    max-height: 330px;
+    border-radius: 16px;
+    margin: 0;
+  }
+
+  .course-band-body,
+  .course-band-item.is-reversed .course-band-body {
+    order: 2 !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Letras no mobile ampliadas com leitura fluida e confortável */
+  .course-kicker-num {
+    font-size: 0.88rem;
+  }
+
+  .course-kicker-cat {
+    font-size: 0.78rem;
+  }
+
+  .course-band-title {
+    font-size: clamp(1.9rem, 6.2vw, 2.45rem);
+  }
+
+  .course-band-headline {
+    font-size: clamp(0.98rem, 3.8vw, 1.1rem);
+  }
+
+  .course-band-desc {
+    font-size: clamp(0.94rem, 3.5vw, 1.02rem);
+    line-height: 1.6;
+  }
+
+  .course-pillars-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .pillar-title {
+    font-size: 0.94rem;
+  }
+
+  .pillar-desc {
+    font-size: 0.85rem;
+    line-height: 1.45;
+  }
+
+  .course-band-action-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .btn-course-band-cta {
+    width: 100%;
+    justify-content: center;
+    font-size: 1.02rem;
+    min-height: 52px;
+  }
+
+  .course-cta-urgency {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.82rem;
+    padding: 0.65rem 1rem;
+    white-space: normal;
+  }
+}
+
+@media (min-width: 520px) and (max-width: 992px) {
+  .course-pillars-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem 1.3rem;
+  }
+}

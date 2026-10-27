@@ -1,0 +1,72 @@
+/* ============================================================================
+   WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)
+   ============================================================================
+   [AI-FILE-PURPOSE]: Ponto de entrada do Tailwind CSS v4 com tokens estáticos de design system e ordem de camadas.
+   [AI-DO-NOT-BREAK]: Não importar o Preflight padrão do Tailwind aqui. O preflight altera o tamanho nativo de tags <h2>/<h3> e alinhamento de SVGs.
+   [AI-STYLE-RULE]: Camadas: theme -> base -> components (globals.css, hero, procedure-cards, courses, results) -> utilities.
+   ============================================================================ */
+
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities) source(none);
+@import "./globals.css" layer(components);
+@import "./hero.css" layer(components);
+@import "./procedure-cards.css" layer(components);
+@import "./courses.css" layer(components);
+@import "./results.css" layer(components);
+@import "./salon.css" layer(components);
+@import "./coursePremiere.css" layer(components);
+@import "./procedure-page.css" layer(components);
+
+@source "../";
+/* [AI-DO-NOT-BREAK]: Nossa classe `.container` vem do Design System editorial, nunca da utility do Tailwind */
+@source not inline("container");
+
+/* [AI-EDIT-ZONE]: Tokens globais do Design System (Padrão Webmays) */
+@theme static {
+  /* Paleta Oficial — Camadas de Brancos, Beiges e Marrons Editoriais */
+  --color-black: #111111;
+  --color-white: #FAF8F5;
+  --color-white-pure: #FFFFFF;
+  --color-white-ivory: #FDFBF7;
+  --color-white-pearl: #FAF8F5;
+  --color-white-porcelain: #F7F5F0;
+  --color-white-alabaster: #F5F3EF;
+  --color-cream: #F8F4EE;
+  --color-off-white: #F3EFEA;
+  --color-warm-white: #EFE9DF;
+  --color-beige-light: #F5EFE6;
+  --color-beige-card: #FFFFFF;
+  --color-beige-warm: #EFE9DF;
+  --color-beige-soft: #EFE8DE;
+  --color-beige-medium: #E9E2D6;
+  --color-brown: #5B4032;
+  --color-brown-light: #7A5B49;
+  --color-dark-brown: #2A1E18;
+  --color-espresso: #1E1612;
+  --color-taupe: #9E8E81;
+  --color-muted-gold: #B18A57;
+  --color-gold-border: #C5A059;
+  --color-accent-yellow: #F7BF18;
+  --color-accent-yellow-hover: #E5AD08;
+  --color-ochre: #B87A14;
+
+  /* Bordas */
+  --color-border: rgba(91, 64, 50, 0.12);
+  --color-border-subtle: rgba(91, 64, 50, 0.06);
+  --color-border-dark: rgba(253, 251, 247, 0.15);
+
+  /* [AI-STYLE-RULE]: Tipografia Oficial (Padrão Webmays: Cormorant Garamond, Montserrat, Lora) */
+  --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-title: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Montserrat', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-subheading: 'Montserrat', sans-serif;
+  --font-body: 'Lora', Georgia, serif;
+
+  /* Breakpoint Principal Desktop Editorial (992px) */
+  --breakpoint-lg: 62rem;
+
+  /* Curva de Easing Editorial Fluida */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+}

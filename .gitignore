@@ -1,4 +1,5 @@
 node_modules/
+dist/
 .next/
 out/
 build/
@@ -10,3 +11,9 @@ build/
 credentials*
 secrets*
 .DS_Store
+.vercel/
+
+# Heavy reference documents (not for production)
+Referencias - Steffani/
+docs/scratch/
+*.pdf
