@@ -590,68 +590,21 @@
 }
 
 /* ==========================================================================
-   5. RESPONSIVIDADE PRECISA (TABLET & MOBILE)
-   ========================================================================== */
-@media (max-width: 1024px) {
-  .results-bento-grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: auto;
-    column-gap: 1.25rem;
-    row-gap: 1.25rem;
-  }
-
-  /* Card 1 (Destaque Principal) ocupa as 2 colunas */
-  .results-bento-item:nth-child(1) {
-    grid-column: span 2;
-  }
-
-  .results-bento-item:nth-child(1) .results-card {
-    min-height: 380px;
-  }
-
-  /* Card 11 (Vídeo Quadrado 1:1 Antes/Depois) ocupa 2 colunas com proporção quadrada */
-  .results-bento-item:nth-child(11) {
-    grid-column: span 2;
-  }
-
-  .results-bento-item:nth-child(11) .results-card {
-    min-height: 360px;
-    max-width: 440px;
-    margin: 0 auto;
-    aspect-ratio: 1 / 1;
-  }
-
-  /* Cards Panorâmicos de Fechamento */
-  .results-bento-item:nth-child(13),
-  .results-bento-item:nth-child(16) {
-    grid-column: span 2;
-  }
-
-  .results-bento-item:nth-child(13) .results-card,
-  .results-bento-item:nth-child(16) .results-card {
-    min-height: 260px;
-  }
-
-  .results-card {
-    min-height: 280px;
-    height: 100%;
-  }
-}
-
-/* ==========================================================================
-   6. CARROSSÉIS TEMÁTICOS HORIZONTAIS NO MOBILE (<= 768px)
+   Modo B & A: Carrosséis Temáticos Horizontais (Tablets e Smartphones <= 1024px)
+   Reutiliza os 3 grupos temáticos (Sobrancelhas, Olhar/Lash, Lábios) no Tablet
+   com cartões ampliados e preservação rigorosa da hierarquia visual original.
    ========================================================================== */
 .results-mobile-carousels {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .results-bento-grid {
     display: none !important;
   }
 
   .results-mobile-carousels {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 2.25rem;
     width: 100%;
@@ -751,7 +704,6 @@
     display: flex;
   }
 
-  /* Slide com proporção quadrada 1:1 para vídeo dividido verticalmente antes/depois */
   .results-mobile-slide--square {
     flex: 0 0 88%;
     max-width: 335px;
@@ -793,6 +745,94 @@
     width: 22px;
     background-color: var(--color-brown, #5B4032);
     border-radius: 9999px;
+  }
+}
+
+/* ==========================================================================
+   Modo B: Adaptação de Dimensões e Hierarquia dos Carrosséis para Tablet (768px – 1024px)
+   - Cartões ampliados proporcionalmente para o espaço disponível
+   - Preserva o destaque de Card 01 (Hero), Card 11 (Vídeo 1:1) e Cards 13/16 (Panorâmicos)
+   ========================================================================== */
+@media (min-width: 700px) and (max-width: 1024px) {
+  .results-mobile-carousels {
+    gap: clamp(2.5rem, 4vw, 3.5rem);
+  }
+
+  .results-mobile-group-header {
+    margin-bottom: 1.15rem;
+    padding: 0 6px;
+    gap: 1rem;
+  }
+
+  .results-mobile-group-num {
+    font-size: 0.92rem;
+    padding-bottom: 3px;
+  }
+
+  .results-mobile-group-title {
+    font-size: clamp(1.4rem, 2.2vw, 1.8rem);
+  }
+
+  .results-mobile-group-sub {
+    font-size: 0.88rem;
+  }
+
+  .results-mobile-counter {
+    font-size: 0.82rem;
+    padding: 4px 12px;
+  }
+
+  .results-mobile-track {
+    gap: 18px;
+    padding: 8px 24px 20px 8px;
+  }
+
+  /* Card padrão do tablet */
+  .results-mobile-slide {
+    flex: 0 0 clamp(310px, 40vw, 370px);
+    max-width: none;
+    height: clamp(310px, 40vw, 370px);
+  }
+
+  /* Card 01 - Destaque Hero Superior (Sobrancelhas) */
+  .results-mobile-slide--hero {
+    flex: 0 0 clamp(440px, 55vw, 520px);
+    max-width: none;
+    height: clamp(310px, 40vw, 370px);
+  }
+
+  /* Card 11 - Vídeo 1:1 Destaque Central (Olhar) */
+  .results-mobile-slide--square {
+    flex: 0 0 clamp(330px, 42vw, 390px);
+    max-width: none;
+    height: clamp(330px, 42vw, 390px);
+  }
+
+  /* Cards 13 e 16 - Panorâmicos Amplos de Fechamento */
+  .results-mobile-slide--wide {
+    flex: 0 0 clamp(480px, 60vw, 560px);
+    max-width: none;
+    height: clamp(290px, 36vw, 350px);
+  }
+
+  .results-mobile-slide .results-card {
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(91, 64, 50, 0.09);
+    border: 1px solid rgba(91, 64, 50, 0.12);
+  }
+
+  .results-mobile-dots {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .results-mobile-dot {
+    width: 9px;
+    height: 9px;
+  }
+
+  .results-mobile-dot--active {
+    width: 28px;
   }
 }
 

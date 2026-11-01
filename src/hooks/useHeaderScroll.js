@@ -20,23 +20,37 @@ export function useHeaderScroll({ navContainerRef, brandLogoRef, desktopNavRef }
   useEffect(() => {
     let lastScrolled = false;
     const updateNavHeroShift = () => {
-      if (window.innerWidth < 992 || !navContainerRef?.current || !brandLogoRef?.current || !desktopNavRef?.current) {
+      if (window.innerWidth <= 1080 || !navContainerRef?.current || !brandLogoRef?.current || !desktopNavRef?.current) {
         document.documentElement.style.removeProperty("--nav-hero-shift");
         return;
       }
-      const containerWidth = navContainerRef.current.clientWidth;
-      const heroNavWidth = Math.max(540, Math.min(680, window.innerWidth * 0.38));
-      const centeredLeft = (containerWidth - heroNavWidth) / 2;
 
-      const logoRect = brandLogoRef.current.getBoundingClientRect();
+      if (lastScrolled) {
+        document.documentElement.style.removeProperty("--nav-hero-shift");
+        return;
+      }
+
       const containerRect = navContainerRef.current.getBoundingClientRect();
-      const logoRightRel = logoRect.right - containerRect.left;
-      const targetHeroMargin = Math.max(24, Math.min(48, window.innerWidth * 0.025));
-      const targetHeroLeft = logoRightRel + targetHeroMargin;
+      const logoRect = brandLogoRef.current.getBoundingClientRect();
+      const navRect = desktopNavRef.current.getBoundingClientRect();
 
-      const shift = targetHeroLeft - centeredLeft;
-      if (shift < 0) {
-        document.documentElement.style.setProperty("--nav-hero-shift", `${Math.round(shift)}px`);
+      const computedStyle = window.getComputedStyle(desktopNavRef.current);
+      const matrix = new DOMMatrixReadOnly(computedStyle.transform);
+      const currentShift = matrix.m41;
+      const unshiftedNavLeft = (navRect.left - containerRect.left) - currentShift;
+      const logoRightRel = logoRect.right - containerRect.left;
+      const minSafeNavLeft = logoRightRel + 36; // Folga mínima sagrada de 36px para nunca colidir com o logo
+
+      if (unshiftedNavLeft <= minSafeNavLeft) {
+        document.documentElement.style.removeProperty("--nav-hero-shift");
+        return;
+      }
+
+      const targetLeft = Math.max(minSafeNavLeft, containerRect.width * 0.16);
+      const desiredShift = targetLeft - unshiftedNavLeft;
+
+      if (desiredShift < 0 && (unshiftedNavLeft + desiredShift >= minSafeNavLeft)) {
+        document.documentElement.style.setProperty("--nav-hero-shift", `${Math.round(desiredShift)}px`);
       } else {
         document.documentElement.style.removeProperty("--nav-hero-shift");
       }

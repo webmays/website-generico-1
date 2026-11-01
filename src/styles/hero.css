@@ -29,86 +29,19 @@
 }
 
 /* ==========================================================================
-   Estrutura
+   Base e Elementos Compartilhados
    ========================================================================== */
 .hero {
   position: relative;
   isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
   width: 100%;
-  height: var(--hero-h);
-  padding: calc(var(--hero-h) * 0.169) 0 calc(55 * var(--hero-s)) calc(60 * var(--hero-s));
-  background: linear-gradient(100deg, var(--hero-bg-deep) 0%, var(--hero-bg-mid) 48%, var(--hero-bg-warm) 100%);
   color: #FFFFFF;
   font-family: var(--hero-font);
-  overflow: hidden;
 }
 
 .hero ::selection {
   background-color: var(--hero-terracotta);
   color: #FFFFFF;
-}
-
-/* Desktop: o wrapper de conteúdo se desfaz no fluxo flex original para manter 100% da referência intacta */
-.hero__content {
-  display: contents;
-}
-
-.hero__eyebrow-wrap,
-.hero__subtitle,
-.hero-btn__icon--secondary,
-.hero__whatsapp-divider {
-  display: none;
-}
-
-/* ==========================================================================
-   Título em escada — cada linha recua progressivamente para a direita
-   ========================================================================== */
-.hero__title {
-  position: relative;
-  z-index: 2;
-  margin: 0;
-  font-family: var(--hero-title-font);
-  font-size: calc(112 * var(--hero-s));
-  font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-}
-
-.hero__title-line {
-  display: block;
-  white-space: nowrap;
-}
-
-.hero__title-line--2 {
-  padding-left: calc(50 * var(--hero-s));
-}
-
-.hero__title-line--3 {
-  padding-left: calc(145 * var(--hero-s));
-}
-
-/* ==========================================================================
-   Ações, divisória e contato — ancorados na base da hero
-   ========================================================================== */
-.hero__cta {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: auto;
-  padding-top: calc(48 * var(--hero-s));
-}
-
-.hero__actions {
-  display: flex;
-  align-items: center;
-  gap: calc(22 * var(--hero-s));
 }
 
 .hero-btn {
@@ -166,16 +99,20 @@
 
 .hero-btn--secondary {
   min-width: calc(274 * var(--hero-s));
-  background-color: transparent;
-  border: 1.5px solid rgba(216, 201, 192, 0.6);
-  color: var(--hero-sand);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  color: #FAF5EF;
   font-weight: 600;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.35);
 }
 
 .hero-btn--secondary:hover {
-  border-color: var(--hero-sand);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.5);
   color: #FFFFFF;
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.55);
   transform: translateY(-5px);
 }
 
@@ -184,15 +121,6 @@
   height: 0.7em;
   flex-shrink: 0;
   stroke-width: 3;
-}
-
-.hero__rule {
-  width: calc(595 * var(--hero-s));
-  max-width: 100%;
-  height: 1px;
-  margin: calc(24 * var(--hero-s)) 0 calc(26 * var(--hero-s));
-  border: 0;
-  background-color: var(--hero-rule);
 }
 
 .hero__whatsapp {
@@ -232,45 +160,6 @@
   font-weight: 600;
 }
 
-/* ==========================================================================
-   Retrato e círculo — o círculo fica rigorosamente centralizado atrás dela,
-   com degradê mais quente do lado direito e cortando suavemente fora da tela
-   ========================================================================== */
-.hero__visual {
-  position: absolute;
-  z-index: 2;
-  right: 0;
-  bottom: 0;
-  height: min(98%, 66vw);
-  aspect-ratio: 2 / 3;
-  pointer-events: none;
-}
-
-.hero__circle {
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -46%);
-  width: calc(790 * var(--hero-s));
-  height: calc(790 * var(--hero-s));
-  border-radius: 50%;
-  background: linear-gradient(95deg, #361D12 0%, #462718 28%, #5F341F 62%, #7E4327 90%, #884628 100%);
-  pointer-events: none;
-}
-
-.hero__portrait {
-  position: relative;
-  z-index: 2;
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: bottom right;
-  transform: scaleX(-1);
-  animation: heroPortraitIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
 @keyframes heroPortraitIn {
   from {
     opacity: 0;
@@ -283,14 +172,507 @@
 }
 
 /* ==========================================================================
+   Modo C: Desktop (>= 1081px em proporção paisagem) — Composição Editorial com Halo Luminoso
+   - Zona de Conteúdo (hero__content): título em escada, botões e contato à esquerda.
+   - Zona Visual (hero__visual): Steffani grande e protagonista ancorada na base + halo de brilho suave em caramelo, cobre e marrom (sem bola sólida).
+   ========================================================================== */
+@media (min-width: 1081px) and (min-aspect-ratio: 13 / 12) {
+  .hero:not(.hero-proc) {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: var(--hero-h);
+    height: auto;
+    padding: calc(var(--hero-h) * 0.15) clamp(24px, 3.5vw, 48px) calc(48 * var(--hero-s)) calc(60 * var(--hero-s));
+    background:
+      radial-gradient(
+        ellipse 58% 68% at 72% 50%,
+        rgba(208, 132, 66, 0.36) 0%,
+        rgba(156, 82, 36, 0.24) 38%,
+        rgba(88, 42, 18, 0.12) 66%,
+        transparent 100%
+      ),
+      linear-gradient(105deg, #180B05 0%, #241108 42%, #3A1D0F 78%, #221008 100%);
+    overflow: hidden;
+  }
+
+  .hero:not(.hero-proc) .hero__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: auto;
+    margin: auto 0;
+    min-width: 0;
+    max-width: 58%;
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero:not(.hero-proc) .hero__eyebrow-wrap,
+  .hero:not(.hero-proc) .hero__subtitle,
+  .hero:not(.hero-proc) .hero-btn__icon--secondary,
+  .hero:not(.hero-proc) .hero__whatsapp-divider {
+    display: none;
+  }
+
+  /* Título em escada com proporção editorial da referência */
+  .hero:not(.hero-proc) .hero__title {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    font-family: var(--hero-title-font);
+    font-size: calc(112 * var(--hero-s));
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.01em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0 6px 28px rgba(18, 8, 3, 0.45);
+  }
+
+  .hero:not(.hero-proc) .hero__title-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .hero:not(.hero-proc) .hero__title-line--2 {
+    padding-left: calc(50 * var(--hero-s));
+  }
+
+  .hero:not(.hero-proc) .hero__title-line--3 {
+    padding-left: calc(145 * var(--hero-s));
+  }
+
+  /* Ações, divisória e contato agrupados em equilíbrio com o título (sem buraco vertical em telas altas) */
+  .hero:not(.hero-proc) .hero__cta {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: clamp(36px, min(7.5svh, calc(68 * var(--hero-s))), 86px);
+    padding-top: 0;
+    width: 100%;
+  }
+
+  .hero:not(.hero-proc) .hero__actions {
+    display: flex;
+    align-items: center;
+    gap: calc(22 * var(--hero-s));
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+
+  .hero:not(.hero-proc) .hero-btn--primary {
+    min-width: calc(292 * var(--hero-s));
+  }
+
+  .hero:not(.hero-proc) .hero-btn--secondary {
+    min-width: calc(274 * var(--hero-s));
+  }
+
+  .hero:not(.hero-proc) .hero__rule {
+    width: min(calc(595 * var(--hero-s)), 100%);
+    max-width: 100%;
+    height: 1px;
+    margin: calc(24 * var(--hero-s)) 0 calc(26 * var(--hero-s));
+    border: 0;
+    background-color: var(--hero-rule);
+  }
+
+  /* Zona Visual no Desktop: ocupa toda a altura da hero (sem corte na base) com halo luminoso */
+  .hero:not(.hero-proc) .hero__visual {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .hero:not(.hero-proc) .hero__circle {
+    position: absolute;
+    z-index: 1;
+    top: auto;
+    bottom: clamp(16px, 3.5svh, 56px);
+    right: clamp(-6%, calc(44vw - min(63.3svh, 53.3vw)), 6%);
+    transform: none;
+    width: clamp(560px, min(64vw, 92svh), 1200px);
+    height: clamp(580px, min(66vw, 94svh), 1260px);
+    border-radius: 50%;
+    background:
+      radial-gradient(
+        circle at 55% 44%,
+        rgba(232, 160, 92, 0.8) 0%,
+        rgba(196, 114, 52, 0.58) 24%,
+        rgba(142, 72, 30, 0.4) 44%,
+        rgba(182, 106, 48, 0.26) 56%,
+        rgba(86, 42, 18, 0.14) 68%,
+        rgba(38, 18, 9, 0) 84%
+      );
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  .hero:not(.hero-proc) .hero__circle::before {
+    content: "";
+    position: absolute;
+    inset: -14%;
+    border-radius: 50%;
+    background:
+      radial-gradient(
+        circle at 66% 34%,
+        rgba(244, 180, 112, 0.64) 0%,
+        rgba(202, 118, 56, 0.4) 30%,
+        rgba(124, 62, 25, 0.16) 56%,
+        transparent 78%
+      );
+    filter: blur(30px);
+    pointer-events: none;
+  }
+
+  .hero:not(.hero-proc) .hero__circle::after {
+    content: "";
+    position: absolute;
+    inset: -20% -8% -6% -20%;
+    border-radius: 50%;
+    background:
+      radial-gradient(
+        ellipse 74% 78% at 48% 46%,
+        transparent 36%,
+        rgba(218, 146, 80, 0.26) 50%,
+        rgba(160, 86, 38, 0.16) 61%,
+        transparent 75%
+      );
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  .hero:not(.hero-proc) .hero__portrait {
+    position: absolute;
+    right: clamp(-60px, calc(46vw - min(63.3svh, 53.3vw)), 32px);
+    bottom: 0;
+    z-index: 2;
+    display: block;
+    height: clamp(560px, min(95svh, 80vw), 1400px);
+    max-height: 95svh;
+    width: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: contain;
+    object-position: bottom right;
+    transform: scaleX(-1);
+    animation: heroPortraitIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+}
+
+/* ==========================================================================
+   Modo B: Tablet, iPads (incluindo iPad Pro 13" 1032×1376) e Telas Verticais/Quadradas (700px+)
+   - Direção de Arte Editorial baseada na referência de Tablet:
+     1. Título grande, editorial, alinhado à esquerda em 3 linhas ("ATELIÊ / STEFFANI / TORRES").
+     2. Fotografia grande e protagonista ocupando a região direita e inferior.
+     3. Botões empilhados verticalmente com larguras consistentes, espaçamento generoso e ótima área de toque.
+     4. Iluminação em halo difuso de gradientes suaves (caramelo, cobre e marrom), sem borda circular rígida.
+     5. Composição equilibrada e fluida em qualquer dimensão (768×1024, 820×1180, 854×898, 1024×768, 1024×1366, 1032×1376, etc.).
+   ========================================================================== */
+@media (min-width: 700px) and (max-width: 1080px), (min-width: 700px) and (max-aspect-ratio: 13 / 12) {
+  .hero:not(.hero-proc) {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: max(100svh, 640px);
+    height: auto;
+    padding-top: clamp(68px, 6.8svh, 96px);
+    padding-bottom: clamp(32px, 6.5svh, 88px);
+    padding-left: clamp(32px, 4.6vw, 68px);
+    padding-right: clamp(24px, 4vw, 48px);
+    background:
+      radial-gradient(
+        ellipse 72% 68% at 68% 48%,
+        rgba(208, 132, 66, 0.36) 0%,
+        rgba(156, 82, 36, 0.24) 38%,
+        rgba(88, 42, 18, 0.12) 66%,
+        transparent 100%
+      ),
+      linear-gradient(108deg, #180B05 0%, #241108 40%, #3A1D0F 76%, #221008 100%);
+    overflow: hidden;
+  }
+
+  .hero:not(.hero-proc) .hero__content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: clamp(280px, 48vw, 540px);
+    max-width: 100%;
+    height: auto;
+    margin: auto 0;
+    min-width: 0;
+  }
+
+  /* Eyebrow editorial com linha fina à direita */
+  .hero:not(.hero-proc) .hero__eyebrow-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(12px, 1.6vw, 18px);
+    margin-bottom: clamp(12px, 2.2svh, 28px);
+  }
+
+  .hero:not(.hero-proc) .hero__eyebrow {
+    order: 1;
+    font-family: var(--hero-font);
+    font-size: clamp(11.5px, min(1.45vw, 1.45svh), 16px);
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #D7B89E;
+    white-space: nowrap;
+  }
+
+  .hero:not(.hero-proc) .hero__eyebrow-line {
+    order: 2;
+    width: clamp(36px, 4.8vw, 60px);
+    height: 1px;
+    background-color: rgba(215, 184, 158, 0.52);
+    flex-shrink: 0;
+  }
+
+  /* Título grande, editorial, em três linhas alinhadas à esquerda */
+  .hero:not(.hero-proc) .hero__title {
+    position: relative;
+    z-index: 2;
+    margin: 0 0 clamp(14px, 2.6svh, 34px) 0;
+    font-family: var(--hero-title-font);
+    font-size: clamp(50px, min(8.6vw, 8.5svh), 96px);
+    font-weight: 800;
+    line-height: 0.93;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0 6px 28px rgba(18, 8, 3, 0.55);
+  }
+
+  .hero:not(.hero-proc) .hero__title-line,
+  .hero:not(.hero-proc) .hero__title-line--2,
+  .hero:not(.hero-proc) .hero__title-line--3 {
+    display: block;
+    padding-left: 0;
+    white-space: nowrap;
+  }
+
+  /* Subtítulo editorial em duas linhas */
+  .hero:not(.hero-proc) .hero__subtitle {
+    display: block;
+    margin: 0 0 clamp(20px, 3.8svh, 50px) 0;
+    max-width: clamp(248px, 33.8vw, 390px);
+    font-family: var(--hero-font);
+    font-size: clamp(15.5px, min(2.05vw, 2.05svh), 22px);
+    font-weight: 400;
+    line-height: 1.44;
+    color: #EDE3DC;
+    text-shadow: 0 2px 14px rgba(18, 8, 3, 0.5);
+  }
+
+  /* Bloco de CTAs empilhados, divisória e WhatsApp */
+  .hero:not(.hero-proc) .hero__cta {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 0;
+    padding-top: 0;
+    width: clamp(256px, 33.8vw, 385px);
+    max-width: 100%;
+  }
+
+  .hero:not(.hero-proc) .hero__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: clamp(12px, 1.9svh, 22px);
+    width: 100%;
+  }
+
+  .hero:not(.hero-proc) .hero-btn {
+    width: 100%;
+    min-width: 0;
+    height: clamp(50px, 5.8svh, 68px);
+    min-height: 50px;
+    padding-inline: 24px;
+    border-radius: 999px;
+    font-size: clamp(15.5px, min(2vw, 2.05svh), 21px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .hero:not(.hero-proc) .hero-btn--primary {
+    background-color: var(--hero-btn-bg);
+    border: 1.5px solid rgba(255, 255, 255, 0.95);
+    color: var(--hero-btn-text);
+    font-weight: 750;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.34), inset 0 1px 1px rgba(255, 255, 255, 0.85);
+  }
+
+  .hero:not(.hero-proc) .hero-btn--secondary {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1.5px solid rgba(255, 255, 255, 0.24);
+    color: #FAF5EF;
+    font-weight: 600;
+    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  }
+
+  .hero:not(.hero-proc) .hero-btn__icon--secondary {
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    stroke-width: 3;
+  }
+
+  .hero:not(.hero-proc) .hero__rule {
+    width: 100%;
+    height: 1px;
+    margin: clamp(16px, 3.2svh, 42px) 0 clamp(14px, 2.6svh, 32px) 0;
+    border: 0;
+    background-color: rgba(216, 201, 192, 0.28);
+  }
+
+  .hero:not(.hero-proc) .hero__whatsapp {
+    margin-top: 0;
+    gap: 12px;
+  }
+
+  .hero:not(.hero-proc) .hero__whatsapp-divider {
+    display: none;
+  }
+
+  .hero:not(.hero-proc) .hero__whatsapp-icon {
+    width: clamp(32px, 3.8svh, 44px);
+    height: clamp(32px, 3.8svh, 44px);
+  }
+
+  .hero:not(.hero-proc) .hero__whatsapp-number {
+    font-size: clamp(15px, min(1.9vw, 1.9svh), 19.5px);
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  .hero:not(.hero-proc) .hero__whatsapp-label {
+    font-size: clamp(13px, min(1.6vw, 1.6svh), 16.5px);
+    font-weight: 500;
+    color: rgba(236, 224, 216, 0.84);
+  }
+
+  /* Região Visual (Direita e Inferior): Halo de iluminação suave + Retrato Protagonista */
+  .hero:not(.hero-proc) .hero__visual {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  /* Halo atmosférico de gradientes suaves em tons de caramelo, cobre e marrom (sem borda circular perceptível) */
+  .hero:not(.hero-proc) .hero__circle {
+    position: absolute;
+    top: auto;
+    bottom: clamp(18px, 4svh, 64px);
+    right: clamp(-150px, calc(55vw - min(60svh, 70.67vw)), 20px);
+    transform: none;
+    width: clamp(480px, min(76vw, 85svh), 1080px);
+    height: clamp(520px, min(86vw, 90svh), 1160px);
+    border-radius: 50%;
+    background:
+      radial-gradient(
+        circle at 56% 43%,
+        rgba(232, 160, 92, 0.8) 0%,
+        rgba(196, 114, 52, 0.58) 24%,
+        rgba(142, 72, 30, 0.4) 44%,
+        rgba(182, 106, 48, 0.26) 56%,
+        rgba(86, 42, 18, 0.14) 68%,
+        rgba(38, 18, 9, 0) 84%
+      );
+    filter: blur(18px);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero:not(.hero-proc) .hero__circle::before {
+    content: "";
+    position: absolute;
+    inset: -14%;
+    border-radius: 50%;
+    background:
+      radial-gradient(
+        circle at 66% 34%,
+        rgba(244, 180, 112, 0.64) 0%,
+        rgba(202, 118, 56, 0.4) 30%,
+        rgba(124, 62, 25, 0.16) 56%,
+        transparent 78%
+      );
+    filter: blur(28px);
+    pointer-events: none;
+  }
+
+  .hero:not(.hero-proc) .hero__circle::after {
+    content: "";
+    position: absolute;
+    inset: -20% -8% -6% -20%;
+    border-radius: 50%;
+    background:
+      radial-gradient(
+        ellipse 74% 78% at 48% 46%,
+        transparent 36%,
+        rgba(218, 146, 80, 0.26) 50%,
+        rgba(160, 86, 38, 0.16) 61%,
+        transparent 75%
+      );
+    filter: blur(18px);
+    pointer-events: none;
+  }
+
+  .hero:not(.hero-proc) .hero__portrait {
+    position: absolute;
+    right: clamp(-170px, calc(57vw - min(60svh, 70.67vw)), 20px);
+    bottom: 0;
+    z-index: 2;
+    display: block;
+    width: auto;
+    max-width: none;
+    height: clamp(560px, min(90svh, 106vw), 1320px);
+    aspect-ratio: 2 / 3;
+    object-fit: contain;
+    object-position: bottom right;
+    transform: scaleX(-1);
+    animation: none;
+  }
+}
+
+/* ==========================================================================
    Mobile (Smartphones) — Composição Exata da Referência Mobile (media_1792708894259.png)
    ========================================================================== */
-@media (max-width: 767px) {
+@media (max-width: 699px) {
   .hero {
-    height: 100svh;
-    min-height: 100svh;
-    max-height: 100svh;
-    padding: 0 clamp(20px, 5.5vw, 24px) clamp(22px, 5.5vw, 26px);
+    min-height: max(100svh, 580px);
+    height: auto;
+    padding: clamp(72px, 11svh, 92px) clamp(20px, 5.5vw, 28px) clamp(22px, 4.5svh, 28px);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -497,14 +879,16 @@
     margin-left: 3px;
   }
 
-  /* Botão Secundário: "Entrar em contato >" translúcido com borda suave */
+  /* Botão Secundário: "Entrar em contato >" translúcido com glassmorphism */
   .hero-btn--secondary {
-    background-color: rgba(255, 255, 255, 0.04) !important;
-    border: 1px solid rgba(216, 201, 192, 0.5) !important;
-    color: #E6DDD7 !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(12px) saturate(160%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(160%) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+    color: #FAF5EF !important;
     font-size: clamp(15px, 1.9svh, 16.5px) !important;
     font-weight: 600 !important;
-    box-shadow: none !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.32) !important;
   }
 
   .hero-btn--secondary .hero-btn__icon--secondary {
