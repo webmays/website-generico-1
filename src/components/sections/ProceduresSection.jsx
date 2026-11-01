@@ -107,15 +107,19 @@ export function ProceduresSection() {
         {visible.map((procedure) => (
           <article key={procedure.slug} className="procedure-card">
             <div className="procedure-card__media">
-              <img
-                src={procedure.image}
-                alt={procedure.alt}
-                width="640"
-                height="800"
-                loading="lazy"
-                decoding="async"
-                draggable="false"
-              />
+              {procedure.image ? (
+                <img
+                  src={procedure.image}
+                  alt={procedure.alt}
+                  width="640"
+                  height="800"
+                  loading="lazy"
+                  decoding="async"
+                  draggable="false"
+                />
+              ) : (
+                <div className="procedure-card__placeholder" aria-hidden="true">{procedure.title}</div>
+              )}
             </div>
             <h3 className="procedure-card__title">{procedure.title}</h3>
             <p className="procedure-card__summary">{procedure.summary}</p>

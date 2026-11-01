@@ -58,10 +58,10 @@ export const NAV_LINKS = {
 
 // [AI-EDIT-ZONE]: Conteúdo da Hero Section
 export const HERO_CONTENT = {
-  eyebrow: "BELEZA & ENSINO",
+  eyebrow: "SOBRANCELHAS, CÍLIOS E LÁBIOS",
   title: "TORRES BEAUTY ACADEMY",
   titleLines: ["TORRES", "BEAUTY", "ACADEMY"],
-  subtitle: "Técnica e cuidado para realçar a sua beleza natural.",
+  subtitle: "Quem experimenta a experiência Torres Beauty nunca mais quer outra!",
   ctaPrimary: "Agendar pelo WhatsApp",
   ctaSecondary: {
     label: "Ver procedimentos →",
@@ -76,7 +76,7 @@ export const PROCEDURES_HEADER_CONTENT = {
   filterLabel: "Filtrar procedimentos por categoria",
   trackLabel: "Lista de procedimentos",
   dragHint: "Arraste para o lado →",
-  cardAction: "Agendar este procedimento →"
+  cardAction: "Agendar →"
 };
 
 
@@ -149,8 +149,9 @@ export const CASES_CONTENT = {
     },
     {
       id: "04",
-      image: "/images/resultados/resultado-labios.webp",
-      alt: "Lábios revitalizados e com contorno definido"
+      image: "/images/resultados/video04-poster.jpg",
+      video: "/images/resultados/video04.mp4",
+      alt: "Vídeo da revitalização labial"
     },
     {
       id: "05",
@@ -172,10 +173,10 @@ export const ABOUT_CONTENT = {
   image: "/images/sobre/assets-sobre01.webp",
   imageAlt: "Retrato de Steffani Torres",
   metaLabel: "TRAJETÓRIA & COMPROMISSO",
-  title: "Sobre *Steffani Torres*",
+  title: "Sobre *mim*",
   paragraphs: [
     "Acredito que cuidar da própria imagem não é sobre transformar quem você é, mas sobre revelar a segurança que já existe em você. Ao longo da minha trajetória na beleza estética, desenvolvi um olhar atento aos detalhes para entregar resultados naturais, elegantes e pensados exclusivamente para valorizar os seus traços.",
-    "Aqui, cada atendimento é um momento de pausa, escuta e cuidado real — para que você se olhe no espelho com orgulho e leveza todos os dias. E, através do ensino na Torres Beauty Academy, compartilho essa mesma técnica, ética e dedicação para formar mulheres prontas para construir carreiras sólidas e independentes no mercado da beleza."
+    "Aqui, cada atendimento é um momento de pausa, escuta e cuidado real, para que você se olhe no espelho com orgulho e leveza todos os dias. E, através do ensino na Torres Beauty Academy, compartilho essa mesma técnica, ética e dedicação para formar mulheres prontas para construir carreiras sólidas e independentes no mercado da beleza."
   ],
   ctaButton: "Falar com a Steffani",
   ctaTarget: "contato"

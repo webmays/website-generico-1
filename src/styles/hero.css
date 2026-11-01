@@ -57,16 +57,22 @@
 
 .hero__content {
   width: 100%;
-  max-width: var(--container-max);
-  margin-inline: auto;
-  padding: clamp(6rem, 12vh, 8rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
+  padding: clamp(6rem, 12vh, 8rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem) clamp(1.25rem, 5vw, 6rem);
 }
 
 .hero__eyebrow {
   margin-bottom: 1.25rem;
 }
 
+.hero {
+  /* Deslocamento do bloco do titulo (--hero-title-shift) e recuo da linha mais funda da escadinha
+     (--hero-indent-deep); subtitulo e botao somam os dois para ficar alinhados com "ACADEMY". */
+  --hero-title-shift: 0px;
+  --hero-indent-deep: clamp(3.8rem, 9vw, 10rem);
+}
+
 .hero__title {
+  margin-left: var(--hero-title-shift);
   font-size: clamp(3.6rem, 8vw, 8.75rem);
   font-weight: 500;
   line-height: 0.96;
@@ -86,18 +92,20 @@
 }
 
 .hero__title-line--3 {
-  padding-left: 1.2em;
+  padding-left: var(--hero-indent-deep);
 }
 
 .hero__subtitle {
+  margin-left: calc(var(--hero-title-shift) + var(--hero-indent-deep));
   max-width: 26rem;
   font-size: clamp(1.02rem, 1.25vw, 1.2rem);
   line-height: 1.6;
-  color: var(--text-light-muted);
+  color: var(--accent-gold);
   margin-bottom: 2.25rem;
 }
 
 .hero__actions {
+  margin-left: calc(var(--hero-title-shift) + var(--hero-indent-deep));
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -155,11 +163,11 @@
     position: relative;
     z-index: 1;
     margin-top: -2.5rem;
-    padding-top: 0;
-    padding-bottom: 3.5rem;
+    padding: 0 clamp(1.25rem, 4vw, 3rem) 3.5rem;
   }
 
   .hero__title {
+    margin-left: 0;
     font-size: clamp(2.9rem, 13vw, 5.25rem);
   }
 
@@ -168,14 +176,90 @@
   .hero__title-line--3 {
     padding-left: 0;
   }
+
+  .hero__subtitle,
+  .hero__actions {
+    margin-left: 0;
+  }
 }
 
-/* Tablets em retrato: a foto fica mais estreita que a tela, entao as laterais tambem dissolvem */
+/* [AI-STYLE-RULE]: Tablets em retrato (iPad): retrato em tela cheia, sem mascaras laterais.
+   O texto sobe por cima da parte escura da foto (blazer) e so um veu inferior garante a leitura. */
 @media (min-width: 600px) and (max-aspect-ratio: 1 / 1) {
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 100svh;
+  }
+
+  .hero__visual {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: none;
+  }
+
+  .hero__visual::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--bg-dark-main) 45%, transparent) 0%,
+      transparent 14%,
+      transparent 46%,
+      color-mix(in srgb, var(--bg-dark-main) 72%, transparent) 70%,
+      var(--bg-dark-main) 100%
+    );
+  }
+
   .hero__portrait-frame {
-    -webkit-mask-image: linear-gradient(180deg, #000 88%, transparent 100%), linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
-    mask-image: linear-gradient(180deg, #000 88%, transparent 100%), linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
-    -webkit-mask-composite: source-in;
-    mask-composite: intersect;
+    width: 100%;
+    max-width: none;
+    height: 100%;
+    aspect-ratio: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .hero__portrait {
+    object-position: 50% 30%;
+  }
+
+  .hero__content {
+    margin-top: 0;
+    padding: 0 clamp(2rem, 6vw, 4rem) clamp(3rem, 7svh, 5rem);
+  }
+
+  .hero__title {
+    font-size: clamp(4rem, 10vw, 6.5rem);
+  }
+
+  .hero__subtitle {
+    max-width: 30rem;
+    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+    text-wrap: balance;
+    margin-bottom: 2rem;
+  }
+
+  .hero__actions {
+    gap: 1rem 2.25rem;
+  }
+
+  .hero__actions .btn {
+    min-height: 60px;
+    padding: 1rem 2.5rem;
+    font-size: 1.08rem;
+  }
+
+  .hero__actions .btn svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .hero__link {
+    min-height: 60px;
+    font-size: 1.08rem;
   }
 }

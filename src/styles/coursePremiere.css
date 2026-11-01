@@ -4,10 +4,10 @@
    [AI-STYLESHEET]: src/styles/coursePremiere.css
    [AI-PURPOSE]: Mini-seção de Destaque e Estreia da Formação "Destrava Brow" (Fadas In Action).
    [AI-DESIGN-SPEC]:
-   - Painel de foto cheio (object-fit: cover) ocupando toda a metade direita do card, sem vãos.
+   - Mulher 100% centralizada na esfera radiante com gradiente radial (desktop e mobile).
    - Menção oficial a "Fadas In Action" e "Destrava Brow".
    - Botão único de conversão ("Entrar na lista de espera ›").
-   - No mobile: foto no topo, cheia na largura, com fade inferior; texto/botão abaixo.
+   - No mobile: foto no topo centralizada com fade gradient na base da imagem e textos/botão abaixo.
    ============================================================================ */
 
 .course-premiere-container {
@@ -20,45 +20,53 @@
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  background: var(--bg-dark-main);
+  background: linear-gradient(135deg, var(--bg-dark-main) 0%, var(--bg-dark-main) 55%, var(--bg-dark-main) 100%);
   border: 1px solid rgba(201, 158, 103, 0.22);
-  box-shadow: 0 24px 70px -15px rgba(28, 25, 23, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 44%);
-  align-items: stretch;
-  height: clamp(460px, 42vw, 540px);
+  box-shadow: 0 24px 70px -15px rgba(62, 43, 33, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
+  display: flex;
+  align-items: center;
+  min-height: clamp(480px, 46vw, 540px);
+  /* A foto ocupa os 40% da direita; o padding direito reserva esse espaco para o texto nunca invadir. */
+  padding: clamp(2.5rem, 4.5vw, 4.2rem) calc(40% + clamp(1.5rem, 3vw, 3rem)) clamp(2.5rem, 4.5vw, 4.2rem) clamp(2rem, 4.5vw, 4.5rem);
 }
 
 /* ==========================================================================
-   1. AMBIÊNCIA DECORATIVA (sutil, atrás do texto)
+   1. ARCOS E AMBIÊNCIA DECORATIVA
    ========================================================================== */
+.upcoming-arc-bottom-left {
+  position: absolute;
+  bottom: -200px;
+  left: -120px;
+  width: clamp(380px, 35vw, 500px);
+  height: clamp(380px, 35vw, 500px);
+  border-radius: 50%;
+  border: 1px solid rgba(201, 158, 103, 0.12);
+  background: radial-gradient(circle at 50% 50%, rgba(118, 88, 63, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .upcoming-glow-ambient {
+
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 0% 50%, rgba(99, 91, 85, 0.22) 0%, transparent 62%);
+  background: radial-gradient(ellipse at 80% 45%, rgba(99, 91, 85, 0.22) 0%, transparent 68%);
   pointer-events: none;
   z-index: 1;
 }
 
 /* ==========================================================================
-   2. PAINEL DE FOTO: ocupa a metade direita do card de ponta a ponta
+   2. FOTO: PREENCHE OS 40% DA DIREITA DO CARD, DE PONTA A PONTA
    ========================================================================== */
 .upcoming-visual-stage {
-  position: relative;
-  grid-column: 2;
-  grid-row: 1;
-  height: 100%;
-  overflow: hidden;
-  z-index: 2;
-}
-
-.upcoming-visual-stage::before {
-  content: "";
   position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(90deg, var(--bg-dark-main) 0%, transparent 18%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+  overflow: hidden;
   pointer-events: none;
+  z-index: 2;
 }
 
 .upcoming-model-img {
@@ -66,7 +74,8 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top center;
+  object-position: center 20%;
+  pointer-events: none;
 }
 
 /* Fade inferior para o mobile (oculto no desktop) */
@@ -76,18 +85,13 @@
 
 /* ==========================================================================
    3. CONTEÚDO EDITORIAL
+
    ========================================================================== */
 .upcoming-card-body {
   position: relative;
   z-index: 3;
-  grid-column: 1;
-  grid-row: 1;
   max-width: 580px;
   width: 100%;
-  padding: clamp(2.5rem, 4.5vw, 4.2rem) clamp(2rem, 4.5vw, 4.5rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 /* Eyebrow: NOVA FORMAÇÃO • FADAS IN ACTION */
@@ -218,7 +222,6 @@
   }
 
   .upcoming-course-card {
-    display: flex;
     width: 100%;
     border-radius: 0; /* Sem cantos arredondados laterais */
     border-left: none; /* Sem barras laterais */
@@ -228,25 +231,20 @@
     box-shadow: none;
     flex-direction: column;
     align-items: stretch;
-    height: auto;
     min-height: auto;
+    padding: 0;
   }
 
-  /* Foto no Topo, cheia na largura, com Fade Inferior */
+  /* Foto no Topo Centralizada com Fade Inferior */
   .upcoming-visual-stage {
     order: 1;
-    grid-column: auto;
+    position: relative;
+    right: auto;
+    bottom: auto;
     width: 100%;
-    height: clamp(300px, 80vw, 420px);
-    min-height: 0;
-  }
-
-  .upcoming-visual-stage::before {
-    background: linear-gradient(180deg, transparent 55%, var(--bg-dark-main) 100%);
-  }
-
-  .upcoming-model-img {
-    object-position: top center;
+    margin: 0;
+    height: clamp(340px, 85vw, 450px);
+    overflow: hidden;
   }
 
   /* Fade in gradiente na parte debaixo da imagem no mobile */
@@ -256,8 +254,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 140px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(28, 25, 23, 0.65) 45%, var(--bg-dark-main) 100%);
+    height: 90px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(62, 43, 33, 0.65) 55%, var(--bg-dark-main) 100%);
     pointer-events: none;
     z-index: 3;
   }
@@ -265,11 +263,10 @@
   /* Conteúdo textual estruturado com padding lateral generoso */
   .upcoming-card-body {
     order: 2;
-    grid-column: auto;
     width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: clamp(2rem, 6vw, 2.8rem) clamp(1.25rem, 5vw, 2.2rem) clamp(2.5rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.2rem);
+    padding: 0 clamp(1.25rem, 5vw, 2.2rem) clamp(2.5rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.2rem);
     position: relative;
     z-index: 4;
   }
@@ -321,3 +318,5 @@
     font-size: clamp(0.95rem, 3.6vw, 1.05rem);
   }
 }
+
+

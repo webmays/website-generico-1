@@ -8,8 +8,8 @@
 
 :root {
   /* Paleta oficial TORRES (marrons neutros/frios + dourado) */
-  --bg-dark-main: #241503;
-  --bg-dark-surface: #33200A;
+  --bg-dark-main: #3E2B21;
+  --bg-dark-surface: #4A3526;
   --bg-light-main: #F5F3EF;
   --bg-light-surface: #EBE7E0;
   --text-light: #F7F5F2;
@@ -21,10 +21,10 @@
   /* [AI-STYLE-RULE]: #C99E67 sobre fundo claro reprova no WCAG AA; textos dourados em fundo claro usam este token. */
   --accent-gold-on-light: #86673C;
   --border-gold-subtle: rgba(201, 158, 103, 0.28);
-  --tone-700: #4A2F12;
-  --tone-600: #5E3D1A;
-  --tone-400: #8C6A42;
-  --tone-200: #E3D4BE;
+  --tone-700: #5C4432;
+  --tone-600: #76583F;
+  --tone-400: #A5876A;
+  --tone-200: #DDC7AC;
 
   /* Aliases de compatibilidade: apontam para a paleta oficial */
   --color-white: var(--bg-light-main);
@@ -274,7 +274,7 @@ h1 em, h2 em, h3 em, blockquote em {
 }
 
 .site-header.is-scrolled {
-  background-color: rgba(51, 32, 10, 0.95);
+  background-color: rgba(74, 53, 38, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
@@ -460,7 +460,7 @@ h1 em, h2 em, h3 em, blockquote em {
   height: 100dvh;
   max-height: 100dvh;
   background-color: var(--text-light);
-  box-shadow: -12px 0 40px rgba(34, 30, 28, 0.18);
+  box-shadow: -12px 0 40px rgba(62, 43, 33, 0.18);
   z-index: 9999;
   padding: 1.5rem 1.5rem calc(1.75rem + env(safe-area-inset-bottom, 20px));
   display: flex;
@@ -568,7 +568,7 @@ h1 em, h2 em, h3 em, blockquote em {
   border-radius: 0;
   line-height: 1;
   flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(28, 25, 23, 0.2);
+  box-shadow: 0 2px 8px rgba(62, 43, 33, 0.2);
 }
 
 /* Item CTA de Agendamento no Drawer Mobile */
@@ -582,7 +582,7 @@ h1 em, h2 em, h3 em, blockquote em {
 .mobile-drawer-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(34, 30, 28, 0.6);
+  background-color: rgba(62, 43, 33, 0.6);
   z-index: 9998;
   opacity: 0;
   pointer-events: none;
@@ -706,18 +706,7 @@ body.drawer-open .site-header {
   margin-bottom: 0 !important;
   color: var(--text-light);
   overflow: hidden;
-  padding: clamp(2.5rem, 4vw, 4rem) clamp(1.25rem, 3vw, 2.5rem) clamp(2.5rem, 4vw, 3.5rem);
-}
-
-/* Linhas douradas nas bordas com distância harmônica da viewport */
-#sobre::before {
-  content: '';
-  position: absolute;
-  inset: clamp(10px, 1.4vw, 18px);
-  border: 1.5px solid rgba(201, 158, 103, 0.45);
-  pointer-events: none;
-  z-index: 1;
-  border-radius: 0;
+  padding: 0;
 }
 
 /* Container editorial com largura máxima generosa para ocupar bem o espaço */
@@ -725,43 +714,31 @@ body.drawer-open .site-header {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1380px;
-  margin: 0 auto;
 }
 
 /* Grade editorial: 50/50 preenchendo a área verde (imagem) e área vermelha (texto) */
 .about-grid {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(2rem, 3.8vw, 4.5rem);
-  align-items: center;
+  grid-template-columns: 45% 55%;
+  align-items: stretch;
 }
 
 /* 1. Coluna Esquerda: Cartão da Imagem amplo e com altura vertical refinada no desktop */
 .about-photo {
-  width: 100%;
-  aspect-ratio: 1 / 1.02;
-  max-height: 590px;
-  min-height: 440px;
-  border-radius: 0;
-  overflow: hidden;
-  border: 1px solid rgba(201, 158, 103, 0.45);
-  box-shadow: 0 18px 44px -10px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(201, 158, 103, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: relative;
-  background-color: transparent;
-  padding: 0;
-  margin: 0;
+  width: 100%;
+  min-height: clamp(560px, 46vw, 780px);
+  overflow: hidden;
 }
 
 .about-photo .about-image {
+  position: absolute;
+  inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 18%;
-  display: block;
 }
 
 .about-photo .photo-meta {
@@ -783,7 +760,7 @@ body.drawer-open .site-header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0.5rem 0;
+  padding: clamp(2.5rem, 5vw, 5rem) clamp(1.25rem, 6vw, 7rem);
 }
 
 #sobre {
@@ -815,6 +792,8 @@ body.drawer-open .site-header {
   color: rgba(247, 245, 242, 0.92);
   font-size: clamp(1.02rem, 1.15vw, 1.18rem);
   line-height: 1.75;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .about-cta {
@@ -1048,9 +1027,9 @@ body.drawer-open .site-header {
   inset: 0;
   background: radial-gradient(
     ellipse at center,
-    rgba(28, 25, 23, 0.42) 0%,
-    rgba(28, 25, 23, 0.18) 55%,
-    rgba(28, 25, 23, 0.02) 85%,
+    rgba(62, 43, 33, 0.42) 0%,
+    rgba(62, 43, 33, 0.18) 55%,
+    rgba(62, 43, 33, 0.02) 85%,
     transparent 100%
   );
   pointer-events: none;
@@ -1201,13 +1180,10 @@ body.drawer-open .site-header {
   }
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
   }
   .about-photo {
-    margin: 0 auto;
-    max-width: 400px;
-    aspect-ratio: 4 / 5;
-    max-height: 480px;
+    min-height: 0;
+    aspect-ratio: 1 / 1;
   }
   .about-cta {
     display: flex;
@@ -1274,6 +1250,23 @@ body.drawer-open .site-header {
   }
 }
 
+/* Tablets: CTA "Agendar" do cabecalho com area de toque maior */
+@media (min-width: 600px) and (max-width: 1080px) {
+  .nav-container {
+    min-height: 76px;
+  }
+  .nav-actions .btn.btn-nav-schedule {
+    min-height: 52px;
+    padding: 0 1.35rem;
+    font-size: 0.98rem;
+    gap: 8px;
+  }
+  .nav-actions .btn.btn-nav-schedule svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
 @media (max-width: 768px) {
 
 
@@ -1301,9 +1294,6 @@ body.drawer-open .site-header {
   }
 
   .about-photo {
-    min-height: auto;
-    max-width: 340px;
-    margin: 0 auto;
     aspect-ratio: 4 / 5;
   }
   .about-cta {
@@ -1365,7 +1355,7 @@ body.drawer-open .site-header {
   gap: 0.6rem;
   min-height: 50px;
   padding: 0.75rem 1.35rem;
-  background-color: var(--color-brown);
+  background-color: var(--tone-700);
   color: var(--text-light);
   border: 2px solid var(--accent-gold);
   border-radius: 0;
@@ -1373,7 +1363,7 @@ body.drawer-open .site-header {
   font-size: 0.96rem;
   font-weight: 700;
   letter-spacing: 0.01em;
-  box-shadow: 0 6px 22px rgba(38, 34, 32, 0.32);
+  box-shadow: 0 6px 22px rgba(74, 53, 38, 0.32);
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
@@ -1392,7 +1382,7 @@ body.drawer-open .site-header {
   background-color: var(--color-dark-brown);
   border-color: var(--text-light);
   transform: translateY(-3px);
-  box-shadow: 0 10px 28px rgba(38, 34, 32, 0.45);
+  box-shadow: 0 10px 28px rgba(74, 53, 38, 0.45);
 }
 
 .back-to-top-arrow {

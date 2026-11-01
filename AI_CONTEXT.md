@@ -7,14 +7,14 @@
 
 ## 1. 🎨 Resumo do Design System Oficial
 
-O projeto segue uma estética **editorial, minimalista, de alto padrão e luxo discreto**, construída a partir do redesign TORRES BEAUTY ACADEMY: marrons reais e saturados (não acinzentados), dourado champagne de assinatura e tipografia serifada com contraste itálico.
+O projeto segue uma estética **editorial, minimalista, de alto padrão e luxo discreto**, construída a partir do redesign TORRES BEAUTY ACADEMY: marrons escuros, neutros e frios, dourado champagne de assinatura e tipografia serifada com contraste itálico.
 
 ### 1.1 Paleta de Cores (tokens em `src/styles/globals.css` e `src/styles/index.css`)
 
 | Token CSS | Valor Hex | Finalidade / Aplicação |
 | :--- | :--- | :--- |
-| `--bg-dark-main` | `#241503` | Marrom escuro real (Hero, CTA final, Sobre) |
-| `--bg-dark-surface` | `#33200A` | Marrom um tom mais claro (cards escuros, Rodapé) |
+| `--bg-dark-main` | `#1C1917` | Espresso frio (Hero, CTA final) |
+| `--bg-dark-surface` | `#262220` | Taupe escuro frio (Sobre, cards escuros, Rodapé) |
 | `--bg-light-main` | `#F5F3EF` | Alabastro — fundo principal das seções claras |
 | `--bg-light-surface` | `#EBE7E0` | Greige — containers e fundo de cards claros |
 | `--text-light` / `--text-light-muted` | `#F7F5F2` / `#B8B0A8` | Textos sobre fundo escuro |
@@ -96,7 +96,7 @@ c:\Users\senko\Desktop\Steffani website\
 ### 3.1 Como Adicionar/Editar um Procedimento
 1. Abra `src/data/proceduresData.js`.
 2. Edite ou adicione um objeto em `PROCEDURES` (`slug`, `title`, `group`, `summary`, `image`, `alt`). `group` precisa existir em `PROCEDURE_GROUPS`.
-3. A foto deve estar em `public/images/procedimentos/<slug>.webp`, proporção 4:5 (640×800 recomendado). Gere com `sharp` a partir de uma foto real em `Referencias - Steffani/Fontes-Imagens-Originais/` — nunca use imagens de banco de imagens ou extraídas de PDF como se fossem fotos do ateliê.
+3. A foto deve estar em `public/images/procedimentos/<slug>.webp`, proporção 4:5 (640×800 recomendado). Gere com `sharp` a partir de uma foto real em `Referencias - Steffani/Fontes-Imagens-Originais/` — use apenas imagens fornecidas nas pastas, nunca recortes de PDF ou banco de imagens. Card sem foto: `image: null` (mostra painel marrom com o nome).
 4. O card, o filtro e o link do WhatsApp (`getProcedureWhatsappUrl`) são gerados automaticamente.
 
 ### 3.2 Como Alterar Contatos, WhatsApp, E-mail ou Horários

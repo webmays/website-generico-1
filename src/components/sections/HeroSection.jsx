@@ -18,7 +18,7 @@ export function HeroSection() {
           <img
             src="/images/hero/torres-hero-1000.webp"
             srcSet="/images/hero/torres-hero-640.webp 640w, /images/hero/torres-hero-1000.webp 1000w, /images/hero/torres-hero-1400.webp 1400w"
-            sizes="(max-width: 900px) 100vw, 45vw"
+            sizes="(max-aspect-ratio: 1/1) 100vw, (max-width: 900px) 100vw, 45vw"
             alt={`Steffani Torres, especialista da ${BRAND.fullAcademyTitle}`}
             className="hero__portrait"
             width="1400"

@@ -21,7 +21,7 @@ export const PROCEDURES = [
     group: "pacotes",
     summary: "Seu momento de princesa: design natural com henna, buço e queixo na linha, revitalização facial, massagem capilar e cappuccino. 1h30 de cuidado e amor.",
     image: "/images/procedimentos/glow-relax.webp",
-    alt: "Cliente relaxando com uma bebida quente em poltrona no espaço Torres Beauty Academy"
+    alt: "Cliente deitada com sobrancelhas definidas e pele iluminada"
   },
   {
     slug: "glow-diamond",
@@ -29,7 +29,7 @@ export const PROCEDURES = [
     group: "pacotes",
     summary: "Aqui você é rainha: Lash Lifting, henna, buço, revitalização facial e labial, massagem capilar e cappuccino. 2h30 de puro cuidado e amor.",
     image: "/images/procedimentos/glow-diamond.webp",
-    alt: "Rosto de perfil com pele iluminada e sobrancelhas bem definidas"
+    alt: "Cliente com sobrancelhas definidas e lábios realçados"
   },
   {
     slug: "brow-boost",
@@ -37,7 +37,7 @@ export const PROCEDURES = [
     group: "pacotes",
     summary: "Brow Lamination com henna ou tintura e Brow Therapy, para fios alinhados, tratados e um olhar mais definido. Acompanha kit de pós-cuidados.",
     image: "/images/procedimentos/brow-boost.webp",
-    alt: "Escova de sobrancelhas sobre textura de produto em tom claro"
+    alt: "Cliente com sobrancelhas alinhadas e naturais"
   },
   {
     slug: "glow-lash",
@@ -45,7 +45,7 @@ export const PROCEDURES = [
     group: "pacotes",
     summary: "Lash Lifting com tintura e Spa Labial: cílios curvados e realçados, lábios macios e renovados, tudo em um só atendimento.",
     image: "/images/procedimentos/glow-lash.webp",
-    alt: "Macro em preto e branco de cílios curvados"
+    alt: "Cílios curvados após Lash Lifting"
   },
   {
     slug: "design-sobrancelhas",
@@ -53,7 +53,7 @@ export const PROCEDURES = [
     group: "sobrancelhas",
     summary: "Análise facial completa, simetria e marcação profissional, com finalização na pinça e modelagem personalizada para os seus traços.",
     image: "/images/procedimentos/design-sobrancelhas.webp",
-    alt: "Mulher com as mãos nas têmporas valorizando as sobrancelhas"
+    alt: "Sobrancelha com design natural e bem definido"
   },
   {
     slug: "design-henna",
@@ -61,7 +61,7 @@ export const PROCEDURES = [
     group: "sobrancelhas",
     summary: "Pigmentação vegetal com efeito sombreado, ideal para realçar a forma das sobrancelhas e dar definição natural.",
     image: "/images/procedimentos/design-henna.webp",
-    alt: "Sobrancelhas antes e depois do design com henna"
+    alt: "Cliente com sobrancelhas definidas após design com henna"
   },
   {
     slug: "design-tintura",
@@ -69,7 +69,7 @@ export const PROCEDURES = [
     group: "sobrancelhas",
     summary: "Coloração delicada dos fios, que traz uniformidade às sobrancelhas e destaque ao olhar.",
     image: "/images/procedimentos/design-tintura.webp",
-    alt: "Sobrancelhas antes e depois com fios mais uniformes"
+    alt: "Sobrancelha com fios uniformes e olhar em destaque"
   },
   {
     slug: "glow-lips-spa",
@@ -77,7 +77,7 @@ export const PROCEDURES = [
     group: "labios",
     summary: "Spa labial com aplicação de henna: renovação, hidratação e lábios macios, com uma tonalidade naturalmente realçada.",
     image: "/images/procedimentos/glow-lips-spa.webp",
-    alt: "Lábios antes e depois do spa labial, com framboesas entre as imagens"
+    alt: "Lábios com cor realçada"
   },
   {
     slug: "revigloss",
@@ -85,7 +85,7 @@ export const PROCEDURES = [
     group: "labios",
     summary: "Revitalização labial que promove hidratação profunda, maciez e aparência mais saudável. Um glow imediato para os lábios.",
     image: "/images/procedimentos/revigloss.webp",
-    alt: "Lábios hidratados e com cor realçada"
+    alt: "Lábios hidratados e com brilho natural"
   },
   {
     slug: "lips-glow-up",
@@ -93,7 +93,7 @@ export const PROCEDURES = [
     group: "labios",
     summary: "Micropigmentação labial para lábios mais definidos e uniformes, com cor sofisticada e durabilidade, sem perder a naturalidade.",
     image: "/images/procedimentos/lips-glow-up.webp",
-    alt: "Macro de lábios com micropigmentação em tom rosado"
+    alt: "Lábios com contorno definido e cor uniforme"
   },
   {
     slug: "nano-brow",
@@ -101,17 +101,15 @@ export const PROCEDURES = [
     group: "avancados",
     summary: "Micropigmentação com fios ultrafinos que acompanham o crescimento natural. Define e preenche pequenas falhas sem aparência marcada.",
     image: "/images/procedimentos/nano-brow.webp",
-    alt: "Sobrancelha com fios finos e naturais de nanopigmentação"
+    alt: "Sobrancelhas com fios finos e aparência natural"
   },
   {
     slug: "hibrid-brow",
     title: "Hibrid Brow",
     group: "avancados",
     summary: "Une os fios delicados da técnica Nano ao efeito sombreado da Shadow, para uma sobrancelha mais preenchida, estruturada e natural.",
-    // [AI-EDIT-ZONE]: FOTO PROVISORIA (IMG_1292), nenhuma foto esta identificada como Hibrid Brow.
-    // Para trocar: substitua public/images/procedimentos/hibrid-brow.webp (640x800) ou altere este caminho.
     image: "/images/procedimentos/hibrid-brow.webp",
-    alt: "Sobrancelhas preenchidas e estruturadas, antes e depois"
+    alt: "Closeup de sobrancelha com fios definidos, técnica Hibrid Brow"
   },
   {
     slug: "shadow",
