@@ -1,6 +1,6 @@
 // [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Página Inicial (Landing Page), orquestrando todas as seções e gerenciando animações GSAP ScrollTrigger e hash scrolling.
-// [AI-DO-NOT-BREAK]: O hook useGsapReveals realiza o bind de ScrollTrigger com gsap.context para evitar vazamento de memória ou animações duplicadas.
+// [AI-DO-NOT-BREAK]: O hook useScrollReveal usa IntersectionObserver nativo para revelar secoes ao rolar, sem dependencias externas.
 
 import { useEffect, useRef } from "react";
 import { useLocation } from "react-router";
@@ -13,7 +13,7 @@ import { CasesSection } from "../components/sections/CasesSection";
 import { CrossSellSection } from "../components/sections/CrossSellSection";
 import { FaqSection } from "../components/sections/FaqSection";
 import { FinalCtaSection } from "../components/sections/FinalCtaSection";
-import { useGsapReveals } from "../hooks/useGsapReveals";
+import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useSmoothScroll } from "../context/SmoothScrollContext";
 
 /**
@@ -26,7 +26,7 @@ export function HomePage() {
   const location = useLocation();
   const { scrollTo } = useSmoothScroll();
 
-  useGsapReveals(containerRef);
+  useScrollReveal(containerRef);
 
   // [AI-DO-NOT-BREAK]: Tratamento de âncoras cross-route (ex: redirect de /procedimentos/* para /#procedimentos)
   useEffect(() => {

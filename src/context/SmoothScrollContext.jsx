@@ -1,13 +1,9 @@
 // [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
-// [AI-FILE-PURPOSE]: Provedor de contexto React para o motor Lenis Smooth Scroll e sincronização de 60/120fps com o GSAP Ticker.
-// [AI-DO-NOT-BREAK]: O método `ticker.add` do GSAP atualiza os gatilhos do ScrollTrigger e a rolagem suave sem travamentos.
+// [AI-FILE-PURPOSE]: Provedor de contexto React para o motor Lenis Smooth Scroll, usado pela navegacao e pelo botao Voltar ao Topo.
+// [AI-DO-NOT-BREAK]: `respectReducedMotion: false` mantem a rolagem suave ativa mesmo com o ajuste do sistema; as animacoes de revelacao (useScrollReveal) respeitam esse ajuste por conta propria.
 
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import Lenis from "lenis";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const SmoothScrollContext = createContext({
   lenis: null,
@@ -42,8 +38,6 @@ export function SmoothScrollProvider({ children }) {
 
     lenisRef.current = lenis;
     setLenisInstance(lenis);
-
-    lenis.on("scroll", ScrollTrigger.update);
 
     return () => {
       lenis.destroy();

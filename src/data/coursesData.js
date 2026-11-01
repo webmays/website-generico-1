@@ -19,7 +19,7 @@ export const COURSES_LIST = [
     title: "Consultoria de Micropigmentação",
     headline: "Aprimoramento técnico e estratégico para profissionais da área",
     description: "Mentoria cirúrgica individualizada de 4h a 5h com Steffani Torres, voltada para profissionais da área que buscam aprimorar suas habilidades. Você envia suas dúvidas prévias para a criação de um plano sob medida, corrigindo erros práticos e alavancando seus resultados na micropigmentação.",
-    image: "/images/cursos/assets-consultoria.JPEG",
+    image: "/images/cursos/assets-consultoria.webp",
     urgencyText: "Atendimento 100% Individual • Vagas Limitadas",
     pillars: [
       {
@@ -48,7 +48,7 @@ export const COURSES_LIST = [
     title: "Método Brow Boost",
     headline: "A técnica mais desejada e lucrativa para sobrancelhas naturais",
     description: "Curso intensivo em 1 dia (das 9h às 19h) para formar especialistas em Brow Lamination. Domine a técnica que realça a essência única dos fios naturais com segurança, biossegurança rigorosa e resultados duradouros que encantam clientes.",
-    image: "/images/cursos/curso-browboost.jpg",
+    image: "/images/cursos/curso-browboost.webp",
     urgencyText: "Turmas Reduzidas • Vagas Limitadas",
     pillars: [
       {
@@ -77,7 +77,7 @@ export const COURSES_LIST = [
     title: "Curso de Lash Lifting",
     headline: "Efeito rímel natural de alto valor e retorno financeiro imediato",
     description: "Formação técnica em curvatura, hidratação profunda e realce dos cílios naturais. Um procedimento de altíssima procura no ateliê, rápido de executar e com excelente margem de rentabilidade logo nas primeiras clientes.",
-    image: "/images/cursos/curso-lashlifting.jpg",
+    image: "/images/cursos/curso-lashlifting.webp",
     urgencyText: "Turmas Exclusivas • Vagas Limitadas",
     pillars: [
       {

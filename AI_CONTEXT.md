@@ -1,208 +1,136 @@
 # 🧠 AI_CONTEXT.md — Diretrizes de Arquitetura AI-First & Manutenibilidade (Padrão Webmays)
 
-> **Este arquivo é o mapa mental oficial do projeto Steffani Website para qualquer sessão de Inteligência Artificial.**  
+> **Este arquivo é o mapa mental oficial do projeto TORRES BEAUTY ACADEMY para qualquer sessão de Inteligência Artificial.**
 > Antes de realizar qualquer modificação, adição de componente, ajuste de estilo ou alteração de rotas, **leia atentamente este documento**.
 
 ---
 
 ## 1. 🎨 Resumo do Design System Oficial
 
-O projeto segue uma estética **editorial, minimalista, de alto padrão e luxo discreto**, concebida para transmitir autoridade e confiança nos serviços e cursos da Steffani.
+O projeto segue uma estética **editorial, minimalista, de alto padrão e luxo discreto**, construída a partir do redesign TORRES BEAUTY ACADEMY: marrons reais e saturados (não acinzentados), dourado champagne de assinatura e tipografia serifada com contraste itálico.
 
-### 1.1 Paleta de Cores (`@theme static`)
-Mapeada em `src/styles/index.css` e consumida nativamente por classes Tailwind v4:
+### 1.1 Paleta de Cores (tokens em `src/styles/globals.css` e `src/styles/index.css`)
 
-| Token Tailwind | Valor Hex | Finalidade / Aplicação |
+| Token CSS | Valor Hex | Finalidade / Aplicação |
 | :--- | :--- | :--- |
-| `bg-black` / `text-black` | `#111111` | Preto profundo: textos principais, títulos, CTA dark e contraste |
-| `bg-white` / `bg-cream` | `#FAF8F5` | Branco creme / marfim editorial (substitui o branco frio/estéril) |
-| `bg-off-white` / `text-off-white` | `#F6F3EE` | Fundo principal da página e cabeçalho (tom areia/editorial suave) |
-| `bg-warm-white` | `#EEE8DF` | Branco aquecido / linho: seções intercaladas, cards e molduras |
-| `text-brown` / `bg-brown` | `#5B4032` | Marrom sofisticado: cor de destaque institucional, botões e hover |
-| `bg-dark-brown` | `#2F231E` | Marrom escuro: seções de autoridade, citação e footer |
-| `bg-espresso` | `#261A13` | Marrom espresso profundo: contraste premium |
-| `text-taupe` | `#B6A89C` | Taupe / Nude clínico: metadados, números de seção e labels |
-| `text-muted-gold` | `#B18A57` | Dourado suave: números e linhas divisórias refinadas |
-| `border-gold-border` | `#C5A059` | Borda dourada acetinada para botões de alto destaque |
-| `bg-accent-yellow` | `#F7BF18` | Amarelo dourado vivo: sublinhado de destaque da Hero |
-| `text-ochre` | `#B87A14` | Ocre dourado: indicador de seção ativa no scrollspy |
-| `border-border` | `rgba(17,17,17,0.12)` | Borda padrão sutil para divisores e cards claros |
+| `--bg-dark-main` | `#241503` | Marrom escuro real (Hero, CTA final, Sobre) |
+| `--bg-dark-surface` | `#33200A` | Marrom um tom mais claro (cards escuros, Rodapé) |
+| `--bg-light-main` | `#F5F3EF` | Alabastro — fundo principal das seções claras |
+| `--bg-light-surface` | `#EBE7E0` | Greige — containers e fundo de cards claros |
+| `--text-light` / `--text-light-muted` | `#F7F5F2` / `#B8B0A8` | Textos sobre fundo escuro |
+| `--text-dark` / `--text-dark-muted` | `#221E1C` / `#635B55` | Textos sobre fundo claro |
+| `--accent-gold` / `--accent-gold-hover` | `#C99E67` / `#B58952` | Dourado de assinatura — CTAs, eyebrows em fundo escuro |
+| `--accent-gold-on-light` | `#86673C` | Dourado escurecido para contraste AA sobre fundo claro |
 
-### 1.2 Regra das 3 Fontes Oficiais
-Importadas via Google Fonts em `index.html` e registradas nas classes utilitárias do Tailwind:
-1. **Títulos Principais e Destaques (`font-title` / `font-serif`):**
-   - **`Cormorant Garamond`** (com fallback para `Playfair Display`, serif).
-   - Uso: Títulos Didone, nomes da marca, citações e números de passos/procedimentos.
-2. **Subtítulos, Botões e Metadados (`font-subheading` / `font-sans`):**
-   - **`Montserrat`** (com fallback para `Manrope`, sans-serif).
-   - Uso: Botões em pílula, itens da navbar, breadcrumbs, tags de categoria e labels em caixa-alta.
-3. **Corpo de Texto e Leitura Contínua (`font-body`):**
-   - **`Lora`** (com fallback serif/sans).
-   - Uso: Parágrafos explicativos, detalhes de procedimentos, textos da biografia e respostas de FAQ.
+**Regra de ouro:** ao ajustar a paleta, mude só os tokens acima (`:root` em `globals.css`); os CSS de seção (`hero.css`, `courses.css`, `salon.css`, `coursePremiere.css`) já consomem `var(--bg-dark-main)` etc., não cores fixas.
 
-### 1.3 Regras Rígidas de Acessibilidade (WCAG AA)
-- **Área de Toque Mínima:** Todo botão, link de menu ou gatilho interativo DEVE ter altura mínima de `min-h-[48px]` (preferencialmente `52px`), garantindo navegabilidade mobile sem toques acidentais.
-- **Tipografia Legível:** O tamanho de fonte padrão do corpo de texto nunca deve ser inferior a `16px` (`1rem`) em dispositivos móveis.
-- **Contraste Seguro:** Nunca usar texto claro sobre fundos claros ou texto escuro sobre fundos pretos/marrom escuro.
-- **Semântica:** Manter `aria-label`, `aria-expanded` e `aria-controls` nos botões de navegação e acordions.
+### 1.2 Tipografia (2 famílias, via Google Fonts em `index.html`)
+1. **`--font-serif` (Cormorant Garamond):** `<h1>`, `<h2>`, logo `TORRES`, citações. Itálico (`<em>`) para o contraste intratítulo.
+2. **`--font-sans` (DM Sans):** corpo, botões, eyebrows, navegação.
+
+**Fórmula de cabeçalho de seção:** eyebrow em `.meta-label` (dourado) + `<h2>` com `<em>` via `<EditorialTitle text="Texto *em itálico*" />` (`src/components/ui/EditorialTitle.jsx`).
+
+### 1.3 Botões (`src/styles/buttons.css` — fonte única)
+Todos os botões têm `border-radius: 0`, `min-height: 48px` e preenchimento dourado (`.btn-primary`, `.btn-nav-cta`, `.btn-courses-pill` etc.) ou filete dourado sobre fundo escuro (`.btn-dark-outline`). Não declare cor de botão fora deste arquivo.
+
+### 1.4 Acessibilidade
+- Área de toque mínima `48px` em todo botão/link de navegação.
+- Animações de scroll respeitam `prefers-reduced-motion` (ver §4.4).
+- Foco visível em dourado (`:focus-visible`).
 
 ---
 
-## 2. 💎 Regra de Ouro Visual (Identidade Não-Genérica)
-
-> ⚠️ **AVISO PARA IAs:** É ESTRITAMENTE PROIBIDO transformar este projeto em um template SaaS ou landing page genérica de marketing digital.
-
-1. **Primeira Seção Detalhada e Poderosa:**
-   - A **Hero** e a seção de **Autoridade** possuem composição assimétrica complexa, tipografia editorial de grande porte e o carrossel em arco radial contínuo (roleta perpétua).
-2. **Seções Seguintes Minimalistas e Diretas:**
-   - As dobras seguintes mantêm espaçamento generoso (`clamp(4rem, 7vw, 8rem)`), respiro visual, alinhamentos rigorosos e ausência de ruído.
-3. **O Que É Proibido (Regras Anti-AI-UI e Anti-Glassmorphism):**
-   - ❌ **Proibido:** Branco puro sólido estéril (`#FFFFFF`) em superfícies principais, cabeçalho ou fundos.
-   - ❌ **Proibido:** Efeito **glassmorphism**, desfoques (`backdrop-filter: blur`), transparências excessivas que lavem elementos ou fundos translúcidos em menus.
-   - ❌ **Proibido:** Botões fantasmas ("ghost buttons") transparentes sem preenchimento ou com bordas finas lavadas que pareçam desbotadas ou desprovidas de cor.
-   - ❌ **Proibido:** Sombras neon com brilho difuso branco/azul de IA (`box-shadow: 0 0 25px rgba(...)`).
-   - ❌ **Proibido:** Criar seções de 3 colunas densas lotadas de ícones genéricos (estética corporativa tech/SaaS).
-   - ❌ **Proibido:** Gradientes coloridos aleatórios, fundos roxos (*Purple Ban*) ou estética infantilizada com excesso de rosa.
-   - ❌ **Proibido:** Cards empilhados genéricos com `rounded-xl` uniforme.
-
-4. **Regra de Cores Sólidas em Tons Creme para Branco:**
-   - ✅ **Superfícies Claras:** Utilizar tons de creme e marfim para branco (`#FAF8F5`, `#F6F3EE`, `#EEE8DF`), garantindo atmosfera de linho e areia de alta sofisticação.
-   - ✅ **Cabeçalho / Menus:** Fundo em tom creme/off-white (`#F6F3EE`), sólido e opaco, sem transparência e sem branco frio hospitalar.
-   - ✅ **Botões:** Preenchimento sólido rico (Preto `#111111`, Marrom `#5B4032`, Creme `#FAF8F5` com borda preta de 2px, ou Off-white `#F6F3EE`).
-
----
-
-## 3. 📂 Mapa Mental de Arquivos (Arquitetura)
+## 2. 📂 Mapa Mental de Arquivos
 
 ```text
 c:\Users\senko\Desktop\Steffani website\
-├── AI_CONTEXT.md               <- [ESTE ARQUIVO] Mapa mestre para Inteligências Artificiais
-├── react-tailwind-migration.md  <- Diário de bordo da migração técnica
-├── vite.config.js              <- Configuração do Vite + React + Tailwind v4
-├── index.html                  <- HTML5 semântico com pré-conexão e fontes do Google
-├── legacy/                     <- Arquivos estáticos originais para comparação e fallback
+├── AI_CONTEXT.md                <- [ESTE ARQUIVO]
+├── vite.config.js
+├── index.html                   <- Fontes Cormorant Garamond + DM Sans
+├── legacy/                      <- Fallback estático original (não tocar)
+├── Referencias - Steffani/      <- Fora do git (.gitignore); inclui
+│   └── Fontes-Imagens-Originais/   fotos em alta resolução usadas como
+│                                   origem dos .webp servidos (recortar
+│                                   de novo a partir daqui se precisar)
 └── src/
-    ├── main.jsx                <- Ponto de entrada React (BrowserRouter + SmoothScrollProvider)
-    ├── App.jsx                 <- Shell da aplicação (Header, Drawer, ScrollWidgets, Rotas, Footer)
+    ├── main.jsx
+    ├── App.jsx                  <- Shell, rotas (/procedimentos/* redireciona para /#procedimentos)
     ├── styles/
-    │   ├── index.css           <- Tailwind v4 (@theme static, camadas e tokens)
-    │   └── globals.css         <- Design System em @layer components (layout, botões, animações)
-    ├── context/
-    │   └── SmoothScrollContext.jsx <- Engine Lenis Smooth Scroll sincronizado ao GSAP ScrollTrigger
+    │   ├── index.css            <- Tailwind v4 (@theme static) + ordem das camadas
+    │   ├── globals.css          <- Tokens de cor, layout, cabeçalhos de seção, scroll reveal
+    │   ├── buttons.css          <- [FONTE ÚNICA] Todas as variantes de botão
+    │   ├── hero.css / procedures.css / results.css / salon.css / courses.css / coursePremiere.css
+    ├── context/SmoothScrollContext.jsx  <- Lenis (sem GSAP)
     ├── hooks/
-    │   ├── useHeaderScroll.js  <- Controle de scroll da navbar e shift dinâmico
-    │   ├── useScrollspy.js     <- Lógica matemática do indicador de 3 níveis e trilha de borda
-    │   └── useGsapReveals.js   <- Animações ScrollTrigger com limpeza automática
+    │   ├── useHeaderScroll.js   <- Shift e estado `.is-scrolled` da navbar
+    │   ├── useActiveSection.js  <- Scrollspy
+    │   └── useScrollReveal.js   <- Animação de entrada via IntersectionObserver nativo
     ├── data/
-    │   ├── siteContent.js      <- [SINGLE SOURCE OF TRUTH] Textos de todas as seções e contatos
-    │   ├── proceduresData.js   <- [SINGLE SOURCE OF TRUTH] Todos os procedimentos e páginas internas
-    │   ├── heroFan.js          <- Geometria das 16 fatias do carrossel em arco SVG
-    │   ├── site.js             <- Re-export de retrocompatibilidade para siteContent
-    │   ├── content.js          <- Re-export de retrocompatibilidade para siteContent
-    │   └── procedures.js       <- Re-export de retrocompatibilidade para proceduresData
+    │   ├── siteContent.js       <- [SINGLE SOURCE OF TRUTH] Textos e contatos de todas as seções
+    │   ├── proceduresData.js    <- [SINGLE SOURCE OF TRUTH] Os 13 procedimentos da Home
+    │   └── coursesData.js       <- Cursos/mentorias e o card "Em Breve"
     ├── components/
-    │   ├── layout/
-    │   │   ├── Header.jsx              <- Navbar com física Framer Motion e shift
-    │   │   ├── MobileDrawer.jsx        <- Gaveta móvel com molas e stagger
-    │   │   ├── ScrollSectionWidget.jsx <- Indicador flutuante de 3 níveis (desktop)
-    │   │   ├── ScrollEdgeRail.jsx      <- Marcador dinâmico deslizante na borda direita
-    │   │   └── Footer.jsx              <- Rodapé editorial institucional
+    │   ├── layout/ (Header, MobileDrawer, Footer, BackToTop)
     │   ├── sections/
-    │   │   ├── HeroSection.jsx         <- Hero Didone + Arco Radial rotativo
-    │   │   ├── ProceduresSection.jsx   <- Grid 2x2 com links para rotas internas
-    │   │   ├── AuthoritySection.jsx    <- Filosofia de Atendimento e citação
-    │   │   ├── CourseSection.jsx       <- Linha do tempo dos 5 passos do curso
-    │   │   ├── VideoSection.jsx        <- Bloco de demonstração em vídeo
-    │   │   ├── CasesSection.jsx        <- Casos clínicos e registros
-    │   │   ├── AboutSection.jsx        <- Trajetória e perfil da Steffani
-    │   │   ├── CrossSellSection.jsx    <- Cards de cuidados complementares
-    │   │   ├── FaqSection.jsx          <- Accordion com fechamento alternado
-    │   │   └── FinalCtaSection.jsx     <- Chamada final escura com links de WhatsApp
+    │   │   ├── HeroSection.jsx       <- TORRES BEAUTY ACADEMY + foto (ver §3)
+    │   │   ├── ProceduresSection.jsx <- Trilho arrastável + filtro por categoria
+    │   │   ├── CasesSection.jsx      <- Galeria "Resultados" (6 itens, fotos+vídeos)
+    │   │   ├── AboutSection.jsx      <- Sobre Steffani Torres
+    │   │   ├── CourseSection.jsx / CoursePremiere.jsx
+    │   │   ├── SalonSection.jsx / CrossSellSection.jsx / FaqSection.jsx / FinalCtaSection.jsx
     │   └── ui/
-    │       ├── Icons.jsx               <- Ícones SVG acessíveis e sem dependências
-    │       └── SectionLink.jsx         <- Link inteligente para âncoras locais ou cross-page
+    │       ├── BrandLogo.jsx         <- Logo TORRES / beleza & ensino
+    │       ├── EditorialTitle.jsx    <- Títulos com `*itálico*`
+    │       ├── Icons.jsx / SectionLink.jsx
     └── pages/
-        ├── HomePage.jsx                <- Montagem da Landing Page completa
-        ├── ProcedurePage.jsx           <- Página interna dinâmica (/procedimentos/:slug)
-        └── NotFoundPage.jsx            <- Página 404 editorial elegante
+        ├── HomePage.jsx          <- Monta todas as seções + useScrollReveal
+        └── NotFoundPage.jsx
 ```
+
+**Não existe mais** página individual de procedimento (`ProcedurePage.jsx`), modal de categoria, nem `procedure-page.css`/`procedure-cards.css` — tudo foi incorporado à `ProceduresSection` na Home.
 
 ---
 
-## 4. 🚀 Guia Passo a Passo de Manutenção (Single Source of Truth)
+## 3. 🚀 Guia de Manutenção
 
-### 4.1 Como Adicionar um Novo (5º) Procedimento
-**NUNCA altere componentes JSX para cadastrar um novo serviço.**
+### 3.1 Como Adicionar/Editar um Procedimento
 1. Abra `src/data/proceduresData.js`.
-2. Adicione um novo objeto no array `PROCEDURES` com a seguinte estrutura:
-```javascript
-{
-  slug: "novo-tratamento",
-  num: "05",
-  title: "Nome do Tratamento",
-  summary: "Resumo curto que aparece no card da Home (1 a 2 linhas).",
-  imageId: "1570172619644-dfd03ed5d881", // ID do Unsplash ou URL direta
-  alt: "Descrição acessível da imagem",
-  category: "Face / Corpo / Pele",
-  lead: "Texto introdutório marcante para a página interna do procedimento.",
-  indications: [
-    "Primeira indicação clínica",
-    "Segunda indicação clínica",
-    "Terceira indicação clínica"
-  ],
-  steps: [
-    { title: "Avaliação", desc: "Descrição da etapa 1" },
-    { title: "Aplicação", desc: "Descrição da etapa 2" },
-    { title: "Finalização", desc: "Descrição da etapa 3" }
-  ],
-  facts: [
-    { label: "Duração", value: "45 min" },
-    { label: "Recuperação", value: "Imediata" },
-    { label: "Resultado", value: "Em 7 dias" },
-    { label: "Manutenção", value: "Semestral" }
-  ],
-  faq: [
-    { q: "Pergunta frequente sobre o tratamento?", a: "Resposta explicativa e acolhedora." }
-  ]
-}
-```
-3. **Pronto!** Automaticamente:
-   - O card aparecerá na Home com numeração `05`.
-   - A rota dinâmica `/procedimentos/novo-tratamento` estará ativa, responsiva e com breadcrumbs.
-   - O botão de agendamento montará o link do WhatsApp com mensagem pré-preenchida para o novo serviço.
+2. Edite ou adicione um objeto em `PROCEDURES` (`slug`, `title`, `group`, `summary`, `image`, `alt`). `group` precisa existir em `PROCEDURE_GROUPS`.
+3. A foto deve estar em `public/images/procedimentos/<slug>.webp`, proporção 4:5 (640×800 recomendado). Gere com `sharp` a partir de uma foto real em `Referencias - Steffani/Fontes-Imagens-Originais/` — nunca use imagens de banco de imagens ou extraídas de PDF como se fossem fotos do ateliê.
+4. O card, o filtro e o link do WhatsApp (`getProcedureWhatsappUrl`) são gerados automaticamente.
 
-### 4.2 Como Alterar Contatos, WhatsApp, E-mail ou Horários
-1. Abra `src/data/siteContent.js`.
-2. Edite o objeto `CONTACT_INFO`:
-   - `whatsappUrl`: Link direto da API do WhatsApp.
-   - `phoneDisplay`: Telefone formatado exibido na interface.
-   - `email`: E-mail de atendimento.
-   - `openingHours`: Lista de horários do footer.
-3. Toda a aplicação atualizará instantaneamente.
+### 3.2 Como Alterar Contatos, WhatsApp, E-mail ou Horários
+Edite `CONTACT_INFO` em `src/data/siteContent.js`.
 
-### 4.3 Como Adicionar uma Nova Seção na Home
-1. Crie o componente em `src/components/sections/NovaSecao.jsx` seguindo a estrutura semântica e os comentários `[AI-STYLE-RULE]`.
-2. Registre os textos em `src/data/siteContent.js`.
-3. Adicione a seção no array `SECTIONS` em `src/data/siteContent.js` se desejar que ela entre no indicador de rolagem (Scrollspy).
-4. Importe e posicione o componente em `src/pages/HomePage.jsx`.
+### 3.3 Como Trocar a Foto da Hero
+1. Coloque a imagem original em `Referencias - Steffani/` (fora do git).
+2. Gere 3 larguras em WebP com `sharp` (`640`, `1000`, `1400` — ver histórico de commits para o script).
+3. Atualize `src/components/sections/HeroSection.jsx` (`src`/`srcSet`) e, se a proporção mudar, o `aspect-ratio` e `--hero-photo-edge` (cor medida nas bordas da foto) em `src/styles/hero.css`.
+
+### 3.4 Como Adicionar uma Nova Seção na Home
+1. Crie o componente em `src/components/sections/`.
+2. Registre textos em `siteContent.js`.
+3. Importe e posicione em `src/pages/HomePage.jsx`.
+4. Se a seção tiver cabeçalho/cards que devem animar ao rolar, adicione os seletores correspondentes em `src/hooks/useScrollReveal.js` (`SELECTOR`) e no bloco "SCROLL REVEAL EDITORIAL" de `globals.css`.
 
 ---
 
-## 5. 🏷️ Dicionário de Tags Semânticas (`AI-Tags`)
+## 4. 🛡️ Regras Técnicas
 
-Todo o código deste repositório utiliza tags padronizadas em comentários para guiar a IA e desenvolvedores:
+### 4.1 Imagens
+- Todo asset servido ao navegador é `.webp` (gerado com `sharp`, qualidade 78–82).
+- `public/images/` contém **apenas** o que é referenciado em `src/` — nada de fotos-fonte em alta resolução (ficam em `Referencias - Steffani/Fontes-Imagens-Originais/`, fora do git).
+- `fetchPriority="high"` só na foto da Hero; `loading="lazy"` + `decoding="async"` em todo o resto.
 
-| Tag | Local de Uso | Significado e Regra |
-| :--- | :--- | :--- |
-| `// [AI-FILE-PURPOSE]:` | 1ª linha do arquivo | Explica em 2 linhas a finalidade do arquivo, de onde ele consome dados e quais componentes afeta. |
-| `// [AI-DO-NOT-BREAK]:` | Blocos sensíveis | Estrutura crítica (ex: rotas dinâmicas, classes do design system, scroll helpers, acessibilidade). **Não remover.** |
-| `// [AI-EDIT-ZONE]:` | Blocos editáveis | Área segura para adicionar itens, trocar imagens, textos e novos links. |
-| `// [AI-STYLE-RULE]:` | Antes de blocos visuais | Regra estética da seção (ex: fundo, cores permitidas, padding e botões). |
-| `/** [AI-COMPONENT]: ... */` | Antes da declaração do componente | Documentação JSDoc formal com `props` esperadas e exemplo de uso. |
+### 4.2 Scroll Reveal (sem GSAP)
+`useScrollReveal` (IntersectionObserver nativo) adiciona `.is-revealed` na primeira vez que o elemento entra na viewport. Com `prefers-reduced-motion: reduce`, todos os itens recebem `.is-revealed` e `.no-motion` imediatamente (sem `translateY`, só fade curto). Não reintroduza GSAP/ScrollTrigger — a dependência foi removida do `package.json`.
 
----
+### 4.3 Botões e Cantos
+`border-radius: 0` em todo o projeto. Qualquer variante nova de botão entra em `src/styles/buttons.css`, nunca em CSS de seção.
 
-## 6. 🛡️ Protocolo de Build e Verificação
-Após qualquer alteração no código:
-1. Execute `npm run build` no terminal para certificar-se de que não há erros de compilação ou TypeScript/JSX inválido.
-2. Certifique-se de que a página estática de fallback em `legacy/` permanece intocada para fins de auditoria visual.
+### 4.4 Protocolo de Build e Verificação
+Após qualquer alteração:
+1. `npm run build` — sem erros.
+2. Testar 320/375/390/414/480/768/820/1024/1280/1366/1440px: sem rolagem horizontal, botões ≥ 48px.
+3. Conferir que nenhuma imagem nova pesa mais que ~300KB e que `public/images/` continua enxuto (`du -sh public/images`).
+4. O fallback estático em `legacy/` permanece intocado para fins de auditoria visual.

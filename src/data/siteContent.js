@@ -91,7 +91,7 @@ export const SALON_CONTENT = {
       id: "01",
       title: "Lounge de Acolhimento",
       desc: "Espaço intimista com cantinho de café e espelho iluminado para relaxar antes do seu atendimento.",
-      image: "/images/espaco/assets-salao01.JPEG",
+      image: "/images/espaco/assets-salao01.webp",
       alt: "Lounge de acolhimento do Torres Beauty Academy com espelho iluminado e cantinho do café",
       objectPosition: "center center"
     },
@@ -99,7 +99,7 @@ export const SALON_CONTENT = {
       id: "02",
       title: "Conforto & Sofisticação",
       desc: "Atmosfera serena e climatizada, pensada para desacelerar a sua rotina com total privacidade.",
-      image: "/images/espaco/assets-salao02.JPEG",
+      image: "/images/espaco/assets-salao02.webp",
       alt: "Área de circulação e espera com poltrona relaxante e acesso às salas de procedimento",
       objectPosition: "center center"
     },
@@ -107,7 +107,7 @@ export const SALON_CONTENT = {
       id: "03",
       title: "Consultoria & Visagismo",
       desc: "Mesa de avaliação personalizada para planejar o design ideal aos seus traços naturais com precisão.",
-      image: "/images/espaco/assets-salao03.JPEG",
+      image: "/images/espaco/assets-salao03.webp",
       alt: "Sala de consultoria e avaliação de visagismo do Torres Beauty Academy",
       objectPosition: "center center"
     },
@@ -115,7 +115,7 @@ export const SALON_CONTENT = {
       id: "04",
       title: "Equipe Especializada",
       desc: "Especialistas qualificadas pela Torres Beauty Academy, prontas para cuidar de você com carinho e excelência.",
-      image: "/images/espaco/assets-equipe.JPEG",
+      image: "/images/espaco/assets-equipe.webp",
       alt: "Equipe de especialistas do Torres Beauty Academy com aventais profissionais bordados",
       objectPosition: "center 15%"
     }
@@ -168,7 +168,7 @@ export const CASES_CONTENT = {
 
 // [AI-EDIT-ZONE]: Conteúdo da Seção Sobre Steffani
 export const ABOUT_CONTENT = {
-  image: "/images/sobre/assets-sobre01.jpg",
+  image: "/images/sobre/assets-sobre01.webp",
   imageAlt: "Retrato de Steffani Torres",
   metaLabel: "TRAJETÓRIA & COMPROMISSO",
   title: "Sobre *Steffani Torres*",
