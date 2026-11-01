@@ -29,7 +29,7 @@ export function FaqSection() {
     // [AI-STYLE-RULE]: Máxima largura de 860px centralizada, divisórias finas e ícone '+' que rotaciona 45 graus
     <section id="faq" className="section-spacing">
       <div className="container">
-        <div className="text-center mb-12">
+        <div className="text-center mb-12 reveal">
           <span className="meta-label">{FAQ_CONTENT.metaLabel}</span>
           <EditorialTitle text={FAQ_CONTENT.title} />
         </div>

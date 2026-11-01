@@ -1429,7 +1429,9 @@ textarea:focus-visible {
 .about-photo,
 .about-content,
 .cross-sell-card,
-.final-cta-content {
+.final-cta-content,
+.faq-item,
+.reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
@@ -1439,6 +1441,48 @@ textarea:focus-visible {
 .is-revealed {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* FAQ: soma a entrada as transicoes de hover/abertura, com atraso so na entrada */
+.faq-item {
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              margin 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hero: entrada ao carregar a pagina (acima da dobra, nao depende de rolagem) */
+.hero__portrait-frame {
+  animation: hero-fade 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero__content > * {
+  animation: hero-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero__content > :nth-child(1) { animation-delay: 0.25s; }
+.hero__content > :nth-child(2) { animation-delay: 0.4s; }
+.hero__content > :nth-child(3) { animation-delay: 0.6s; }
+.hero__content > :nth-child(4) { animation-delay: 0.75s; }
+
+@keyframes hero-fade {
+  from { opacity: 0; scale: 1.04; }
+  to { opacity: 1; scale: 1; }
+}
+
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__portrait-frame,
+  .hero__content > * {
+    animation: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1454,7 +1498,9 @@ textarea:focus-visible {
   .about-photo,
   .about-content,
   .cross-sell-card,
-  .final-cta-content {
+  .final-cta-content,
+  .faq-item,
+  .reveal {
     transform: none;
     transition: opacity 0.6s ease;
   }

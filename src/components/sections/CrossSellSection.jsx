@@ -16,9 +16,11 @@ export function CrossSellSection() {
     // [AI-STYLE-RULE]: Fundo Branco Aquecido (Warm White #EEE8DF), cards com fundo Off-white e borda sutil
     <section className="cross-sell-section section-spacing-sm">
       <div className="container">
-        <span className="meta-label">{CROSS_SELL_CONTENT.metaLabel}</span>
-        <EditorialTitle text={CROSS_SELL_CONTENT.title} className="mb-2" />
-        <p>{CROSS_SELL_CONTENT.subtitle}</p>
+        <div className="reveal">
+          <span className="meta-label">{CROSS_SELL_CONTENT.metaLabel}</span>
+          <EditorialTitle text={CROSS_SELL_CONTENT.title} className="mb-2" />
+          <p>{CROSS_SELL_CONTENT.subtitle}</p>
+        </div>
 
         {/* [AI-EDIT-ZONE]: Cards de Cross-sell */}
         <div className="cross-sell-grid">

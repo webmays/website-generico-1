@@ -19,10 +19,12 @@ const SELECTOR = [
   ".about-photo",
   ".about-content",
   ".cross-sell-card",
-  ".final-cta-content"
+  ".final-cta-content",
+  ".faq-item",
+  ".reveal"
 ].join(", ");
 
-const STAGGER_GROUPS = [".procedures-track", ".results-gallery", ".courses-bands-list", ".salon-gallery-grid", ".cross-sell-grid"];
+const STAGGER_GROUPS = [".procedures-track", ".results-gallery", ".courses-bands-list", ".salon-gallery-grid", ".cross-sell-grid", ".faq-list"];
 
 function applyStaggerDelay(el) {
   const group = el.closest(STAGGER_GROUPS.join(", "));

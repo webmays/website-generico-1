@@ -2,7 +2,7 @@
 // [AI-FILE-PURPOSE]: Galeria "Resultados Reais": curadoria de 6 itens (fotos e videos) em grade reta, que vira trilho no celular.
 // [AI-DO-NOT-BREAK]: O ID "resultados" e alvo da navegacao. Nao repetir aqui fotos usadas nos cards de Procedimentos.
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CASES_CONTENT } from "../../data/siteContent";
 import { EditorialTitle } from "../ui/EditorialTitle";
 
@@ -49,6 +49,28 @@ function ResultVideo({ item }) {
  * @example <CasesSection />
  */
 export function CasesSection() {
+  const galleryRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [hasSwiped, setHasSwiped] = useState(false);
+  const total = CASES_CONTENT.cards.length;
+
+  // No celular a galeria vira trilho: acompanha o item visivel para os indicadores
+  const handleScroll = () => {
+    const gallery = galleryRef.current;
+    if (!gallery) return;
+    const item = gallery.firstElementChild;
+    if (!item) return;
+    const step = item.getBoundingClientRect().width + parseFloat(getComputedStyle(gallery).columnGap || 0);
+    const index = Math.round(gallery.scrollLeft / step);
+    setActiveIndex(Math.min(Math.max(index, 0), total - 1));
+    if (gallery.scrollLeft > 8) setHasSwiped(true);
+  };
+
+  const scrollToIndex = (index) => {
+    const target = galleryRef.current?.children[index];
+    target?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+  };
+
   return (
     <section id={CASES_CONTENT.id} className="results-section">
       <div className="container">
@@ -59,7 +81,13 @@ export function CasesSection() {
         </div>
       </div>
 
-      <div className="results-gallery">
+      <div
+        ref={galleryRef}
+        className={`results-gallery ${hasSwiped ? "has-swiped" : ""}`}
+        role="group"
+        aria-label={CASES_CONTENT.galleryLabel}
+        onScroll={handleScroll}
+      >
         {CASES_CONTENT.cards.map((item) => (
           <figure key={item.id} className="results-item">
             {item.video ? (
@@ -71,8 +99,28 @@ export function CasesSection() {
         ))}
       </div>
 
+      {/* Navegacao do trilho: so aparece no celular (ver results.css) */}
+      <div className="container results-nav reveal">
+        <span className={`results-swipe-hint ${hasSwiped ? "is-hidden" : ""}`} aria-hidden="true">
+          {CASES_CONTENT.swipeHint}
+          <span className="results-swipe-arrow">→</span>
+        </span>
+        <div className="results-dots">
+          {CASES_CONTENT.cards.map((item, idx) => (
+            <button
+              key={item.id}
+              type="button"
+              className={`results-dot ${idx === activeIndex ? "is-active" : ""}`}
+              aria-label={`Ver resultado ${idx + 1} de ${total}`}
+              aria-current={idx === activeIndex ? "true" : undefined}
+              onClick={() => scrollToIndex(idx)}
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="container">
-        <p className="results-disclaimer">{CASES_CONTENT.disclaimer}</p>
+        <p className="results-disclaimer reveal">{CASES_CONTENT.disclaimer}</p>
       </div>
     </section>
   );

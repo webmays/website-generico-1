@@ -165,6 +165,8 @@ export const CASES_CONTENT = {
       alt: "Sobrancelhas masculinas com design natural"
     }
   ],
+  swipeHint: "Deslize para ver mais",
+  galleryLabel: "Galeria de resultados",
   disclaimer: "* Resultados reais de procedimentos realizados no Torres Beauty Academy. Resultados podem variar de acordo com características biológicas individuais."
 };
 

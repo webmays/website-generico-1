@@ -56,6 +56,10 @@
   color: var(--text-dark-muted);
 }
 
+.results-nav {
+  display: none;
+}
+
 @media (max-width: 640px) {
   .results-gallery {
     display: flex;
@@ -63,10 +67,101 @@
     scroll-snap-type: x mandatory;
     scroll-padding-inline: var(--gallery-gutter);
     scrollbar-width: none;
+    overscroll-behavior-x: contain;
   }
 
+  .results-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* [AI-STYLE-RULE]: 74vw deixa o proximo item aparecendo na borda, o sinal mais claro de que da para deslizar. */
   .results-item {
-    flex: 0 0 82vw;
+    flex: 0 0 74vw;
     scroll-snap-align: start;
+  }
+
+  /* Pequeno "empurrao" lateral quando a galeria aparece, ate o usuario deslizar pela primeira vez */
+  .results-gallery:not(.has-swiped) .results-item.is-revealed {
+    animation: results-nudge 1.6s cubic-bezier(0.45, 0, 0.25, 1) 1.1s 2;
+  }
+
+  .results-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.1rem;
+  }
+
+  .results-swipe-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--accent-gold-on-light);
+    transition: opacity 0.4s ease;
+  }
+
+  .results-swipe-hint.is-hidden {
+    opacity: 0;
+  }
+
+  .results-swipe-arrow {
+    display: inline-block;
+    font-size: 1.1rem;
+    animation: results-arrow 1.4s ease-in-out infinite;
+  }
+
+  .results-dots {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Botao com 32px de toque e o ponto desenhado no ::before */
+  .results-dot {
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 32px;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+  }
+
+  .results-dot::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--text-dark-muted);
+    opacity: 0.35;
+    transition: width 0.35s ease, opacity 0.35s ease, background-color 0.35s ease;
+  }
+
+  .results-dot.is-active::before {
+    width: 18px;
+    opacity: 1;
+    background: var(--accent-gold-on-light);
+  }
+}
+
+@keyframes results-nudge {
+  0%, 100% { translate: 0 0; }
+  35% { translate: -36px 0; }
+  60% { translate: 0 0; }
+}
+
+@keyframes results-arrow {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .results-gallery .results-item.is-revealed,
+  .results-swipe-arrow {
+    animation: none;
   }
 }
