@@ -99,7 +99,7 @@
   align-items: center;
   gap: 0.75rem;
   background-color: var(--color-brown);
-  color: #F7F5F2;
+  color: var(--text-light);
   font-family: var(--font-sans);
   font-size: clamp(0.95rem, 1.05vw, 1.05rem);
   font-weight: 600;
@@ -117,11 +117,11 @@
 }
 
 .btn-courses-pill:hover {
-  background-color: #3A3531;
-  border-color: #3A3531;
+  background-color: var(--tone-700);
+  border-color: var(--tone-700);
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(99, 91, 85, 0.28);
-  color: #F7F5F2;
+  color: var(--text-light);
 }
 
 .btn-courses-pill svg {
@@ -183,7 +183,7 @@
   aspect-ratio: 1 / 1;
   border-radius: 0;
   overflow: hidden;
-  background-color: #EBE7E0;
+  background-color: var(--bg-light-surface);
   margin: 0;
   display: block;
   flex-shrink: 0;
@@ -409,32 +409,32 @@
    A. TEMA CLARO (FAIXA BRANCA / PORCELANA)
    -------------------------------------------------------------------------- */
 .course-band-item.is-light-theme {
-  background-color: #F7F5F2;
+  background-color: var(--text-light);
   border-top: 1px solid rgba(99, 91, 85, 0.12);
 }
 
 .course-band-item.is-light-theme .course-kicker-num {
-  color: var(--color-brown, #635B55);
+  color: var(--color-brown);
 }
 
 .course-band-item.is-light-theme .course-kicker-line {
-  background-color: var(--color-gold, #C99E67);
+  background-color: var(--color-gold);
 }
 
 .course-band-item.is-light-theme .course-kicker-cat {
-  color: #635B55;
+  color: var(--text-dark-muted);
 }
 
 .course-band-item.is-light-theme .course-band-title {
-  color: #221E1C;
+  color: var(--text-dark);
 }
 
 .course-band-item.is-light-theme:hover .course-band-title {
-  color: var(--color-brown, #635B55);
+  color: var(--color-brown);
 }
 
 .course-band-item.is-light-theme .course-band-headline {
-  color: #635B55;
+  color: var(--text-dark-muted);
 }
 
 .course-band-item.is-light-theme .course-band-desc {
@@ -442,7 +442,7 @@
 }
 
 .course-band-item.is-light-theme .course-pillars-heading {
-  color: #635B55;
+  color: var(--text-dark-muted);
 }
 
 .course-band-item.is-light-theme .course-pillars-line {
@@ -451,12 +451,12 @@
 
 .course-band-item.is-light-theme .pillar-check-icon {
   background-color: rgba(99, 91, 85, 0.08);
-  color: var(--color-brown, #635B55);
+  color: var(--color-brown);
   border: 1px solid rgba(99, 91, 85, 0.14);
 }
 
 .course-band-item.is-light-theme .pillar-title {
-  color: #1C1917;
+  color: var(--bg-dark-main);
 }
 
 .course-band-item.is-light-theme .pillar-desc {
@@ -464,23 +464,23 @@
 }
 
 .course-band-item.is-light-theme .btn-course-band-cta {
-  background-color: var(--color-brown, #635B55);
-  color: #F7F5F2;
-  border: 1px solid var(--color-brown, #635B55);
+  background-color: var(--color-brown);
+  color: var(--text-light);
+  border: 1px solid var(--color-brown);
   box-shadow: 0 6px 18px rgba(99, 91, 85, 0.18);
 }
 
 .course-band-item.is-light-theme .btn-course-band-cta:hover {
-  background-color: #3A3531;
-  border-color: #3A3531;
-  color: #F7F5F2;
+  background-color: var(--tone-700);
+  border-color: var(--tone-700);
+  color: var(--text-light);
   transform: translateY(-2px);
   box-shadow: 0 10px 24px rgba(99, 91, 85, 0.26);
 }
 
 .course-band-item.is-light-theme .course-cta-urgency {
   background-color: rgba(99, 91, 85, 0.08);
-  color: var(--color-brown, #635B55);
+  color: var(--color-brown);
   border: 1.5px solid rgba(99, 91, 85, 0.24);
   box-shadow: 0 2px 8px rgba(99, 91, 85, 0.06);
 }
@@ -494,33 +494,33 @@
    B. TEMA ESCURO (FAIXA MARROM LUXO)
    -------------------------------------------------------------------------- */
 .course-band-item.is-dark-theme {
-  background-color: #221E1C;
+  background-color: var(--text-dark);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .course-band-item.is-dark-theme .course-kicker-num {
-  color: #C99E67;
+  color: var(--accent-gold);
 }
 
 .course-band-item.is-dark-theme .course-kicker-line {
-  background-color: #C99E67;
+  background-color: var(--accent-gold);
 }
 
 .course-band-item.is-dark-theme .course-kicker-cat {
-  color: #D8D2CA;
+  color: var(--tone-200);
 }
 
 .course-band-item.is-dark-theme .course-band-title {
-  color: #F7F5F2;
+  color: var(--text-light);
 }
 
 .course-band-item.is-dark-theme:hover .course-band-title {
-  color: #C99E67;
+  color: var(--accent-gold);
 }
 
 .course-band-item.is-dark-theme .course-band-headline {
-  color: #C99E67;
+  color: var(--accent-gold);
 }
 
 .course-band-item.is-dark-theme .course-band-desc {
@@ -528,7 +528,7 @@
 }
 
 .course-band-item.is-dark-theme .course-pillars-heading {
-  color: #C99E67;
+  color: var(--accent-gold);
 }
 
 .course-band-item.is-dark-theme .course-pillars-line {
@@ -537,12 +537,12 @@
 
 .course-band-item.is-dark-theme .pillar-check-icon {
   background-color: rgba(201, 158, 103, 0.14);
-  color: #D8D2CA;
+  color: var(--tone-200);
   border: 1px solid rgba(201, 158, 103, 0.3);
 }
 
 .course-band-item.is-dark-theme .pillar-title {
-  color: #F7F5F2;
+  color: var(--text-light);
 }
 
 .course-band-item.is-dark-theme .pillar-desc {
@@ -550,23 +550,23 @@
 }
 
 .course-band-item.is-dark-theme .btn-course-band-cta {
-  background-color: #F7F5F2;
-  color: #221E1C;
-  border: 1px solid #F7F5F2;
+  background-color: var(--text-light);
+  color: var(--text-dark);
+  border: 1px solid var(--text-light);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .course-band-item.is-dark-theme .btn-course-band-cta:hover {
-  background-color: #C99E67;
-  border-color: #C99E67;
-  color: #1C1917;
+  background-color: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: var(--bg-dark-main);
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.42);
 }
 
 .course-band-item.is-dark-theme .course-cta-urgency {
   background-color: rgba(201, 158, 103, 0.16);
-  color: #F7F5F2;
+  color: var(--text-light);
   border: 1.5px solid rgba(201, 158, 103, 0.42);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }

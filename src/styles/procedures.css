@@ -1,0 +1,174 @@
+/* ============================================================================
+   WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)
+   ============================================================================
+   [AI-STYLESHEET]: src/styles/procedures.css
+   [AI-PURPOSE]: Secao de Procedimentos: cabecalho, filtros quadrados e trilho com scroll-snap.
+   ============================================================================ */
+
+.procedures-section {
+  background-color: var(--bg-light-main);
+  padding-block: clamp(4rem, 7vw, 7rem);
+  overflow: hidden;
+}
+
+.procedures-title {
+  color: var(--text-dark);
+  margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.procedures-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  flex-wrap: wrap;
+  margin-bottom: clamp(1.5rem, 2.5vw, 2.25rem);
+}
+
+.procedures-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.procedures-filter {
+  min-height: 48px;
+  padding: 0.5rem 1.1rem;
+  background: transparent;
+  border: 1px solid rgba(99, 91, 85, 0.35);
+  border-radius: 0;
+  color: var(--text-dark);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.procedures-filter:hover {
+  border-color: var(--accent-gold-on-light);
+  color: var(--accent-gold-on-light);
+}
+
+.procedures-filter.is-active {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: var(--bg-dark-main);
+  font-weight: 600;
+}
+
+.procedures-hint {
+  font-size: 0.8rem;
+  color: var(--text-dark-muted);
+  white-space: nowrap;
+}
+
+.procedures-hint.is-hidden {
+  visibility: hidden;
+}
+
+/* Trilho: alinhado ao container a esquerda e sangrando ate a borda a direita */
+.procedures-track {
+  --track-gutter: max(clamp(1.25rem, 4vw, 3rem), calc((100vw - var(--container-max)) / 2 + clamp(1.25rem, 4vw, 3rem)));
+  display: flex;
+  gap: clamp(1rem, 1.6vw, 1.5rem);
+  padding-inline: var(--track-gutter);
+  padding-bottom: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--track-gutter);
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold) transparent;
+  cursor: grab;
+}
+
+.procedures-track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  user-select: none;
+}
+
+.procedure-card {
+  flex: 0 0 clamp(250px, 24vw, 320px);
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+}
+
+.procedure-card__media {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background-color: var(--bg-light-surface);
+  margin-bottom: 1.1rem;
+}
+
+.procedure-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.procedure-card:hover .procedure-card__media img {
+  transform: scale(1.04);
+}
+
+.procedure-card__title {
+  font-size: clamp(1.45rem, 2vw, 1.7rem);
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.procedure-card__summary {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--text-dark-muted);
+  margin-bottom: 0.75rem;
+}
+
+.procedure-card__action {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  width: fit-content;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-gold-on-light);
+  border-bottom: 1px solid currentColor;
+  transition: color 0.25s ease;
+}
+
+.procedure-card__action:hover {
+  color: var(--text-dark);
+}
+
+@media (max-width: 640px) {
+  .procedure-card {
+    flex-basis: 78vw;
+    max-width: 320px;
+  }
+
+  /* Filtros em uma linha rolavel para nao ocupar a tela no celular */
+  .procedures-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    margin-inline: calc(-1 * clamp(1.25rem, 4vw, 3rem));
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+    scrollbar-width: none;
+  }
+
+  .procedures-filter {
+    flex-shrink: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .procedure-card__media img {
+    transition: none;
+  }
+
+  .procedure-card:hover .procedure-card__media img {
+    transform: none;
+  }
+}

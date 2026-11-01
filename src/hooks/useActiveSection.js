@@ -19,8 +19,8 @@ const DOM_SECTIONS = [
 
 /**
  * [AI-HOOK]: useActiveSection
- * @description Detecta em tempo real qual seção o usuário está lendo no scroll ou página interna.
- * @returns {string} ID da seção ativa correspondente aos links de navegação (ex: "procedimentos", "cursos", "metodo", "sobre", "faq") ou "" se estiver na Hero/topo.
+ * @description Detecta em tempo real qual seção o usuário está lendo no scroll na Home.
+ * @returns {string} ID da seção ativa correspondente aos links de navegação (ex: "procedimentos", "cursos", "sobre", "faq") ou "" se estiver na Hero/topo.
  */
 export function useActiveSection() {
   const [activeSection, setActiveSection] = useState("");
@@ -28,13 +28,7 @@ export function useActiveSection() {
   const { lenis } = useSmoothScroll();
 
   useEffect(() => {
-    // 1. Em páginas internas (ex: /procedimentos/:slug), destaca a categoria "procedimentos"
-    if (location.pathname.startsWith("/procedimentos")) {
-      setActiveSection("procedimentos");
-      return;
-    }
-
-    // Se estiver em outra página interna não-home
+    // Fora da Home nao ha secao ativa
     if (location.pathname !== "/") {
       setActiveSection("");
       return;

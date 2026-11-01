@@ -20,7 +20,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  background: linear-gradient(135deg, #1C1917 0%, #1C1917 55%, #1C1917 100%);
+  background: linear-gradient(135deg, var(--bg-dark-main) 0%, var(--bg-dark-main) 55%, var(--bg-dark-main) 100%);
   border: 1px solid rgba(201, 158, 103, 0.22);
   box-shadow: 0 24px 70px -15px rgba(28, 25, 23, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
   display: flex;
@@ -80,7 +80,7 @@
   width: clamp(480px, 44vw, 620px);
   height: clamp(480px, 44vw, 620px);
   border-radius: 0;
-  background: radial-gradient(circle at 50% 50%, #4E4742 0%, #262220 55%, #1C1917 100%);
+  background: radial-gradient(circle at 50% 50%, var(--tone-600) 0%, var(--bg-dark-surface) 55%, var(--bg-dark-main) 100%);
   border: 1px solid rgba(201, 158, 103, 0.25);
   box-shadow: 0 0 90px rgba(78, 71, 66, 0.35);
   pointer-events: none;
@@ -129,7 +129,7 @@
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #C99E67;
+  color: var(--accent-gold);
   white-space: nowrap;
 }
 
@@ -140,7 +140,7 @@
   font-weight: 800;
   line-height: 0.94;
   letter-spacing: -0.01em;
-  color: #F7F5F2;
+  color: var(--text-light);
   text-transform: uppercase;
   margin: 0.25rem 0 0.85rem 0;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
@@ -159,7 +159,7 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #C99E67;
+  color: var(--accent-gold);
   border-bottom: 1.5px solid rgba(201, 158, 103, 0.4);
   padding-bottom: 4px;
 }
@@ -170,7 +170,7 @@
   font-size: clamp(1.08rem, 2.2vw, 1.45rem);
   line-height: 1.48;
   font-weight: 400;
-  color: #F5F3EF;
+  color: var(--bg-light-main);
   max-width: 520px;
   margin: 0 0 clamp(1.2rem, 1.8vw, 1.6rem) 0;
 }
@@ -182,7 +182,7 @@
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #C99E67;
+  color: var(--accent-gold);
   margin: 0 0 clamp(1.5rem, 2.2vw, 2.2rem) 0;
   line-height: 1.45;
 }
@@ -197,8 +197,8 @@
 }
 
 .btn-upcoming-waitlist {
-  background-color: #F7F5F2;
-  color: #1C1917;
+  background-color: var(--text-light);
+  color: var(--bg-dark-main);
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: clamp(0.95rem, 1.05vw, 1.05rem);
@@ -223,7 +223,7 @@
 
 .btn-upcoming-waitlist:hover {
   transform: translateY(-2px);
-  background-color: #F5F3EF;
+  background-color: var(--bg-light-main);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.42);
 }
 
@@ -295,7 +295,7 @@
     left: 0;
     right: 0;
     height: 140px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(28, 25, 23, 0.65) 45%, #1C1917 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(28, 25, 23, 0.65) 45%, var(--bg-dark-main) 100%);
     pointer-events: none;
     z-index: 3;
   }

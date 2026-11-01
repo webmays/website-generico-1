@@ -11,7 +11,7 @@
 
 #espaco {
   scroll-margin-top: 100px;
-  background-color: var(--color-white-porcelain, #F5F3EF);
+  background-color: var(--color-white-porcelain);
   position: relative;
   overflow: hidden;
 }
@@ -66,7 +66,7 @@
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  color: var(--color-black, #221E1C);
+  color: var(--color-black);
   margin-bottom: 0.85rem;
   text-align: center;
 }
@@ -95,7 +95,7 @@
 .salon-portrait-card {
   position: relative;
   aspect-ratio: 3 / 4;
-  background-color: #F7F5F2;
+  background-color: var(--text-light);
   border: 1px solid rgba(99, 91, 85, 0.12);
   border-radius: 0;
   overflow: hidden;
@@ -154,7 +154,7 @@
   font-family: var(--font-serif);
   font-size: clamp(1.15rem, 1.3vw, 1.35rem);
   font-weight: 500;
-  color: #F7F5F2;
+  color: var(--text-light);
   margin: 0 0 0.3rem 0;
   line-height: 1.2;
   letter-spacing: -0.01em;
@@ -180,7 +180,7 @@
   justify-content: center;
   text-align: center;
   padding: 1.5rem 1rem;
-  background: linear-gradient(135deg, #F7F5F2 0%, #EBE7E0 50%, #EBE7E0 100%);
+  background: linear-gradient(135deg, var(--text-light) 0%, var(--bg-light-surface) 50%, var(--bg-light-surface) 100%);
   position: relative;
   border-radius: 0;
 }
@@ -201,7 +201,7 @@
 .salon-placeholder-icon {
   width: 24px;
   height: 24px;
-  color: var(--color-brown, #635B55);
+  color: var(--color-brown);
   opacity: 0.85;
 }
 
@@ -209,7 +209,7 @@
   font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--color-brown, #635B55);
+  color: var(--color-brown);
 }
 
 .salon-placeholder-path {
@@ -230,7 +230,7 @@
   font-family: var(--font-serif);
   font-size: 1.05rem;
   font-weight: 600;
-  color: #262220;
+  color: var(--bg-dark-surface);
   margin: 0 0 2px 0;
 }
 

@@ -3,7 +3,7 @@
    ============================================================================
    [AI-FILE-PURPOSE]: Ponto de entrada do Tailwind CSS v4 com tokens estáticos de design system e ordem de camadas.
    [AI-DO-NOT-BREAK]: Não importar o Preflight padrão do Tailwind aqui. O preflight altera o tamanho nativo de tags <h2>/<h3> e alinhamento de SVGs.
-   [AI-STYLE-RULE]: Camadas: theme -> base -> components (globals.css, hero, procedure-cards, courses, results) -> utilities.
+   [AI-STYLE-RULE]: Camadas: theme -> base -> components (globals, hero, procedures, results, courses, salon, buttons) -> utilities.
    ============================================================================ */
 
 @layer theme, base, components, utilities;
@@ -12,12 +12,11 @@
 @import "tailwindcss/utilities.css" layer(utilities) source(none);
 @import "./globals.css" layer(components);
 @import "./hero.css" layer(components);
-@import "./procedure-cards.css" layer(components);
+@import "./procedures.css" layer(components);
 @import "./courses.css" layer(components);
 @import "./results.css" layer(components);
 @import "./salon.css" layer(components);
 @import "./coursePremiere.css" layer(components);
-@import "./procedure-page.css" layer(components);
 @import "./buttons.css" layer(components);
 
 @source "../";

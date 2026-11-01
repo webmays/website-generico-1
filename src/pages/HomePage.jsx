@@ -28,7 +28,7 @@ export function HomePage() {
 
   useGsapReveals(containerRef);
 
-  // [AI-DO-NOT-BREAK]: Tratamento de âncoras cross-route (ex: navegação de /procedimentos/:slug para /#cursos)
+  // [AI-DO-NOT-BREAK]: Tratamento de âncoras cross-route (ex: redirect de /procedimentos/* para /#procedimentos)
   useEffect(() => {
     if (location.hash) {
       const targetId = location.hash.replace("#", "");

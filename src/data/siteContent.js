@@ -58,31 +58,24 @@ export const NAV_LINKS = {
 
 // [AI-EDIT-ZONE]: Conteúdo da Hero Section
 export const HERO_CONTENT = {
-  eyebrow: "ESTÉTICA AVANÇADA",
-  titleLine1: "TORRES",
-  titleLine2: "BEAUTY",
-  titleLine3: "ACADEMY",
-  subtitleLine1: "Estética, técnica e cuidado",
-  subtitleLine2: "para realçar sua beleza natural.",
-  ctaPrimary: {
-    label: "Ver procedimentos",
-    target: "procedimentos"
-  },
+  eyebrow: "BELEZA & ENSINO",
+  title: "TORRES BEAUTY ACADEMY",
+  subtitle: "Técnica e cuidado para realçar a sua beleza natural.",
+  ctaPrimary: "Agendar pelo WhatsApp",
   ctaSecondary: {
-    label: "Entrar em contato",
-    target: "contato"
-  },
-  whatsappText: "WhatsApp",
-  phoneShort: "(28) 99950-1731"
+    label: "Ver procedimentos →",
+    target: "procedimentos"
+  }
 };
 
 // [AI-EDIT-ZONE]: Conteúdo da Seção Procedimentos
 export const PROCEDURES_HEADER_CONTENT = {
-  metaLabel: "Catálogo Oficial • Torres Beauty",
-  title: "Procedimentos *exclusivos*",
-  subtitle: "Você é o seu maior investimento! Técnicas precisas, estudo facial e muito cuidado & amor para realçar a beleza natural do seu olhar.",
-  ctaPill: "Consultar horários no WhatsApp",
-  cardActionText: "Ver detalhes completos"
+  metaLabel: "PROCEDIMENTOS & PROTOCOLOS",
+  title: "Naturalidade com *padrão elevado*",
+  filterLabel: "Filtrar procedimentos por categoria",
+  trackLabel: "Lista de procedimentos",
+  dragHint: "Arraste para o lado →",
+  cardAction: "Agendar este procedimento →"
 };
 
 
@@ -129,138 +122,45 @@ export const SALON_CONTENT = {
   ]
 };
 
-// [AI-DEPRECATED-ALIAS]: Mantido para compatibilidade regressiva
-export const VIDEO_CONTENT = SALON_CONTENT;
-
 // [AI-EDIT-ZONE]: Conteúdo da Seção Resultados Reais (Showcase de Imagens - Torres Beauty Academy)
 export const CASES_CONTENT = {
   id: "resultados",
   metaLabel: "RESULTADOS REAIS",
   title: "Resultados que *falam por si*",
   subtitle: "Aqui você encontra resultados reais de procedimentos realizados em nossas clientes. Beleza natural, técnica e personalização em cada detalhe.",
+  // [AI-EDIT-ZONE]: Curadoria de 6 itens. Nao repetir fotos dos cards de Procedimentos.
   cards: [
     {
       id: "01",
-      procedure: "Design de Sobrancelhas & Cílios",
-      category: "sobrancelhas",
-      image: "/images/resultados/imagem04.JPEG",
-      alt: "Resultado de Sobrancelhas e Olhar — Torres Beauty Academy",
-      isTall: true,
-      isLargeSquare: true
+      image: "/images/resultados/resultado-cicatrizacao.webp",
+      alt: "Evolução de sobrancelhas: antes, pós imediato e cicatrizado"
     },
     {
       id: "02",
-      procedure: "Sobrancelhas: Cicatrização",
-      category: "sobrancelhas",
-      image: "/images/resultados/imagem06.JPEG?v=2",
-      alt: "Evolução de Sobrancelhas Antes, Pós Imediato e Cicatrizado — Torres Beauty Academy",
-      objectFit: "contain"
+      image: "/images/resultados/resultado-lash.webp",
+      alt: "Cílios antes e depois do Lash Lifting"
     },
     {
       id: "03",
-      procedure: "Lash Lifting",
-      category: "olhar",
-      image: "/images/resultados/imagem07.JPEG",
-      alt: "Resultado de Lash Lifting Antes e Depois — Torres Beauty Academy"
+      image: "/images/resultados/video03-poster.jpg",
+      video: "/images/resultados/video03.mp4",
+      alt: "Vídeo da transformação do olhar com Lash Lifting"
     },
     {
       id: "04",
-      procedure: "Revitalização Labial",
-      category: "labios",
-      image: "/images/resultados/imagem02.JPEG",
-      alt: "Revitalização e Tratamento Labial — Torres Beauty Academy"
+      image: "/images/resultados/resultado-labios.webp",
+      alt: "Lábios revitalizados e com contorno definido"
     },
     {
       id: "05",
-      procedure: "Sobrancelhas Masculinas",
-      category: "sobrancelhas",
-      image: "/images/resultados/imagem05.JPEG?v=2",
-      alt: "Design e Micropigmentação Masculina de Sobrancelhas — Torres Beauty Academy"
+      image: "/images/resultados/video05-poster.jpg",
+      video: "/images/resultados/video05.mp4",
+      alt: "Vídeo do alinhamento e da simetria das sobrancelhas"
     },
     {
       id: "06",
-      procedure: "Micropigmentação Shadow",
-      category: "sobrancelhas",
-      image: "/images/resultados/imagem08.png",
-      video: "/images/resultados/imagem08-vid.mp4",
-      alt: "Micropigmentação Shadow de Sobrancelhas em Vídeo — Torres Beauty Academy"
-    },
-    {
-      id: "07",
-      procedure: "Lash Lifting & Olhar",
-      category: "olhar",
-      image: "/images/resultados/imagem09.JPEG?v=2",
-      alt: "Lash Lifting e Curvatura dos Cílios — Torres Beauty Academy"
-    },
-    {
-      id: "08",
-      procedure: "Nanopigmentação Fio a Fio",
-      category: "sobrancelhas",
-      image: "/images/resultados/imagem11.JPEG",
-      alt: "Nanopigmentação Fio a Fio com Precisão — Torres Beauty Academy"
-    },
-    {
-      id: "09",
-      procedure: "Lash Lifting em Movimento",
-      category: "olhar",
-      image: "/images/resultados/video01-poster.jpg",
-      video: "/images/resultados/video01.mp4",
-      alt: "Lash Lifting em Movimento e Curvatura dos Cílios — Torres Beauty Academy"
-    },
-    {
-      id: "10",
-      procedure: "Curvatura & Alinhamento",
-      category: "olhar",
-      image: "/images/resultados/video02-poster.jpg",
-      video: "/images/resultados/video02.mp4",
-      alt: "Curvatura e Alinhamento Preciso dos Cílios — Torres Beauty Academy"
-    },
-    {
-      id: "11",
-      procedure: "Evolução do Olhar Antes e Depois",
-      category: "olhar",
-      image: "/images/resultados/video03-poster.jpg",
-      video: "/images/resultados/video03.mp4",
-      alt: "Transformação do Olhar com Lash Lifting em Vídeo — Torres Beauty Academy",
-      isLargeSquare: true,
-      isSquare1x1: true
-    },
-    {
-      id: "12",
-      procedure: "Design & Micropigmentação",
-      category: "sobrancelhas",
-      image: "/images/resultados/IMG_1292.JPEG",
-      alt: "Design e Micropigmentação de Sobrancelhas Antes e Depois — Torres Beauty Academy"
-    },
-    {
-      id: "13",
-      procedure: "Simetria & Fios Naturais",
-      category: "sobrancelhas",
-      video: "/images/resultados/video05.mp4",
-      image: "/images/resultados/video05-poster.jpg",
-      alt: "Alinhamento e Simetria de Sobrancelhas em Vídeo — Torres Beauty Academy"
-    },
-    {
-      id: "14",
-      procedure: "Revitalização Labial & Gloss",
-      category: "labios",
-      image: "/images/resultados/imagem13.JPEG",
-      alt: "Revitalização e Definição Labial de Alto Padrão — Torres Beauty Academy"
-    },
-    {
-      id: "15",
-      procedure: "Procedimento Labial em Vídeo",
-      category: "labios",
-      video: "/images/resultados/video04.mp4",
-      image: "/images/resultados/video04-poster.jpg",
-      alt: "Revitalização e Efeito Labial em Vídeo — Torres Beauty Academy"
-    },
-    {
-      id: "16",
-      procedure: "Harmonização e Cor Labial",
-      category: "labios",
-      image: "/images/resultados/assets-procedimentolabio.jpg",
-      alt: "Preenchimento de Cor e Revitalização Labial — Torres Beauty Academy"
+      image: "/images/resultados/resultado-masculino.webp",
+      alt: "Sobrancelhas masculinas com design natural"
     }
   ],
   disclaimer: "* Resultados reais de procedimentos realizados no Torres Beauty Academy. Resultados podem variar de acordo com características biológicas individuais."
@@ -269,12 +169,12 @@ export const CASES_CONTENT = {
 // [AI-EDIT-ZONE]: Conteúdo da Seção Sobre Steffani
 export const ABOUT_CONTENT = {
   image: "/images/sobre/assets-sobre01.jpg",
-  photoPlaceholder: "[Retrato Editorial Steffani]",
-  metaLabel: "Trajetória & Compromisso",
-  title: "Sobre Steffani",
+  imageAlt: "Retrato de Steffani Torres",
+  metaLabel: "TRAJETÓRIA & COMPROMISSO",
+  title: "Sobre *Steffani Torres*",
   paragraphs: [
-    "Dedicada à estética de alto padrão, Steffani construiu sua carreira unindo o rigor científico à sensibilidade artística. Sua atuação é pautada na personalização absoluta, garantindo que cada paciente receba exatamente o que harmoniza com sua essência.",
-    "Como mentora, ministra cursos focados em capacitar outros profissionais com segurança teórica, postura ética e domínio prático da rotina clínica."
+    "Acredito que cuidar da própria imagem não é sobre transformar quem você é, mas sobre revelar a segurança que já existe em você. Ao longo da minha trajetória na beleza estética, desenvolvi um olhar atento aos detalhes para entregar resultados naturais, elegantes e pensados exclusivamente para valorizar os seus traços.",
+    "Aqui, cada atendimento é um momento de pausa, escuta e cuidado real — para que você se olhe no espelho com orgulho e leveza todos os dias. E, através do ensino na Torres Beauty Academy, compartilho essa mesma técnica, ética e dedicação para formar mulheres prontas para construir carreiras sólidas e independentes no mercado da beleza."
   ],
   ctaButton: "Falar com a Steffani",
   ctaTarget: "contato"

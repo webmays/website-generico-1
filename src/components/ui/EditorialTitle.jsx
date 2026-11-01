@@ -9,9 +9,9 @@
  * @param {string} [props.className]
  * @example <EditorialTitle text="Duvidas *frequentes*" className="faq-title" />
  */
-export function EditorialTitle({ text, as: Tag = "h2", className }) {
+export function EditorialTitle({ text, as: Tag = "h2", className, id }) {
   return (
-    <Tag className={className}>
+    <Tag className={className} id={id}>
       {text.split("*").map((part, idx) =>
         idx % 2 === 1 ? <em key={idx}>{part}</em> : part
       )}

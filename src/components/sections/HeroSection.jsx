@@ -1,80 +1,53 @@
 // [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
-// [AI-FILE-PURPOSE]: Hero Section do Torres Beauty Academy — título em escada, CTAs, contato WhatsApp e retrato recortado sobre círculo geométrico.
-// [AI-DO-NOT-BREAK]: A ordem do DOM (título → retrato → CTAs) define a composição vertical no mobile. No desktop o retrato é absoluto (ver src/styles/hero.css).
+// [AI-FILE-PURPOSE]: Hero: titulo TORRES BEAUTY ACADEMY, subtitulo, CTA dourado e retrato fundido ao fundo por mascaras (ver styles/hero.css).
+// [AI-DO-NOT-BREAK]: O retrato nunca e esticado: width/height preservam a proporcao 2:3 e nao ha object-fit: fill.
 
 import { HERO_CONTENT, CONTACT_INFO, BRAND } from "../../data/siteContent";
 import { SectionLink } from "../ui/SectionLink";
-import { ChevronRight, WhatsAppIcon } from "../ui/Icons";
+import { WhatsAppIcon } from "../ui/Icons";
 
 /**
  * [AI-COMPONENT]: HeroSection
- * @description Primeira dobra da Landing Page, reproduzindo fielmente a referência editorial do ateliê.
  * @example <HeroSection />
  */
 export function HeroSection() {
   return (
     <section className="hero" id="hero" aria-labelledby="hero-title">
-      <div className="hero__content">
-        <div className="hero__eyebrow-wrap">
-          <div className="hero__eyebrow-line" aria-hidden="true" />
-          <span className="hero__eyebrow">{HERO_CONTENT.eyebrow}</span>
+      <div className="hero__visual">
+        <div className="hero__portrait-frame">
+          <img
+            src="/images/hero/torres-hero-1000.webp"
+            srcSet="/images/hero/torres-hero-640.webp 640w, /images/hero/torres-hero-1000.webp 1000w, /images/hero/torres-hero-1400.webp 1400w"
+            sizes="(max-width: 900px) 100vw, 45vw"
+            alt={`Steffani Torres, especialista da ${BRAND.fullAcademyTitle}`}
+            className="hero__portrait"
+            width="1400"
+            height="2096"
+            fetchPriority="high"
+            decoding="async"
+          />
         </div>
+      </div>
 
-        <h1 id="hero-title" className="hero__title">
-          <span className="hero__title-line">{HERO_CONTENT.titleLine1}</span>
-          <span className="hero__title-line hero__title-line--2">{HERO_CONTENT.titleLine2}</span>
-          <span className="hero__title-line hero__title-line--3">{HERO_CONTENT.titleLine3}</span>
-        </h1>
+      <div className="hero__content">
+        <span className="meta-label hero__eyebrow">{HERO_CONTENT.eyebrow}</span>
+        <h1 id="hero-title" className="hero__title">{HERO_CONTENT.title}</h1>
+        <p className="hero__subtitle">{HERO_CONTENT.subtitle}</p>
 
-        <p className="hero__subtitle">
-          {HERO_CONTENT.subtitleLine1}
-          <br />
-          {HERO_CONTENT.subtitleLine2}
-        </p>
-
-        <div className="hero__cta">
-          <div className="hero__actions">
-            <SectionLink target={HERO_CONTENT.ctaPrimary.target} className="btn hero-btn hero-btn--primary">
-              <span>{HERO_CONTENT.ctaPrimary.label}</span>
-              <ChevronRight className="hero-btn__icon" />
-            </SectionLink>
-            <SectionLink target={HERO_CONTENT.ctaSecondary.target} className="btn hero-btn hero-btn--secondary">
-              <span>{HERO_CONTENT.ctaSecondary.label}</span>
-              <ChevronRight className="hero-btn__icon hero-btn__icon--secondary" />
-            </SectionLink>
-          </div>
-
-          <hr className="hero__rule" />
-
+        <div className="hero__actions">
           <a
             href={CONTACT_INFO.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="hero__whatsapp"
-            aria-label={`Conversar pelo WhatsApp: ${HERO_CONTENT.phoneShort || CONTACT_INFO.phoneDisplay}`}
+            className="btn btn-primary"
           >
-            <WhatsAppIcon className="hero__whatsapp-icon" />
-            <span className="hero__whatsapp-divider" aria-hidden="true">|</span>
-            <span className="hero__whatsapp-text">
-              <span className="hero__whatsapp-number">{HERO_CONTENT.phoneShort || CONTACT_INFO.phoneDisplay}</span>
-              <span className="hero__whatsapp-label">{HERO_CONTENT.whatsappText}</span>
-            </span>
+            <span>{HERO_CONTENT.ctaPrimary}</span>
+            <WhatsAppIcon />
           </a>
+          <SectionLink target={HERO_CONTENT.ctaSecondary.target} className="hero__link">
+            {HERO_CONTENT.ctaSecondary.label}
+          </SectionLink>
         </div>
-      </div>
-
-      <div className="hero__visual">
-        <div className="hero__circle" aria-hidden="true" />
-        <img
-          src="/images/hero/assets01-hero.png"
-          alt={`Steffani Torres, especialista da ${BRAND.fullAcademyTitle}`}
-          className="hero__portrait"
-          width="1024"
-          height="1536"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
       </div>
     </section>
   );

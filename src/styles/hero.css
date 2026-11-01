@@ -2,947 +2,161 @@
    WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)
    ============================================================================
    [AI-STYLESHEET]: src/styles/hero.css
-   [AI-PURPOSE]: Hero Section do Torres Beauty Academy — composição editorial fiel à referência desktop 1339×769.
-   [AI-STYLE-RULE]: --hero-s equivale a 1px da referência. Toda medida desktop é "N * var(--hero-s)", preservando a proporção em qualquer viewport.
-   [AI-DO-NOT-BREAK]: O retrato é espelhado via CSS (scaleX(-1)) para posicionar a luva à esquerda, como na referência. O arquivo original não é alterado.
+   [AI-PURPOSE]: Hero. O fundo vai do tom escuro (texto) a cor das bordas da foto, e mascaras dissolvem o retrato nele.
+   [AI-STYLE-RULE]: --hero-photo-edge foi medido nas bordas de Utilizar-Hero.jpeg. Trocar a foto exige medir de novo.
+   [AI-DO-NOT-BREAK]: Proporcao 2:3 sempre preservada; a largura deriva da altura (ou o inverso), nunca as duas fixas.
    ============================================================================ */
 
 :root {
-  --hero-h: max(100svh, 620px);
-  --hero-s: min(calc(100vw / 1339), calc(var(--hero-h) / 769));
-  --hero-font: var(--font-sans);
-  --hero-title-font: var(--font-serif);
-
-  --hero-bg-deep: #1C1917;
-  --hero-bg-mid: #262220;
-  --hero-bg-warm: #3A3531;
-  --hero-circle: #3A3531;
-  --hero-terracotta: #635B55;
-  --hero-terracotta-hover: #635B55;
-  --hero-btn-bg: #EBE7E0;
-  --hero-btn-bg-hover: #F5F3EF;
-  --hero-btn-text: #262220;
-  --hero-btn-text-hover: #1C1917;
-  --hero-sand: #D8D2CA;
-  --hero-rule: #4E4742;
-  --hero-focus: #EBE7E0;
+  --hero-photo-edge: #86644D;
 }
 
-/* ==========================================================================
-   Base e Elementos Compartilhados
-   ========================================================================== */
 .hero {
   position: relative;
   isolation: isolate;
-  width: 100%;
-  color: #F7F5F2;
-  font-family: var(--hero-font);
-}
-
-.hero ::selection {
-  background-color: var(--hero-terracotta);
-  color: #F7F5F2;
-}
-
-.hero-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35em;
-  height: calc(60 * var(--hero-s));
-  min-height: 44px;
-  padding-inline: calc(22 * var(--hero-s));
-  border-radius: 0;
-  font-family: var(--hero-font);
-  font-size: max(15px, calc(24 * var(--hero-s)));
-  line-height: 1;
-  white-space: nowrap;
-  text-decoration: none;
-  cursor: pointer;
-  transform: translateY(0);
-  will-change: transform, box-shadow;
-  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-              box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-              background-color 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-              border-color 0.38s cubic-bezier(0.22, 1, 0.36, 1),
-              color 0.38s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.hero-btn:active {
-  transform: translateY(-1px);
-  transition-duration: 0.15s;
-}
-
-.hero-btn:focus-visible,
-.hero__whatsapp:focus-visible {
-  outline: 2px solid var(--hero-focus);
-  outline-offset: 4px;
-}
-
-.hero-btn--primary {
-  min-width: calc(292 * var(--hero-s));
-  background-color: var(--hero-btn-bg);
-  border: 1.5px solid rgba(255, 255, 255, 0.95);
-  color: var(--hero-btn-text);
-  font-weight: 750;
-  text-shadow: none;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.85);
-}
-
-.hero-btn--primary:hover {
-  background-color: var(--hero-btn-bg-hover);
-  border-color: #F7F5F2;
-  color: var(--hero-btn-text-hover);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.36), inset 0 1px 1px #F7F5F2;
-  transform: translateY(-5px);
-}
-
-.hero-btn--secondary {
-  min-width: calc(274 * var(--hero-s));
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.22);
-  color: #F5F3EF;
-  font-weight: 600;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-}
-
-.hero-btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.5);
-  color: #F7F5F2;
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.55);
-  transform: translateY(-5px);
-}
-
-.hero-btn__icon {
-  width: 0.7em;
-  height: 0.7em;
-  flex-shrink: 0;
-  stroke-width: 3;
-}
-
-.hero__whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: max(10px, calc(12 * var(--hero-s)));
-  border-radius: 0;
-  color: #F7F5F2;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-
-.hero__whatsapp:hover {
-  opacity: 0.78;
-}
-
-.hero__whatsapp-icon {
-  width: max(30px, calc(40 * var(--hero-s)));
-  height: max(30px, calc(40 * var(--hero-s)));
-  flex-shrink: 0;
-}
-
-.hero__whatsapp-text {
   display: flex;
-  flex-direction: column;
-  line-height: 1.15;
+  align-items: center;
+  min-height: max(100svh, 620px);
+  overflow: hidden;
+  color: var(--text-light);
+  background: linear-gradient(90deg, var(--bg-dark-main) 0%, var(--bg-dark-main) 36%, var(--hero-photo-edge) 72%);
+  --eyebrow-color: var(--accent-gold);
 }
 
-.hero__whatsapp-number {
-  font-size: max(14px, calc(17 * var(--hero-s)));
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
+.hero__visual {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.hero__whatsapp-label {
-  font-size: max(13px, calc(15 * var(--hero-s)));
-  font-weight: 600;
+/* A moldura acompanha a altura da secao e dissolve nas bordas; a foto dentro dela so espelha os pixels. */
+.hero__portrait-frame {
+  flex-shrink: 0;
+  height: 100%;
+  aspect-ratio: 1400 / 2096;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 24%), linear-gradient(180deg, transparent 0%, #000 12%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 24%), linear-gradient(180deg, transparent 0%, #000 12%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
 }
 
-@keyframes heroPortraitIn {
-  from {
-    opacity: 0;
-    transform: scaleX(-1) translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: scaleX(-1);
-  }
+/* [AI-STYLE-RULE]: Espelhada (scaleX) para que o corpo fique de costas para a borda da pagina no desktop. */
+.hero__portrait {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: scaleX(-1);
 }
 
-/* ==========================================================================
-   Modo C: Desktop (>= 1081px em proporção paisagem) — Composição Editorial com Halo Luminoso
-   - Zona de Conteúdo (hero__content): título em escada, botões e contato à esquerda.
-   - Zona Visual (hero__visual): Steffani grande e protagonista ancorada na base + halo de brilho suave em caramelo, cobre e marrom (sem bola sólida).
-   ========================================================================== */
-@media (min-width: 1081px) and (min-aspect-ratio: 13 / 12) {
-  .hero:not(.hero-proc) {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    min-height: var(--hero-h);
-    height: auto;
-    padding: calc(var(--hero-h) * 0.15) clamp(24px, 3.5vw, 48px) calc(48 * var(--hero-s)) calc(60 * var(--hero-s));
-    background:
-      radial-gradient(
-        ellipse 58% 68% at 72% 50%,
-        rgba(201, 158, 103, 0.36) 0%,
-        rgba(99, 91, 85, 0.24) 38%,
-        rgba(58, 53, 49, 0.12) 66%,
-        transparent 100%
-      ),
-      linear-gradient(105deg, #1C1917 0%, #1C1917 42%, #262220 78%, #1C1917 100%);
-    overflow: hidden;
-  }
-
-  .hero:not(.hero-proc) .hero__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    height: auto;
-    margin: auto 0;
-    min-width: 0;
-    max-width: 58%;
-    position: relative;
-    z-index: 3;
-  }
-
-  .hero:not(.hero-proc) .hero__eyebrow-wrap,
-  .hero:not(.hero-proc) .hero__subtitle,
-  .hero:not(.hero-proc) .hero-btn__icon--secondary,
-  .hero:not(.hero-proc) .hero__whatsapp-divider {
-    display: none;
-  }
-
-  /* Título em escada com proporção editorial da referência */
-  .hero:not(.hero-proc) .hero__title {
-    position: relative;
-    z-index: 2;
-    margin: 0;
-    font-family: var(--hero-title-font);
-    font-size: calc(112 * var(--hero-s));
-    font-weight: 800;
-    line-height: 0.98;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    color: #F7F5F2;
-    text-shadow: 0 6px 28px rgba(28, 25, 23, 0.45);
-  }
-
-  .hero:not(.hero-proc) .hero__title-line {
-    display: block;
-    white-space: nowrap;
-  }
-
-  .hero:not(.hero-proc) .hero__title-line--2 {
-    padding-left: calc(50 * var(--hero-s));
-  }
-
-  .hero:not(.hero-proc) .hero__title-line--3 {
-    padding-left: calc(145 * var(--hero-s));
-  }
-
-  /* Ações, divisória e contato agrupados em equilíbrio com o título (sem buraco vertical em telas altas) */
-  .hero:not(.hero-proc) .hero__cta {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: clamp(36px, min(7.5svh, calc(68 * var(--hero-s))), 86px);
-    padding-top: 0;
-    width: 100%;
-  }
-
-  .hero:not(.hero-proc) .hero__actions {
-    display: flex;
-    align-items: center;
-    gap: calc(22 * var(--hero-s));
-    flex-wrap: wrap;
-    max-width: 100%;
-  }
-
-  .hero:not(.hero-proc) .hero-btn--primary {
-    min-width: calc(292 * var(--hero-s));
-  }
-
-  .hero:not(.hero-proc) .hero-btn--secondary {
-    min-width: calc(274 * var(--hero-s));
-  }
-
-  .hero:not(.hero-proc) .hero__rule {
-    width: min(calc(595 * var(--hero-s)), 100%);
-    max-width: 100%;
-    height: 1px;
-    margin: calc(24 * var(--hero-s)) 0 calc(26 * var(--hero-s));
-    border: 0;
-    background-color: var(--hero-rule);
-  }
-
-  /* Zona Visual no Desktop: ocupa toda a altura da hero (sem corte na base) com halo luminoso */
-  .hero:not(.hero-proc) .hero__visual {
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  .hero:not(.hero-proc) .hero__circle {
-    position: absolute;
-    z-index: 1;
-    top: auto;
-    bottom: clamp(16px, 3.5svh, 56px);
-    right: clamp(-6%, calc(44vw - min(63.3svh, 53.3vw)), 6%);
-    transform: none;
-    width: clamp(560px, min(64vw, 92svh), 1200px);
-    height: clamp(580px, min(66vw, 94svh), 1260px);
-    border-radius: 0;
-    background:
-      radial-gradient(
-        circle at 55% 44%,
-        rgba(201, 158, 103, 0.8) 0%,
-        rgba(201, 158, 103, 0.58) 24%,
-        rgba(99, 91, 85, 0.4) 44%,
-        rgba(201, 158, 103, 0.26) 56%,
-        rgba(58, 53, 49, 0.14) 68%,
-        rgba(28, 25, 23, 0) 84%
-      );
-    filter: blur(20px);
-    pointer-events: none;
-  }
-
-  .hero:not(.hero-proc) .hero__circle::before {
-    content: "";
-    position: absolute;
-    inset: -14%;
-    border-radius: 0;
-    background:
-      radial-gradient(
-        circle at 66% 34%,
-        rgba(201, 158, 103, 0.64) 0%,
-        rgba(201, 158, 103, 0.4) 30%,
-        rgba(78, 71, 66, 0.16) 56%,
-        transparent 78%
-      );
-    filter: blur(30px);
-    pointer-events: none;
-  }
-
-  .hero:not(.hero-proc) .hero__circle::after {
-    content: "";
-    position: absolute;
-    inset: -20% -8% -6% -20%;
-    border-radius: 0;
-    background:
-      radial-gradient(
-        ellipse 74% 78% at 48% 46%,
-        transparent 36%,
-        rgba(201, 158, 103, 0.26) 50%,
-        rgba(99, 91, 85, 0.16) 61%,
-        transparent 75%
-      );
-    filter: blur(20px);
-    pointer-events: none;
-  }
-
-  .hero:not(.hero-proc) .hero__portrait {
-    position: absolute;
-    right: clamp(-60px, calc(46vw - min(63.3svh, 53.3vw)), 32px);
-    bottom: 0;
-    z-index: 2;
-    display: block;
-    height: clamp(560px, min(95svh, 80vw), 1400px);
-    max-height: 95svh;
-    width: auto;
-    aspect-ratio: 2 / 3;
-    object-fit: contain;
-    object-position: bottom right;
-    transform: scaleX(-1);
-    animation: heroPortraitIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
+.hero__content {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding: clamp(6rem, 12vh, 8rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem);
 }
 
-/* ==========================================================================
-   Modo B: Tablet, iPads (incluindo iPad Pro 13" 1032×1376) e Telas Verticais/Quadradas (700px+)
-   - Direção de Arte Editorial baseada na referência de Tablet:
-     1. Título grande, editorial, alinhado à esquerda em 3 linhas ("ATELIÊ / STEFFANI / TORRES").
-     2. Fotografia grande e protagonista ocupando a região direita e inferior.
-     3. Botões empilhados verticalmente com larguras consistentes, espaçamento generoso e ótima área de toque.
-     4. Iluminação em halo difuso de gradientes suaves (caramelo, cobre e marrom), sem borda circular rígida.
-     5. Composição equilibrada e fluida em qualquer dimensão (768×1024, 820×1180, 854×898, 1024×768, 1024×1366, 1032×1376, etc.).
-   ========================================================================== */
-@media (min-width: 700px) and (max-width: 1080px), (min-width: 700px) and (max-aspect-ratio: 13 / 12) {
-  .hero:not(.hero-proc) {
-    position: relative;
-    isolation: isolate;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: 100%;
-    min-height: max(100svh, 640px);
-    height: auto;
-    padding-top: clamp(68px, 6.8svh, 96px);
-    padding-bottom: clamp(32px, 6.5svh, 88px);
-    padding-left: clamp(32px, 4.6vw, 68px);
-    padding-right: clamp(24px, 4vw, 48px);
-    background:
-      radial-gradient(
-        ellipse 72% 68% at 68% 48%,
-        rgba(201, 158, 103, 0.36) 0%,
-        rgba(99, 91, 85, 0.24) 38%,
-        rgba(58, 53, 49, 0.12) 66%,
-        transparent 100%
-      ),
-      linear-gradient(108deg, #1C1917 0%, #1C1917 40%, #262220 76%, #1C1917 100%);
-    overflow: hidden;
-  }
-
-  .hero:not(.hero-proc) .hero__content {
-    position: relative;
-    z-index: 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    width: clamp(280px, 48vw, 540px);
-    max-width: 100%;
-    height: auto;
-    margin: auto 0;
-    min-width: 0;
-  }
-
-  /* Eyebrow editorial com linha fina à direita */
-  .hero:not(.hero-proc) .hero__eyebrow-wrap {
-    display: inline-flex;
-    align-items: center;
-    gap: clamp(12px, 1.6vw, 18px);
-    margin-bottom: clamp(12px, 2.2svh, 28px);
-  }
-
-  .hero:not(.hero-proc) .hero__eyebrow {
-    order: 1;
-    font-family: var(--hero-font);
-    font-size: clamp(11.5px, min(1.45vw, 1.45svh), 16px);
-    font-weight: 600;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-    color: #C99E67;
-    white-space: nowrap;
-  }
-
-  .hero:not(.hero-proc) .hero__eyebrow-line {
-    order: 2;
-    width: clamp(36px, 4.8vw, 60px);
-    height: 1px;
-    background-color: rgba(201, 158, 103, 0.52);
-    flex-shrink: 0;
-  }
-
-  /* Título grande, editorial, em três linhas alinhadas à esquerda */
-  .hero:not(.hero-proc) .hero__title {
-    position: relative;
-    z-index: 2;
-    margin: 0 0 clamp(14px, 2.6svh, 34px) 0;
-    font-family: var(--hero-title-font);
-    font-size: clamp(50px, min(8.6vw, 8.5svh), 96px);
-    font-weight: 800;
-    line-height: 0.93;
-    letter-spacing: -0.015em;
-    text-transform: uppercase;
-    color: #F7F5F2;
-    text-shadow: 0 6px 28px rgba(28, 25, 23, 0.55);
-  }
-
-  .hero:not(.hero-proc) .hero__title-line,
-  .hero:not(.hero-proc) .hero__title-line--2,
-  .hero:not(.hero-proc) .hero__title-line--3 {
-    display: block;
-    padding-left: 0;
-    white-space: nowrap;
-  }
-
-  /* Subtítulo editorial em duas linhas */
-  .hero:not(.hero-proc) .hero__subtitle {
-    display: block;
-    margin: 0 0 clamp(20px, 3.8svh, 50px) 0;
-    max-width: clamp(248px, 33.8vw, 390px);
-    font-family: var(--hero-font);
-    font-size: clamp(15.5px, min(2.05vw, 2.05svh), 22px);
-    font-weight: 400;
-    line-height: 1.44;
-    color: #EBE7E0;
-    text-shadow: 0 2px 14px rgba(28, 25, 23, 0.5);
-  }
-
-  /* Bloco de CTAs empilhados, divisória e WhatsApp */
-  .hero:not(.hero-proc) .hero__cta {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 0;
-    padding-top: 0;
-    width: clamp(256px, 33.8vw, 385px);
-    max-width: 100%;
-  }
-
-  .hero:not(.hero-proc) .hero__actions {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: clamp(12px, 1.9svh, 22px);
-    width: 100%;
-  }
-
-  .hero:not(.hero-proc) .hero-btn {
-    width: 100%;
-    min-width: 0;
-    height: clamp(50px, 5.8svh, 68px);
-    min-height: 50px;
-    padding-inline: 24px;
-    border-radius: 0;
-    font-size: clamp(15.5px, min(2vw, 2.05svh), 21px);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-  }
-
-  .hero:not(.hero-proc) .hero-btn--primary {
-    background-color: var(--hero-btn-bg);
-    border: 1.5px solid rgba(255, 255, 255, 0.95);
-    color: var(--hero-btn-text);
-    font-weight: 750;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.34), inset 0 1px 1px rgba(255, 255, 255, 0.85);
-  }
-
-  .hero:not(.hero-proc) .hero-btn--secondary {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1.5px solid rgba(255, 255, 255, 0.24);
-    color: #F5F3EF;
-    font-weight: 600;
-    box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-  }
-
-  .hero:not(.hero-proc) .hero-btn__icon--secondary {
-    display: inline-block;
-    width: 0.7em;
-    height: 0.7em;
-    stroke-width: 3;
-  }
-
-  .hero:not(.hero-proc) .hero__rule {
-    width: 100%;
-    height: 1px;
-    margin: clamp(16px, 3.2svh, 42px) 0 clamp(14px, 2.6svh, 32px) 0;
-    border: 0;
-    background-color: rgba(216, 210, 202, 0.28);
-  }
-
-  .hero:not(.hero-proc) .hero__whatsapp {
-    margin-top: 0;
-    gap: 12px;
-  }
-
-  .hero:not(.hero-proc) .hero__whatsapp-divider {
-    display: none;
-  }
-
-  .hero:not(.hero-proc) .hero__whatsapp-icon {
-    width: clamp(32px, 3.8svh, 44px);
-    height: clamp(32px, 3.8svh, 44px);
-  }
-
-  .hero:not(.hero-proc) .hero__whatsapp-number {
-    font-size: clamp(15px, min(1.9vw, 1.9svh), 19.5px);
-    font-weight: 700;
-    color: #F7F5F2;
-  }
-
-  .hero:not(.hero-proc) .hero__whatsapp-label {
-    font-size: clamp(13px, min(1.6vw, 1.6svh), 16.5px);
-    font-weight: 500;
-    color: rgba(235, 231, 224, 0.84);
-  }
-
-  /* Região Visual (Direita e Inferior): Halo de iluminação suave + Retrato Protagonista */
-  .hero:not(.hero-proc) .hero__visual {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-  }
-
-  /* Halo atmosférico de gradientes suaves em tons de caramelo, cobre e marrom (sem borda circular perceptível) */
-  .hero:not(.hero-proc) .hero__circle {
-    position: absolute;
-    top: auto;
-    bottom: clamp(18px, 4svh, 64px);
-    right: clamp(-150px, calc(55vw - min(60svh, 70.67vw)), 20px);
-    transform: none;
-    width: clamp(480px, min(76vw, 85svh), 1080px);
-    height: clamp(520px, min(86vw, 90svh), 1160px);
-    border-radius: 0;
-    background:
-      radial-gradient(
-        circle at 56% 43%,
-        rgba(201, 158, 103, 0.8) 0%,
-        rgba(201, 158, 103, 0.58) 24%,
-        rgba(99, 91, 85, 0.4) 44%,
-        rgba(201, 158, 103, 0.26) 56%,
-        rgba(58, 53, 49, 0.14) 68%,
-        rgba(28, 25, 23, 0) 84%
-      );
-    filter: blur(18px);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  .hero:not(.hero-proc) .hero__circle::before {
-    content: "";
-    position: absolute;
-    inset: -14%;
-    border-radius: 0;
-    background:
-      radial-gradient(
-        circle at 66% 34%,
-        rgba(201, 158, 103, 0.64) 0%,
-        rgba(201, 158, 103, 0.4) 30%,
-        rgba(78, 71, 66, 0.16) 56%,
-        transparent 78%
-      );
-    filter: blur(28px);
-    pointer-events: none;
-  }
-
-  .hero:not(.hero-proc) .hero__circle::after {
-    content: "";
-    position: absolute;
-    inset: -20% -8% -6% -20%;
-    border-radius: 0;
-    background:
-      radial-gradient(
-        ellipse 74% 78% at 48% 46%,
-        transparent 36%,
-        rgba(201, 158, 103, 0.26) 50%,
-        rgba(99, 91, 85, 0.16) 61%,
-        transparent 75%
-      );
-    filter: blur(18px);
-    pointer-events: none;
-  }
-
-  .hero:not(.hero-proc) .hero__portrait {
-    position: absolute;
-    right: clamp(-170px, calc(57vw - min(60svh, 70.67vw)), 20px);
-    bottom: 0;
-    z-index: 2;
-    display: block;
-    width: auto;
-    max-width: none;
-    height: clamp(560px, min(90svh, 106vw), 1320px);
-    aspect-ratio: 2 / 3;
-    object-fit: contain;
-    object-position: bottom right;
-    transform: scaleX(-1);
-    animation: none;
-  }
+.hero__eyebrow {
+  margin-bottom: 1.25rem;
 }
 
-/* ==========================================================================
-   Mobile (Smartphones) — Composição Exata da Referência Mobile (media_1792708894259.png)
-   ========================================================================== */
-@media (max-width: 699px) {
+.hero__title {
+  max-width: 7.6em;
+  font-size: clamp(3.1rem, 6.4vw, 6.75rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: 0.02em;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+}
+
+.hero__subtitle {
+  max-width: 26rem;
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  line-height: 1.6;
+  color: var(--text-light-muted);
+  margin-bottom: 2.25rem;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+}
+
+.hero__link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-gold-subtle);
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.hero__link:hover {
+  color: var(--accent-gold);
+  border-color: var(--accent-gold);
+}
+
+/* Celulares e tablets em retrato: foto em cima, dissolvendo no fundo, e texto abaixo */
+@media (max-width: 900px), (max-aspect-ratio: 1 / 1) {
   .hero {
-    min-height: max(100svh, 580px);
-    height: auto;
-    padding: clamp(72px, 11svh, 92px) clamp(20px, 5.5vw, 28px) clamp(22px, 4.5svh, 28px);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: stretch;
-    background: radial-gradient(circle at 50% 20%, #3A3531 0%, #1C1917 52%, #1C1917 100%);
-    overflow: hidden;
-    position: relative;
+    display: block;
+    min-height: 0;
+    background: var(--bg-dark-main);
   }
 
-  /* Visual no Mobile: Fundo com círculo dourado e Steffani com luva preta à DIREITA (sem espelhamento) */
   .hero__visual {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    margin: 0;
-    aspect-ratio: auto;
-    display: flex;
+    position: relative;
+    z-index: 0;
     justify-content: center;
-    align-items: flex-start;
-    overflow: hidden;
+    background: linear-gradient(180deg, var(--hero-photo-edge) 0%, var(--hero-photo-edge) 45%, var(--bg-dark-main) 100%);
   }
 
-  /* Fade suave e gradual na base da imagem para eliminar qualquer corte brusco */
-  .hero__visual::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 48%;
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(28, 25, 23, 0.25) 25%,
-      rgba(28, 25, 23, 0.75) 65%,
-      rgba(28, 25, 23, 0.98) 95%,
-      #1C1917 100%
-    );
-    pointer-events: none;
-    z-index: 3;
-  }
-
-  /* Círculo com efeito de luz dourada ampliado e posicionado no topo */
-  .hero__circle {
-    position: absolute;
-    top: clamp(18px, 4svh, 36px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: clamp(370px, 98vw, 440px);
-    height: clamp(370px, 98vw, 440px);
-    border-radius: 0;
-    background: radial-gradient(circle at 50% 45%, rgba(201, 158, 103, 0.88) 0%, rgba(99, 91, 85, 0.75) 42%, rgba(78, 71, 66, 0.5) 70%, rgba(34, 30, 28, 0.2) 100%);
-    box-shadow: 0 0 85px rgba(201, 158, 103, 0.45), inset 0 0 60px rgba(201, 158, 103, 0.3);
-    pointer-events: none;
-    z-index: 1;
+  /* [AI-STYLE-RULE]: No mobile a foto fica sem espelhar e aparece inteira, sem o corte do modo desktop. */
+  .hero__portrait-frame {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+    margin-inline: auto;
+    -webkit-mask-image: linear-gradient(180deg, #000 88%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 88%, transparent 100%);
+    -webkit-mask-composite: source-over;
+    mask-composite: add;
   }
 
   .hero__portrait {
-    position: absolute;
-    top: clamp(24px, 4svh, 45px);
-    left: 50%;
-    /* No mobile a luva preta fica à DIREITA, conforme a referência enviada */
-    transform: translateX(-50%) !important;
-    width: auto !important;
-    max-width: none !important;
-    /* Em celulares finos/estreitos, nunca comprime a foto: mantém largura mínima generosa para cobrir a tela */
-    min-width: clamp(410px, 62svh, 540px);
-    height: calc(100svh - 80px) !important;
-    min-height: 520px;
-    max-height: none !important;
-    object-fit: cover;
-    object-position: top center;
-    animation: none;
-    z-index: 2;
-    /* Fade in suave diretamente na silhueta para transição 100% contínua */
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      #000000 0%,
-      #000000 58%,
-      rgba(0, 0, 0, 0.82) 70%,
-      rgba(0, 0, 0, 0.45) 84%,
-      rgba(0, 0, 0, 0.1) 94%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(
-      to bottom,
-      #000000 0%,
-      #000000 58%,
-      rgba(0, 0, 0, 0.82) 70%,
-      rgba(0, 0, 0, 0.45) 84%,
-      rgba(0, 0, 0, 0.1) 94%,
-      transparent 100%
-    );
+    transform: none;
   }
 
-  /* Conteúdo de Texto e Botões ancorados na base */
   .hero__content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
     position: relative;
-    z-index: 10;
-    margin-top: auto;
-    padding-bottom: 2px;
+    z-index: 1;
+    margin-top: -2.5rem;
+    padding-top: 0;
+    padding-bottom: 3.5rem;
   }
 
-  /* Linha e texto "Estética Avançada" ocultados conforme solicitado */
-  .hero__eyebrow-wrap {
-    display: none !important;
-  }
-
-  /* Título: ATELIÊ STEFFANI TORRES — Grande, imponente e proporcional à altura da tela */
   .hero__title {
-    font-family: var(--hero-title-font) !important;
-    font-size: clamp(42px, 5.6svh, 50px) !important;
-    font-weight: 800 !important;
-    line-height: 0.95 !important;
-    letter-spacing: -0.015em !important;
-    text-transform: uppercase !important;
-    color: #F7F5F2 !important;
-    margin: 0 0 clamp(8px, 1.2svh, 12px) 0 !important;
-    text-align: left !important;
-    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.4);
-  }
-
-  .hero__title-line,
-  .hero__title-line--2,
-  .hero__title-line--3 {
-    display: block !important;
-    padding-left: 0 !important;
-    white-space: normal !important;
-  }
-
-  /* Subtítulo: "Estética, técnica e cuidado..." — Mais encorpado e legível */
-  .hero__subtitle {
-    display: block;
-    font-family: var(--hero-font), system-ui, sans-serif;
-    font-size: clamp(14.5px, 1.8svh, 16px);
-    font-weight: 400;
-    line-height: 1.5;
-    color: #D8D2CA;
-    margin: 0 0 clamp(16px, 2.2svh, 22px) 0;
-    text-align: left;
-    max-width: 320px;
-  }
-
-  /* CTAs: Botões em pilha vertical de 100% de largura */
-  .hero__cta {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-
-  .hero__actions {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: clamp(10px, 1.4svh, 14px);
-    margin: 0;
-  }
-
-  .hero-btn {
-    width: 100% !important;
-    min-width: 0 !important;
-    height: clamp(52px, 6.4svh, 58px) !important;
-    min-height: 52px !important;
-    border-radius: 0;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    padding: 0 24px !important;
-    text-decoration: none !important;
-    transform: none !important;
-  }
-
-  /* Botão Primário: "Ver procedimentos >" IDÊNTICO AO DESKTOP (#EBE7E0 com texto marrom) */
-  .hero-btn--primary {
-    background-color: var(--hero-btn-bg) !important;
-    background: var(--hero-btn-bg) !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.95) !important;
-    color: var(--hero-btn-text) !important;
-    font-size: clamp(16px, 2svh, 17.5px) !important;
-    font-weight: 750 !important;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.36), inset 0 1px 1px rgba(255, 255, 255, 0.85) !important;
-    text-shadow: none !important;
-  }
-
-  .hero-btn--primary .hero-btn__icon {
-    width: 15px;
-    height: 15px;
-    stroke-width: 2.5;
-    color: var(--hero-btn-text) !important;
-    margin-left: 3px;
-  }
-
-  /* Botão Secundário: "Entrar em contato >" translúcido com glassmorphism */
-  .hero-btn--secondary {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
-    color: #F5F3EF !important;
-    font-size: clamp(15px, 1.9svh, 16.5px) !important;
-    font-weight: 600 !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28), inset 0 1px 1px rgba(255, 255, 255, 0.32) !important;
-  }
-
-  .hero-btn--secondary .hero-btn__icon--secondary {
-    display: inline-block !important;
-    width: 15px;
-    height: 15px;
-    stroke-width: 2.5;
-    color: #EBE7E0;
-    margin-left: 3px;
-  }
-
-  /* Linha horizontal removida no mobile */
-  .hero__rule {
-    display: none !important;
-  }
-
-  /* WhatsApp na base: Ícone | (28) 99950-1731 */
-  .hero__whatsapp {
-    margin-top: clamp(14px, 2svh, 20px) !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 0 !important;
-    text-decoration: none !important;
-  }
-
-  .hero__whatsapp-icon {
-    width: 24px !important;
-    height: 24px !important;
-    flex-shrink: 0 !important;
-  }
-
-  .hero__whatsapp-divider {
-    display: inline-block !important;
-    color: rgba(216, 210, 202, 0.4) !important;
-    font-size: 15px !important;
-    font-weight: 300 !important;
-    margin: 0 10px !important;
-    line-height: 1;
-  }
-
-  .hero__whatsapp-text {
-    display: inline-flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-  }
-
-  .hero__whatsapp-number {
-    font-size: clamp(15px, 1.9svh, 16.5px) !important;
-    font-weight: 700 !important;
-    color: #F7F5F2 !important;
-    letter-spacing: 0.02em !important;
-  }
-
-  .hero__whatsapp-label {
-    display: none !important;
+    font-size: clamp(2.9rem, 13vw, 5.25rem);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .hero__portrait {
-    animation: none;
+/* Tablets em retrato: a foto fica mais estreita que a tela, entao as laterais tambem dissolvem */
+@media (min-width: 600px) and (max-aspect-ratio: 1 / 1) {
+  .hero__portrait-frame {
+    -webkit-mask-image: linear-gradient(180deg, #000 88%, transparent 100%), linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 88%, transparent 100%), linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
   }
 }

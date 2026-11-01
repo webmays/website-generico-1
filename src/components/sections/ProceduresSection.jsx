@@ -1,114 +1,136 @@
 // [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
-// [AI-FILE-PURPOSE]: Seção de Procedimentos preservando cabeçalho e fundo originais da seção, atualizando exclusivamente os cards que separam os procedimentos fiel à referência visual.
-// [AI-DO-NOT-BREAK]: A seção mantém seu fundo e cabeçalho originais. Os cards 2x2 separam: Sobrancelhas, Tratamentos Labiais, Micropigmentação e Experiências Exclusivas.
+// [AI-FILE-PURPOSE]: Secao de Procedimentos: filtros por categoria e trilho horizontal arrastavel com os 13 cards do catalogo TBA.
+// [AI-DO-NOT-BREAK]: O ID "procedimentos" e alvo da navegacao. Toque e teclado usam o scroll nativo; o arraste por pointer vale so para mouse.
 
-import { useState } from "react";
-import { PROCEDURE_CATEGORY_CARDS } from "../../data/proceduresData";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { PROCEDURES, PROCEDURE_GROUPS, getProcedureWhatsappUrl } from "../../data/proceduresData";
 import { PROCEDURES_HEADER_CONTENT } from "../../data/siteContent";
-import { SectionLink } from "../ui/SectionLink";
 import { EditorialTitle } from "../ui/EditorialTitle";
-import { ArrowDownLine, ArrowRightShort } from "../ui/Icons";
-import { ProcedureCategoryModal } from "../ui/ProcedureCategoryModal";
+
+const DRAG_THRESHOLD = 6;
 
 /**
  * [AI-COMPONENT]: ProceduresSection
- * @description Seção de procedimentos preservando cabeçalho e fundo originais, exibindo os 4 cards da referência para separar os procedimentos.
  * @example <ProceduresSection />
  */
 export function ProceduresSection() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [activeGroup, setActiveGroup] = useState("todos");
+  const [canScroll, setCanScroll] = useState(false);
+  const trackRef = useRef(null);
+  const drag = useRef({ active: false, startX: 0, startLeft: 0, moved: false });
+
+  const visible = useMemo(
+    () => (activeGroup === "todos" ? PROCEDURES : PROCEDURES.filter((p) => p.group === activeGroup)),
+    [activeGroup]
+  );
+
+  // O aviso de arraste so aparece quando ha conteudo fora da tela
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return undefined;
+    track.scrollLeft = 0;
+    const update = () => setCanScroll(track.scrollWidth > track.clientWidth + 1);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(track);
+    return () => observer.disconnect();
+  }, [visible]);
+
+  const handlePointerDown = (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    drag.current = { active: true, startX: e.clientX, startLeft: trackRef.current.scrollLeft, moved: false };
+  };
+
+  const handlePointerMove = (e) => {
+    const state = drag.current;
+    if (!state.active) return;
+    const delta = e.clientX - state.startX;
+    if (!state.moved && Math.abs(delta) > DRAG_THRESHOLD) {
+      state.moved = true;
+      trackRef.current.classList.add("is-dragging");
+    }
+    if (state.moved) trackRef.current.scrollLeft = state.startLeft - delta;
+  };
+
+  const endDrag = () => {
+    drag.current.active = false;
+    trackRef.current?.classList.remove("is-dragging");
+  };
+
+  // Evita abrir o WhatsApp ao soltar o mouse depois de arrastar
+  const handleClickCapture = (e) => {
+    if (drag.current.moved) {
+      e.preventDefault();
+      e.stopPropagation();
+      drag.current.moved = false;
+    }
+  };
 
   return (
-    <section id="procedimentos" className="procedures-section section-spacing">
-      <div className="container">
-        {/* Cabeçalho Rigorosamente Original da Seção */}
-        <div className="procedures-header-centered">
-          <div className="meta-label-ornament">
-            <span className="ornament-line" />
-            <span className="meta-label">{PROCEDURES_HEADER_CONTENT.metaLabel}</span>
-            <span className="ornament-line" />
+    <section id="procedimentos" className="procedures-section" aria-labelledby="procedures-title">
+      <div className="container procedures-head">
+        <span className="meta-label">{PROCEDURES_HEADER_CONTENT.metaLabel}</span>
+        <EditorialTitle text={PROCEDURES_HEADER_CONTENT.title} className="procedures-title" id="procedures-title" />
+
+        <div className="procedures-toolbar">
+          <div className="procedures-filters" role="group" aria-label={PROCEDURES_HEADER_CONTENT.filterLabel}>
+            {PROCEDURE_GROUPS.map((group) => (
+              <button
+                key={group.id}
+                type="button"
+                className={`procedures-filter ${activeGroup === group.id ? "is-active" : ""}`}
+                aria-pressed={activeGroup === group.id}
+                onClick={() => setActiveGroup(group.id)}
+              >
+                {group.label}
+              </button>
+            ))}
           </div>
-          <EditorialTitle text={PROCEDURES_HEADER_CONTENT.title} className="procedures-title-main" />
-          <p className="procedures-subtitle">
-            {PROCEDURES_HEADER_CONTENT.subtitle}
-          </p>
-          <div className="procedures-header-action">
-            <SectionLink target="contato" className="btn-procedures-pill">
-              <span>{PROCEDURES_HEADER_CONTENT.ctaPill}</span>
-              <ArrowDownLine />
-            </SectionLink>
-          </div>
-        </div>
-
-        {/* [AI-EDIT-ZONE]: Cards que Separam Cada Procedimento (Igual à Referência) */}
-        <div className="procedure-category-grid">
-          {PROCEDURE_CATEGORY_CARDS.map((card) => (
-            <article
-              key={card.id}
-              className="procedure-category-card"
-              onClick={() => setSelectedCategory(card)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  setSelectedCategory(card);
-                }
-              }}
-              aria-label={`Ver procedimentos de ${card.title}`}
-            >
-              {/* Conteúdo Textual à Esquerda */}
-              <div className="category-card-content">
-                <div className="category-card-num-wrap">
-                  <span className="category-card-num">{card.num}</span>
-                  <span className="category-card-line" />
-                </div>
-
-                <div>
-                  <h3 className="category-card-title">{card.title}</h3>
-                  <p className="category-card-desc">{card.description}</p>
-                </div>
-
-                {/* Botão Pílula com Círculo e Seta (Fiel à Referência) */}
-                <button
-                  type="button"
-                  className="category-card-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedCategory(card);
-                  }}
-                  aria-label={`Ver procedimentos de ${card.title}`}
-                >
-                  <span>Ver procedimentos</span>
-                  <span className="btn-arrow-circle" aria-hidden="true">
-                    <ArrowRightShort className="w-3.5 h-3.5" />
-                  </span>
-                </button>
-              </div>
-
-              {/* Mídia à Direita com Efeito de Fade Gradiente */}
-              <div className="category-card-media">
-                <img
-                  src={card.image}
-                  alt={card.alt}
-                  className="category-card-img"
-                  style={card.objectPosition ? { objectPosition: card.objectPosition } : undefined}
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="category-card-overlay" />
-              </div>
-            </article>
-          ))}
+          <span className={`procedures-hint ${canScroll ? "" : "is-hidden"}`} aria-hidden={!canScroll}>
+            {PROCEDURES_HEADER_CONTENT.dragHint}
+          </span>
         </div>
       </div>
 
-      {/* Modal Interativo com os Procedimentos Detalhados da Classe */}
-      <ProcedureCategoryModal
-        category={selectedCategory}
-        isOpen={!!selectedCategory}
-        onClose={() => setSelectedCategory(null)}
-      />
+      <div
+        ref={trackRef}
+        className="procedures-track"
+        role="group"
+        aria-label={PROCEDURES_HEADER_CONTENT.trackLabel}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={endDrag}
+        onPointerLeave={endDrag}
+        onClickCapture={handleClickCapture}
+        onDragStart={(e) => e.preventDefault()}
+      >
+        {visible.map((procedure) => (
+          <article key={procedure.slug} className="procedure-card">
+            <div className="procedure-card__media">
+              <img
+                src={procedure.image}
+                alt={procedure.alt}
+                width="640"
+                height="800"
+                loading="lazy"
+                decoding="async"
+                draggable="false"
+              />
+            </div>
+            <h3 className="procedure-card__title">{procedure.title}</h3>
+            <p className="procedure-card__summary">{procedure.summary}</p>
+            <a
+              href={getProcedureWhatsappUrl(procedure.title)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="procedure-card__action"
+              aria-label={`Agendar ${procedure.title} pelo WhatsApp`}
+            >
+              {PROCEDURES_HEADER_CONTENT.cardAction}
+            </a>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }

@@ -8,8 +8,8 @@
 
 :root {
   /* Paleta oficial TORRES (marrons neutros/frios + dourado) */
-  --bg-dark-main: #1C1917;
-  --bg-dark-surface: #262220;
+  --bg-dark-main: #3B322C;
+  --bg-dark-surface: #4A3F38;
   --bg-light-main: #F5F3EF;
   --bg-light-surface: #EBE7E0;
   --text-light: #F7F5F2;
@@ -21,6 +21,10 @@
   /* [AI-STYLE-RULE]: #C99E67 sobre fundo claro reprova no WCAG AA; textos dourados em fundo claro usam este token. */
   --accent-gold-on-light: #86673C;
   --border-gold-subtle: rgba(201, 158, 103, 0.28);
+  --tone-700: #3A3531;
+  --tone-600: #4E4742;
+  --tone-400: #8A817A;
+  --tone-200: #D8D2CA;
 
   /* Aliases de compatibilidade: apontam para a paleta oficial */
   --color-white: var(--bg-light-main);
@@ -279,11 +283,11 @@ h1 em, h2 em, h3 em, blockquote em {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  min-height: clamp(60px, calc(70 * var(--hero-s)), 80px);
+  min-height: clamp(60px, 5.2vw, 76px);
   width: 100%;
   max-width: 100%;
-  padding-left: clamp(20px, calc(35 * var(--hero-s)), 48px);
-  padding-right: clamp(20px, calc(52 * var(--hero-s)), 64px);
+  padding-left: clamp(20px, 2.6vw, 48px);
+  padding-right: clamp(20px, 3.4vw, 64px);
   transition: min-height 0.35s ease;
 }
 
@@ -319,7 +323,7 @@ h1 em, h2 em, h3 em, blockquote em {
 
 .brand-logo:focus-visible,
 .nav-link:focus-visible {
-  outline: 2px solid #EBE7E0;
+  outline: 2px solid var(--bg-light-surface);
   outline-offset: 4px;
 }
 
@@ -411,7 +415,7 @@ h1 em, h2 em, h3 em, blockquote em {
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0.75rem;
   cursor: pointer;
-  color: #F7F5F2;
+  color: var(--text-light);
   min-width: 44px;
   min-height: 44px;
   align-items: center;
@@ -421,7 +425,7 @@ h1 em, h2 em, h3 em, blockquote em {
 }
 
 .mobile-nav-toggle:hover {
-  border-color: #F7F5F2;
+  border-color: var(--text-light);
   background-color: rgba(255, 255, 255, 0.08);
 }
 
@@ -438,7 +442,7 @@ h1 em, h2 em, h3 em, blockquote em {
   display: block;
   width: 100%;
   height: 1.5px;
-  background-color: #F7F5F2;
+  background-color: var(--text-light);
   transform-origin: center;
   will-change: transform;
 }
@@ -455,7 +459,7 @@ h1 em, h2 em, h3 em, blockquote em {
   height: 100vh;
   height: 100dvh;
   max-height: 100dvh;
-  background-color: #F7F5F2;
+  background-color: var(--text-light);
   box-shadow: -12px 0 40px rgba(34, 30, 28, 0.18);
   z-index: 9999;
   padding: 1.5rem 1.5rem calc(1.75rem + env(safe-area-inset-bottom, 20px));
@@ -522,7 +526,7 @@ h1 em, h2 em, h3 em, blockquote em {
 .mobile-nav-link {
   font-family: var(--font-serif);
   font-size: 1.35rem;
-  color: #262220;
+  color: var(--bg-dark-surface);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -536,13 +540,13 @@ h1 em, h2 em, h3 em, blockquote em {
 
 .mobile-nav-link:hover,
 .mobile-nav-link:active {
-  color: #1C1917;
+  color: var(--bg-dark-main);
   background-color: rgba(201, 158, 103, 0.15);
 }
 
 .mobile-nav-link.is-active {
-  background-color: #C99E67;
-  color: #1C1917;
+  background-color: var(--accent-gold);
+  color: var(--bg-dark-main);
   font-weight: 700;
   box-shadow: 0 4px 16px rgba(201, 158, 103, 0.32);
 }
@@ -558,8 +562,8 @@ h1 em, h2 em, h3 em, blockquote em {
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  background-color: #1C1917;
-  color: #C99E67;
+  background-color: var(--bg-dark-main);
+  color: var(--accent-gold);
   padding: 0.28rem 0.75rem;
   border-radius: 0;
   line-height: 1;
@@ -610,34 +614,7 @@ body.drawer-open .site-header {
 /* ==========================================================================
    SEÇÃO DE PROCEDIMENTOS EM DESTAQUE (DESIGN DE CARDS EDITORIAL 2x2)
    ========================================================================== */
-.procedures-section {
-  background-color: var(--color-white-pearl);
-  border-bottom: 1px solid rgba(99, 91, 85, 0.1);
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-}
-
-.procedures-section .container {
-  max-width: min(1560px, 94vw);
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: clamp(1.25rem, 2.5vw, 2.5rem);
-  padding-right: clamp(1.25rem, 2.5vw, 2.5rem);
-}
-
 /* Cabeçalho Rigorosamente Centralizado e Proporcional */
-.procedures-header-centered {
-  text-align: center;
-  max-width: 840px;
-  margin: 0 auto clamp(2rem, 3.2vw, 3.25rem);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
 .meta-label-ornament {
   display: inline-flex;
   align-items: center;
@@ -656,35 +633,6 @@ body.drawer-open .site-header {
 .meta-label-ornament .meta-label {
   margin-bottom: 0;
 }
-
-.procedures-title-main {
-  font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 4.4vw, 4.1rem);
-  font-weight: 500;
-  line-height: 1.06;
-  letter-spacing: -0.025em;
-  color: var(--color-black);
-  margin-bottom: 0.95rem;
-  text-align: center;
-}
-
-.procedures-subtitle {
-  font-size: clamp(1.05rem, 1.25vw, 1.22rem);
-  color: rgba(34, 30, 28, 0.84);
-  line-height: 1.62;
-  max-width: 680px;
-  margin: 0 auto clamp(1.5rem, 2.2vw, 2rem);
-  text-align: center;
-}
-
-.procedures-header-action {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-
-
 
 /* Procedimento em Vídeo */
 .bg-warm-white {
@@ -725,7 +673,7 @@ body.drawer-open .site-header {
 
 .video-play-btn:hover {
   background: var(--color-brown);
-  color: #F7F5F2;
+  color: var(--text-light);
   transform: scale(1.05);
 }
 
@@ -752,11 +700,11 @@ body.drawer-open .site-header {
 
 #sobre {
   position: relative;
-  background-color: #262220;
+  background-color: var(--bg-dark-surface);
   border-top: none !important;
   border-bottom: none !important;
   margin-bottom: 0 !important;
-  color: #F7F5F2;
+  color: var(--text-light);
   overflow: hidden;
   padding: clamp(2.5rem, 4vw, 4rem) clamp(1.25rem, 3vw, 2.5rem) clamp(2.5rem, 4vw, 3.5rem);
 }
@@ -817,8 +765,8 @@ body.drawer-open .site-header {
 }
 
 .about-photo .photo-meta {
-  background-color: #1C1917;
-  color: #C99E67;
+  background-color: var(--bg-dark-main);
+  color: var(--accent-gold);
   border: 1px solid rgba(201, 158, 103, 0.35);
   padding: 0.65rem 1.35rem;
   border-radius: 0;
@@ -850,7 +798,7 @@ body.drawer-open .site-header {
   font-family: var(--font-serif);
   font-size: clamp(2.2rem, 3.4vw, 3.4rem);
   line-height: 1.15;
-  color: #F7F5F2;
+  color: var(--text-light);
   margin-bottom: 1.5rem;
 }
 
@@ -992,7 +940,7 @@ body.drawer-open .site-header {
 .faq-item[open] .faq-toggle-icon {
   transform: rotate(45deg);
   background-color: var(--color-brown);
-  color: #F7F5F2;
+  color: var(--text-light);
 }
 
 /* Container de expansão suave (CSS Grid 0fr -> 1fr) */
@@ -1121,7 +1069,7 @@ body.drawer-open .site-header {
   font-size: clamp(2.3rem, 4.6vw, 3.8rem);
   font-weight: 500;
   line-height: 1.15;
-  color: #F7F5F2;
+  color: var(--text-light);
   margin-bottom: 1.25rem;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
@@ -1418,8 +1366,8 @@ body.drawer-open .site-header {
   min-height: 50px;
   padding: 0.75rem 1.35rem;
   background-color: var(--color-brown);
-  color: #F7F5F2;
-  border: 2px solid #C99E67;
+  color: var(--text-light);
+  border: 2px solid var(--accent-gold);
   border-radius: 0;
   font-family: var(--font-sans);
   font-size: 0.96rem;
@@ -1442,7 +1390,7 @@ body.drawer-open .site-header {
 
 .back-to-top:hover {
   background-color: var(--color-dark-brown);
-  border-color: #F7F5F2;
+  border-color: var(--text-light);
   transform: translateY(-3px);
   box-shadow: 0 10px 28px rgba(38, 34, 32, 0.45);
 }

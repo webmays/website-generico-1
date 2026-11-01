@@ -1,6 +1,6 @@
 // [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Componente semântico de navegação inteligente para âncoras locais e cross-route.
-// [AI-DO-NOT-BREAK]: Se estiver na Home ('/'), previne navegação padrão e rola suavemente via Lenis. Se estiver em página interna (/procedimentos/:slug), navega para /#target.
+// [AI-DO-NOT-BREAK]: Se estiver na Home ('/'), previne navegação padrão e rola suavemente via Lenis. Em outra rota, navega para /#target.
 
 import { useLocation, useNavigate } from "react-router";
 import { useSmoothScroll } from "../../context/SmoothScrollContext";

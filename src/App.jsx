@@ -3,7 +3,7 @@
 // [AI-DO-NOT-BREAK]: O componente ScrollToTop reseta a posição da tela ao alternar entre rotas sem hash.
 
 import { useState, useEffect, lazy, Suspense } from "react";
-import { Routes, Route, useLocation } from "react-router";
+import { Routes, Route, Navigate, useLocation } from "react-router";
 import { Header } from "./components/layout/Header";
 import { MobileDrawer } from "./components/layout/MobileDrawer";
 import { BackToTop } from "./components/layout/BackToTop";
@@ -11,10 +11,7 @@ import { Footer } from "./components/layout/Footer";
 import { HomePage } from "./pages/HomePage";
 import { useSmoothScroll } from "./context/SmoothScrollContext";
 
-// Code-splitting para páginas internas, mantendo o bundle inicial da HomePage enxuto
-const ProcedurePage = lazy(() =>
-  import("./pages/ProcedurePage").then((m) => ({ default: m.ProcedurePage }))
-);
+// Code-splitting da pagina 404, mantendo o bundle inicial enxuto
 const NotFoundPage = lazy(() =>
   import("./pages/NotFoundPage").then((m) => ({ default: m.NotFoundPage }))
 );
@@ -65,7 +62,8 @@ export function App() {
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/procedimentos/:slug" element={<ProcedurePage />} />
+          {/* Links antigos de paginas individuais levam a secao da Home */}
+          <Route path="/procedimentos/*" element={<Navigate to="/#procedimentos" replace />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
