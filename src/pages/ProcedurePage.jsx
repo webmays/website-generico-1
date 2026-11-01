@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Página interna padronizada de procedimentos estéticos (/procedimentos/:slug) com estética de luxo e alto padrão visual.
 // [AI-DO-NOT-BREAK]:
 //  - useParams captura o parâmetro :slug da rota.
@@ -555,7 +555,7 @@ export function ProcedurePage() {
                 {resultsTitle}
               </h2>
               <p className="results-subtitle proc-gallery-subtitle">
-                Registros autênticos de procedimentos realizados no Ateliê Steffani Torres. Arraste ou passe o mouse para conferir a delicadeza dos detalhes:
+                Registros autênticos de procedimentos realizados no Torres Beauty Academy. Arraste ou passe o mouse para conferir a delicadeza dos detalhes:
               </p>
             </div>
 

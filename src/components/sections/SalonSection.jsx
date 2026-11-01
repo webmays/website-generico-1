@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Seção de Apresentação do Espaço / Ateliê com galeria editorial projetada para fotos em Modo Retrato (3:4).
 // [AI-DO-NOT-BREAK]:
 //  - Proporção 3:4 mantida para receber fotos verticais de smartphones e câmeras.
@@ -7,6 +7,7 @@
 
 import { useState } from "react";
 import { SALON_CONTENT } from "../../data/siteContent";
+import { EditorialTitle } from "../ui/EditorialTitle";
 
 /**
  * [AI-COMPONENT]: SalonPortraitCard
@@ -19,13 +20,13 @@ function SalonPortraitCard({ photo }) {
   return (
     <article
       className="salon-portrait-card"
-      aria-label={photo.title || "Foto do Ateliê Steffani Torres"}
+      aria-label={photo.title || "Foto do Torres Beauty Academy"}
     >
       {hasValidImage ? (
         <div className="salon-card-media">
           <img
             src={photo.image}
-            alt={photo.alt || photo.title || "Ambiente do Ateliê Steffani Torres"}
+            alt={photo.alt || photo.title || "Ambiente do Torres Beauty Academy"}
             className={`salon-card-img ${isLoaded ? "is-loaded" : ""}`}
             style={photo.objectPosition ? { objectPosition: photo.objectPosition } : undefined}
             loading="lazy"
@@ -55,7 +56,7 @@ function SalonPortraitCard({ photo }) {
               <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
               <circle cx="12" cy="13" r="4" />
             </svg>
-            <span className="salon-placeholder-title">Ateliê Steffani Torres</span>
+            <span className="salon-placeholder-title">Torres Beauty Academy</span>
           </div>
 
           <div className="salon-placeholder-footer">
@@ -85,7 +86,7 @@ export function SalonSection() {
             <span className="ornament-line" aria-hidden="true" />
           </div>
 
-          <h2 className="salon-title-main">{SALON_CONTENT.title}</h2>
+          <EditorialTitle text={SALON_CONTENT.title} className="salon-title-main" />
           <p className="salon-subtitle">{SALON_CONTENT.subtitle}</p>
         </div>
 

@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Seção "Sobre Steffani", destacando a trajetória, compromisso com a naturalidade e autoridade como mentora.
 // [AI-DO-NOT-BREAK]: O botão "Falar com a Steffani" conecta-se diretamente à seção ou formulário de contato via SectionLink.
 

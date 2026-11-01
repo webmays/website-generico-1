@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Mapeamento de experiência e emoção para a mini lista enumerada de cada procedimento.
 // [AI-DO-NOT-BREAK]: Vende a emoção, o requinte, o conforto e a experiência sensorial do protocolo.
 

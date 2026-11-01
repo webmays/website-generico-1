@@ -1,0 +1,20 @@
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
+// [AI-FILE-PURPOSE]: Titulo com contraste romano + italico. Nos dados, o trecho em italico fica entre asteriscos: "Sobre *Steffani Torres*".
+
+/**
+ * [AI-COMPONENT]: EditorialTitle
+ * @param {Object} props
+ * @param {string} props.text - Texto com o trecho em italico entre asteriscos
+ * @param {string} [props.as] - Tag do titulo (padrao h2)
+ * @param {string} [props.className]
+ * @example <EditorialTitle text="Duvidas *frequentes*" className="faq-title" />
+ */
+export function EditorialTitle({ text, as: Tag = "h2", className }) {
+  return (
+    <Tag className={className}>
+      {text.split("*").map((part, idx) =>
+        idx % 2 === 1 ? <em key={idx}>{part}</em> : part
+      )}
+    </Tag>
+  );
+}

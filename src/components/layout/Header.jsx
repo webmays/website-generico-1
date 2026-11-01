@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Barra de navegação principal (Header) com logo, links com mola Framer Motion, botão de CTA WhatsApp e botão hambúrguer.
 // [AI-DO-NOT-BREAK]: O hook useHeaderScroll calcula a variável CSS `--nav-hero-shift` e o estado `.is-scrolled` para centralização suave.
 
@@ -7,6 +7,7 @@ import { Link } from "react-router";
 import { BRAND, NAV_LINKS, CONTACT_INFO } from "../../data/siteContent";
 import { SectionLink } from "../ui/SectionLink";
 import { WhatsAppIcon } from "../ui/Icons";
+import { BrandLogo } from "../ui/BrandLogo";
 import { useHeaderScroll } from "../../hooks/useHeaderScroll";
 import { useActiveSection } from "../../hooks/useActiveSection";
 
@@ -42,15 +43,14 @@ export function Header({ isDrawerOpen, onToggleDrawer }) {
       className={`site-header ${isScrolled ? "is-scrolled" : ""}`}
     >
       <div ref={navContainerRef} className="nav-container">
-        {/* [AI-DO-NOT-BREAK]: Logo oficial da Steffani com tipografia serifada e subtítulo editorial */}
+        {/* [AI-DO-NOT-BREAK]: Logo oficial TORRES / beleza & ensino */}
         <Link
           to="/"
           ref={brandLogoRef}
           className="brand-logo"
           aria-label={BRAND.ariaLabel}
         >
-          {BRAND.name}
-          <span>{BRAND.subtitle}</span>
+          <BrandLogo />
         </Link>
 
         {/* Menu Desktop */}
@@ -74,7 +74,7 @@ export function Header({ isDrawerOpen, onToggleDrawer }) {
         </nav>
 
         <div className="nav-actions">
-          {/* [AI-DO-NOT-BREAK]: Botão de Agendamento Verde na Navbar */}
+          {/* [AI-DO-NOT-BREAK]: Botão de Agendamento dourado na Navbar */}
           <a
             href={CONTACT_INFO.whatsappUrl}
             target="_blank"

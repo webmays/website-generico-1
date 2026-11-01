@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Página Inicial (Landing Page), orquestrando todas as seções e gerenciando animações GSAP ScrollTrigger e hash scrolling.
 // [AI-DO-NOT-BREAK]: O hook useGsapReveals realiza o bind de ScrollTrigger com gsap.context para evitar vazamento de memória ou animações duplicadas.
 

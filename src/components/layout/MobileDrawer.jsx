@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Menu lateral deslizante (Drawer) para dispositivos móveis com animações Framer Motion e molas elásticas.
 // [AI-DO-NOT-BREAK]: Controla o bloqueio de rolagem do body (`overflow: hidden`) e o pause/start do Lenis smooth scroll.
 

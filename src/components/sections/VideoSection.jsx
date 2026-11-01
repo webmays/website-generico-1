@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Seção de Demonstração em Vídeo na Prática, transmitindo transparência técnica e acolhimento clínico.
 // [AI-DO-NOT-BREAK]: O bloco mantém proporção panorâmica com botão central de play circular com borda marrom.
 

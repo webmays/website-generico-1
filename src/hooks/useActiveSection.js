@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Hook que gerencia o scrollspy e sincroniza a seção ativa na viewport tanto para desktop quanto para mobile.
 // [AI-DO-NOT-BREAK]: O cálculo monitora os IDs das seções em ordem de leitura ("hero", "procedimentos", "resultados", "sobre", "cursos", "faq", "contato") e responde à rolagem de Lenis e nativa.
 

@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Componente semântico de navegação inteligente para âncoras locais e cross-route.
 // [AI-DO-NOT-BREAK]: Se estiver na Home ('/'), previne navegação padrão e rola suavemente via Lenis. Se estiver em página interna (/procedimentos/:slug), navega para /#target.
 

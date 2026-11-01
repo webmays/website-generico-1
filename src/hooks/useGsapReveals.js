@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Hook que inicializa animações de revelação por ScrollTrigger do GSAP nas seções da Home com limpeza de contexto.
 // [AI-DO-NOT-BREAK]: O método `ctx.revert()` na desmontagem do hook previne duplicação de instâncias GSAP ao alternar rotas.
 

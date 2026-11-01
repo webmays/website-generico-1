@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Botão flutuante 'Voltar ao Topo' elegante no canto inferior direito.
 // [AI-DO-NOT-BREAK]: Aparece suavemente após 350px de rolagem e utiliza o Lenis Smooth Scroll para retorno ao topo.
 

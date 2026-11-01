@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Catálogo oficial de procedimentos estéticos extraído integralmente do PDF 'catalogo TBA.pdf' (Single Source of Truth).
 // [AI-DO-NOT-BREAK]: O parâmetro `slug` define a rota dinâmica `/procedimentos/:slug`. O campo `num` é usado na ordenação e no layout.
 

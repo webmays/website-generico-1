@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Conjunto de ícones vetoriais SVG inline semânticos e leves para a interface da Steffani.
 // [AI-DO-NOT-BREAK]: Todos os SVGs possuem aria-hidden="true" e viewBox preciso para evitar reflow ou dependências externas pesadas de ícones.
 

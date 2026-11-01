@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Provedor de contexto React para o motor Lenis Smooth Scroll e sincronização de 60/120fps com o GSAP Ticker.
 // [AI-DO-NOT-BREAK]: O método `ticker.add` do GSAP atualiza os gatilhos do ScrollTrigger e a rolagem suave sem travamentos.
 

@@ -1,9 +1,10 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Seção de Cross-Sell Editorial ("Continue Explorando") para retenção e direcionamento de cuidados complementares.
 // [AI-DO-NOT-BREAK]: Cada card utiliza o `link-editorial` com transição de sublinhado e altura mínima de toque de 44px.
 
 import { CROSS_SELL_CONTENT } from "../../data/siteContent";
 import { SectionLink } from "../ui/SectionLink";
+import { EditorialTitle } from "../ui/EditorialTitle";
 
 /**
  * [AI-COMPONENT]: CrossSellSection
@@ -16,7 +17,7 @@ export function CrossSellSection() {
     <section className="cross-sell-section section-spacing-sm">
       <div className="container">
         <span className="meta-label">{CROSS_SELL_CONTENT.metaLabel}</span>
-        <h2 className="mb-2">{CROSS_SELL_CONTENT.title}</h2>
+        <EditorialTitle text={CROSS_SELL_CONTENT.title} className="mb-2" />
         <p>{CROSS_SELL_CONTENT.subtitle}</p>
 
         {/* [AI-EDIT-ZONE]: Cards de Cross-sell */}

@@ -1,5 +1,5 @@
 /* ============================================================================
-   WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)
+   WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)
    ============================================================================
    [AI-STYLESHEET]: src/styles/salon.css
    [AI-PURPOSE]: Estilos dedicados da galeria do Ateliê / Salão, projetada especificamente para fotos em Modo Retrato (3:4).
@@ -11,7 +11,7 @@
 
 #espaco {
   scroll-margin-top: 100px;
-  background-color: var(--color-white-porcelain, #F7F5F0);
+  background-color: var(--color-white-porcelain, #F5F3EF);
   position: relative;
   overflow: hidden;
 }
@@ -57,34 +57,24 @@
   display: inline-block;
   width: clamp(36px, 4.5vw, 60px);
   height: 1.5px;
-  background-color: rgba(91, 64, 50, 0.35);
-}
-
-.salon-header-centered .meta-label-ornament .meta-label {
-  margin-bottom: 0;
-  letter-spacing: clamp(0.22em, 0.28vw, 0.28em);
-  font-size: clamp(0.82rem, 0.95vw, 0.95rem);
-  font-weight: 700;
-  color: var(--color-brown, #5B4032);
-  text-transform: uppercase;
-  white-space: nowrap;
+  background-color: rgba(99, 91, 85, 0.35);
 }
 
 .salon-title-main {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-family: var(--font-serif);
   font-size: clamp(2.3rem, 4vw, 3.6rem);
   font-weight: 500;
   line-height: 1.12;
   letter-spacing: -0.02em;
-  color: var(--color-black, #111111);
+  color: var(--color-black, #221E1C);
   margin-bottom: 0.85rem;
   text-align: center;
 }
 
 .salon-subtitle {
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-family: var(--font-sans);
   font-size: clamp(0.95rem, 1.15vw, 1.08rem);
-  color: rgba(17, 17, 17, 0.78);
+  color: rgba(34, 30, 28, 0.78);
   line-height: 1.6;
   max-width: 680px;
   margin: 0 auto;
@@ -105,11 +95,11 @@
 .salon-portrait-card {
   position: relative;
   aspect-ratio: 3 / 4;
-  background-color: #FAF6F0;
-  border: 1px solid rgba(91, 64, 50, 0.12);
-  border-radius: 20px;
+  background-color: #F7F5F2;
+  border: 1px solid rgba(99, 91, 85, 0.12);
+  border-radius: 0;
   overflow: hidden;
-  box-shadow: 0 6px 20px rgba(91, 64, 50, 0.06);
+  box-shadow: 0 6px 20px rgba(99, 91, 85, 0.06);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
               border-color 0.35s ease;
@@ -120,8 +110,8 @@
 @media (hover: hover) and (pointer: fine) {
   .salon-portrait-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 36px rgba(91, 64, 50, 0.14);
-    border-color: rgba(197, 160, 89, 0.55);
+    box-shadow: 0 16px 36px rgba(99, 91, 85, 0.14);
+    border-color: rgba(201, 158, 103, 0.55);
   }
 }
 
@@ -151,7 +141,7 @@
   position: absolute;
   inset: auto 0 0 0;
   height: 48%;
-  background: linear-gradient(to top, rgba(24, 14, 9, 0.88) 0%, rgba(24, 14, 9, 0.45) 55%, rgba(24, 14, 9, 0) 100%);
+  background: linear-gradient(to top, rgba(28, 25, 23, 0.88) 0%, rgba(28, 25, 23, 0.45) 55%, rgba(28, 25, 23, 0) 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -161,19 +151,19 @@
 }
 
 .salon-card-caption-title {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-family: var(--font-serif);
   font-size: clamp(1.15rem, 1.3vw, 1.35rem);
   font-weight: 500;
-  color: #FAF8F5;
+  color: #F7F5F2;
   margin: 0 0 0.3rem 0;
   line-height: 1.2;
   letter-spacing: -0.01em;
 }
 
 .salon-card-caption-desc {
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-family: var(--font-sans);
   font-size: 0.8rem;
-  color: rgba(250, 248, 245, 0.82);
+  color: rgba(247, 245, 242, 0.82);
   margin: 0;
   line-height: 1.35;
 }
@@ -190,9 +180,9 @@
   justify-content: center;
   text-align: center;
   padding: 1.5rem 1rem;
-  background: linear-gradient(135deg, #FAF7F2 0%, #F1EBE1 50%, #E8DFD2 100%);
+  background: linear-gradient(135deg, #F7F5F2 0%, #EBE7E0 50%, #EBE7E0 100%);
   position: relative;
-  border-radius: 20px;
+  border-radius: 0;
 }
 
 .salon-placeholder-badge {
@@ -201,33 +191,31 @@
   align-items: center;
   gap: 8px;
   background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(91, 64, 50, 0.14);
-  border-radius: 14px;
+  border: 1px solid rgba(99, 91, 85, 0.14);
+  border-radius: 0;
   padding: 12px 16px;
-  box-shadow: 0 4px 14px rgba(91, 64, 50, 0.08);
+  box-shadow: 0 4px 14px rgba(99, 91, 85, 0.08);
   max-width: 90%;
 }
 
 .salon-placeholder-icon {
   width: 24px;
   height: 24px;
-  color: var(--color-brown, #5B4032);
+  color: var(--color-brown, #635B55);
   opacity: 0.85;
 }
 
 .salon-placeholder-title {
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-family: var(--font-sans);
   font-size: 0.78rem;
   font-weight: 600;
-  color: var(--color-brown, #5B4032);
+  color: var(--color-brown, #635B55);
 }
 
 .salon-placeholder-path {
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-family: var(--font-sans);
   font-size: 0.65rem;
-  color: rgba(91, 64, 50, 0.65);
+  color: rgba(99, 91, 85, 0.65);
 }
 
 .salon-placeholder-footer {
@@ -239,17 +227,17 @@
 }
 
 .salon-placeholder-area-title {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
+  font-family: var(--font-serif);
   font-size: 1.05rem;
   font-weight: 600;
-  color: #382319;
+  color: #262220;
   margin: 0 0 2px 0;
 }
 
 .salon-placeholder-area-desc {
-  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-family: var(--font-sans);
   font-size: 0.74rem;
-  color: rgba(56, 35, 25, 0.75);
+  color: rgba(38, 34, 32, 0.75);
   margin: 0;
 }
 
@@ -293,7 +281,7 @@
   .salon-portrait-card:hover,
   .salon-portrait-card:active {
     transform: none !important;
-    box-shadow: 0 6px 20px rgba(91, 64, 50, 0.06) !important;
+    box-shadow: 0 6px 20px rgba(99, 91, 85, 0.06) !important;
   }
 
   .salon-gallery-grid::-webkit-scrollbar {
@@ -301,12 +289,12 @@
   }
 
   .salon-gallery-grid::-webkit-scrollbar-track {
-    background: rgba(91, 64, 50, 0.08);
-    border-radius: 99px;
+    background: rgba(99, 91, 85, 0.08);
+    border-radius: 0;
   }
 
   .salon-gallery-grid::-webkit-scrollbar-thumb {
-    background: rgba(197, 160, 89, 0.45);
-    border-radius: 99px;
+    background: rgba(201, 158, 103, 0.45);
+    border-radius: 0;
   }
 }

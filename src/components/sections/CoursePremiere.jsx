@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Mini-seção de Destaque e Estreia da Formação "Destrava Brow" (Fadas In Action).
 // [AI-DO-NOT-BREAK]: Steffani 100% centralizada na esfera com gradiente radial, foto no topo no mobile com fade inferior e botão único de lista de espera.
 

@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Componente raiz da aplicação configurando Header, Drawer, Roteamento, Voltar ao Topo e Footer.
 // [AI-DO-NOT-BREAK]: O componente ScrollToTop reseta a posição da tela ao alternar entre rotas sem hash.
 

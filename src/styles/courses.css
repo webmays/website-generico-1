@@ -1,5 +1,5 @@
 /* ============================================================================
-   WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)
+   WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)
    ============================================================================
    [AI-STYLESHEET]: src/styles/courses.css
    [AI-PURPOSE]: Seção de Cursos & Mentorias — Design System Editorial Clássico com cards 1:1, pilares e integração WhatsApp.
@@ -53,17 +53,7 @@
   display: inline-block;
   width: clamp(42px, 5vw, 68px);
   height: 1.5px;
-  background-color: rgba(91, 64, 50, 0.35);
-}
-
-.courses-header-centered .meta-label-ornament .meta-label {
-  margin-bottom: 0;
-  letter-spacing: clamp(0.2em, 0.28vw, 0.28em);
-  font-size: clamp(0.85rem, 1vw, 1rem);
-  font-weight: 700;
-  color: var(--color-brown);
-  text-transform: uppercase;
-  white-space: nowrap;
+  background-color: rgba(99, 91, 85, 0.35);
 }
 
 .courses-title-main {
@@ -80,7 +70,7 @@
 .courses-subtitle {
   font-family: var(--font-sans);
   font-size: clamp(1rem, 1.2vw, 1.15rem);
-  color: rgba(17, 17, 17, 0.82);
+  color: rgba(34, 30, 28, 0.82);
   line-height: 1.62;
   max-width: 680px;
   margin: 0 auto clamp(0.75rem, 1.2vw, 1rem);
@@ -90,7 +80,7 @@
 .courses-header-note {
   font-family: var(--font-sans);
   font-size: clamp(0.92rem, 1.05vw, 1.02rem);
-  color: rgba(91, 64, 50, 0.88);
+  color: rgba(99, 91, 85, 0.88);
   font-weight: 500;
   text-align: center;
   margin: 0 auto clamp(1.2rem, 1.8vw, 1.6rem);
@@ -109,17 +99,17 @@
   align-items: center;
   gap: 0.75rem;
   background-color: var(--color-brown);
-  color: #FFFFFF;
+  color: #F7F5F2;
   font-family: var(--font-sans);
   font-size: clamp(0.95rem, 1.05vw, 1.05rem);
   font-weight: 600;
   letter-spacing: -0.01em;
   padding: 0.85rem 2.2rem;
   min-height: 48px;
-  border-radius: 9999px;
+  border-radius: 0;
   border: 1px solid var(--color-brown);
   text-decoration: none;
-  box-shadow: 0 6px 18px rgba(91, 64, 50, 0.2);
+  box-shadow: 0 6px 18px rgba(99, 91, 85, 0.2);
   transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1),
               box-shadow 0.38s cubic-bezier(0.22, 1, 0.36, 1),
               background-color 0.38s cubic-bezier(0.22, 1, 0.36, 1),
@@ -127,11 +117,11 @@
 }
 
 .btn-courses-pill:hover {
-  background-color: #4A3328;
-  border-color: #4A3328;
+  background-color: #3A3531;
+  border-color: #3A3531;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(91, 64, 50, 0.28);
-  color: #FFFFFF;
+  box-shadow: 0 10px 24px rgba(99, 91, 85, 0.28);
+  color: #F7F5F2;
 }
 
 .btn-courses-pill svg {
@@ -191,9 +181,9 @@
   width: 100%;
   max-width: 620px;
   aspect-ratio: 1 / 1;
-  border-radius: 20px;
+  border-radius: 0;
   overflow: hidden;
-  background-color: #F0EAE3;
+  background-color: #EBE7E0;
   margin: 0;
   display: block;
   flex-shrink: 0;
@@ -257,7 +247,7 @@
   display: block;
   width: 24px;
   height: 1.5px;
-  border-radius: 1px;
+  border-radius: 0;
 }
 
 .course-kicker-cat {
@@ -339,7 +329,7 @@
   justify-content: center;
   width: 20px;
   height: 20px;
-  border-radius: 50%;
+  border-radius: 0;
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -383,7 +373,7 @@
   letter-spacing: -0.01em;
   padding: 0.9rem 2.4rem;
   min-height: 50px;
-  border-radius: 9999px;
+  border-radius: 0;
   text-decoration: none;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
@@ -406,7 +396,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding: 0.65rem 1.35rem;
-  border-radius: 9999px;
+  border-radius: 0;
   white-space: nowrap;
   transition: all 0.3s ease;
 }
@@ -419,171 +409,171 @@
    A. TEMA CLARO (FAIXA BRANCA / PORCELANA)
    -------------------------------------------------------------------------- */
 .course-band-item.is-light-theme {
-  background-color: #FFFFFF;
-  border-top: 1px solid rgba(91, 64, 50, 0.12);
+  background-color: #F7F5F2;
+  border-top: 1px solid rgba(99, 91, 85, 0.12);
 }
 
 .course-band-item.is-light-theme .course-kicker-num {
-  color: var(--color-brown, #5B4032);
+  color: var(--color-brown, #635B55);
 }
 
 .course-band-item.is-light-theme .course-kicker-line {
-  background-color: var(--color-gold, #C5A059);
+  background-color: var(--color-gold, #C99E67);
 }
 
 .course-band-item.is-light-theme .course-kicker-cat {
-  color: #7A5B49;
+  color: #635B55;
 }
 
 .course-band-item.is-light-theme .course-band-title {
-  color: #111111;
+  color: #221E1C;
 }
 
 .course-band-item.is-light-theme:hover .course-band-title {
-  color: var(--color-brown, #5B4032);
+  color: var(--color-brown, #635B55);
 }
 
 .course-band-item.is-light-theme .course-band-headline {
-  color: #7A5B49;
+  color: #635B55;
 }
 
 .course-band-item.is-light-theme .course-band-desc {
-  color: rgba(26, 26, 26, 0.82);
+  color: rgba(28, 25, 23, 0.82);
 }
 
 .course-band-item.is-light-theme .course-pillars-heading {
-  color: #8C654B;
+  color: #635B55;
 }
 
 .course-band-item.is-light-theme .course-pillars-line {
-  background-color: rgba(91, 64, 50, 0.18);
+  background-color: rgba(99, 91, 85, 0.18);
 }
 
 .course-band-item.is-light-theme .pillar-check-icon {
-  background-color: rgba(91, 64, 50, 0.08);
-  color: var(--color-brown, #5B4032);
-  border: 1px solid rgba(91, 64, 50, 0.14);
+  background-color: rgba(99, 91, 85, 0.08);
+  color: var(--color-brown, #635B55);
+  border: 1px solid rgba(99, 91, 85, 0.14);
 }
 
 .course-band-item.is-light-theme .pillar-title {
-  color: #1A110B;
+  color: #1C1917;
 }
 
 .course-band-item.is-light-theme .pillar-desc {
-  color: rgba(26, 26, 26, 0.72);
+  color: rgba(28, 25, 23, 0.72);
 }
 
 .course-band-item.is-light-theme .btn-course-band-cta {
-  background-color: var(--color-brown, #5B4032);
-  color: #FFFFFF;
-  border: 1px solid var(--color-brown, #5B4032);
-  box-shadow: 0 6px 18px rgba(91, 64, 50, 0.18);
+  background-color: var(--color-brown, #635B55);
+  color: #F7F5F2;
+  border: 1px solid var(--color-brown, #635B55);
+  box-shadow: 0 6px 18px rgba(99, 91, 85, 0.18);
 }
 
 .course-band-item.is-light-theme .btn-course-band-cta:hover {
-  background-color: #4A3328;
-  border-color: #4A3328;
-  color: #FFFFFF;
+  background-color: #3A3531;
+  border-color: #3A3531;
+  color: #F7F5F2;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(91, 64, 50, 0.26);
+  box-shadow: 0 10px 24px rgba(99, 91, 85, 0.26);
 }
 
 .course-band-item.is-light-theme .course-cta-urgency {
-  background-color: rgba(91, 64, 50, 0.08);
-  color: var(--color-brown, #5B4032);
-  border: 1.5px solid rgba(91, 64, 50, 0.24);
-  box-shadow: 0 2px 8px rgba(91, 64, 50, 0.06);
+  background-color: rgba(99, 91, 85, 0.08);
+  color: var(--color-brown, #635B55);
+  border: 1.5px solid rgba(99, 91, 85, 0.24);
+  box-shadow: 0 2px 8px rgba(99, 91, 85, 0.06);
 }
 
 .course-band-item.is-light-theme .course-band-media {
-  box-shadow: 0 16px 44px rgba(91, 64, 50, 0.12);
-  border: 1px solid rgba(91, 64, 50, 0.08);
+  box-shadow: 0 16px 44px rgba(99, 91, 85, 0.12);
+  border: 1px solid rgba(99, 91, 85, 0.08);
 }
 
 /* --------------------------------------------------------------------------
    B. TEMA ESCURO (FAIXA MARROM LUXO)
    -------------------------------------------------------------------------- */
 .course-band-item.is-dark-theme {
-  background-color: #2D1A12;
+  background-color: #221E1C;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .course-band-item.is-dark-theme .course-kicker-num {
-  color: #C5A059;
+  color: #C99E67;
 }
 
 .course-band-item.is-dark-theme .course-kicker-line {
-  background-color: #C5A059;
+  background-color: #C99E67;
 }
 
 .course-band-item.is-dark-theme .course-kicker-cat {
-  color: #E8D5B5;
+  color: #D8D2CA;
 }
 
 .course-band-item.is-dark-theme .course-band-title {
-  color: #FAF8F5;
+  color: #F7F5F2;
 }
 
 .course-band-item.is-dark-theme:hover .course-band-title {
-  color: #C5A059;
+  color: #C99E67;
 }
 
 .course-band-item.is-dark-theme .course-band-headline {
-  color: #C5A059;
+  color: #C99E67;
 }
 
 .course-band-item.is-dark-theme .course-band-desc {
-  color: rgba(250, 248, 245, 0.84);
+  color: rgba(247, 245, 242, 0.84);
 }
 
 .course-band-item.is-dark-theme .course-pillars-heading {
-  color: #C5A059;
+  color: #C99E67;
 }
 
 .course-band-item.is-dark-theme .course-pillars-line {
-  background-color: rgba(197, 160, 89, 0.3);
+  background-color: rgba(201, 158, 103, 0.3);
 }
 
 .course-band-item.is-dark-theme .pillar-check-icon {
-  background-color: rgba(197, 160, 89, 0.14);
-  color: #E8D5B5;
-  border: 1px solid rgba(197, 160, 89, 0.3);
+  background-color: rgba(201, 158, 103, 0.14);
+  color: #D8D2CA;
+  border: 1px solid rgba(201, 158, 103, 0.3);
 }
 
 .course-band-item.is-dark-theme .pillar-title {
-  color: #FAF8F5;
+  color: #F7F5F2;
 }
 
 .course-band-item.is-dark-theme .pillar-desc {
-  color: rgba(250, 248, 245, 0.74);
+  color: rgba(247, 245, 242, 0.74);
 }
 
 .course-band-item.is-dark-theme .btn-course-band-cta {
-  background-color: #FAF8F5;
-  color: #2D1A12;
-  border: 1px solid #FAF8F5;
+  background-color: #F7F5F2;
+  color: #221E1C;
+  border: 1px solid #F7F5F2;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .course-band-item.is-dark-theme .btn-course-band-cta:hover {
-  background-color: #C5A059;
-  border-color: #C5A059;
-  color: #1A110B;
+  background-color: #C99E67;
+  border-color: #C99E67;
+  color: #1C1917;
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.42);
 }
 
 .course-band-item.is-dark-theme .course-cta-urgency {
-  background-color: rgba(197, 160, 89, 0.16);
-  color: #FAF8F5;
-  border: 1.5px solid rgba(197, 160, 89, 0.42);
+  background-color: rgba(201, 158, 103, 0.16);
+  color: #F7F5F2;
+  border: 1.5px solid rgba(201, 158, 103, 0.42);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }
 
 .course-band-item.is-dark-theme .course-band-media {
   box-shadow: 0 20px 52px rgba(0, 0, 0, 0.42);
-  border: 1px solid rgba(138, 98, 77, 0.35);
+  border: 1px solid rgba(99, 91, 85, 0.35);
 }
 
 /* 2.6 Rodapé com Informação Complementar */
@@ -595,7 +585,7 @@
 .courses-footer-note {
   font-family: var(--font-sans);
   font-size: 0.92rem;
-  color: rgba(91, 64, 50, 0.75);
+  color: rgba(99, 91, 85, 0.75);
 }
 
 /* ==========================================================================
@@ -654,7 +644,7 @@
     aspect-ratio: 16 / 11;
     min-height: 270px;
     max-height: 330px;
-    border-radius: 16px;
+    border-radius: 0;
     margin: 0;
   }
 

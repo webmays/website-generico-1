@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Seção "Resultados Reais" da Steffani Torres com fotos em alta definição e vídeos reais de procedimentos, tanto no Desktop Bento Grid quanto nos 3 Carrosséis Temáticos Mobile.
 // [AI-DO-NOT-BREAK]:
 //  - O ID "resultados" é o alvo oficial do link na navbar e do scrollspy (useActiveSection).
@@ -8,6 +8,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { CASES_CONTENT } from "../../data/siteContent";
+import { EditorialTitle } from "../ui/EditorialTitle";
 
 /**
  * Grupos temáticos dos 3 carrosséis mobile
@@ -147,7 +148,7 @@ function ResultsImageMedia({ card, canPlay = null }) {
         <div className="results-card-media">
           <img
             src={card.image}
-            alt={card.alt || `Resultado de ${card.procedure} — Ateliê Steffani Torres`}
+            alt={card.alt || `Resultado de ${card.procedure} — Torres Beauty Academy`}
             className="results-card-img"
             style={card.objectFit ? { objectFit: card.objectFit } : undefined}
             loading="lazy"
@@ -386,7 +387,7 @@ export function CasesSection() {
             <span className="ornament-line" aria-hidden="true" />
           </div>
 
-          <h2 className="results-title-main">{CASES_CONTENT.title}</h2>
+          <EditorialTitle text={CASES_CONTENT.title} className="results-title-main" />
           <p className="results-subtitle">{CASES_CONTENT.subtitle}</p>
         </div>
 
@@ -408,7 +409,7 @@ export function CasesSection() {
           ))}
         </div>
 
-        <p className="mt-8 text-center text-[0.75rem] text-[#111111]/50 max-w-xl mx-auto">
+        <p className="mt-8 text-center text-[0.75rem] text-black/60 max-w-xl mx-auto">
           {CASES_CONTENT.disclaimer}
         </p>
       </div>

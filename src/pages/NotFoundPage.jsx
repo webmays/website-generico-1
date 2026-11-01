@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Página de Erro 404 para rotas inexistentes com layout editorial e botão de retorno à Home.
 // [AI-DO-NOT-BREAK]: Rota curinga `path="*"` no React Router.
 

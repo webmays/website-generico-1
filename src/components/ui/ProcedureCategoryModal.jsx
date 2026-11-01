@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Modal editorial para exibição dos procedimentos de cada categoria (Sobrancelhas, Tratamentos Labiais, Micropigmentação, Experiências Exclusivas).
 // [AI-DO-NOT-BREAK]: Suporta scroll nativo com `data-lenis-prevent`, pausa o Lenis smooth scroll enquanto aberto, ordena itens sequencialmente (01, 02...) e exibe duração apenas quando constar no catálogo oficial.
 

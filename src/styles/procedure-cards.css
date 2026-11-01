@@ -1,5 +1,5 @@
 /* ============================================================================
-   WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)
+   WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)
    ============================================================================
    [AI-STYLESHEET]: src/styles/procedure-cards.css
    [AI-PURPOSE]: Estilos dedicados dos 4 cards de procedimentos (Sobrancelhas, Tratamentos Labiais, Micropigmentação, Experiências Exclusivas) e modal editorial.
@@ -22,9 +22,9 @@
 .procedure-category-card {
   position: relative;
   display: flex;
-  background-color: #20120b;
+  background-color: #1C1917;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 22px;
+  border-radius: 0;
   overflow: hidden;
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
   min-height: 295px;
@@ -38,7 +38,7 @@
 .procedure-category-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.5);
-  border-color: rgba(197, 160, 89, 0.45);
+  border-color: rgba(201, 158, 103, 0.45);
 }
 
 /* Conteúdo à Esquerda */
@@ -66,7 +66,7 @@
   font-size: 0.95rem;
   font-weight: 500;
   line-height: 1;
-  color: rgba(250, 248, 245, 0.7);
+  color: rgba(247, 245, 242, 0.7);
   letter-spacing: 0.04em;
 }
 
@@ -74,10 +74,10 @@
   display: block;
   width: 22px;
   height: 1.5px;
-  background-color: var(--color-gold-border, #C5A059);
+  background-color: var(--color-gold-border, #C99E67);
   margin-top: 5px;
   margin-bottom: 0;
-  border-radius: 1px;
+  border-radius: 0;
 }
 
 .category-card-title {
@@ -86,14 +86,14 @@
   font-weight: 500;
   line-height: 1.16;
   letter-spacing: -0.015em;
-  color: #FFFFFF;
+  color: #F7F5F2;
   margin-bottom: 0.65rem;
 }
 
 .category-card-desc {
   font-family: var(--font-sans);
   font-size: 0.92rem;
-  color: rgba(250, 248, 245, 0.74);
+  color: rgba(247, 245, 242, 0.74);
   line-height: 1.55;
   margin-bottom: 1.6rem;
   max-width: 340px;
@@ -105,9 +105,9 @@
   align-items: center;
   gap: 0.85rem;
   border: 1px solid rgba(255, 255, 255, 0.32);
-  border-radius: 9999px;
+  border-radius: 0;
   padding: 0.42rem 0.48rem 0.42rem 1.25rem;
-  color: #FFFFFF;
+  color: #F7F5F2;
   text-decoration: none;
   font-family: var(--font-sans);
   font-size: 0.9rem;
@@ -125,24 +125,24 @@
   justify-content: center;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #FFFFFF;
+  color: #F7F5F2;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .procedure-category-card:hover .category-card-btn,
 .category-card-btn:hover {
-  background-color: #FAF8F5;
-  color: #20120b;
-  border-color: #FAF8F5;
+  background-color: #F7F5F2;
+  color: #1C1917;
+  border-color: #F7F5F2;
 }
 
 .procedure-category-card:hover .btn-arrow-circle,
 .category-card-btn:hover .btn-arrow-circle {
-  background-color: #20120b;
-  color: #FAF8F5;
-  border-color: #20120b;
+  background-color: #1C1917;
+  color: #F7F5F2;
+  border-color: #1C1917;
   transform: translateX(2px);
 }
 
@@ -175,9 +175,9 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    #20120b 0%,
-    rgba(32, 18, 11, 0.85) 15%,
-    rgba(32, 18, 11, 0.3) 50%,
+    #1C1917 0%,
+    rgba(28, 25, 23, 0.85) 15%,
+    rgba(28, 25, 23, 0.3) 50%,
     transparent 85%
   );
   pointer-events: none;
@@ -189,9 +189,7 @@
 .category-modal-backdrop {
   position: fixed;
   inset: 0;
-  background-color: rgba(14, 7, 4, 0.55);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  background-color: rgba(28, 25, 23, 0.55);
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -206,15 +204,15 @@
 }
 
 .category-modal-panel {
-  background: #FAF8F5;
-  border-radius: 24px;
+  background: #F7F5F2;
+  border-radius: 0;
   width: min(740px, 96vw);
   max-height: 85vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(91, 64, 50, 0.16);
+  border: 1px solid rgba(99, 91, 85, 0.16);
   animation: modalScaleUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
@@ -234,8 +232,8 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: clamp(1.4rem, 2.2vw, 2rem) clamp(1.5rem, 2.5vw, 2.2rem) 1.15rem;
-  border-bottom: 1px solid rgba(91, 64, 50, 0.12);
-  background: #FAF8F5;
+  border-bottom: 1px solid rgba(99, 91, 85, 0.12);
+  background: #F7F5F2;
   flex-shrink: 0;
 }
 
@@ -246,10 +244,10 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: var(--color-brown, #5B4032);
-  background-color: rgba(91, 64, 50, 0.08);
+  color: var(--color-brown, #635B55);
+  background-color: rgba(99, 91, 85, 0.08);
   padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
+  border-radius: 0;
   margin-bottom: 0.45rem;
 }
 
@@ -257,37 +255,37 @@
   font-family: var(--font-serif);
   font-size: clamp(1.65rem, 2.3vw, 2.1rem);
   font-weight: 500;
-  color: var(--color-black, #111111);
+  color: var(--color-black, #221E1C);
   margin-bottom: 0.35rem;
 }
 
 .modal-subtitle {
   font-family: var(--font-sans);
   font-size: 0.95rem;
-  color: rgba(17, 17, 17, 0.75);
+  color: rgba(34, 30, 28, 0.75);
   line-height: 1.5;
   margin: 0;
 }
 
 .modal-close-btn {
   background: transparent;
-  border: 1px solid rgba(91, 64, 50, 0.2);
+  border: 1px solid rgba(99, 91, 85, 0.2);
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-brown, #5B4032);
+  color: var(--color-brown, #635B55);
   cursor: pointer;
   transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
 .modal-close-btn:hover {
-  background-color: var(--color-brown, #5B4032);
-  color: #FFFFFF;
-  border-color: var(--color-brown, #5B4032);
+  background-color: var(--color-brown, #635B55);
+  color: #F7F5F2;
+  border-color: var(--color-brown, #635B55);
 }
 
 /* Lista com Scroll Garantido e Fluido */
@@ -310,27 +308,27 @@
   align-items: center;
   gap: 1.25rem;
   padding: 1.15rem 1.35rem;
-  background-color: #FFFFFF;
-  border: 1.5px solid rgba(91, 64, 50, 0.2);
-  border-radius: 16px;
-  box-shadow: 0 3px 12px rgba(91, 64, 50, 0.05);
+  background-color: #F7F5F2;
+  border: 1.5px solid rgba(99, 91, 85, 0.2);
+  border-radius: 0;
+  box-shadow: 0 3px 12px rgba(99, 91, 85, 0.05);
   transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
 }
 
 .modal-proc-item:hover {
-  border-color: rgba(91, 64, 50, 0.45);
-  box-shadow: 0 6px 20px rgba(91, 64, 50, 0.1);
+  border-color: rgba(99, 91, 85, 0.45);
+  box-shadow: 0 6px 20px rgba(99, 91, 85, 0.1);
   transform: translateY(-2px);
 }
 
 .modal-proc-media {
   width: 72px;
   height: 72px;
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
   flex-shrink: 0;
-  background-color: var(--color-off-white, #F3EFEA);
-  border: 1px solid rgba(91, 64, 50, 0.1);
+  background-color: var(--color-off-white, #F5F3EF);
+  border: 1px solid rgba(99, 91, 85, 0.1);
 }
 
 .modal-proc-img {
@@ -354,19 +352,19 @@
   font-family: var(--font-serif);
   font-size: 0.95rem;
   font-weight: 700;
-  color: var(--color-brown, #5B4032);
+  color: var(--color-brown, #635B55);
 }
 
 .modal-proc-name {
   font-family: var(--font-serif);
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--color-black, #111111);
+  color: var(--color-black, #221E1C);
 }
 
 .modal-proc-desc {
   font-size: 0.88rem;
-  color: rgba(17, 17, 17, 0.74);
+  color: rgba(34, 30, 28, 0.74);
   line-height: 1.48;
   margin-bottom: 0.4rem;
   display: -webkit-box;
@@ -384,11 +382,11 @@
 
 .modal-proc-price {
   font-weight: 700;
-  color: var(--color-brown, #5B4032);
+  color: var(--color-brown, #635B55);
 }
 
 .modal-proc-duration {
-  color: rgba(17, 17, 17, 0.65);
+  color: rgba(34, 30, 28, 0.65);
 }
 
 .modal-proc-actions {
@@ -405,16 +403,16 @@
   gap: 0.35rem;
   font-size: 0.86rem;
   font-weight: 600;
-  color: var(--color-brown, #5B4032);
+  color: var(--color-brown, #635B55);
   text-decoration: none;
   padding: 0.35rem 0.65rem;
-  border-radius: 8px;
+  border-radius: 0;
   transition: all 0.2s ease;
 }
 
 .modal-btn-details:hover {
-  color: var(--color-dark-brown, #2A1E18);
-  background-color: rgba(91, 64, 50, 0.06);
+  color: var(--color-dark-brown, #262220);
+  background-color: rgba(99, 91, 85, 0.06);
   transform: translateX(2px);
 }
 
@@ -422,21 +420,21 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #25D366;
-  color: #FFFFFF;
+  background-color: #C99E67;
+  color: #F7F5F2;
   font-size: 0.82rem;
   font-weight: 600;
   padding: 0.45rem 1rem;
-  border-radius: 9999px;
+  border-radius: 0;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(37, 211, 102, 0.2);
+  box-shadow: 0 2px 8px rgba(201, 158, 103, 0.2);
   transition: all 0.2s ease;
 }
 
 .modal-btn-whatsapp:hover {
-  background-color: #1EBE5B;
+  background-color: #C99E67;
   transform: scale(1.04);
-  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 4px 14px rgba(201, 158, 103, 0.35);
 }
 
 /* ==========================================================================
@@ -452,7 +450,7 @@
 @media (max-width: 640px) {
   .procedure-category-card {
     min-height: 255px;
-    border-radius: 18px;
+    border-radius: 0;
   }
 
   .category-card-content {
@@ -473,10 +471,10 @@
   .category-card-overlay {
     background: linear-gradient(
       to right,
-      #20120b 0%,
-      rgba(32, 18, 11, 0.96) 24%,
-      rgba(32, 18, 11, 0.5) 54%,
-      rgba(32, 18, 11, 0.08) 82%,
+      #1C1917 0%,
+      rgba(28, 25, 23, 0.96) 24%,
+      rgba(28, 25, 23, 0.5) 54%,
+      rgba(28, 25, 23, 0.08) 82%,
       transparent 100%
     );
   }
@@ -517,7 +515,7 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 0.75rem;
-    border-top: 1px solid rgba(91, 64, 50, 0.08);
+    border-top: 1px solid rgba(99, 91, 85, 0.08);
   }
 }
 

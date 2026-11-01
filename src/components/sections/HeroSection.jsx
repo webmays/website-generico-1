@@ -1,5 +1,5 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
-// [AI-FILE-PURPOSE]: Hero Section do Ateliê Steffani Torres — título em escada, CTAs, contato WhatsApp e retrato recortado sobre círculo geométrico.
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
+// [AI-FILE-PURPOSE]: Hero Section do Torres Beauty Academy — título em escada, CTAs, contato WhatsApp e retrato recortado sobre círculo geométrico.
 // [AI-DO-NOT-BREAK]: A ordem do DOM (título → retrato → CTAs) define a composição vertical no mobile. No desktop o retrato é absoluto (ver src/styles/hero.css).
 
 import { HERO_CONTENT, CONTACT_INFO, BRAND } from "../../data/siteContent";
@@ -67,7 +67,7 @@ export function HeroSection() {
         <div className="hero__circle" aria-hidden="true" />
         <img
           src="/images/hero/assets01-hero.png"
-          alt={`${BRAND.name} Torres, especialista do ${BRAND.fullAcademyTitle}, de luva preta e camiseta preta`}
+          alt={`Steffani Torres, especialista da ${BRAND.fullAcademyTitle}`}
           className="hero__portrait"
           width="1024"
           height="1536"

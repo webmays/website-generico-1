@@ -1,9 +1,10 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Rodapé editorial institucional com links de navegação, horários de atendimento, contatos e créditos.
-// [AI-STYLE-RULE]: Fundo #0b0b0b quase preto, tipografia suave em tons de off-white e taupe.
+// [AI-STYLE-RULE]: Fundo #262220, tipografia off-white e taupe.
 
-import { BRAND, CONTACT_INFO, NAV_LINKS, FOOTER_CONTENT } from "../../data/siteContent";
+import { CONTACT_INFO, NAV_LINKS, FOOTER_CONTENT } from "../../data/siteContent";
 import { SectionLink } from "../ui/SectionLink";
+import { BrandLogo } from "../ui/BrandLogo";
 
 /**
  * [AI-COMPONENT]: Footer
@@ -15,8 +16,10 @@ export function Footer() {
     <footer className="site-footer">
       <div className="container footer-grid">
         <div className="footer-brand">
-          <h3>{BRAND.name}</h3>
-          <p className="text-off-white/50 text-[0.85rem]">
+          <div className="brand-logo footer-brand__logo">
+            <BrandLogo />
+          </div>
+          <p className="footer-brand__desc">
             {FOOTER_CONTENT.brandDescription}
           </p>
         </div>

@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Ponto de entrada do React que inicializa o BrowserRouter, o SmoothScrollProvider e renderiza a App na DOM.
 // [AI-DO-NOT-BREAK]: A ordem dos Providers (BrowserRouter -> SmoothScrollProvider -> App) é necessária para navegação e rolagem suave funcionarem em harmonia.
 

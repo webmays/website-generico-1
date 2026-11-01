@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Seção de Procedimentos preservando cabeçalho e fundo originais da seção, atualizando exclusivamente os cards que separam os procedimentos fiel à referência visual.
 // [AI-DO-NOT-BREAK]: A seção mantém seu fundo e cabeçalho originais. Os cards 2x2 separam: Sobrancelhas, Tratamentos Labiais, Micropigmentação e Experiências Exclusivas.
 
@@ -6,6 +6,7 @@ import { useState } from "react";
 import { PROCEDURE_CATEGORY_CARDS } from "../../data/proceduresData";
 import { PROCEDURES_HEADER_CONTENT } from "../../data/siteContent";
 import { SectionLink } from "../ui/SectionLink";
+import { EditorialTitle } from "../ui/EditorialTitle";
 import { ArrowDownLine, ArrowRightShort } from "../ui/Icons";
 import { ProcedureCategoryModal } from "../ui/ProcedureCategoryModal";
 
@@ -27,7 +28,7 @@ export function ProceduresSection() {
             <span className="meta-label">{PROCEDURES_HEADER_CONTENT.metaLabel}</span>
             <span className="ornament-line" />
           </div>
-          <h2 className="procedures-title-main">{PROCEDURES_HEADER_CONTENT.title}</h2>
+          <EditorialTitle text={PROCEDURES_HEADER_CONTENT.title} className="procedures-title-main" />
           <p className="procedures-subtitle">
             {PROCEDURES_HEADER_CONTENT.subtitle}
           </p>

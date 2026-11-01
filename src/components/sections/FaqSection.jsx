@@ -1,9 +1,10 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Seção de Perguntas Frequentes (FAQ) com accordion de fechamento alternado e recálculo do Lenis.
 // [AI-DO-NOT-BREAK]: O recálculo `lenis.resize()` após 150ms é essencial para evitar saltos ou inconsistências na barra de rolagem ao expandir itens.
 
 import { useState } from "react";
 import { FAQ_CONTENT } from "../../data/siteContent";
+import { EditorialTitle } from "../ui/EditorialTitle";
 import { useSmoothScroll } from "../../context/SmoothScrollContext";
 
 /**
@@ -30,7 +31,7 @@ export function FaqSection() {
       <div className="container">
         <div className="text-center mb-12">
           <span className="meta-label">{FAQ_CONTENT.metaLabel}</span>
-          <h2>{FAQ_CONTENT.title}</h2>
+          <EditorialTitle text={FAQ_CONTENT.title} />
         </div>
 
         {/* [AI-EDIT-ZONE]: Perguntas e Respostas do FAQ */}

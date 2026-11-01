@@ -1,10 +1,11 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Seção de Cursos da Steffani com cabeçalho padrão idêntico a Procedimentos e grade 2x2 uniforme de formações profissionais.
 // [AI-DO-NOT-BREAK]: Todos os botões conectam diretamente ao atendimento oficial da Steffani no WhatsApp com mensagens personalizadas.
 
 import { COURSES_HEADER_DATA, COURSES_LIST, getCourseWhatsappUrl } from "../../data/coursesData";
 import { CheckIcon, WhatsAppIcon } from "../ui/Icons";
 import { CoursePremiere } from "./CoursePremiere";
+import { EditorialTitle } from "../ui/EditorialTitle";
 
 /**
  * [AI-COMPONENT]: CourseSection
@@ -25,7 +26,7 @@ export function CourseSection() {
             <span className="ornament-line" />
           </div>
 
-          <h2 className="courses-title-main">{COURSES_HEADER_DATA.title}</h2>
+          <EditorialTitle text={COURSES_HEADER_DATA.title} className="courses-title-main" />
 
           <p className="courses-subtitle">
             {COURSES_HEADER_DATA.subtitle}

@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Dados reais dos cursos e mentorias da Steffani Torres, extraídos com fidelidade máxima dos PDFs oficiais.
 // [AI-DO-NOT-BREAK]: Todos os botões conectam diretamente ao atendimento oficial da Steffani no WhatsApp com mensagens personalizadas.
 
@@ -6,7 +6,7 @@ import { CONTACT_INFO } from "./siteContent";
 
 export const COURSES_HEADER_DATA = {
   eyebrow: "FORMAÇÃO QUE TRANSFORMA",
-  title: "Cursos & Mentorias",
+  title: "Cursos & *mentorias*",
   subtitle: "Conheça as formações e mentorias profissionais da Steffani Torres e fale no WhatsApp para receber cronogramas, datas e valores de investimento.",
   ctaPill: "Falar no WhatsApp",
   bottomDisclaimer: "Informações completas, cronograma e valores de matrícula via WhatsApp oficial."

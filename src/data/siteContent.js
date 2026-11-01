@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Centralização absoluta de textos, links de contato e conteúdos de todas as seções (Single Source of Truth).
 // [AI-DO-NOT-BREAK]: Qualquer alteração de texto, número de WhatsApp ou link institucional DEVE ser feita exclusivamente neste arquivo.
 
@@ -22,12 +22,12 @@ export const CONTACT_INFO = {
 
 // [AI-EDIT-ZONE]: Identidade da Marca
 export const BRAND = {
-  name: "Steffani",
-  subtitle: "Estética & Ensino",
-  fullAcademyTitle: "Ateliê Steffani Torres",
-  ariaLabel: "Steffani Início",
-  metaTitle: "Ateliê Steffani Torres — Estética Avançada & Ensino",
-  metaDescription: "Procedimentos estéticos com olhar clínico, sofisticação e naturalidade. Ateliê Steffani Torres."
+  name: "TORRES",
+  subtitle: "beleza & ensino",
+  fullAcademyTitle: "Torres Beauty Academy",
+  ariaLabel: "Torres Beauty Academy — Início",
+  metaTitle: "TORRES BEAUTY ACADEMY — Beleza & Ensino",
+  metaDescription: "Beleza com naturalidade e ensino de alto padrão. Procedimentos e formações profissionais com Steffani Torres na Torres Beauty Academy."
 };
 
 // [AI-EDIT-ZONE]: Estrutura de Links de Navegação (Desktop, Mobile Drawer & Rodapé)
@@ -59,9 +59,9 @@ export const NAV_LINKS = {
 // [AI-EDIT-ZONE]: Conteúdo da Hero Section
 export const HERO_CONTENT = {
   eyebrow: "ESTÉTICA AVANÇADA",
-  titleLine1: "ATELIÊ",
-  titleLine2: "STEFFANI",
-  titleLine3: "TORRES",
+  titleLine1: "TORRES",
+  titleLine2: "BEAUTY",
+  titleLine3: "ACADEMY",
   subtitleLine1: "Estética, técnica e cuidado",
   subtitleLine2: "para realçar sua beleza natural.",
   ctaPrimary: {
@@ -79,7 +79,7 @@ export const HERO_CONTENT = {
 // [AI-EDIT-ZONE]: Conteúdo da Seção Procedimentos
 export const PROCEDURES_HEADER_CONTENT = {
   metaLabel: "Catálogo Oficial • Torres Beauty",
-  title: "Procedimentos Exclusivos",
+  title: "Procedimentos *exclusivos*",
   subtitle: "Você é o seu maior investimento! Técnicas precisas, estudo facial e muito cuidado & amor para realçar a beleza natural do seu olhar.",
   ctaPill: "Consultar horários no WhatsApp",
   cardActionText: "Ver detalhes completos"
@@ -90,16 +90,16 @@ export const PROCEDURES_HEADER_CONTENT = {
 // [AI-EDIT-ZONE]: Conteúdo da Seção Nosso Espaço (Fotos do Salão em Modo Retrato)
 export const SALON_CONTENT = {
   id: "espaco",
-  metaLabel: "NOSSO ATELIÊ",
-  title: "Um Ambiente Projetado para Você",
-  subtitle: "Conheça o espaço exclusivo do Ateliê Steffani Torres: conforto absoluto, atmosfera intimista e o mais rigoroso padrão de biossegurança.",
+  metaLabel: "NOSSO ESPAÇO",
+  title: "Um ambiente *projetado para você*",
+  subtitle: "Conheça o espaço exclusivo do Torres Beauty Academy: conforto absoluto, atmosfera intimista e o mais rigoroso padrão de biossegurança.",
   photos: [
     {
       id: "01",
       title: "Lounge de Acolhimento",
       desc: "Espaço intimista com cantinho de café e espelho iluminado para relaxar antes do seu atendimento.",
       image: "/images/espaco/assets-salao01.JPEG",
-      alt: "Lounge de acolhimento do Ateliê Steffani Torres com espelho iluminado e cantinho do café",
+      alt: "Lounge de acolhimento do Torres Beauty Academy com espelho iluminado e cantinho do café",
       objectPosition: "center center"
     },
     {
@@ -115,7 +115,7 @@ export const SALON_CONTENT = {
       title: "Consultoria & Visagismo",
       desc: "Mesa de avaliação personalizada para planejar o design ideal aos seus traços naturais com precisão.",
       image: "/images/espaco/assets-salao03.JPEG",
-      alt: "Sala de consultoria e avaliação de visagismo do Ateliê Steffani Torres",
+      alt: "Sala de consultoria e avaliação de visagismo do Torres Beauty Academy",
       objectPosition: "center center"
     },
     {
@@ -123,7 +123,7 @@ export const SALON_CONTENT = {
       title: "Equipe Especializada",
       desc: "Especialistas qualificadas pela Torres Beauty Academy, prontas para cuidar de você com carinho e excelência.",
       image: "/images/espaco/assets-equipe.JPEG",
-      alt: "Equipe de especialistas do Ateliê Steffani Torres com aventais profissionais bordados",
+      alt: "Equipe de especialistas do Torres Beauty Academy com aventais profissionais bordados",
       objectPosition: "center 15%"
     }
   ]
@@ -132,11 +132,11 @@ export const SALON_CONTENT = {
 // [AI-DEPRECATED-ALIAS]: Mantido para compatibilidade regressiva
 export const VIDEO_CONTENT = SALON_CONTENT;
 
-// [AI-EDIT-ZONE]: Conteúdo da Seção Resultados Reais (Showcase de Imagens - Ateliê Steffani Torres)
+// [AI-EDIT-ZONE]: Conteúdo da Seção Resultados Reais (Showcase de Imagens - Torres Beauty Academy)
 export const CASES_CONTENT = {
   id: "resultados",
   metaLabel: "RESULTADOS REAIS",
-  title: "Resultados que falam por si",
+  title: "Resultados que *falam por si*",
   subtitle: "Aqui você encontra resultados reais de procedimentos realizados em nossas clientes. Beleza natural, técnica e personalização em cada detalhe.",
   cards: [
     {
@@ -144,7 +144,7 @@ export const CASES_CONTENT = {
       procedure: "Design de Sobrancelhas & Cílios",
       category: "sobrancelhas",
       image: "/images/resultados/imagem04.JPEG",
-      alt: "Resultado de Sobrancelhas e Olhar — Ateliê Steffani Torres",
+      alt: "Resultado de Sobrancelhas e Olhar — Torres Beauty Academy",
       isTall: true,
       isLargeSquare: true
     },
@@ -153,7 +153,7 @@ export const CASES_CONTENT = {
       procedure: "Sobrancelhas: Cicatrização",
       category: "sobrancelhas",
       image: "/images/resultados/imagem06.JPEG?v=2",
-      alt: "Evolução de Sobrancelhas Antes, Pós Imediato e Cicatrizado — Ateliê Steffani Torres",
+      alt: "Evolução de Sobrancelhas Antes, Pós Imediato e Cicatrizado — Torres Beauty Academy",
       objectFit: "contain"
     },
     {
@@ -161,21 +161,21 @@ export const CASES_CONTENT = {
       procedure: "Lash Lifting",
       category: "olhar",
       image: "/images/resultados/imagem07.JPEG",
-      alt: "Resultado de Lash Lifting Antes e Depois — Ateliê Steffani Torres"
+      alt: "Resultado de Lash Lifting Antes e Depois — Torres Beauty Academy"
     },
     {
       id: "04",
       procedure: "Revitalização Labial",
       category: "labios",
       image: "/images/resultados/imagem02.JPEG",
-      alt: "Revitalização e Tratamento Labial — Ateliê Steffani Torres"
+      alt: "Revitalização e Tratamento Labial — Torres Beauty Academy"
     },
     {
       id: "05",
       procedure: "Sobrancelhas Masculinas",
       category: "sobrancelhas",
       image: "/images/resultados/imagem05.JPEG?v=2",
-      alt: "Design e Micropigmentação Masculina de Sobrancelhas — Ateliê Steffani Torres"
+      alt: "Design e Micropigmentação Masculina de Sobrancelhas — Torres Beauty Academy"
     },
     {
       id: "06",
@@ -183,21 +183,21 @@ export const CASES_CONTENT = {
       category: "sobrancelhas",
       image: "/images/resultados/imagem08.png",
       video: "/images/resultados/imagem08-vid.mp4",
-      alt: "Micropigmentação Shadow de Sobrancelhas em Vídeo — Ateliê Steffani Torres"
+      alt: "Micropigmentação Shadow de Sobrancelhas em Vídeo — Torres Beauty Academy"
     },
     {
       id: "07",
       procedure: "Lash Lifting & Olhar",
       category: "olhar",
       image: "/images/resultados/imagem09.JPEG?v=2",
-      alt: "Lash Lifting e Curvatura dos Cílios — Ateliê Steffani Torres"
+      alt: "Lash Lifting e Curvatura dos Cílios — Torres Beauty Academy"
     },
     {
       id: "08",
       procedure: "Nanopigmentação Fio a Fio",
       category: "sobrancelhas",
       image: "/images/resultados/imagem11.JPEG",
-      alt: "Nanopigmentação Fio a Fio com Precisão — Ateliê Steffani Torres"
+      alt: "Nanopigmentação Fio a Fio com Precisão — Torres Beauty Academy"
     },
     {
       id: "09",
@@ -205,7 +205,7 @@ export const CASES_CONTENT = {
       category: "olhar",
       image: "/images/resultados/video01-poster.jpg",
       video: "/images/resultados/video01.mp4",
-      alt: "Lash Lifting em Movimento e Curvatura dos Cílios — Ateliê Steffani Torres"
+      alt: "Lash Lifting em Movimento e Curvatura dos Cílios — Torres Beauty Academy"
     },
     {
       id: "10",
@@ -213,7 +213,7 @@ export const CASES_CONTENT = {
       category: "olhar",
       image: "/images/resultados/video02-poster.jpg",
       video: "/images/resultados/video02.mp4",
-      alt: "Curvatura e Alinhamento Preciso dos Cílios — Ateliê Steffani Torres"
+      alt: "Curvatura e Alinhamento Preciso dos Cílios — Torres Beauty Academy"
     },
     {
       id: "11",
@@ -221,7 +221,7 @@ export const CASES_CONTENT = {
       category: "olhar",
       image: "/images/resultados/video03-poster.jpg",
       video: "/images/resultados/video03.mp4",
-      alt: "Transformação do Olhar com Lash Lifting em Vídeo — Ateliê Steffani Torres",
+      alt: "Transformação do Olhar com Lash Lifting em Vídeo — Torres Beauty Academy",
       isLargeSquare: true,
       isSquare1x1: true
     },
@@ -230,7 +230,7 @@ export const CASES_CONTENT = {
       procedure: "Design & Micropigmentação",
       category: "sobrancelhas",
       image: "/images/resultados/IMG_1292.JPEG",
-      alt: "Design e Micropigmentação de Sobrancelhas Antes e Depois — Ateliê Steffani Torres"
+      alt: "Design e Micropigmentação de Sobrancelhas Antes e Depois — Torres Beauty Academy"
     },
     {
       id: "13",
@@ -238,14 +238,14 @@ export const CASES_CONTENT = {
       category: "sobrancelhas",
       video: "/images/resultados/video05.mp4",
       image: "/images/resultados/video05-poster.jpg",
-      alt: "Alinhamento e Simetria de Sobrancelhas em Vídeo — Ateliê Steffani Torres"
+      alt: "Alinhamento e Simetria de Sobrancelhas em Vídeo — Torres Beauty Academy"
     },
     {
       id: "14",
       procedure: "Revitalização Labial & Gloss",
       category: "labios",
       image: "/images/resultados/imagem13.JPEG",
-      alt: "Revitalização e Definição Labial de Alto Padrão — Ateliê Steffani Torres"
+      alt: "Revitalização e Definição Labial de Alto Padrão — Torres Beauty Academy"
     },
     {
       id: "15",
@@ -253,17 +253,17 @@ export const CASES_CONTENT = {
       category: "labios",
       video: "/images/resultados/video04.mp4",
       image: "/images/resultados/video04-poster.jpg",
-      alt: "Revitalização e Efeito Labial em Vídeo — Ateliê Steffani Torres"
+      alt: "Revitalização e Efeito Labial em Vídeo — Torres Beauty Academy"
     },
     {
       id: "16",
       procedure: "Harmonização e Cor Labial",
       category: "labios",
       image: "/images/resultados/assets-procedimentolabio.jpg",
-      alt: "Preenchimento de Cor e Revitalização Labial — Ateliê Steffani Torres"
+      alt: "Preenchimento de Cor e Revitalização Labial — Torres Beauty Academy"
     }
   ],
-  disclaimer: "* Resultados reais de procedimentos realizados no Ateliê Steffani Torres. Resultados podem variar de acordo com características biológicas individuais."
+  disclaimer: "* Resultados reais de procedimentos realizados no Torres Beauty Academy. Resultados podem variar de acordo com características biológicas individuais."
 };
 
 // [AI-EDIT-ZONE]: Conteúdo da Seção Sobre Steffani
@@ -283,7 +283,7 @@ export const ABOUT_CONTENT = {
 // [AI-EDIT-ZONE]: Conteúdo da Seção Cross-Sell Editorial
 export const CROSS_SELL_CONTENT = {
   metaLabel: "Continue Explorando",
-  title: "Outros Cuidados que Combinam com Você",
+  title: "Outros cuidados que *combinam com você*",
   subtitle: "A harmonização completa é resultado de hábitos consistentes e protocolos complementares.",
   cards: [
     {
@@ -313,7 +313,7 @@ export const CROSS_SELL_CONTENT = {
 // [AI-EDIT-ZONE]: Dúvidas Frequentes da Landing Page (FAQ)
 export const FAQ_CONTENT = {
   metaLabel: "Esclarecimentos",
-  title: "Dúvidas Frequentes",
+  title: "Dúvidas *frequentes*",
   items: [
     {
       q: "Como funciona a primeira avaliação?",
@@ -337,7 +337,7 @@ export const FAQ_CONTENT = {
 // [AI-EDIT-ZONE]: Conteúdo do CTA Final
 export const FINAL_CTA_CONTENT = {
   metaLabel: "Inicie Sua Jornada",
-  title: "Agende sua avaliação ou avance em sua carreira estética.",
+  title: "Agende sua avaliação ou *avance em sua carreira*.",
   subtitle: "Atendimento presencial com reserva antecipada e vagas do curso com vagas limitadas.",
   buttonProcedure: {
     label: "Quero Realizar um Procedimento",
@@ -351,11 +351,11 @@ export const FINAL_CTA_CONTENT = {
 
 // [AI-EDIT-ZONE]: Conteúdo do Rodapé (Footer)
 export const FOOTER_CONTENT = {
-  brandDescription: "Estética avançada, visão anatômica e curso profissional de alto padrão.",
+  brandDescription: "Beleza com naturalidade, técnica e ensino profissional de alto padrão.",
   colNavTitle: "Navegação",
   colHoursTitle: "Atendimento",
   colContactTitle: "Contato Direto",
-  copyright: "© Steffani. Todos os direitos reservados.",
+  copyright: "© Torres Beauty Academy. Todos os direitos reservados.",
   credits: "Design & Estratégia Editorial"
 };
 

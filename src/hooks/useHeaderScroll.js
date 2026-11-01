@@ -1,4 +1,4 @@
-// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)]
+// [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Hook que gerencia o estado de scroll da barra de navegação (.is-scrolled) e o recálculo do deslocamento horizontal `--nav-hero-shift`.
 // [AI-DO-NOT-BREAK]: O cálculo geométrico de `--nav-hero-shift` garante que o menu fique posicionado à esquerda no topo e se centralize no scroll.
 

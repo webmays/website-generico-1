@@ -1,5 +1,5 @@
 /* ============================================================================
-   WEBMAYS COPYRIGHT - Todos os direitos reservados (Ateliê Steffani Torres Academy @TorresBeautyAcademy)
+   WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)
    ============================================================================
    [AI-STYLESHEET]: src/styles/coursePremiere.css
    [AI-PURPOSE]: Mini-seção de Destaque e Estreia da Formação "Destrava Brow" (Fadas In Action).
@@ -19,10 +19,10 @@
 .upcoming-course-card {
   position: relative;
   overflow: hidden;
-  border-radius: clamp(22px, 2.5vw, 32px);
-  background: linear-gradient(135deg, #20130c 0%, #190e08 55%, #120904 100%);
-  border: 1px solid rgba(214, 167, 130, 0.22);
-  box-shadow: 0 24px 70px -15px rgba(18, 10, 6, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
+  border-radius: 0;
+  background: linear-gradient(135deg, #1C1917 0%, #1C1917 55%, #1C1917 100%);
+  border: 1px solid rgba(201, 158, 103, 0.22);
+  box-shadow: 0 24px 70px -15px rgba(28, 25, 23, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
   display: flex;
   align-items: center;
   min-height: clamp(480px, 46vw, 540px);
@@ -38,9 +38,9 @@
   left: -120px;
   width: clamp(380px, 35vw, 500px);
   height: clamp(380px, 35vw, 500px);
-  border-radius: 50%;
-  border: 1px solid rgba(214, 167, 130, 0.12);
-  background: radial-gradient(circle at 50% 50%, rgba(106, 61, 36, 0.15) 0%, transparent 70%);
+  border-radius: 0;
+  border: 1px solid rgba(201, 158, 103, 0.12);
+  background: radial-gradient(circle at 50% 50%, rgba(78, 71, 66, 0.15) 0%, transparent 70%);
   pointer-events: none;
   z-index: 1;
 }
@@ -49,7 +49,7 @@
 
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 80% 45%, rgba(130, 78, 48, 0.22) 0%, transparent 68%);
+  background: radial-gradient(ellipse at 80% 45%, rgba(99, 91, 85, 0.22) 0%, transparent 68%);
   pointer-events: none;
   z-index: 1;
 }
@@ -79,10 +79,10 @@
   transform: translate(-50%, -50%);
   width: clamp(480px, 44vw, 620px);
   height: clamp(480px, 44vw, 620px);
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, #6a3d24 0%, #402314 55%, #1e110a 100%);
-  border: 1px solid rgba(214, 167, 130, 0.25);
-  box-shadow: 0 0 90px rgba(106, 61, 36, 0.35);
+  border-radius: 0;
+  background: radial-gradient(circle at 50% 50%, #4E4742 0%, #262220 55%, #1C1917 100%);
+  border: 1px solid rgba(201, 158, 103, 0.25);
+  box-shadow: 0 0 90px rgba(78, 71, 66, 0.35);
   pointer-events: none;
   z-index: 1;
 }
@@ -124,23 +124,23 @@
 }
 
 .upcoming-eyebrow {
-  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif);
+  font-family: var(--font-sans);
   font-size: clamp(0.78rem, 0.9vw, 0.88rem);
   font-weight: 600;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: #d6a782;
+  color: #C99E67;
   white-space: nowrap;
 }
 
 /* Título Gigante: EM BREVE */
 .upcoming-title {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-family: var(--font-serif);
   font-size: clamp(2.8rem, 7vw, 5.6rem);
   font-weight: 800;
   line-height: 0.94;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: #F7F5F2;
   text-transform: uppercase;
   margin: 0.25rem 0 0.85rem 0;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
@@ -154,35 +154,35 @@
 }
 
 .upcoming-course-tag {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-family: var(--font-serif);
   font-size: clamp(1.15rem, 1.8vw, 1.55rem);
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #d6a782;
-  border-bottom: 1.5px solid rgba(214, 167, 130, 0.4);
+  color: #C99E67;
+  border-bottom: 1.5px solid rgba(201, 158, 103, 0.4);
   padding-bottom: 4px;
 }
 
 /* Parágrafo de Apresentação */
 .upcoming-subtitle {
-  font-family: var(--font-serif, "Playfair Display", Georgia, serif);
+  font-family: var(--font-serif);
   font-size: clamp(1.08rem, 2.2vw, 1.45rem);
   line-height: 1.48;
   font-weight: 400;
-  color: #f7eee7;
+  color: #F5F3EF;
   max-width: 520px;
   margin: 0 0 clamp(1.2rem, 1.8vw, 1.6rem) 0;
 }
 
 /* Frase de Aviso Oficial (Sem traço) */
 .upcoming-disclaimer-text {
-  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif);
+  font-family: var(--font-sans);
   font-size: clamp(0.72rem, 0.85vw, 0.82rem);
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #c99c78;
+  color: #C99E67;
   margin: 0 0 clamp(1.5rem, 2.2vw, 2.2rem) 0;
   line-height: 1.45;
 }
@@ -197,13 +197,13 @@
 }
 
 .btn-upcoming-waitlist {
-  background-color: #ffffff;
-  color: #1e110a;
-  font-family: var(--font-sans, "Plus Jakarta Sans", sans-serif);
+  background-color: #F7F5F2;
+  color: #1C1917;
+  font-family: var(--font-sans);
   font-weight: 700;
   font-size: clamp(0.95rem, 1.05vw, 1.05rem);
   padding: 15px 34px;
-  border-radius: 9999px;
+  border-radius: 0;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -223,7 +223,7 @@
 
 .btn-upcoming-waitlist:hover {
   transform: translateY(-2px);
-  background-color: #faf5ef;
+  background-color: #F5F3EF;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.42);
 }
 
@@ -248,8 +248,8 @@
     border-radius: 0; /* Sem cantos arredondados laterais */
     border-left: none; /* Sem barras laterais */
     border-right: none; /* Sem barras laterais */
-    border-top: 1px solid rgba(214, 167, 130, 0.18);
-    border-bottom: 1px solid rgba(214, 167, 130, 0.18);
+    border-top: 1px solid rgba(201, 158, 103, 0.18);
+    border-bottom: 1px solid rgba(201, 158, 103, 0.18);
     box-shadow: none;
     flex-direction: column;
     align-items: stretch;
@@ -295,7 +295,7 @@
     left: 0;
     right: 0;
     height: 140px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(32, 19, 12, 0.65) 45%, #20130c 100%);
+    background: linear-gradient(to bottom, transparent 0%, rgba(28, 25, 23, 0.65) 45%, #1C1917 100%);
     pointer-events: none;
     z-index: 3;
   }
