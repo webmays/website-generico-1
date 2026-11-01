@@ -29,7 +29,7 @@ export const PROCEDURES = [
     group: "pacotes",
     summary: "Aqui você é rainha: Lash Lifting, henna, buço, revitalização facial e labial, massagem capilar e cappuccino. 2h30 de puro cuidado e amor.",
     image: "/images/procedimentos/glow-diamond.webp",
-    alt: "Retrato elegante com mãos enluvadas junto ao rosto, para o pacote Glow Diamond"
+    alt: "Rosto de perfil com pele iluminada e sobrancelhas bem definidas"
   },
   {
     slug: "brow-boost",
@@ -37,7 +37,7 @@ export const PROCEDURES = [
     group: "pacotes",
     summary: "Brow Lamination com henna ou tintura e Brow Therapy, para fios alinhados, tratados e um olhar mais definido. Acompanha kit de pós-cuidados.",
     image: "/images/procedimentos/brow-boost.webp",
-    alt: "Rosto com sobrancelhas naturais em foco, para o tratamento Brow Boost"
+    alt: "Escova de sobrancelhas sobre textura de produto em tom claro"
   },
   {
     slug: "glow-lash",
@@ -45,7 +45,7 @@ export const PROCEDURES = [
     group: "pacotes",
     summary: "Lash Lifting com tintura e Spa Labial: cílios curvados e realçados, lábios macios e renovados, tudo em um só atendimento.",
     image: "/images/procedimentos/glow-lash.webp",
-    alt: "Closeup de cílios com curvatura natural de Lash Lifting"
+    alt: "Macro em preto e branco de cílios curvados"
   },
   {
     slug: "design-sobrancelhas",
@@ -53,7 +53,7 @@ export const PROCEDURES = [
     group: "sobrancelhas",
     summary: "Análise facial completa, simetria e marcação profissional, com finalização na pinça e modelagem personalizada para os seus traços.",
     image: "/images/procedimentos/design-sobrancelhas.webp",
-    alt: "Closeup de sobrancelha com design natural e bem definida"
+    alt: "Mulher com as mãos nas têmporas valorizando as sobrancelhas"
   },
   {
     slug: "design-henna",
@@ -77,7 +77,7 @@ export const PROCEDURES = [
     group: "labios",
     summary: "Spa labial com aplicação de henna: renovação, hidratação e lábios macios, com uma tonalidade naturalmente realçada.",
     image: "/images/procedimentos/glow-lips-spa.webp",
-    alt: "Closeup de lábios com cor viva e hidratada"
+    alt: "Lábios antes e depois do spa labial, com framboesas entre as imagens"
   },
   {
     slug: "revigloss",
@@ -93,7 +93,7 @@ export const PROCEDURES = [
     group: "labios",
     summary: "Micropigmentação labial para lábios mais definidos e uniformes, com cor sofisticada e durabilidade, sem perder a naturalidade.",
     image: "/images/procedimentos/lips-glow-up.webp",
-    alt: "Macro de lábios com cor uniforme e sofisticada"
+    alt: "Macro de lábios com micropigmentação em tom rosado"
   },
   {
     slug: "nano-brow",
