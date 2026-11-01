@@ -21,14 +21,11 @@ export function CoursePremiere() {
         className="upcoming-course-card"
         aria-label="Estreia da nova formação Destrava Brow — Fadas In Action"
       >
-        {/* Arcos Decorativos de Fundo */}
-        {/* Arcos Decorativos de Fundo */}
-        <div className="upcoming-arc-bottom-left" aria-hidden="true" />
+        {/* Ambiência decorativa sutil atrás do texto */}
         <div className="upcoming-glow-ambient" aria-hidden="true" />
 
-        {/* Palco Visual (Steffani Centralizada na Esfera Radial + Fade Inferior no Mobile) */}
+        {/* Painel de Foto (preenche a metade direita do card; fade inferior no mobile) */}
         <div className="upcoming-visual-stage" aria-hidden="true">
-          <div className="upcoming-sphere-main" />
           <img
             src={UPCOMING_COURSE_DATA.image}
             alt={UPCOMING_COURSE_DATA.imageAlt}

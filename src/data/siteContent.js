@@ -60,6 +60,7 @@ export const NAV_LINKS = {
 export const HERO_CONTENT = {
   eyebrow: "BELEZA & ENSINO",
   title: "TORRES BEAUTY ACADEMY",
+  titleLines: ["TORRES", "BEAUTY", "ACADEMY"],
   subtitle: "Técnica e cuidado para realçar a sua beleza natural.",
   ctaPrimary: "Agendar pelo WhatsApp",
   ctaSecondary: {

@@ -4,10 +4,10 @@
    [AI-STYLESHEET]: src/styles/coursePremiere.css
    [AI-PURPOSE]: Mini-seção de Destaque e Estreia da Formação "Destrava Brow" (Fadas In Action).
    [AI-DESIGN-SPEC]:
-   - Mulher 100% centralizada na esfera radiante com gradiente radial (desktop e mobile).
+   - Painel de foto cheio (object-fit: cover) ocupando toda a metade direita do card, sem vãos.
    - Menção oficial a "Fadas In Action" e "Destrava Brow".
    - Botão único de conversão ("Entrar na lista de espera ›").
-   - No mobile: foto no topo centralizada com fade gradient na base da imagem e textos/botão abaixo.
+   - No mobile: foto no topo, cheia na largura, com fade inferior; texto/botão abaixo.
    ============================================================================ */
 
 .course-premiere-container {
@@ -20,84 +20,53 @@
   position: relative;
   overflow: hidden;
   border-radius: 0;
-  background: linear-gradient(135deg, var(--bg-dark-main) 0%, var(--bg-dark-main) 55%, var(--bg-dark-main) 100%);
+  background: var(--bg-dark-main);
   border: 1px solid rgba(201, 158, 103, 0.22);
   box-shadow: 0 24px 70px -15px rgba(28, 25, 23, 0.55), 0 0 1px 1px rgba(255, 255, 255, 0.05) inset;
-  display: flex;
-  align-items: center;
-  min-height: clamp(480px, 46vw, 540px);
-  padding: clamp(2.5rem, 4.5vw, 4.2rem) clamp(2rem, 4.5vw, 4.5rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 44%);
+  align-items: stretch;
+  height: clamp(460px, 42vw, 540px);
 }
 
 /* ==========================================================================
-   1. ARCOS E AMBIÊNCIA DECORATIVA
+   1. AMBIÊNCIA DECORATIVA (sutil, atrás do texto)
    ========================================================================== */
-.upcoming-arc-bottom-left {
-  position: absolute;
-  bottom: -200px;
-  left: -120px;
-  width: clamp(380px, 35vw, 500px);
-  height: clamp(380px, 35vw, 500px);
-  border-radius: 0;
-  border: 1px solid rgba(201, 158, 103, 0.12);
-  background: radial-gradient(circle at 50% 50%, rgba(78, 71, 66, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-  z-index: 1;
-}
-
 .upcoming-glow-ambient {
-
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 80% 45%, rgba(99, 91, 85, 0.22) 0%, transparent 68%);
+  background: radial-gradient(ellipse at 0% 50%, rgba(99, 91, 85, 0.22) 0%, transparent 62%);
   pointer-events: none;
   z-index: 1;
 }
 
 /* ==========================================================================
-   2. PALCO VISUAL: STEFFANI CENTRALIZADA NO CÍRCULO (SEM CORTES LATERAIS)
+   2. PAINEL DE FOTO: ocupa a metade direita do card de ponta a ponta
    ========================================================================== */
 .upcoming-visual-stage {
-  position: absolute;
-  right: 2%;
-  bottom: 0;
-  width: 48%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  overflow: visible; /* Mantém a esfera de iluminação contínua e sem corte lateral */
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Círculo com gradiente radial e borda refinada — perfeitamente concêntrico */
-.upcoming-sphere-main {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: clamp(480px, 44vw, 620px);
-  height: clamp(480px, 44vw, 620px);
-  border-radius: 0;
-  background: radial-gradient(circle at 50% 50%, var(--tone-600) 0%, var(--bg-dark-surface) 55%, var(--bg-dark-main) 100%);
-  border: 1px solid rgba(201, 158, 103, 0.25);
-  box-shadow: 0 0 90px rgba(78, 71, 66, 0.35);
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Recorte da modelo alinhado no centro do palco */
-.upcoming-model-img {
   position: relative;
+  grid-column: 2;
+  grid-row: 1;
+  height: 100%;
+  overflow: hidden;
   z-index: 2;
-  height: 106%;
-  max-height: 560px;
-  width: auto;
-  object-fit: contain;
-  object-position: bottom center;
+}
+
+.upcoming-visual-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, var(--bg-dark-main) 0%, transparent 18%);
   pointer-events: none;
-  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.45));
+}
+
+.upcoming-model-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
 }
 
 /* Fade inferior para o mobile (oculto no desktop) */
@@ -107,13 +76,18 @@
 
 /* ==========================================================================
    3. CONTEÚDO EDITORIAL
-
    ========================================================================== */
 .upcoming-card-body {
   position: relative;
   z-index: 3;
+  grid-column: 1;
+  grid-row: 1;
   max-width: 580px;
   width: 100%;
+  padding: clamp(2.5rem, 4.5vw, 4.2rem) clamp(2rem, 4.5vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Eyebrow: NOVA FORMAÇÃO • FADAS IN ACTION */
@@ -244,6 +218,7 @@
   }
 
   .upcoming-course-card {
+    display: flex;
     width: 100%;
     border-radius: 0; /* Sem cantos arredondados laterais */
     border-left: none; /* Sem barras laterais */
@@ -253,38 +228,25 @@
     box-shadow: none;
     flex-direction: column;
     align-items: stretch;
+    height: auto;
     min-height: auto;
-    padding: 0;
   }
 
-  /* Foto no Topo Centralizada com Fade Inferior */
+  /* Foto no Topo, cheia na largura, com Fade Inferior */
   .upcoming-visual-stage {
     order: 1;
-    position: relative;
-    right: auto;
-    bottom: auto;
+    grid-column: auto;
     width: 100%;
-    margin: 0;
-    height: clamp(340px, 85vw, 450px);
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    overflow: hidden;
+    height: clamp(300px, 80vw, 420px);
+    min-height: 0;
   }
 
-  .upcoming-sphere-main {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: clamp(290px, 75vw, 390px);
-    height: clamp(290px, 75vw, 390px);
+  .upcoming-visual-stage::before {
+    background: linear-gradient(180deg, transparent 55%, var(--bg-dark-main) 100%);
   }
 
   .upcoming-model-img {
-    height: 100%;
-    max-height: 420px;
-    object-position: bottom center;
+    object-position: top center;
   }
 
   /* Fade in gradiente na parte debaixo da imagem no mobile */
@@ -303,10 +265,11 @@
   /* Conteúdo textual estruturado com padding lateral generoso */
   .upcoming-card-body {
     order: 2;
+    grid-column: auto;
     width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: 0 clamp(1.25rem, 5vw, 2.2rem) clamp(2.5rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.2rem);
+    padding: clamp(2rem, 6vw, 2.8rem) clamp(1.25rem, 5vw, 2.2rem) clamp(2.5rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.2rem);
     position: relative;
     z-index: 4;
   }
@@ -358,5 +321,3 @@
     font-size: clamp(0.95rem, 3.6vw, 1.05rem);
   }
 }
-
-

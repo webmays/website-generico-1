@@ -31,7 +31,13 @@ export function HeroSection() {
 
       <div className="hero__content">
         <span className="meta-label hero__eyebrow">{HERO_CONTENT.eyebrow}</span>
-        <h1 id="hero-title" className="hero__title">{HERO_CONTENT.title}</h1>
+        <h1 id="hero-title" className="hero__title" aria-label={HERO_CONTENT.title}>
+          {HERO_CONTENT.titleLines.map((line, idx) => (
+            <span key={line} className={`hero__title-line hero__title-line--${idx + 1}`} aria-hidden="true">
+              {line}
+            </span>
+          ))}
+        </h1>
         <p className="hero__subtitle">{HERO_CONTENT.subtitle}</p>
 
         <div className="hero__actions">

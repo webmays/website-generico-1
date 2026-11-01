@@ -21,10 +21,10 @@
   /* [AI-STYLE-RULE]: #C99E67 sobre fundo claro reprova no WCAG AA; textos dourados em fundo claro usam este token. */
   --accent-gold-on-light: #86673C;
   --border-gold-subtle: rgba(201, 158, 103, 0.28);
-  --tone-700: #3A3531;
-  --tone-600: #4E4742;
-  --tone-400: #8A817A;
-  --tone-200: #D8D2CA;
+  --tone-700: #4A2F12;
+  --tone-600: #5E3D1A;
+  --tone-400: #8C6A42;
+  --tone-200: #E3D4BE;
 
   /* Aliases de compatibilidade: apontam para a paleta oficial */
   --color-white: var(--bg-light-main);
@@ -274,7 +274,7 @@ h1 em, h2 em, h3 em, blockquote em {
 }
 
 .site-header.is-scrolled {
-  background-color: rgba(34, 30, 28, 0.95);
+  background-color: rgba(51, 32, 10, 0.95);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }

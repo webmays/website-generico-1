@@ -494,7 +494,7 @@
    B. TEMA ESCURO (FAIXA MARROM LUXO)
    -------------------------------------------------------------------------- */
 .course-band-item.is-dark-theme {
-  background-color: var(--text-dark);
+  background-color: var(--bg-dark-surface);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

@@ -67,13 +67,26 @@
 }
 
 .hero__title {
-  max-width: 7em;
   font-size: clamp(3.6rem, 8vw, 8.75rem);
   font-weight: 500;
   line-height: 0.96;
   letter-spacing: 0.01em;
   color: var(--text-light);
   margin-bottom: 1.5rem;
+}
+
+/* [AI-STYLE-RULE]: Titulo em escadinha (como na v1) -- cada linha recua mais que a anterior, so no desktop. */
+.hero__title-line {
+  display: block;
+  white-space: nowrap;
+}
+
+.hero__title-line--2 {
+  padding-left: 0.42em;
+}
+
+.hero__title-line--3 {
+  padding-left: 1.2em;
 }
 
 .hero__subtitle {
@@ -148,6 +161,12 @@
 
   .hero__title {
     font-size: clamp(2.9rem, 13vw, 5.25rem);
+  }
+
+  /* Sem escadinha no mobile/tablet retrato: linhas rentes, como na v1 */
+  .hero__title-line--2,
+  .hero__title-line--3 {
+    padding-left: 0;
   }
 }
 
