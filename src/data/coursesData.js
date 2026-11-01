@@ -123,7 +123,7 @@ export const UPCOMING_COURSE_DATA = {
     text: "Entrar na lista de espera",
     whatsappMessage: "Olá Steffani! Gostaria de entrar na lista de espera para a nova formação Destrava Brow (Fadas In Action) e receber as informações em primeira mão."
   },
-  image: "/images/cursos/Curso-Embreve.png",
+  image: "/images/cursos/nova-formacao.webp",
   imageAlt: "Steffani Torres — Nova Formação Destrava Brow (Fadas In Action)"
 };
 
