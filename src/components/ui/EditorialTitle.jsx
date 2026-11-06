@@ -7,7 +7,7 @@
  * @param {string} props.text - Texto com o trecho em italico entre asteriscos
  * @param {string} [props.as] - Tag do titulo (padrao h2)
  * @param {string} [props.className]
- * @example <EditorialTitle text="Duvidas *frequentes*" className="faq-title" />
+ * @example <EditorialTitle text="Venha nos *visitar*" className="results-title" />
  */
 export function EditorialTitle({ text, as: Tag = "h2", className, id }) {
   return (

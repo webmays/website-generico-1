@@ -17,6 +17,8 @@
 @import "./results.css" layer(components);
 @import "./salon.css" layer(components);
 @import "./coursePremiere.css" layer(components);
+@import "./images.css" layer(components);
+@import "./location.css" layer(components);
 @import "./buttons.css" layer(components);
 
 @source "../";

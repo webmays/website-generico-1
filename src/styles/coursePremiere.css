@@ -26,8 +26,9 @@
   display: flex;
   align-items: center;
   min-height: clamp(480px, 46vw, 540px);
-  /* A foto ocupa os 40% da direita; o padding direito reserva esse espaco para o texto nunca invadir. */
-  padding: clamp(2.5rem, 4.5vw, 4.2rem) calc(40% + clamp(1.5rem, 3vw, 3rem)) clamp(2.5rem, 4.5vw, 4.2rem) clamp(2rem, 4.5vw, 4.5rem);
+  /* --premiere-photo: largura da foto (direita). O padding direito reserva esse espaco para o texto nunca invadir. */
+  --premiere-photo: 40%;
+  padding: clamp(2.5rem, 4.5vw, 4.2rem) calc(var(--premiere-photo) + clamp(1.5rem, 3vw, 3rem)) clamp(2.5rem, 4.5vw, 4.2rem) clamp(2rem, 4.5vw, 4.5rem);
 }
 
 /* ==========================================================================
@@ -63,7 +64,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 40%;
+  width: var(--premiere-photo);
   overflow: hidden;
   pointer-events: none;
   z-index: 2;
@@ -212,7 +213,38 @@
 /* ==========================================================================
    5. RESPONSIVIDADE PRECISA (MOBILE & TABLET — SEÇÃO DE PONTA A PONTA)
    ========================================================================== */
-@media (max-width: 992px) {
+/* Tablets (iPad): mantem o card dividido, com mais espaco para a foto e textos um pouco menores */
+@media (min-width: 600px) and (max-width: 992px) {
+  .upcoming-course-card {
+    --premiere-photo: 46%;
+    min-height: clamp(540px, 66vw, 620px);
+  }
+
+  .upcoming-eyebrow {
+    white-space: normal;
+    letter-spacing: 0.2em;
+    line-height: 1.5;
+  }
+
+  .upcoming-title {
+    font-size: clamp(2.5rem, 7.2vw, 3.8rem);
+  }
+
+  .upcoming-course-tag {
+    font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+  }
+
+  .upcoming-subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+  }
+
+  .upcoming-model-img {
+    object-position: center 15%;
+  }
+}
+
+/* Celulares: foto no topo, em largura total, com fade curto; textos com respiro maior */
+@media (max-width: 599px) {
   /* No Mobile: Transforma de Card Flutuante em Seção Full-Bleed (100% de ponta a ponta) */
   .course-premiere-container {
     max-width: 100%;
@@ -243,7 +275,7 @@
     bottom: auto;
     width: 100%;
     margin: 0;
-    height: clamp(340px, 85vw, 450px);
+    height: clamp(380px, 112vw, 540px);
     overflow: hidden;
   }
 
@@ -254,8 +286,8 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 90px;
-    background: linear-gradient(to bottom, transparent 0%, rgba(62, 43, 33, 0.65) 55%, var(--bg-dark-main) 100%);
+    height: 56px;
+    background: linear-gradient(to bottom, transparent 0%, color-mix(in srgb, var(--bg-dark-main) 55%, transparent) 60%, var(--bg-dark-main) 100%);
     pointer-events: none;
     z-index: 3;
   }
@@ -266,7 +298,7 @@
     width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: 0 clamp(1.25rem, 5vw, 2.2rem) clamp(2.5rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 2.2rem);
+    padding: clamp(1.75rem, 7vw, 2.5rem) clamp(1.75rem, 7vw, 2.75rem) clamp(2.75rem, 9vw, 3.75rem);
     position: relative;
     z-index: 4;
   }

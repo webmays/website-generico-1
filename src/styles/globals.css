@@ -53,6 +53,8 @@
   --color-border-dark: rgba(247, 245, 242, 0.15);
   --transition-smooth: 0.25s ease;
   --container-max: 1360px;
+  /* Margem lateral compartilhada por navbar (desktop) e hero: logo e conteudo da hero comecam na mesma linha */
+  --site-gutter: clamp(1.25rem, 5vw, 6rem);
 }
 
 /* Reset Moderno */
@@ -286,8 +288,9 @@ h1 em, h2 em, h3 em, blockquote em {
   min-height: clamp(60px, 5.2vw, 76px);
   width: 100%;
   max-width: 100%;
-  padding-left: clamp(20px, 2.6vw, 48px);
-  padding-right: clamp(20px, 3.4vw, 64px);
+  /* Acima de 1080px usa a mesma margem da hero (--site-gutter); abaixo, os media queries do fim do arquivo assumem */
+  padding-left: var(--site-gutter);
+  padding-right: var(--site-gutter);
   transition: min-height 0.35s ease;
 }
 
@@ -759,7 +762,9 @@ body.drawer-open .site-header {
 .about-content {
   display: flex;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
+  text-align: center;
   padding: clamp(2.5rem, 5vw, 5rem) clamp(1.25rem, 6vw, 7rem);
 }
 
@@ -771,12 +776,22 @@ body.drawer-open .site-header {
   display: block;
 }
 
+/* O titulo e a frase de apresentacao ("Muito prazer, sou Steffani Torres."): branco e grande, quebra equilibrada */
 .about-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 3.4vw, 3.4rem);
-  line-height: 1.15;
+  font-size: clamp(2.5rem, 4.3vw, 4.4rem);
+  line-height: 1.08;
   color: var(--text-light);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
+  text-wrap: balance;
+}
+
+/* O nome usa a mesma fonte, estilo e peso de "Muito prazer," (sem italico) */
+.about-title em {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  color: inherit;
 }
 
 .about-paragraphs {
@@ -785,6 +800,14 @@ body.drawer-open .site-header {
   gap: 1.15rem;
   margin-bottom: 2rem;
   max-width: 620px;
+  margin-inline: auto;
+}
+
+/* Paragrafos curtos justificados em tela estreita abrem buracos entre palavras: no celular, alinhados a esquerda */
+@media (max-width: 640px) {
+  #sobre .about-text {
+    text-align: left;
+  }
 }
 
 #sobre p,
@@ -793,168 +816,16 @@ body.drawer-open .site-header {
   font-size: clamp(1.02rem, 1.15vw, 1.18rem);
   line-height: 1.75;
   text-align: justify;
+  text-align-last: left;
   hyphens: auto;
 }
 
 .about-cta {
+  display: flex;
+  justify-content: center;
   margin-top: 0.5rem;
 }
 
-
-/* FAQ Limpo com Accordion Suave e Fluido */
-#faq {
-  background-color: var(--color-white-porcelain);
-  border-top: 1px solid rgba(99, 91, 85, 0.1);
-  border-bottom: 1px solid rgba(99, 91, 85, 0.1);
-}
-
-.faq-list {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.faq-item {
-  border-bottom: 1px solid rgba(99, 91, 85, 0.12);
-  background-color: transparent;
-  border-radius: 0;
-  margin: 0.25rem 0;
-  padding: 0 0.85rem;
-  border: 1px solid transparent;
-  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s ease,
-              margin 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.faq-item:hover {
-  background-color: rgba(255, 255, 255, 0.45);
-}
-
-.faq-item.is-open,
-.faq-item[open] {
-  background-color: var(--color-white-pure);
-  padding: 0 1.45rem;
-  margin: 0.65rem 0;
-  border-color: rgba(99, 91, 85, 0.12);
-  box-shadow: 0 6px 24px rgba(99, 91, 85, 0.05);
-}
-
-.faq-summary {
-  list-style: none;
-  font-family: var(--font-serif);
-  font-size: clamp(1.15rem, 1.55vw, 1.45rem);
-  padding: 1.4rem 0;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 52px;
-  font-weight: 600;
-  color: var(--color-black);
-  background: none;
-  border: none;
-  width: 100%;
-  text-align: left;
-  user-select: none;
-  transition: color 0.3s ease;
-}
-
-.faq-summary::-webkit-details-marker {
-  display: none;
-}
-
-.faq-summary::after {
-  display: none !important;
-}
-
-.faq-question-text {
-  flex: 1;
-  padding-right: 1.25rem;
-  line-height: 1.35;
-}
-
-/* Ícone de Toggle Elegante (+) */
-.faq-toggle-icon {
-  width: 32px;
-  height: 32px;
-  min-width: 32px;
-  min-height: 32px;
-  border-radius: 0;
-  background-color: rgba(99, 91, 85, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.35s ease,
-              color 0.3s ease;
-  color: var(--color-brown);
-}
-
-.faq-toggle-icon::before,
-.faq-toggle-icon::after {
-  content: '';
-  position: absolute;
-  background-color: currentColor;
-  border-radius: 0;
-  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* Linha horizontal */
-.faq-toggle-icon::before {
-  width: 14px;
-  height: 2px;
-}
-
-/* Linha vertical */
-.faq-toggle-icon::after {
-  width: 2px;
-  height: 14px;
-}
-
-.faq-item.is-open .faq-toggle-icon,
-.faq-item[open] .faq-toggle-icon {
-  transform: rotate(45deg);
-  background-color: var(--color-brown);
-  color: var(--text-light);
-}
-
-/* Container de expansão suave (CSS Grid 0fr -> 1fr) */
-.faq-answer-collapse {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.faq-item.is-open .faq-answer-collapse,
-.faq-item[open] .faq-answer-collapse {
-  grid-template-rows: 1fr;
-}
-
-.faq-answer-inner {
-  overflow: hidden;
-}
-
-.faq-content {
-  padding-bottom: 1.65rem;
-  padding-top: 0.15rem;
-  font-family: var(--font-sans);
-  font-size: clamp(0.96rem, 1.1vw, 1.08rem);
-  line-height: 1.72;
-  color: rgba(34, 30, 28, 0.82);
-  opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.38s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.faq-item.is-open .faq-content,
-.faq-item[open] .faq-content {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* Cross-Sell Editorial */
 .cross-sell-section {
@@ -1253,17 +1124,41 @@ body.drawer-open .site-header {
 /* Tablets: CTA "Agendar" do cabecalho com area de toque maior */
 @media (min-width: 600px) and (max-width: 1080px) {
   .nav-container {
-    min-height: 76px;
+    min-height: 92px;
+    padding-left: 36px;
+    padding-right: 32px;
+  }
+  .brand-logo__name {
+    font-size: 1.85rem;
+  }
+  .brand-logo__tagline {
+    font-size: 0.82rem;
+  }
+  .nav-actions {
+    gap: 20px;
   }
   .nav-actions .btn.btn-nav-schedule {
-    min-height: 52px;
-    padding: 0 1.35rem;
-    font-size: 0.98rem;
-    gap: 8px;
+    min-height: 58px;
+    padding: 0 1.7rem;
+    font-size: 1.12rem;
+    gap: 10px;
   }
   .nav-actions .btn.btn-nav-schedule svg {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
+  }
+  .mobile-nav-toggle {
+    min-width: 58px;
+    min-height: 58px;
+  }
+  /* Icone maior; --burger-shift acompanha a distancia entre as linhas para o "X" continuar centralizado */
+  .hamburger-box {
+    --burger-shift: 8px;
+    width: 32px;
+    height: 18px;
+  }
+  .hamburger-line {
+    height: 2px;
   }
 }
 
@@ -1430,7 +1325,6 @@ textarea:focus-visible {
 .about-content,
 .cross-sell-card,
 .final-cta-content,
-.faq-item,
 .reveal {
   opacity: 0;
   transform: translateY(24px);
@@ -1438,20 +1332,9 @@ textarea:focus-visible {
   transition-delay: var(--reveal-delay, 0ms);
 }
 
-.is-revealed {
+[data-revealed] {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* FAQ: soma a entrada as transicoes de hover/abertura, com atraso so na entrada */
-.faq-item {
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
-              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
-              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s ease,
-              margin 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Hero: entrada ao carregar a pagina (acima da dobra, nao depende de rolagem) */
@@ -1499,14 +1382,13 @@ textarea:focus-visible {
   .about-content,
   .cross-sell-card,
   .final-cta-content,
-  .faq-item,
   .reveal {
     transform: none;
     transition: opacity 0.6s ease;
   }
 }
 
-.no-motion {
+[data-revealed="instant"] {
   transition: none !important;
 }
 

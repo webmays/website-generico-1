@@ -37,14 +37,16 @@ export const NAV_LINKS = {
     { target: "resultados", label: "Resultados" },
     { target: "sobre", label: "Sobre" },
     { target: "cursos", label: "Curso" },
-    { target: "faq", label: "Dúvidas" }
+    { target: "avaliacoes", label: "Avaliações" },
+    { target: "localizacao", label: "Localização" }
   ],
   mobile: [
     { target: "procedimentos", label: "Procedimentos" },
     { target: "resultados", label: "Resultados Reais" },
     { target: "sobre", label: "Sobre Steffani" },
     { target: "cursos", label: "Curso" },
-    { target: "faq", label: "Dúvidas Frequentes" }
+    { target: "avaliacoes", label: "Avaliações" },
+    { target: "localizacao", label: "Localização" }
   ],
   footer: [
     { target: "procedimentos", label: "Procedimentos" },
@@ -59,8 +61,10 @@ export const NAV_LINKS = {
 // [AI-EDIT-ZONE]: Conteúdo da Hero Section
 export const HERO_CONTENT = {
   eyebrow: "SOBRANCELHAS, CÍLIOS E LÁBIOS",
-  title: "TORRES BEAUTY ACADEMY",
-  titleLines: ["TORRES", "BEAUTY", "ACADEMY"],
+  title: "TORRES Beauty Academy",
+  // "TORRES" em destaque e "Beauty Academy" menor, na mesma composicao (ver hero.css)
+  titleMain: "TORRES",
+  titleSub: "Beauty Academy",
   subtitle: "Quem experimenta a experiência Torres Beauty nunca mais quer outra!",
   ctaPrimary: "Agendar pelo WhatsApp",
   ctaSecondary: {
@@ -86,7 +90,7 @@ export const SALON_CONTENT = {
   id: "espaco",
   metaLabel: "NOSSO ESPAÇO",
   title: "Um ambiente *projetado para você*",
-  subtitle: "Conheça o espaço exclusivo do Torres Beauty Academy: conforto absoluto, atmosfera intimista e o mais rigoroso padrão de biossegurança.",
+  subtitle: "Conheça o espaço exclusivo do Torres Beauty Academy: conforto absoluto, atmosfera intimista e alto padrão de biossegurança.",
   photos: [
     {
       id: "01",
@@ -116,55 +120,56 @@ export const SALON_CONTENT = {
       id: "04",
       title: "Equipe Especializada",
       desc: "Especialistas qualificadas pela Torres Beauty Academy, prontas para cuidar de você com carinho e excelência.",
-      image: "/images/espaco/assets-equipe.webp",
-      alt: "Equipe de especialistas do Torres Beauty Academy com aventais profissionais bordados",
-      objectPosition: "center 15%"
+      // TODO: nova imagem. Com image vazio o card mostra o placeholder discreto no mesmo formato 3:4 (SalonSection).
+      // Ao receber a foto: salvar em public/images/espaco/ e preencher image e alt.
+      image: "",
+      alt: "",
+      objectPosition: "center center"
     }
   ]
 };
 
-// [AI-EDIT-ZONE]: Conteúdo da Seção Resultados Reais (Showcase de Imagens - Torres Beauty Academy)
+// [AI-EDIT-ZONE]: Conteúdo da Seção Resultados (vídeos verticais em carrossel + fotos em grade)
 export const CASES_CONTENT = {
   id: "resultados",
   metaLabel: "RESULTADOS REAIS",
-  title: "Resultados que *falam por si*",
-  subtitle: "Aqui você encontra resultados reais de procedimentos realizados em nossas clientes. Beleza natural, técnica e personalização em cada detalhe.",
-  // [AI-EDIT-ZONE]: Curadoria de 6 itens. Nao repetir fotos dos cards de Procedimentos.
-  cards: [
-    {
-      id: "01",
-      image: "/images/resultados/resultado-cicatrizacao.webp",
-      alt: "Evolução de sobrancelhas: antes, pós imediato e cicatrizado"
-    },
-    {
-      id: "02",
-      image: "/images/resultados/resultado-lash.webp",
-      alt: "Cílios antes e depois do Lash Lifting"
-    },
-    {
-      id: "03",
-      image: "/images/resultados/video03-poster.jpg",
-      video: "/images/resultados/video03.mp4",
-      alt: "Vídeo da transformação do olhar com Lash Lifting"
-    },
-    {
-      id: "04",
-      image: "/images/resultados/video04-poster.jpg",
-      video: "/images/resultados/video04.mp4",
-      alt: "Vídeo da revitalização labial"
-    },
-    {
-      id: "05",
-      image: "/images/resultados/video05-poster.jpg",
-      video: "/images/resultados/video05.mp4",
-      alt: "Vídeo do alinhamento e da simetria das sobrancelhas"
-    },
-    {
-      id: "06",
-      image: "/images/resultados/resultado-masculino.webp",
-      alt: "Sobrancelhas masculinas com design natural"
-    }
+  title: "Resultados que *transformam*",
+  subtitle: "Transformações reais, feitas aqui, com técnica e cuidado em cada detalhe.",
+  // [AI-EDIT-ZONE]: Vídeos do carrossel. Formato ideal: vertical 9:16, mp4 (H.264) leve + poster jpg/webp do 1º quadro.
+  // TODO: novos vídeos. Os 5 cards abaixo estão vazios (placeholder "Em breve", 9:16), prontos para receber vídeos.
+  // Para preencher um card, salve o mp4 e o poster em public/images/resultados/ e troque { id } por, por exemplo:
+  //   { id: "video-1", src: "/images/resultados/video01.mp4", poster: "/images/resultados/video01-poster.jpg", width: 480, height: 854 }
+  // width/height = dimensões do vídeo. O card segue essa proporção (vertical, quadrado ou horizontal), então o poster
+  // aparece inteiro, sem corte; todos os cards têm a mesma altura. Para ter mais ou menos cards, adicione ou remova linhas.
+  // Sem legenda visível: o leitor de tela anuncia "Vídeo de resultado N" (playLabel/videoAlt abaixo).
+  videos: [
+    { id: "video-1" },
+    { id: "video-2" },
+    { id: "video-3" },
+    { id: "video-4" },
+    { id: "video-5" }
   ],
+  // [AI-EDIT-ZONE]: Fotos de resultado (grade de 3). Nao repetir fotos dos cards de Procedimentos, hero, cursos ou sobre.
+  // TODO: novas fotos. Os 3 cards estao vazios e aparecem como placeholder discreto ("Em breve", quadrado).
+  // Para preencher: salve a foto em public/images/resultados/ e informe { image, width, height } do card.
+  // width/height definem a proporcao da caixa, entao a foto aparece inteira, sem corte (qualquer proporcao serve).
+  cards: [
+    { id: "foto-1", image: "", width: 900, height: 900 },
+    { id: "foto-2", image: "", width: 900, height: 900 },
+    { id: "foto-3", image: "", width: 900, height: 900 }
+  ],
+  photoAlt: "Foto de resultado real",
+  videoAlt: "Vídeo de resultado real",
+  reelsLabel: "Vídeos de resultados",
+  reelsPrev: "Vídeos anteriores",
+  reelsNext: "Próximos vídeos",
+  playLabel: "Assistir vídeo de resultado",
+  closeLabel: "Fechar vídeo",
+  placeholderLabel: "Em breve",
+  cta: {
+    label: "Quero ser a próxima",
+    prefilledMessage: "Olá, Steffani! Vi os resultados no site e quero ser a próxima. Pode me ajudar?"
+  },
   swipeHint: "Deslize para ver mais",
   galleryLabel: "Galeria de resultados",
   disclaimer: "* Resultados reais de procedimentos realizados no Torres Beauty Academy. Resultados podem variar de acordo com características biológicas individuais."
@@ -172,15 +177,19 @@ export const CASES_CONTENT = {
 
 // [AI-EDIT-ZONE]: Conteúdo da Seção Sobre Steffani
 export const ABOUT_CONTENT = {
-  image: "/images/sobre/assets-sobre01.webp",
+  image: "/images/sobre/sobre-steffani.webp",
   imageAlt: "Retrato de Steffani Torres",
-  metaLabel: "TRAJETÓRIA & COMPROMISSO",
-  title: "Sobre *mim*",
+  metaLabel: "A ESSÊNCIA POR TRÁS DA MARCA",
+  // A frase de apresentacao e o proprio titulo da secao (o trecho entre asteriscos sai em italico)
+  title: "Muito prazer, sou *Steffani Torres.*",
   paragraphs: [
-    "Acredito que cuidar da própria imagem não é sobre transformar quem você é, mas sobre revelar a segurança que já existe em você. Ao longo da minha trajetória na beleza estética, desenvolvi um olhar atento aos detalhes para entregar resultados naturais, elegantes e pensados exclusivamente para valorizar os seus traços.",
-    "Aqui, cada atendimento é um momento de pausa, escuta e cuidado real, para que você se olhe no espelho com orgulho e leveza todos os dias. E, através do ensino na Torres Beauty Academy, compartilho essa mesma técnica, ética e dedicação para formar mulheres prontas para construir carreiras sólidas e independentes no mercado da beleza."
+    "Empreendedora, micropigmentadora, educadora e apaixonada por transformar vidas através da beleza e do conhecimento.",
+    "Minha trajetória começou em 2016, movida por um sonho e pela coragem de construir meu próprio caminho.",
+    "Ao longo de uma década, transformei minha paixão em profissão, minha experiência em conhecimento e meu conhecimento em oportunidade para outras mulheres.",
+    "Hoje, à frente da Torres Beauty Academy, carrego um propósito que vai além de realçar a beleza: elevar a autoestima, compartilhar conhecimento e inspirar mulheres a reconhecerem o próprio potencial. Se você chegou até aqui, esse propósito também é para você.",
+    "Porque, para mim, o sucesso não acontece por acaso. Ele é construído com coragem, propósito e persistência."
   ],
-  ctaButton: "Falar com a Steffani",
+  ctaButton: "Falar comigo",
   ctaTarget: "contato"
 };
 
@@ -214,28 +223,29 @@ export const CROSS_SELL_CONTENT = {
   ]
 };
 
-// [AI-EDIT-ZONE]: Dúvidas Frequentes da Landing Page (FAQ)
-export const FAQ_CONTENT = {
-  metaLabel: "Esclarecimentos",
-  title: "Dúvidas *frequentes*",
-  items: [
-    {
-      q: "Como funciona a primeira avaliação?",
-      a: "A avaliação consiste em uma análise facial ou corporal detalhada, onde conversamos sobre seus objetivos, histórico de saúde e traçamos um plano seguro e individualizado."
-    },
-    {
-      q: "Os procedimentos exigem tempo de recuperação?",
-      a: "A maioria dos nossos protocolos permite o retorno imediato ou em poucos dias às atividades habituais, com orientações precisas de cuidados domiciliares fornecidas na consulta."
-    },
-    {
-      q: "Como funciona o curso com a Steffani?",
-      a: "O curso mescla embasamento anatômico aprofundado e prática clínica direta supervisionada pela própria Steffani, em turmas reduzidas para assegurar domínio individual da técnica."
-    },
-    {
-      q: "O curso emite certificado de conclusão?",
-      a: "Sim. Todos os profissionais recebem certificação de conclusão e respaldo para aplicação dos protocolos clínicos aprendidos."
-    }
-  ]
+// [AI-EDIT-ZONE]: Secao de Localizacao (mapa do Google + informacoes de atendimento)
+// O endereco e os horarios vem de CONTACT_INFO. O mapa usa "endereco + cityState"; para um pino exato,
+// cole em mapEmbedUrl o link do Google Maps em Compartilhar > Incorporar um mapa (apenas o valor do src).
+export const IMAGES_CONTENT = {
+  id: "avaliacoes",
+  metaLabel: "AVALIAÇÕES",
+  title: "Quem viveu a experiência *recomenda*",
+  subtitle: "Veja o carinho e os recados das clientes que já passaram pela Torres Beauty Academy e confiaram no nosso cuidado.",
+  // Para adicionar fotos: coloque o arquivo em public/images/avaliacoes/ e inclua aqui:
+  // { src: "/images/avaliacoes/foto-01.webp", alt: "Descricao da imagem" }
+  images: []
+};
+
+export const LOCATION_CONTENT = {
+  id: "localizacao",
+  metaLabel: "LOCALIZAÇÃO",
+  title: "Venha nos *visitar*",
+  subtitle: "Atendimento presencial com hora marcada, em um espaço pensado para o seu conforto.",
+  labels: { address: "Endereço", hours: "Horários", contact: "Contato", payment: "Pagamento" },
+  directionsLabel: "Como chegar →",
+  mapTitle: "Mapa com a localização da Torres Beauty Academy",
+  cityState: "",
+  mapEmbedUrl: ""
 };
 
 // [AI-EDIT-ZONE]: Conteúdo do CTA Final

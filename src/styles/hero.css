@@ -57,66 +57,97 @@
 
 .hero__content {
   width: 100%;
-  padding: clamp(6rem, 12vh, 8rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem) clamp(1.25rem, 5vw, 6rem);
+  padding: clamp(6rem, 12vh, 8rem) clamp(1.25rem, 4vw, 3rem) clamp(3rem, 8vh, 5rem) var(--site-gutter);
 }
 
 .hero__eyebrow {
-  margin-bottom: 1.25rem;
+  margin-bottom: clamp(1.25rem, 2vh, 1.75rem);
+  /* Mesma fonte do subtitulo (Cormorant Garamond italico), sem caixa alta, sobrescrevendo o .meta-label */
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 0.9rem + 0.7vw, 1.5rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
 
 .hero {
-  /* Deslocamento do bloco do titulo (--hero-title-shift) e recuo da linha mais funda da escadinha
-     (--hero-indent-deep); subtitulo e botao somam os dois para ficar alinhados com "ACADEMY". */
+  /* Deslocamento do bloco do titulo; subtitulo e botoes acompanham para ficar alinhados a "TORRES". */
   --hero-title-shift: 0px;
-  --hero-indent-deep: clamp(3.8rem, 9vw, 10rem);
 }
 
+/* [AI-STYLE-RULE]: "TORRES" domina; "Beauty Academy" usa a MESMA familia (serifada do h1), sem italico,
+   a 40% do tamanho, logo abaixo e centralizado sob a palavra (todas as larguras). So variam tamanho, peso e letter-spacing.
+   "TORRES" mede ~4,55em de largura nesta fonte: com 10vw ocupa ~45% da tela e nao invade o retrato. */
 .hero__title {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
   margin-left: var(--hero-title-shift);
-  font-size: clamp(3.6rem, 8vw, 8.75rem);
-  font-weight: 500;
-  line-height: 0.96;
-  letter-spacing: 0.01em;
+  font-size: clamp(3.5rem, 10vw, 10.5rem);
+  line-height: 0.9;
   color: var(--text-light);
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1.5rem, 3vh, 2.25rem);
 }
 
-/* [AI-STYLE-RULE]: Titulo em escadinha (como na v1) -- cada linha recua mais que a anterior, so no desktop. */
-.hero__title-line {
+.hero__title-main {
   display: block;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
-.hero__title-line--2 {
-  padding-left: 0.42em;
-}
-
-.hero__title-line--3 {
-  padding-left: var(--hero-indent-deep);
+.hero__title-sub {
+  display: block;
+  align-self: center;
+  margin-top: 0.14em;
+  font-size: 0.4em;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .hero__subtitle {
-  margin-left: calc(var(--hero-title-shift) + var(--hero-indent-deep));
-  max-width: 26rem;
-  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
-  line-height: 1.6;
+  margin-left: var(--hero-title-shift);
+  max-width: 32rem;
+  /* Mesma familia do titulo (Cormorant Garamond), italico leve: harmoniza com "TORRES" sem pesar.
+     A Cormorant tem x-height pequena, por isso o tamanho e maior que o de uma sans. */
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 1rem + 0.9vw, 1.75rem);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.4;
   color: var(--accent-gold);
-  margin-bottom: 2.25rem;
+  margin-bottom: clamp(2rem, 4vh, 2.75rem);
 }
 
 .hero__actions {
-  margin-left: calc(var(--hero-title-shift) + var(--hero-indent-deep));
+  margin-left: var(--hero-title-shift);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.75rem 1.75rem;
+  gap: 1rem 2rem;
+}
+
+/* Botoes maiores na hero, acompanhando a escala do titulo */
+.hero__actions .btn {
+  min-height: clamp(52px, 2.6rem + 1vw, 64px);
+  padding: 1rem clamp(1.75rem, 1rem + 1.4vw, 2.75rem);
+  font-size: clamp(1rem, 0.7rem + 0.35vw, 1.15rem);
+}
+
+.hero__actions .btn svg {
+  width: 21px;
+  height: 21px;
 }
 
 .hero__link {
   display: inline-flex;
   align-items: center;
-  min-height: 48px;
-  font-size: 0.92rem;
+  min-height: clamp(52px, 2.6rem + 1vw, 64px);
+  font-size: clamp(1rem, 0.7rem + 0.35vw, 1.15rem);
   font-weight: 500;
   color: var(--text-light);
   border-bottom: 1px solid var(--border-gold-subtle);
@@ -126,6 +157,63 @@
 .hero__link:hover {
   color: var(--accent-gold);
   border-color: var(--accent-gold);
+}
+
+/* [AI-STYLE-RULE]: Desktop (paisagem acima de 900px): o conteudo ocupa uma coluna que vai da margem do logo
+   (--site-gutter) ate ~57% da tela (a foto comeca em ~58-65%, com borda dissolvida), tudo centralizado nela.
+   "TORRES" (~3,95em de largura em peso 600) a 12vw ocupa ~47vw dos ~52vw uteis da coluna.
+   Inverso exato do media query de celular/tablet abaixo. */
+@media (min-width: 901px) and (min-aspect-ratio: 1001 / 1000) {
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 57vw;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  /* Tudo centralizado no eixo do titulo "TORRES" (o titulo e centrado na coluna, entao o eixo e o mesmo) */
+  .hero__eyebrow {
+    margin-bottom: clamp(1.5rem, 3vh, 2.5rem);
+    font-size: clamp(1.4rem, 0.7rem + 1.3vw, 2.2rem);
+    letter-spacing: 0.02em;
+  }
+
+  .hero__title {
+    font-size: clamp(4.5rem, 12vw, 17rem);
+    margin-bottom: clamp(1.75rem, 3.5vh, 3rem);
+  }
+
+  .hero__subtitle {
+    max-width: 46rem;
+    font-size: clamp(1.6rem, 0.7rem + 1.5vw, 2.6rem);
+    letter-spacing: 0.01em;
+    text-align: center;
+    text-wrap: balance;
+    margin-bottom: clamp(2.25rem, 5vh, 3.5rem);
+  }
+
+  .hero__actions {
+    justify-content: center;
+    gap: 1.25rem 2.5rem;
+  }
+
+  .hero__actions .btn {
+    min-height: clamp(60px, 2.6rem + 2vw, 84px);
+    padding-inline: clamp(2.25rem, 1rem + 2.2vw, 4rem);
+    font-size: clamp(1.1rem, 0.6rem + 0.7vw, 1.6rem);
+  }
+
+  .hero__actions .btn svg {
+    width: clamp(22px, 0.9rem + 0.7vw, 30px);
+    height: clamp(22px, 0.9rem + 0.7vw, 30px);
+  }
+
+  .hero__link {
+    min-height: clamp(60px, 2.6rem + 2vw, 84px);
+    font-size: clamp(1.1rem, 0.6rem + 0.7vw, 1.6rem);
+  }
 }
 
 /* Celulares e tablets em retrato: foto em cima, dissolvendo no fundo, e texto abaixo */
@@ -159,22 +247,30 @@
     transform: none;
   }
 
+  /* [AI-STYLE-RULE]: Celular empilha sem sobreposicao: a foto termina e so entao comeca o texto
+     (nada de margem negativa puxando o titulo para cima da imagem). */
   .hero__content {
     position: relative;
     z-index: 1;
-    margin-top: -2.5rem;
-    padding: 0 clamp(1.25rem, 4vw, 3rem) 3.5rem;
+    margin-top: 0;
+    padding: 1.5rem clamp(1.25rem, 4vw, 3rem) 3.5rem;
   }
 
+  /* 18vw (~82% da tela) mantem "TORRES" dominante e em uma linha ate 320px */
   .hero__title {
     margin-left: 0;
-    font-size: clamp(2.9rem, 13vw, 5.25rem);
+    font-size: clamp(3rem, 18vw, 7rem);
   }
 
-  /* Sem escadinha no mobile/tablet retrato: linhas rentes, como na v1 */
-  .hero__title-line--2,
-  .hero__title-line--3 {
-    padding-left: 0;
+  /* Mobile: "Beauty Academy" alinhado a esquerda, na mesma margem de "TORRES" */
+  .hero__title-sub {
+    align-self: flex-start;
+  }
+
+  /* A letra grande "T" tem um espacamento lateral proporcional ao tamanho, que a empurra para a direita:
+     compensa para a borda esquerda ficar na mesma linha dos textos menores. */
+  .hero__title-main {
+    margin-left: -0.12em;
   }
 
   .hero__subtitle,
@@ -228,17 +324,16 @@
   }
 
   .hero__content {
-    margin-top: 0;
     padding: 0 clamp(2rem, 6vw, 4rem) clamp(3rem, 7svh, 5rem);
   }
 
   .hero__title {
-    font-size: clamp(4rem, 10vw, 6.5rem);
+    font-size: clamp(5rem, 15vw, 9rem);
   }
 
   .hero__subtitle {
-    max-width: 30rem;
-    font-size: clamp(1.1rem, 2.2vw, 1.3rem);
+    max-width: 34rem;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
     text-wrap: balance;
     margin-bottom: 2rem;
   }

@@ -1,6 +1,6 @@
 // [WEBMAYS COPYRIGHT - Todos os direitos reservados (Torres Beauty Academy @TorresBeautyAcademy)]
 // [AI-FILE-PURPOSE]: Hook que gerencia o scrollspy e sincroniza a seção ativa na viewport tanto para desktop quanto para mobile.
-// [AI-DO-NOT-BREAK]: O cálculo monitora os IDs das seções em ordem de leitura ("hero", "procedimentos", "resultados", "sobre", "cursos", "faq", "contato") e responde à rolagem de Lenis e nativa.
+// [AI-DO-NOT-BREAK]: O cálculo monitora os IDs das seções em ordem de leitura ("hero", "procedimentos", "resultados", "sobre", "cursos", "localizacao", "contato") e responde à rolagem de Lenis e nativa.
 
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
@@ -13,14 +13,15 @@ const DOM_SECTIONS = [
   "resultados",
   "sobre",
   "cursos",
-  "faq",
+  "avaliacoes",
+  "localizacao",
   "contato"
 ];
 
 /**
  * [AI-HOOK]: useActiveSection
  * @description Detecta em tempo real qual seção o usuário está lendo no scroll na Home.
- * @returns {string} ID da seção ativa correspondente aos links de navegação (ex: "procedimentos", "cursos", "sobre", "faq") ou "" se estiver na Hero/topo.
+ * @returns {string} ID da seção ativa correspondente aos links de navegação (ex: "procedimentos", "cursos", "sobre", "localizacao") ou "" se estiver na Hero/topo.
  */
 export function useActiveSection() {
   const [activeSection, setActiveSection] = useState("");
@@ -49,7 +50,7 @@ export function useActiveSection() {
 
       // Se o usuário alcançou o rodapé da página
       if (windowHeight + scrollY >= docHeight - 80) {
-        setActiveSection("faq");
+        setActiveSection("localizacao");
         return;
       }
 
@@ -75,7 +76,8 @@ export function useActiveSection() {
       else if (matchedId === "resultados") finalTarget = "resultados";
       else if (matchedId === "sobre") finalTarget = "sobre";
       else if (matchedId === "cursos") finalTarget = "cursos";
-      else if (matchedId === "faq" || matchedId === "contato") finalTarget = "faq";
+      else if (matchedId === "avaliacoes") finalTarget = "avaliacoes";
+      else if (matchedId === "localizacao" || matchedId === "contato") finalTarget = "localizacao";
       // Se matchedId for "hero", finalTarget continua ""
 
       setActiveSection(finalTarget);

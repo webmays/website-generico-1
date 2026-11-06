@@ -77,7 +77,7 @@ c:\Users\senko\Desktop\Steffani website\
     │   │   ├── CasesSection.jsx      <- Galeria "Resultados" (6 itens, fotos+vídeos)
     │   │   ├── AboutSection.jsx      <- Sobre Steffani Torres
     │   │   ├── CourseSection.jsx / CoursePremiere.jsx
-    │   │   ├── SalonSection.jsx / CrossSellSection.jsx / FaqSection.jsx / FinalCtaSection.jsx
+    │   │   ├── SalonSection.jsx / CrossSellSection.jsx / LocationSection.jsx / FinalCtaSection.jsx
     │   └── ui/
     │       ├── BrandLogo.jsx         <- Logo TORRES / beleza & ensino
     │       ├── EditorialTitle.jsx    <- Títulos com `*itálico*`
@@ -123,7 +123,7 @@ Edite `CONTACT_INFO` em `src/data/siteContent.js`.
 - `fetchPriority="high"` só na foto da Hero; `loading="lazy"` + `decoding="async"` em todo o resto.
 
 ### 4.2 Scroll Reveal (sem GSAP)
-`useScrollReveal` (IntersectionObserver nativo) adiciona `.is-revealed` na primeira vez que o elemento entra na viewport. Com `prefers-reduced-motion: reduce`, todos os itens recebem `.is-revealed` e `.no-motion` imediatamente (sem `translateY`, só fade curto). Não reintroduza GSAP/ScrollTrigger — a dependência foi removida do `package.json`.
+`useScrollReveal` (IntersectionObserver nativo) adiciona o atributo `data-revealed` (nunca classe: o React apagaria ao reescrever `className` dinamico, ex. FAQ aberto) na primeira vez que o elemento entra na viewport. Com `prefers-reduced-motion: reduce`, todos os itens recebem `data-revealed="instant"` imediatamente (sem `translateY`, só fade curto). Não reintroduza GSAP/ScrollTrigger — a dependência foi removida do `package.json`.
 
 ### 4.3 Botões e Cantos
 `border-radius: 0` em todo o projeto. Qualquer variante nova de botão entra em `src/styles/buttons.css`, nunca em CSS de seção.

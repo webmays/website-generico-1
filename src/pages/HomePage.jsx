@@ -11,7 +11,8 @@ import { CourseSection } from "../components/sections/CourseSection";
 import { SalonSection } from "../components/sections/SalonSection";
 import { CasesSection } from "../components/sections/CasesSection";
 import { CrossSellSection } from "../components/sections/CrossSellSection";
-import { FaqSection } from "../components/sections/FaqSection";
+import { ImagesSection } from "../components/sections/ImagesSection";
+import { LocationSection } from "../components/sections/LocationSection";
 import { FinalCtaSection } from "../components/sections/FinalCtaSection";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 import { useSmoothScroll } from "../context/SmoothScrollContext";
@@ -51,7 +52,8 @@ export function HomePage() {
       <CourseSection />
       <SalonSection />
       <CrossSellSection />
-      <FaqSection />
+      <ImagesSection />
+      <LocationSection />
       <FinalCtaSection />
     </main>
   );

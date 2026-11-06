@@ -64,16 +64,20 @@ export function CourseSection() {
           return (
             <article
               key={course.id}
-              className={`course-band-item ${isDarkTheme ? "is-dark-theme" : "is-light-theme"} ${isReversed ? "is-reversed" : ""}`}
+              className={`course-band-item ${isDarkTheme ? "is-dark-theme" : "is-light-theme"} ${isReversed ? "is-reversed" : ""} ${course.imageRatio ? "has-natural-media" : ""}`}
               id={`curso-${course.id}`}
             >
               <div className="container course-band-inner">
-                {/* Mídia Fotográfica da Faixa (Ampliada e Sem Badge Artificial) */}
-                <div className="course-band-media">
+                {/* Mídia Fotográfica da Faixa (quadrada por padrão; com imageRatio assume a proporção da foto) */}
+                <div
+                  className="course-band-media"
+                  style={course.imageRatio ? { "--media-ratio": course.imageRatio } : undefined}
+                >
                   <img
                     src={course.image}
                     alt={course.title}
                     className="course-band-img"
+                    style={course.imagePosition ? { objectPosition: course.imagePosition } : undefined}
                     loading="lazy"
                     decoding="async"
                   />
@@ -89,7 +93,9 @@ export function CourseSection() {
                     )}
                   </div>
 
-                  <p className="course-band-desc">{course.description}</p>
+                  {(Array.isArray(course.description) ? course.description : [course.description]).map((par, pIdx) => (
+                    <p key={pIdx} className="course-band-desc">{par}</p>
+                  ))}
 
                   {/* Pilares Comerciais Expressivos (Sem Cara de Badges / IA) */}
                   <div className="course-value-pillars">

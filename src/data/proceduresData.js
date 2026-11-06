@@ -21,7 +21,7 @@ export const PROCEDURES = [
     group: "pacotes",
     summary: "Seu momento de princesa: design natural com henna, buço e queixo na linha, revitalização facial, massagem capilar e cappuccino. 1h30 de cuidado e amor.",
     image: "/images/procedimentos/glow-relax.webp",
-    alt: "Cliente deitada com sobrancelhas definidas e pele iluminada"
+    alt: "Cliente com sobrancelhas definidas e pele iluminada após o Glow Relax"
   },
   {
     slug: "glow-diamond",
@@ -29,7 +29,7 @@ export const PROCEDURES = [
     group: "pacotes",
     summary: "Aqui você é rainha: Lash Lifting, henna, buço, revitalização facial e labial, massagem capilar e cappuccino. 2h30 de puro cuidado e amor.",
     image: "/images/procedimentos/glow-diamond.webp",
-    alt: "Cliente com sobrancelhas definidas e lábios realçados"
+    alt: "Cliente com sobrancelhas definidas e olhar realçado após o Glow Diamond"
   },
   {
     slug: "brow-boost",

@@ -284,6 +284,11 @@
   max-width: 62ch;
 }
 
+/* Descricao em varios paragrafos (ex: Meu Primeiro Lash): espaco menor entre eles, o maior fica so antes dos pilares */
+.course-band-desc:has(+ .course-band-desc) {
+  margin-bottom: 0.8rem;
+}
+
 /* 2.3 Pilares Comerciais Expressivos (Integrados e Proporcionais) */
 .course-value-pillars {
   margin-bottom: 1.45rem;
@@ -718,5 +723,78 @@
   .course-pillars-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.75rem 1.3rem;
+  }
+}
+
+/* Tablets (iPad): foto mais alta (4:3) para nao virar uma faixa que corta o retrato so no rosto */
+@media (min-width: 600px) and (max-width: 992px) {
+  .course-band-media,
+  .course-band-item.is-reversed .course-band-media {
+    aspect-ratio: 4 / 3;
+    min-height: 0;
+    max-height: 600px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   FOTO NA PROPORCAO NATURAL (curso com imageRatio, ex: Brow Boost em retrato 2:3)
+   [AI-STYLE-RULE]: O container assume a proporcao da foto (--media-ratio), entao object-fit: cover nao corta
+   nada e nao sobra borda. Sem zoom no hover, que cortaria as bordas. Fica no fim do arquivo para vencer as
+   regras de quadrado/panoramico acima em todas as larguras.
+   -------------------------------------------------------------------------- */
+.course-band-item.has-natural-media .course-band-media {
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  aspect-ratio: var(--media-ratio);
+}
+
+.course-band-item.has-natural-media .course-band-img {
+  object-position: center;
+}
+
+.course-band-item.has-natural-media:hover .course-band-img {
+  transform: none;
+}
+
+@media (min-width: 993px) {
+  .course-band-item.has-natural-media .course-band-inner {
+    grid-template-columns: minmax(0, 460px) 1fr;
+  }
+
+  .course-band-item.has-natural-media.is-reversed .course-band-inner {
+    grid-template-columns: 1fr minmax(0, 460px);
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1220px) {
+  .course-band-item.has-natural-media .course-band-media {
+    max-width: 400px;
+  }
+
+  .course-band-item.has-natural-media .course-band-inner {
+    grid-template-columns: minmax(0, 400px) 1fr;
+  }
+
+  .course-band-item.has-natural-media.is-reversed .course-band-inner {
+    grid-template-columns: 1fr minmax(0, 400px);
+  }
+}
+
+/* Celular e tablet: largura total no celular; no tablet limitada para o retrato nao virar uma tela inteira */
+@media (max-width: 992px) {
+  .course-band-item.has-natural-media .course-band-media {
+    max-width: 480px;
+    margin-inline: auto;
+  }
+}
+
+/* Consultoria no iPad: recorte 4:3 mais para baixo, para reduzir o espaco acima da cabeca
+   (!important porque a posicao padrao vem inline de coursesData.js) */
+@media (min-width: 600px) and (max-width: 992px) {
+  #curso-consultoria-micropigmentacao .course-band-img {
+    object-position: center 9% !important;
   }
 }

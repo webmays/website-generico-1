@@ -7,7 +7,7 @@ import { CONTACT_INFO } from "./siteContent";
 export const COURSES_HEADER_DATA = {
   eyebrow: "FORMAÇÃO QUE TRANSFORMA",
   title: "Cursos & *mentorias*",
-  subtitle: "Conheça as formações e mentorias profissionais da Steffani Torres e fale no WhatsApp para receber cronogramas, datas e valores de investimento.",
+  subtitle: "Conheça nossas formações e mentorias profissionais da Torres Beauty Academy e fale no WhatsApp para receber cronogramas, datas e valores de investimento.",
   ctaPill: "Falar no WhatsApp",
   bottomDisclaimer: "Informações completas, cronograma e valores de matrícula via WhatsApp oficial."
 };
@@ -19,7 +19,8 @@ export const COURSES_LIST = [
     title: "Consultoria de Micropigmentação",
     headline: "Aprimoramento técnico e estratégico para profissionais da área",
     description: "Mentoria cirúrgica individualizada de 4h a 5h com Steffani Torres, voltada para profissionais da área que buscam aprimorar suas habilidades. Você envia suas dúvidas prévias para a criação de um plano sob medida, corrigindo erros práticos e alavancando seus resultados na micropigmentação.",
-    image: "/images/cursos/assets-consultoria.webp",
+    image: "/images/cursos/consultoria-micropigmentacao.webp",
+    imagePosition: "center 4%",
     urgencyText: "Atendimento 100% Individual • Vagas Limitadas",
     pillars: [
       {
@@ -47,8 +48,11 @@ export const COURSES_LIST = [
     category: "Especialização • Imersão Intensiva de 10 Horas",
     title: "Método Brow Boost",
     headline: "A técnica mais desejada e lucrativa para sobrancelhas naturais",
-    description: "Curso intensivo em 1 dia (das 9h às 19h) para formar especialistas em Brow Lamination. Domine a técnica que realça a essência única dos fios naturais com segurança, biossegurança rigorosa e resultados duradouros que encantam clientes.",
-    image: "/images/cursos/curso-browboost.webp",
+    description: "Curso intensivo em 1 dia (das 9h às 19h) para formar especialistas em Brow Lamination. Domine a técnica que realça a essência única dos fios naturais com segurança, biossegurança e resultados duradouros que encantam clientes.",
+    // Foto nova (curso-browboost(novo).jpeg) convertida para webp 1400x2096, em retrato
+    image: "/images/cursos/curso-browboost-v2.webp",
+    // Proporcao real da foto: o card assume esse formato (em vez do quadrado) e a foto aparece inteira, sem corte
+    imageRatio: "1400 / 2096",
     urgencyText: "Turmas Reduzidas • Vagas Limitadas",
     pillars: [
       {
@@ -65,7 +69,15 @@ export const COURSES_LIST = [
       },
       {
         title: "Demonstração e Prática em Modelo",
-        desc: "Prática supervisionada em modelo real, certificado impresso, coffee-break e suporte pós-curso."
+        desc: "Prática supervisionada em modelo real, certificado impresso e suporte pós-curso."
+      },
+      {
+        title: "Coffee break",
+        desc: "Uma pausa com café e lanche para recarregar as energias durante a imersão."
+      },
+      {
+        title: "Happy hour",
+        desc: "Encerramento descontraído para celebrar a conquista com a turma."
       }
     ],
     buttonText: "Garantir Minha Vaga",
@@ -74,15 +86,21 @@ export const COURSES_LIST = [
   {
     id: "curso-lash-lifting",
     category: "Especialização • Curvatura & Nutrição de Cílios",
-    title: "Curso de Lash Lifting",
-    headline: "Efeito rímel natural de alto valor e retorno financeiro imediato",
-    description: "Formação técnica em curvatura, hidratação profunda e realce dos cílios naturais. Um procedimento de altíssima procura no ateliê, rápido de executar e com excelente margem de rentabilidade logo nas primeiras clientes.",
+    title: "Meu Primeiro Lash | Curso de Lash Lifting",
+    headline: "Uma nova habilidade, novas oportunidades e mais possibilidades de faturamento!",
+    // description aceita texto unico ou lista de paragrafos (CourseSection renderiza um <p> por item)
+    description: [
+      "Para quem já atua na área da beleza, o Lash Lifting é a oportunidade de ampliar os serviços, fidelizar clientes e aumentar o faturamento, combinando perfeitamente com procedimentos como o Brow Lamination.",
+      "E para quem deseja ingressar no mercado da beleza, é uma excelente porta de entrada para conquistar as primeiras clientes e construir uma nova fonte de renda.",
+      "Com teoria, prática real e acompanhamento, você aprende a técnica com segurança e confiança.",
+      "Seja para começar ou expandir, seu próximo passo começa aqui!"
+    ],
     image: "/images/cursos/curso-lashlifting.webp",
     urgencyText: "Turmas Exclusivas • Vagas Limitadas",
     pillars: [
       {
-        title: "Curvatura Biomecânica & Nutrição",
-        desc: "Técnica de lifting com nutrição profunda para um olhar iluminado e fios saudáveis."
+        title: "Biomecânica dos cílios",
+        desc: "Projeção, curvatura e escolha estratégica dos moldes para resultados personalizados."
       },
       {
         title: "Coloração & Efeito Rímel Duradouro",
@@ -98,7 +116,7 @@ export const COURSES_LIST = [
       }
     ],
     buttonText: "Garantir Minha Vaga",
-    whatsappMessage: "Olá Steffani! Gostaria de garantir minha vaga e realizar minha inscrição no Curso de Lash Lifting. Poderia me enviar os detalhes de datas e valores de matrícula?"
+    whatsappMessage: "Olá Steffani! Gostaria de garantir minha vaga e realizar minha inscrição no curso Meu Primeiro Lash (Lash Lifting). Poderia me enviar os detalhes de datas e valores de matrícula?"
   }
 ];
 

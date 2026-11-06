@@ -104,7 +104,7 @@ export function Header({ isDrawerOpen, onToggleDrawer }) {
                 className="hamburger-line line-1"
                 style={
                   isDrawerOpen
-                    ? { transform: "translateY(5.5px) rotate(45deg)" }
+                    ? { transform: "translateY(var(--burger-shift, 5.5px)) rotate(45deg)" }
                     : undefined
                 }
               />
@@ -121,7 +121,7 @@ export function Header({ isDrawerOpen, onToggleDrawer }) {
                 className="hamburger-line line-2"
                 style={
                   isDrawerOpen
-                    ? { transform: "translateY(-5.5px) rotate(-45deg)" }
+                    ? { transform: "translateY(calc(var(--burger-shift, 5.5px) * -1)) rotate(-45deg)" }
                     : undefined
                 }
               />
